@@ -1266,7 +1266,7 @@ marked = (src, opt)->
     return Parser.parse tokens, opt
   catch e
     { m } = opt
-    e.message += '\nPlease report this to https://github.com/7korobi/marked-pre.'
+    e.message += '\nPlease report this to https://github.com/7korobi/vue-markup.'
     if opt.silent
       message = "#{e.message}"
       return m 'p', {}, [
