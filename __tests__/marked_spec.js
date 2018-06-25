@@ -738,11 +738,15 @@ Marked = __webpack_require__(18);
 Object.assign Marked.options,
   indentCode: true
   em: true
-Object.assign Marked.options.renderer,
-  paragraph: (text)->
-    { m } = @options
-    m 'p', {}, text
 */
+Object.assign(Marked.options.renderer, {
+  paragraph: function (text) {
+    var m;
+    ({ m } = this.options);
+    return m('p', {}, text);
+  }
+});
+
 glob.sync("./__tests__/**/*.md").map(function (path) {
   return describe(path, function () {
     return test('snapshot', function () {

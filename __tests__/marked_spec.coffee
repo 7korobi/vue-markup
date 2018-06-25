@@ -8,11 +8,11 @@ Marked = require '../lib/marked.vue'
 Object.assign Marked.options,
   indentCode: true
   em: true
+###
 Object.assign Marked.options.renderer,
   paragraph: (text)->
     { m } = @options
     m 'p', {}, text
-###
 
 glob
 .sync("./__tests__/**/*.md")
