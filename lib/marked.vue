@@ -1,7 +1,7 @@
 <style lang="stylus" scoped>
 </style>
 <script lang="coffee">
-marked = require './marked'
+marked = require './marked-parse'
 
 itself = (o)-> o
 

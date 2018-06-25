@@ -1,6 +1,7 @@
-Vue = require "vue"
-if Vue.default?
-  Vue = Vue.default
+Marked = require("./marked.vue").default
+Dagre = require("./dagre.vue").default
 
-Vue.component "marked", require("./marked.vue").default
-Vue.component "dagre",  require("./dagre.vue").default
+dic = { Marked, Dagre }
+
+dic.default = dic
+module.exports = dic
