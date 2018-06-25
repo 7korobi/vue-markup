@@ -95,6 +95,10 @@ class Renderer
     , content
 
   # span level renderer
+  em: (text)->
+    { m } = @options
+    m 'em', {}, text
+
   strong: (text)->
     { m } = @options
     m 'strong', {}, text

@@ -1,9 +1,10 @@
-glob = require 'glob'
-fs = require 'fs'
-Dagre = require '../lib/dagre.vue'
-
 { createRenderer } = require 'vue-server-renderer'
 { shallow } = require 'vue-test-utils'
+
+glob = require 'glob'
+fs = require 'file-system'
+
+Dagre = require('../lib/dagre.vue').default
 
 glob
 .sync("./__tests__/**/*.dagre")
@@ -11,7 +12,7 @@ glob
   describe path, ->
     test 'snapshot', ->
       value = fs.readFileSync path, 'utf8'
-      wrapper = shallow Dagre.default,
+      wrapper = shallow Dagre,
         propsData: { value }
       createRenderer().renderToString wrapper.vm, (err, str)->
         if err

@@ -1,14 +1,13 @@
 { createRenderer } = require 'vue-server-renderer'
 { shallow } = require 'vue-test-utils'
 glob = require 'glob'
-fs = require 'fs'
+fs = require 'file-system'
 
 Marked = require '../lib/marked.vue'
-###
 Object.assign Marked.options,
+  silent: false
   indentCode: true
   em: true
-###
 Object.assign Marked.options.renderer,
   paragraph: (text)->
     { m } = @options

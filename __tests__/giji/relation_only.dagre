@@ -1,4 +1,1 @@
-aaa bbb ccc ddd : tetris
-eee fff ggg hhh : others
-
 aaa --> bbb --> ccc --o ddd --x eee --X fff -- aaa

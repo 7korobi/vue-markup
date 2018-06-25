@@ -19,7 +19,6 @@ module.exports =
     filename: '[name].js' # Important
     libraryTarget: 'this' # Important
 
-  target: 'node' # Important
   devtool: 'source-map'
   module:
     rules: [

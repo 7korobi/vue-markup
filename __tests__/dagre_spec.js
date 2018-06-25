@@ -67,16 +67,28 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = require("glob");
+module.exports = require("vue-server-renderer");
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("fs");
+module.exports = require("vue-test-utils");
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("glob");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("file-system");
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -158,93 +170,235 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listToStyles = __webpack_require__(4)
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
 
-module.exports = function (parentId, list, isProduction, context) {
-  if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-    context = __VUE_SSR_CONTEXT__
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+var listToStyles = __webpack_require__(6)
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
   }
-  if (context) {
-    if (!context.hasOwnProperty('styles')) {
-      Object.defineProperty(context, 'styles', {
-        enumerable: true,
-        get: function() {
-          return renderStyles(context._styles)
-        }
-      })
-      // expose renderStyles for vue-server-renderer (vuejs/#6353)
-      context._renderStyles = renderStyles
-    }
+*/}
 
-    var styles = context._styles || (context._styles = {})
-    list = listToStyles(parentId, list)
-    if (isProduction) {
-      addStyleProd(styles, list)
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+var options = null
+var ssrIdKey = 'data-vue-ssr-id'
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+module.exports = function (parentId, list, _isProduction, _options) {
+  isProduction = _isProduction
+
+  options = _options || {}
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
     } else {
-      addStyleDev(styles, list)
+      styles = []
     }
-  }
-}
-
-// In production, render as few style tags as possible.
-// (mostly because IE9 has a limit on number of style tags)
-function addStyleProd (styles, list) {
-  for (var i = 0; i < list.length; i++) {
-    var parts = list[i].parts
-    for (var j = 0; j < parts.length; j++) {
-      var part = parts[j]
-      // group style tags by media types.
-      var id = part.media || 'default'
-      var style = styles[id]
-      if (style) {
-        if (style.ids.indexOf(part.id) < 0) {
-          style.ids.push(part.id)
-          style.css += '\n' + part.css
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
         }
-      } else {
-        styles[id] = {
-          ids: [part.id],
-          css: part.css,
-          media: part.media
-        }
+        delete stylesInDom[domStyle.id]
       }
     }
   }
 }
 
-// In dev we use individual style tag for each module for hot-reload
-// and source maps.
-function addStyleDev (styles, list) {
-  for (var i = 0; i < list.length; i++) {
-    var parts = list[i].parts
-    for (var j = 0; j < parts.length; j++) {
-      var part = parts[j]
-      styles[part.id] = {
-        ids: [part.id],
-        css: part.css,
-        media: part.media
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
       }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
     }
   }
 }
 
-function renderStyles (styles) {
-  var css = ''
-  for (var key in styles) {
-    var style = styles[key]
-    css += '<style data-vue-ssr-id="' + style.ids.join(' ') + '"' +
-        (style.media ? ( ' media="' + style.media + '"' ) : '') + '>' +
-        style.css + '</style>'
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
   }
-  return css
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+  if (options.ssrId) {
+    styleElement.setAttribute(ssrIdKey, obj.id)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
 }
 
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports) {
 
 /**
@@ -277,7 +431,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -386,22 +540,10 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("vue-server-renderer");
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("vue-test-utils");
-
-/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Renderer, border_width, dagre, edge_label_width, init, marker, options, parse, vm;
+var Renderer, dagre, init, marker, options, parse, vm;
 
 dagre = __webpack_require__(14);
 
@@ -434,34 +576,28 @@ Renderer = class Renderer {
   }
 
   dic(v) {
-    return {
-      id: v,
-      name: v
-    };
+    return v;
+  }
+
+  href(key) {
+    return key;
+  }
+
+  is_edge(v, w) {
+    return this.graph.edge({v, w});
+  }
+
+  is_node(v) {
+    return this.graph.node(v);
   }
 
   node(v, label) {
-    var chr, id, name, o;
-    chr = this.dic(v);
-    console.log(chr);
-    if (chr != null ? chr.face : void 0) {
-      ({id, name} = chr.face);
-      o = this.graph.node(id);
-      if (!o) {
-        this.icon(id, label || name);
-      }
-      return id;
-    } else {
-      o = this.graph.node(v);
-      if (!o) {
-        this.box(v, label);
-      }
-      return v;
-    }
+    return this.box(v, label);
   }
 
   edge(v, w, line, start, end, label) {
-    var weight;
+    var edge_label_width, weight;
+    ({edge_label_width} = this.options.style);
     weight = line.length;
     start = marker(start);
     end = marker(end);
@@ -497,17 +633,21 @@ Renderer = class Renderer {
   }
 
   box(v, label) {
+    var border_width;
+    ({border_width} = this.options.style);
     return this.graph.setNode(v, {
       label: label,
       class: 'box',
-      width: 90,
-      height: 90,
+      width: 90 + border_width,
+      height: 90 + border_width,
       rx: 10,
       ry: 10
     });
   }
 
   icon(v, label) {
+    var border_width;
+    ({border_width} = this.options.style);
     return this.graph.setNode(v, {
       label: label,
       class: 'icon',
@@ -529,18 +669,27 @@ Renderer = class Renderer {
 
 };
 
-edge_label_width = 20;
-
-border_width = 10;
-
-init = function() {
+init = function(options) {
   var g;
   g = new dagre.graphlib.Graph({
     directed: true,
     compound: true,
     multigraph: false
   });
-  return g.setGraph({
+  g.setGraph(options.graph);
+  g.errors = [];
+  options.renderer.options = options;
+  options.renderer.graph = g;
+  return g;
+};
+
+options = {
+  renderer: new Renderer,
+  style: {
+    edge_label_width: 20,
+    border_width: 10
+  },
+  graph: {
     // acyclicer: 'greedy'
     // ranker: 'network-simplex'
     // ranker: 'tight-tree'
@@ -551,11 +700,7 @@ init = function() {
     edgesep: 0,
     marginx: 3,
     marginy: 3
-  });
-};
-
-options = {
-  renderer: new Renderer
+  }
 };
 
 vm = {
@@ -593,7 +738,8 @@ vm = {
       return results;
     },
     edge_rects: function() {
-      var i, key, len, o, ref, ref1, results;
+      var edge_label_width, i, key, len, o, ref, ref1, results;
+      ({edge_label_width} = options.style);
       ref = this.graph.edges();
       results = [];
       for (i = 0, len = ref.length; i < len; i++) {
@@ -631,7 +777,8 @@ vm = {
       return results;
     },
     node_images: function() {
-      var i, key, len, o, ref, results;
+      var i, key, len, o, ref, renderer, results;
+      ({renderer} = options);
       ref = this.graph.nodes();
       results = [];
       for (i = 0, len = ref.length; i < len; i++) {
@@ -646,7 +793,7 @@ vm = {
           y: o.y - o.height * 0.5 + border_width * 0.5,
           width: o.width - border_width,
           height: o.height - border_width,
-          href: href(key)
+          href: renderer.href(key)
         });
       }
       return results;
@@ -678,12 +825,9 @@ vm = {
     },
     graph: function() {
       var g;
-      g = init();
-      options.renderer.options = options;
-      options.renderer.graph = g;
-      options.renderer.graph.errors = [];
+      g = init(options);
       parse(options.renderer, this.value);
-      dagre.layout(options.renderer.graph);
+      dagre.layout(g);
       return g;
     }
   }
@@ -704,22 +848,22 @@ module.exports.default = vm;
 
 var Dagre, createRenderer, fs, glob, shallow;
 
-glob = __webpack_require__(0);
+({ createRenderer } = __webpack_require__(0));
 
-fs = __webpack_require__(1);
+({ shallow } = __webpack_require__(1));
 
-Dagre = __webpack_require__(11);
+glob = __webpack_require__(2);
 
-({ createRenderer } = __webpack_require__(6));
+fs = __webpack_require__(3);
 
-({ shallow } = __webpack_require__(7));
+Dagre = __webpack_require__(11).default;
 
 glob.sync("./__tests__/**/*.dagre").map(function (path) {
   return describe(path, function () {
     return test('snapshot', function () {
       var value, wrapper;
       value = fs.readFileSync(path, 'utf8');
-      wrapper = shallow(Dagre.default, {
+      wrapper = shallow(Dagre, {
         propsData: { value }
       });
       return createRenderer().renderToString(wrapper.vm, function (err, str) {
@@ -742,11 +886,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42a55e88_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(16);
+var disposed = false
 function injectStyle (ssrContext) {
-var i
-;(i=__webpack_require__(12),i.__inject__&&i.__inject__(ssrContext),i)
+  if (disposed) return
+  __webpack_require__(12)
 }
-var normalizeComponent = __webpack_require__(5)
+var normalizeComponent = __webpack_require__(7)
 /* script */
 
 
@@ -759,7 +904,7 @@ var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-42a55e88"
 /* moduleIdentifier (server only) */
-var __vue_module_identifier__ = "4021bf88"
+var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue___default.a,
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42a55e88_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__["a" /* default */],
@@ -769,6 +914,22 @@ var Component = normalizeComponent(
   __vue_module_identifier__
 )
 Component.options.__file = "lib\\dagre.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-42a55e88", Component.options)
+  } else {
+    hotAPI.reload("data-v-42a55e88", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
 
 /* harmony default export */ __webpack_exports__["default"] = (Component.exports);
 
@@ -783,22 +944,32 @@ Component.options.__file = "lib\\dagre.vue"
 var content = __webpack_require__(13);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
-// add CSS to SSR context
-var add = __webpack_require__(3)
-module.exports.__inject__ = function (context) {
-  add("525402b5", content, false, context)
-};
+// add the styles to the DOM
+var update = __webpack_require__(5)("525402b5", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42a55e88\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/stylus-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dagre.vue", function() {
+     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42a55e88\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/stylus-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dagre.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(true);
+exports = module.exports = __webpack_require__(4)(true);
 // imports
 
 
 // module
-exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > rect[data-v-42a55e88],\n.nodes-move:not(.nodes-leave-active) > image[data-v-42a55e88] {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move[data-v-42a55e88]:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n", "", {"version":3,"sources":["C:/Dropbox/www/vue-blog/lib/lib/dagre.vue","C:/Dropbox/www/vue-blog/lib/dagre.vue"],"names":[],"mappings":";AA2BE;;EAEE,2BAAA;CC1BH;AD2BD;EACE,mBAAA;CCzBD","file":"dagre.vue","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.nodes-move:not(.nodes-leave-active)\n  > rect\n  > image\n    transition: x .5s, y .5s\n.edges-move:not(.edges-leave-active)\n  transition: d .5s\n\n",".nodes-move:not(.nodes-leave-active) > rect,\n.nodes-move:not(.nodes-leave-active) > image {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > rect[data-v-42a55e88],\n.nodes-move:not(.nodes-leave-active) > image[data-v-42a55e88] {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move[data-v-42a55e88]:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n", "", {"version":3,"sources":["C:/Dropbox/www/vue-blog/lib/lib/dagre.vue","C:/Dropbox/www/vue-blog/lib/dagre.vue"],"names":[],"mappings":";AA0BE;;EAEE,2BAAA;CCzBH;AD0BD;EACE,mBAAA;CCxBD","file":"dagre.vue","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.nodes-move:not(.nodes-leave-active)\n  > rect\n  > image\n    transition: x .5s, y .5s\n.edges-move:not(.edges-leave-active)\n  transition: d .5s\n\n",".nodes-move:not(.nodes-leave-active) > rect,\n.nodes-move:not(.nodes-leave-active) > image {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -896,9 +1067,10 @@ parse = function (render, src) {
         v = edges[idx];
         [v, start, line, end, w] = edges.slice(idx, +(idx + 4) + 1 || 9e9);
         if (w) {
-          v = render.node(v);
-          w = render.node(w);
-          console.log({ v, w });
+          v = render.dic(v);
+          w = render.dic(w);
+          render.node(v);
+          render.node(w);
           render.edge(v, w, line, start, end, label);
         }
       }
@@ -911,12 +1083,14 @@ parse = function (render, src) {
       nodes = nodes.trim().split(/ +/);
       for (idx = j = 0, len1 = nodes.length; j < len1; idx = ++j) {
         v = nodes[idx];
+        v = render.dic(v);
         render.node(v, label);
         if (label) {
           render.edge(v, v, "", "", "", label);
         }
         if (parent = find_parent(v, depth)) {
-          ({ label } = render.graph.node(parent));
+          parent = render.dic(parent);
+          ({ label } = render.is_node(parent));
           if (label) {
             render.cluster(v, parent, label);
           }
@@ -947,165 +1121,168 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("no-ssr", [
-    _c("article", [
-      _c(
-        "svg",
-        {
-          style: "max-width: 100%; width: " + _vm.root.width + "px;",
-          attrs: { viewBox: _vm.view_box }
-        },
-        [
-          _c(
-            "marker",
-            {
-              staticClass: "edgePath",
-              attrs: {
-                id: "svg-marker-circle",
-                viewBox: "0 0 10 10",
-                markerUnits: "userSpaceOnUse",
-                markerWidth: "20",
-                markerHeight: "20",
-                refX: "2",
-                refY: "5",
-                orient: "auto"
-              }
-            },
-            [_c("circle", { attrs: { cx: "5", cy: "5", r: "4" } })]
-          ),
-          _c(
-            "marker",
-            {
-              staticClass: "edgePath",
-              attrs: {
-                id: "svg-marker-arrow-start",
-                viewBox: "0 0 10 10",
-                markerUnits: "userSpaceOnUse",
-                markerWidth: "20",
-                markerHeight: "20",
-                refX: "3",
-                refY: "5",
-                orient: "auto"
-              }
-            },
-            [
-              _c("path", {
-                staticClass: "path",
-                attrs: { d: "M10,0 L0,5 L10,10 z" }
-              })
-            ]
-          ),
-          _c(
-            "marker",
-            {
-              staticClass: "edgePath",
-              attrs: {
-                id: "svg-marker-arrow-end",
-                viewBox: "0 0 10 10",
-                markerUnits: "userSpaceOnUse",
-                markerWidth: "20",
-                markerHeight: "20",
-                refX: "3",
-                refY: "5",
-                orient: "auto"
-              }
-            },
-            [
-              _c("path", {
-                staticClass: "path",
-                attrs: { d: "M0,0 L10,5 L0,10 z" }
-              })
-            ]
-          ),
-          _c(
-            "marker",
-            {
-              staticClass: "edgePath",
-              attrs: {
-                id: "svg-marker-cross",
-                viewBox: "0 0 10 10",
-                markerUnits: "userSpaceOnUse",
-                markerWidth: "20",
-                markerHeight: "20",
-                refX: "5",
-                refY: "5",
-                orient: "0"
-              }
-            },
-            [
-              _c("path", {
-                staticClass: "path",
-                attrs: { d: "M0,0 L10,10 M0,10 L10,0 z" }
-              })
-            ]
-          ),
-          _c(
-            "transition-group",
-            { attrs: { tag: "g", name: "nodes" } },
-            [
-              _vm._l(_vm.node_rects, function(o) {
-                return o ? _c("rect", _vm._b({}, "rect", o, false)) : _vm._e()
-              }),
-              _vm._l(_vm.node_images, function(o) {
-                return o ? _c("image", _vm._b({}, "image", o, false)) : _vm._e()
-              })
-            ],
-            2
-          ),
-          _c(
-            "transition-group",
-            { staticClass: "edgePath", attrs: { tag: "g", name: "edges" } },
-            [
-              _vm._l(_vm.edge_paths, function(o) {
-                return o
-                  ? _c(
+  return _c("article", [
+    _c(
+      "svg",
+      {
+        style: "max-width: 100%; width: " + _vm.root.width + "px;",
+        attrs: { viewBox: _vm.view_box }
+      },
+      [
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-circle",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "2",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [_c("circle", { attrs: { cx: "5", cy: "5", r: "4" } })]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-arrow-start",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "3",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M10,0 L0,5 L10,10 z" }
+            })
+          ]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-arrow-end",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "3",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M0,0 L10,5 L0,10 z" }
+            })
+          ]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-cross",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "5",
+              refY: "5",
+              orient: "0"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M0,0 L10,10 M0,10 L10,0 z" }
+            })
+          ]
+        ),
+        _c(
+          "transition-group",
+          { attrs: { tag: "g", name: "nodes" } },
+          [
+            _vm._l(_vm.node_rects, function(o) {
+              return o ? _c("rect", _vm._b({}, "rect", o, false)) : _vm._e()
+            }),
+            _vm._l(_vm.node_images, function(o) {
+              return o ? _c("image", _vm._b({}, "image", o, false)) : _vm._e()
+            })
+          ],
+          2
+        ),
+        _c(
+          "transition-group",
+          { staticClass: "edgePath", attrs: { tag: "g", name: "edges" } },
+          [
+            _vm._l(_vm.edge_paths, function(o) {
+              return o
+                ? _c(
+                    "path",
+                    _vm._b(
+                      { staticClass: "path", attrs: { fill: "none" } },
                       "path",
-                      _vm._b(
-                        { staticClass: "path", attrs: { fill: "none" } },
-                        "path",
-                        o,
-                        false
-                      )
+                      o,
+                      false
                     )
-                  : _vm._e()
-              }),
-              _vm._l(_vm.edge_rects, function(o) {
-                return o
-                  ? _c(
-                      "rect",
-                      _vm._b({ staticClass: "path" }, "rect", o, false)
-                    )
-                  : _vm._e()
-              }),
-              _vm._l(_vm.edge_labels, function(o) {
-                return o
-                  ? _c(
-                      "text",
-                      _vm._b({ staticClass: "messageText" }, "text", o, false),
-                      [_vm._v(_vm._s(o.label))]
-                    )
-                  : _vm._e()
-              })
-            ],
-            2
-          )
-        ],
-        1
-      ),
-      _c(
-        "div",
-        { staticClass: "errors" },
-        _vm._l(_vm.graph.errors, function(err) {
-          return _c("div", { staticClass: "error" }, [_vm._v(_vm._s(err))])
-        })
-      )
-    ])
+                  )
+                : _vm._e()
+            }),
+            _vm._l(_vm.edge_rects, function(o) {
+              return o
+                ? _c("rect", _vm._b({ staticClass: "path" }, "rect", o, false))
+                : _vm._e()
+            }),
+            _vm._l(_vm.edge_labels, function(o) {
+              return o
+                ? _c(
+                    "text",
+                    _vm._b({ staticClass: "messageText" }, "text", o, false),
+                    [_vm._v(_vm._s(o.label))]
+                  )
+                : _vm._e()
+            })
+          ],
+          2
+        )
+      ],
+      1
+    ),
+    _vm.graph.errors.length
+      ? _c(
+          "div",
+          { staticClass: "errors" },
+          _vm._l(_vm.graph.errors, function(err) {
+            return _c("div", { staticClass: "error" }, [_vm._v(_vm._s(err))])
+          })
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-42a55e88", esExports)
+  }
+}
 
 /***/ })
 /******/ ])));

@@ -68,9 +68,10 @@ parse = (render, src)->
       for v, idx in edges by 4
         [ v, start, line, end, w ] = edges[idx .. idx + 4]
         if w
-          v = render.node v
-          w = render.node w
-          console.log { v, w }
+          v = render.dic v
+          w = render.dic w
+          render.node v
+          render.node w
           render.edge v, w, line, start, end, label
       continue
 
@@ -82,12 +83,14 @@ parse = (render, src)->
       .trim()
       .split(/ +/)
       for v, idx in nodes
+        v = render.dic v
         render.node v, label
         if label
           render.edge v, v, "", "", "", label
 
         if parent = find_parent v, depth
-          { label } = render.graph.node parent
+          parent = render.dic parent
+          { label } = render.is_node parent
           if label
             render.cluster v, parent, label
 

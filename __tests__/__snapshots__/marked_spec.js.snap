@@ -101,8 +101,8 @@ foo.bar.baz\\" href=\\"ftp://foo.bar.baz\\" chk=\\"confirm\\" data-v-a056081e>ft
 
 <p data-v-a056081e>a.b-c_d@a.b-</p>
 
-<p data-v-a056081e>    a.b-c_d@a.b_</p>
-</article>"
+<pre data-v-a056081e><code data-v-a056081e>a.b-c_d@a.b_
+</code></pre></article>"
 `;
 
 exports[`./__tests__/compiled_tests/gfm_break.md snapshot 1`] = `
@@ -159,8 +159,10 @@ exports[`./__tests__/compiled_tests/gfm_code_hr_list.md snapshot 1`] = `
  ---
  bar</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
 
-<h2 data-v-a056081e>     foo</h2><p data-v-a056081e>     bar</p>
-</li><li data-v-a056081e><p data-v-a056081e>foo</p>
+<pre data-v-a056081e><code data-v-a056081e> foo
+ ---
+ bar
+</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo</p>
 </li></ol></li></ol></article>"
 `;
 
@@ -189,10 +191,10 @@ exports[`./__tests__/compiled_tests/gfm_links_invalid.md snapshot 1`] = `
 exports[`./__tests__/compiled_tests/gfm_tables.md snapshot 1`] = `
 "<article data-server-rendered=\\"true\\" data-v-a056081e><div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Heading 1 </th><th data-v-a056081e> Heading 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1    </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3    </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
 <div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"c\\" data-v-a056081e>Header 1 </th><th class=\\"r\\" data-v-a056081e> Header 2 </th><th class=\\"l\\" data-v-a056081e> Header 3 </th><th data-v-a056081e> Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 1   </td><td class=\\"r\\" data-v-a056081e> Cell 2   </td><td class=\\"l\\" data-v-a056081e> Cell 3   </td><td data-v-a056081e> Cell 4</td></tr><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 5   </td><td class=\\"r\\" data-v-a056081e> Cell 6   </td><td class=\\"l\\" data-v-a056081e> Cell 7   </td><td data-v-a056081e> Cell 8</td></tr></tbody></table></div>
-<p data-v-a056081e>    Test code</p>
+<pre data-v-a056081e><code data-v-a056081e>Test code
 
-<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Header 1 </th><th data-v-a056081e> Header 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1   </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3   </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
-<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"l\\" data-v-a056081e>Header 1</th><th class=\\"c\\" data-v-a056081e>Header 2</th><th class=\\"r\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>Cell 1  </td><td class=\\"c\\" data-v-a056081e>Cell 2  </td><td class=\\"r\\" data-v-a056081e>Cell 3  </td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>*Cell 5*</td><td class=\\"c\\" data-v-a056081e>Cell 6  </td><td class=\\"r\\" data-v-a056081e>Cell 7  </td><td data-v-a056081e>Cell 8</td></tr></tbody></table></div></article>"
+</code></pre><div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Header 1 </th><th data-v-a056081e> Header 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1   </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3   </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
+<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"l\\" data-v-a056081e>Header 1</th><th class=\\"c\\" data-v-a056081e>Header 2</th><th class=\\"r\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>Cell 1  </td><td class=\\"c\\" data-v-a056081e>Cell 2  </td><td class=\\"r\\" data-v-a056081e>Cell 3  </td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e><em data-v-a056081e>Cell 5</em></td><td class=\\"c\\" data-v-a056081e>Cell 6  </td><td class=\\"r\\" data-v-a056081e>Cell 7  </td><td data-v-a056081e>Cell 8</td></tr></tbody></table></div></article>"
 `;
 
 exports[`./__tests__/compiled_tests/hard_wrapped_paragraphs_with_list_like_lines.md snapshot 1`] = `
@@ -210,7 +212,7 @@ list item.
 exports[`./__tests__/compiled_tests/headings_id.md snapshot 1`] = `
 "<article data-server-rendered=\\"true\\" data-v-a056081e><h3 data-v-a056081e>Heading with a <b title=\\"http
 github.com\\" href=\\"http://github.com/\\" chk=\\"confirm\\" data-v-a056081e>link</b></h3>
-<h3 data-v-a056081e>Heading with some _italic text_</h3>
+<h3 data-v-a056081e>Heading with some <em data-v-a056081e>italic text</em></h3>
 <h3 data-v-a056081e>Or some <strong data-v-a056081e>strong</strong></h3><p data-v-a056081e>(which doesn't really make any difference, here)</p>
 
 <h3 data-v-a056081e>Or even <code data-v-a056081e>code</code></h3>
@@ -226,47 +228,47 @@ exports[`./__tests__/compiled_tests/horizontal_rules.md snapshot 1`] = `
 <hr data-v-a056081e> 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
-<p data-v-a056081e>    ---</p>
+<pre data-v-a056081e><code data-v-a056081e>---
+
+</code></pre><hr data-v-a056081e>
+<hr data-v-a056081e> 
+<hr data-v-a056081e>
+<hr data-v-a056081e>
+<pre data-v-a056081e><code data-v-a056081e>- - -
+
+
+</code></pre><p data-v-a056081e>Asterisks:</p>
 
 <hr data-v-a056081e>
 <hr data-v-a056081e> 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
-<ul data-v-a056081e><li data-v-a056081e><ul data-v-a056081e><li data-v-a056081e>-
+<pre data-v-a056081e><code data-v-a056081e>***
+
+</code></pre><hr data-v-a056081e>
+<hr data-v-a056081e> 
+<hr data-v-a056081e>
+<hr data-v-a056081e>
+<pre data-v-a056081e><code data-v-a056081e>* * *
 
 
-</li></ul></li></ul><p data-v-a056081e>Asterisks:</p>
+</code></pre><p data-v-a056081e>Underscores:</p>
 
 <hr data-v-a056081e>
 <hr data-v-a056081e> 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
-<p data-v-a056081e>    ***</p>
+<pre data-v-a056081e><code data-v-a056081e>___
 
-<hr data-v-a056081e>
+</code></pre><hr data-v-a056081e>
 <hr data-v-a056081e> 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
-<ul data-v-a056081e><li data-v-a056081e><ul data-v-a056081e><li data-v-a056081e>*
-
-
-</li></ul></li></ul><p data-v-a056081e>Underscores:</p>
-
-<hr data-v-a056081e>
-<hr data-v-a056081e> 
-<hr data-v-a056081e>
-<hr data-v-a056081e>
-<p data-v-a056081e>    ___</p>
-
-<hr data-v-a056081e>
-<hr data-v-a056081e> 
-<hr data-v-a056081e>
-<hr data-v-a056081e>
-<p data-v-a056081e>    _ _ _</p>
+<pre data-v-a056081e><code data-v-a056081e>_ _ _
 
 
 
-<p data-v-a056081e>Not horizontal rules:</p>
+</code></pre><p data-v-a056081e>Not horizontal rules:</p>
 
 <p data-v-a056081e>--*</p>
 
@@ -280,10 +282,10 @@ exports[`./__tests__/compiled_tests/horizontal_rules.md snapshot 1`] = `
 
 <p data-v-a056081e>   -__</p>
 
-<p data-v-a056081e>    _-_</p>
+<pre data-v-a056081e><code data-v-a056081e>_-_
 
 
-<p data-v-a056081e>Long rules:</p>
+</code></pre><p data-v-a056081e>Long rules:</p>
 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
@@ -335,9 +337,9 @@ comment
 </p><h3 data-v-a056081e>Example 11</h3>
 <p data-v-a056081e>   &lt;!-- indented comment --&gt;
 
-</p><p data-v-a056081e>    &lt;!-- too much indentation --&gt;</p>
+</p><pre data-v-a056081e><code data-v-a056081e>&lt;!-- too much indentation --&gt;
 
-<h3 data-v-a056081e>Example 12</h3>
+</code></pre><h3 data-v-a056081e>Example 12</h3>
 <p data-v-a056081e>&lt;!<s data-v-a056081e>&gt; not a comment </s>&gt;</p>
 
 <p data-v-a056081e>&lt;!<s data-v-a056081e>-&gt; not a comment </s>&gt;</p>
@@ -390,15 +392,15 @@ exports[`./__tests__/compiled_tests/inline_html_simple.md snapshot 1`] = `
 
 </p><p data-v-a056081e>This should be a code block, though:</p>
 
-<p data-v-a056081e>    &lt;div&gt;
-        foo
-    &lt;/div&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;div&gt;
+    foo
+&lt;/div&gt;
 
-<p data-v-a056081e>As should this:</p>
+</code></pre><p data-v-a056081e>As should this:</p>
 
-<p data-v-a056081e>    &lt;div&gt;foo&lt;/div&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;div&gt;foo&lt;/div&gt;
 
-<p data-v-a056081e>Now, nested:</p>
+</code></pre><p data-v-a056081e>Now, nested:</p>
 
 <p data-v-a056081e>&lt;div&gt;
     &lt;div&gt;
@@ -421,17 +423,17 @@ Blah
 
 </p><p data-v-a056081e>Code block:</p>
 
-<p data-v-a056081e>    &lt;!-- Comment --&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;!-- Comment --&gt;
 
-<p data-v-a056081e>Just plain comment, with trailing spaces on the line:</p>
+</code></pre><p data-v-a056081e>Just plain comment, with trailing spaces on the line:</p>
 
 <p data-v-a056081e>&lt;!-- foo --&gt;   
 
 </p><p data-v-a056081e>Code:</p>
 
-<p data-v-a056081e>    &lt;hr&gt;
-
-Hr's:</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;hr&gt;
+</code></pre>    
+<p data-v-a056081e>Hr's:</p>
 
 <p data-v-a056081e>&lt;hr&gt;
 
@@ -531,10 +533,10 @@ url\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e>thrice</b>.</p>
 
 
 
-<p data-v-a056081e>    [four]: /url</p>
+<pre data-v-a056081e><code data-v-a056081e>[four]: /url
 
 
-
+</code></pre>
 <hr data-v-a056081e>
 <p data-v-a056081e><b title=\\"foo
 \\" href=\\"foo\\" chk=\\"confirm\\" data-v-a056081e>this</b> <b title=\\"foo
@@ -700,8 +702,8 @@ markdown.js doesnt acknowledge arbitrary html blocks =/&lt;/aside&gt;
 <ul data-v-a056081e><li data-v-a056081e>New List Item 1
 Hi, this is a list item.</li><li data-v-a056081e>New List Item 2
 Another item
-    Code goes here.
-    Lots of it...</li><li data-v-a056081e>New List Item 3
+<pre data-v-a056081e><code data-v-a056081e>Code goes here.
+Lots of it...</code></pre></li><li data-v-a056081e>New List Item 3
 The last item
 </li></ul></li><li data-v-a056081e><p data-v-a056081e>List Item 3</p>
 <p data-v-a056081e>The final item.</p>
@@ -720,13 +722,13 @@ Text here</li></ul></li></ul></blockquote>
 <p data-v-a056081e>mockup text..</p>
 <p data-v-a056081e>markdown.js breaks here again</p></blockquote>
 <h2 data-v-a056081e>Another Heading</h2>
-<p data-v-a056081e>Hello *world*. Here is a <b title=\\"
+<p data-v-a056081e>Hello <em data-v-a056081e>world</em>. Here is a <b title=\\"
 \\" href=\\"//hello\\" chk=\\"confirm\\" data-v-a056081e>link</b>.
 And an image <img src=\\"src\\" alt=\\"alt\\" data-v-a056081e>.</p>
 
-<p data-v-a056081e>    Code goes here.
-    Lots of it...</p>
-</article>"
+<pre data-v-a056081e><code data-v-a056081e>Code goes here.
+Lots of it...
+</code></pre></article>"
 `;
 
 exports[`./__tests__/compiled_tests/mangle_xss.md snapshot 1`] = `
@@ -774,7 +776,7 @@ by one or more blank lines. (A blank line is any line that looks like a
 blank line -- a line containing nothing spaces or tabs is considered
 blank.) Normal paragraphs should not be intended with spaces or tabs.</p>
 
-<p data-v-a056081e>Markdown offers two styles of headers: *Setext* and *atx*.
+<p data-v-a056081e>Markdown offers two styles of headers: <em data-v-a056081e>Setext</em> and <em data-v-a056081e>atx</em>.
 Setext-style headers for <code data-v-a056081e>&lt;h1&gt;</code> and <code data-v-a056081e>&lt;h2&gt;</code> are created by
 &quot;underlining&quot; with equal signs (<code data-v-a056081e>=</code>) and hyphens (<code data-v-a056081e>-</code>), respectively.
 To create an atx-style header, you put 1-6 hash marks (<code data-v-a056081e>#</code>) at the
@@ -785,67 +787,72 @@ HTML header level.</p>
 
 <p data-v-a056081e>Markdown:</p>
 
-<h1 data-v-a056081e>    A First Level Header</h1>    
-<h2 data-v-a056081e>    A Second Level Header</h2>
-<p data-v-a056081e>    Now is the time for all good men to come to
-    the aid of their country. This is just a
-    regular paragraph.</p>
+<pre data-v-a056081e><code data-v-a056081e>A First Level Header
+====================
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>A Second Level Header
+---------------------
 
-<p data-v-a056081e>    The quick brown fox jumped over the lazy
-    dog's back.
-    </p>
-<h3 data-v-a056081e>Header 3</h3>
-<p data-v-a056081e>    &gt; This is a blockquote.
-    &gt;
-    &gt; This is the second paragraph in the blockquote.
-    &gt;
-    &gt; ## This is an H2 in a blockquote</p>
+Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.
 
+The quick brown fox jumped over the lazy
+dog's back.
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>### Header 3
 
-<p data-v-a056081e>Output:</p>
-
-<p data-v-a056081e>    &lt;h1&gt;A First Level Header&lt;/h1&gt;
-
-    &lt;h2&gt;A Second Level Header&lt;/h2&gt;
-
-    &lt;p&gt;Now is the time for all good men to come to
-    the aid of their country. This is just a
-    regular paragraph.&lt;/p&gt;
-
-    &lt;p&gt;The quick brown fox jumped over the lazy
-    dog's back.&lt;/p&gt;
-
-    &lt;h3&gt;Header 3&lt;/h3&gt;
-
-    &lt;blockquote&gt;
-        &lt;p&gt;This is a blockquote.&lt;/p&gt;
-
-        &lt;p&gt;This is the second paragraph in the blockquote.&lt;/p&gt;
-
-        &lt;h2&gt;This is an H2 in a blockquote&lt;/h2&gt;
-    &lt;/blockquote&gt;</p>
+&gt; This is a blockquote.
+&gt; 
+&gt; This is the second paragraph in the blockquote.
+&gt;
+&gt; ## This is an H2 in a blockquote
 
 
+</code></pre><p data-v-a056081e>Output:</p>
 
-<h3 data-v-a056081e>Phrase Emphasis</h3>
+<pre data-v-a056081e><code data-v-a056081e>&lt;h1&gt;A First Level Header&lt;/h1&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;h2&gt;A Second Level Header&lt;/h2&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;The quick brown fox jumped over the lazy
+dog's back.&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;h3&gt;Header 3&lt;/h3&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;blockquote&gt;
+    &lt;p&gt;This is a blockquote.&lt;/p&gt;
+    
+    &lt;p&gt;This is the second paragraph in the blockquote.&lt;/p&gt;
+    
+    &lt;h2&gt;This is an H2 in a blockquote&lt;/h2&gt;
+&lt;/blockquote&gt;
+
+
+
+</code></pre><h3 data-v-a056081e>Phrase Emphasis</h3>
 <p data-v-a056081e>Markdown uses asterisks and underscores to indicate spans of emphasis.</p>
 
 <p data-v-a056081e>Markdown:</p>
 
-<p data-v-a056081e>    Some of these words *are emphasized*.
-    Some of these words _are emphasized also_.
+<pre data-v-a056081e><code data-v-a056081e>Some of these words *are emphasized*.
+Some of these words _are emphasized also_.
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>Use two asterisks for **strong emphasis**.
+Or, if you prefer, __use two underscores instead__.
 
-    Use two asterisks for <strong data-v-a056081e>strong emphasis</strong>.
-    Or, if you prefer, <strong data-v-a056081e>use two underscores instead</strong>.</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>Output:</p>
-
-<p data-v-a056081e>    &lt;p&gt;Some of these words &lt;em&gt;are emphasized&lt;/em&gt;.
-    Some of these words &lt;em&gt;are emphasized also&lt;/em&gt;.&lt;/p&gt;
-
-    &lt;p&gt;Use two asterisks for &lt;strong&gt;strong emphasis&lt;/strong&gt;.
-    Or, if you prefer, &lt;strong&gt;use two underscores instead&lt;/strong&gt;.&lt;/p&gt;
-   </p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;Some of these words &lt;em&gt;are emphasized&lt;/em&gt;.
+Some of these words &lt;em&gt;are emphasized also&lt;/em&gt;.&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;Use two asterisks for &lt;strong&gt;strong emphasis&lt;/strong&gt;.
+Or, if you prefer, &lt;strong&gt;use two underscores instead&lt;/strong&gt;.&lt;/p&gt;
+</code></pre>   
 
 
 <h2 data-v-a056081e>Lists</h2>
@@ -853,179 +860,183 @@ HTML header level.</p>
 <code data-v-a056081e>+</code>, and <code data-v-a056081e>-</code>) as list markers. These three markers are
 interchangable; this:</p>
 
-<ul data-v-a056081e><li data-v-a056081e>Candy.</li><li data-v-a056081e>Gum.</li><li data-v-a056081e>Booze.
+<pre data-v-a056081e><code data-v-a056081e>*   Candy.
+*   Gum.
+*   Booze.
 
-</li></ul><p data-v-a056081e>this:</p>
+</code></pre><p data-v-a056081e>this:</p>
 
-<ul data-v-a056081e><li data-v-a056081e>Candy.</li><li data-v-a056081e>Gum.</li><li data-v-a056081e>Booze.
+<pre data-v-a056081e><code data-v-a056081e>+   Candy.
++   Gum.
++   Booze.
 
-</li></ul><p data-v-a056081e>and this:</p>
+</code></pre><p data-v-a056081e>and this:</p>
 
-<ul data-v-a056081e><li data-v-a056081e>Candy.</li><li data-v-a056081e>Gum.</li><li data-v-a056081e>Booze.
+<pre data-v-a056081e><code data-v-a056081e>-   Candy.
+-   Gum.
+-   Booze.
 
-</li></ul><p data-v-a056081e>all produce the same output:</p>
+</code></pre><p data-v-a056081e>all produce the same output:</p>
 
-<p data-v-a056081e>    &lt;ul&gt;
-    &lt;li&gt;Candy.&lt;/li&gt;
-    &lt;li&gt;Gum.&lt;/li&gt;
-    &lt;li&gt;Booze.&lt;/li&gt;
-    &lt;/ul&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;ul&gt;
+&lt;li&gt;Candy.&lt;/li&gt;
+&lt;li&gt;Gum.&lt;/li&gt;
+&lt;li&gt;Booze.&lt;/li&gt;
+&lt;/ul&gt;
 
-<p data-v-a056081e>Ordered (numbered) lists use regular numbers, followed by periods, as
+</code></pre><p data-v-a056081e>Ordered (numbered) lists use regular numbers, followed by periods, as
 list markers:</p>
 
-<ol data-v-a056081e><li data-v-a056081e>Red</li><li data-v-a056081e>Green</li><li data-v-a056081e>Blue
+<pre data-v-a056081e><code data-v-a056081e>1.  Red
+2.  Green
+3.  Blue
 
-</li></ol><p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;ol&gt;
-    &lt;li&gt;Red&lt;/li&gt;
-    &lt;li&gt;Green&lt;/li&gt;
-    &lt;li&gt;Blue&lt;/li&gt;
-    &lt;/ol&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;ol&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;/li&gt;
+&lt;/ol&gt;
 
-<p data-v-a056081e>If you put blank lines between items, you'll get <code data-v-a056081e>&lt;p&gt;</code> tags for the
+</code></pre><p data-v-a056081e>If you put blank lines between items, you'll get <code data-v-a056081e>&lt;p&gt;</code> tags for the
 list item text. You can create multi-paragraph list items by indenting
 the paragraphs by 4 spaces or 1 tab:</p>
 
-<ul data-v-a056081e><li data-v-a056081e><p data-v-a056081e>A list item.</p>
+<pre data-v-a056081e><code data-v-a056081e>*   A list item.
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>    With multiple paragraphs.
 
-<p data-v-a056081e>With multiple paragraphs.</p>
-</li><li data-v-a056081e><p data-v-a056081e>Another item in the list.</p>
+*   Another item in the list.
 
-</li></ul><p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;ul&gt;
-    &lt;li&gt;&lt;p&gt;A list item.&lt;/p&gt;
-    &lt;p&gt;With multiple paragraphs.&lt;/p&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;p&gt;Another item in the list.&lt;/p&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    </p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A list item.&lt;/p&gt;
+&lt;p&gt;With multiple paragraphs.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Another item in the list.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>    
 
 
 <h3 data-v-a056081e>Links</h3>
-<p data-v-a056081e>Markdown supports two styles for creating links: *inline* and
-*reference*. With both styles, you use square brackets to delimit the
+<p data-v-a056081e>Markdown supports two styles for creating links: <em data-v-a056081e>inline</em> and
+<em data-v-a056081e>reference</em>. With both styles, you use square brackets to delimit the
 text you want to turn into a link.</p>
 
 <p data-v-a056081e>Inline-style links use parentheses immediately after the link text.
 For example:</p>
 
-<p data-v-a056081e>    This is an <b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\" data-v-a056081e>example link</b>.</p>
+<pre data-v-a056081e><code data-v-a056081e>This is an [example link](http://example.com/).
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot;&gt;
-    example link&lt;/a&gt;.&lt;/p&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot;&gt;
+example link&lt;/a&gt;.&lt;/p&gt;
 
-<p data-v-a056081e>Optionally, you may include a title attribute in the parentheses:</p>
+</code></pre><p data-v-a056081e>Optionally, you may include a title attribute in the parentheses:</p>
 
-<p data-v-a056081e>    This is an <b title=\\"With a Title\\" href=\\"http://example.com/\\" chk=\\"confirm\\" data-v-a056081e>example link</b>.</p>
+<pre data-v-a056081e><code data-v-a056081e>This is an [example link](http://example.com/ &quot;With a Title&quot;).
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot; title=&quot;With a Title&quot;&gt;
-    example link&lt;/a&gt;.&lt;/p&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot; title=&quot;With a Title&quot;&gt;
+example link&lt;/a&gt;.&lt;/p&gt;
 
-<p data-v-a056081e>Reference-style links allow you to refer to your links by names, which
+</code></pre><p data-v-a056081e>Reference-style links allow you to refer to your links by names, which
 you define elsewhere in your document:</p>
 
-<p data-v-a056081e>    I get 10 times more traffic from [Google][1] than from
-    [Yahoo][2] or [MSN][3].</p>
+<pre data-v-a056081e><code data-v-a056081e>I get 10 times more traffic from [Google][1] than from
+[Yahoo][2] or [MSN][3].
 
-<p data-v-a056081e>    [1]: <b title=\\"http
-google.com\\" href=\\"http://google.com/\\" chk=\\"confirm\\" data-v-a056081e>http://google.com/</b>        &quot;Google&quot;
-    [2]: <b title=\\"http
-search.yahoo.com\\" href=\\"http://search.yahoo.com/\\" chk=\\"confirm\\" data-v-a056081e>http://search.yahoo.com/</b>  &quot;Yahoo Search&quot;
-    [3]: <b title=\\"http
-search.msn.com\\" href=\\"http://search.msn.com/\\" chk=\\"confirm\\" data-v-a056081e>http://search.msn.com/</b>    &quot;MSN Search&quot;</p>
+[1]: http://google.com/        &quot;Google&quot;
+[2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
+[3]: http://search.msn.com/    &quot;MSN Search&quot;
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot;
-    title=&quot;Google&quot;&gt;Google&lt;/a&gt; than from &lt;a href=&quot;http://search.yahoo.com/&quot;
-    title=&quot;Yahoo Search&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot;
-    title=&quot;MSN Search&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot;
+title=&quot;Google&quot;&gt;Google&lt;/a&gt; than from &lt;a href=&quot;http://search.yahoo.com/&quot;
+title=&quot;Yahoo Search&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot;
+title=&quot;MSN Search&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;
 
-<p data-v-a056081e>The title attribute is optional. Link names may contain letters,
-numbers and spaces, but are *not* case sensitive:</p>
+</code></pre><p data-v-a056081e>The title attribute is optional. Link names may contain letters,
+numbers and spaces, but are <em data-v-a056081e>not</em> case sensitive:</p>
 
-<p data-v-a056081e>    I start my morning with a cup of coffee and
-    [The New York Times][NY Times].</p>
+<pre data-v-a056081e><code data-v-a056081e>I start my morning with a cup of coffee and
+[The New York Times][NY Times].
 
-<p data-v-a056081e>    [ny times]: <b title=\\"http
-www.nytimes.com\\" href=\\"http://www.nytimes.com/\\" chk=\\"confirm\\" data-v-a056081e>http://www.nytimes.com/</b></p>
+[ny times]: http://www.nytimes.com/
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;I start my morning with a cup of coffee and
-    &lt;a href=&quot;http://www.nytimes.com/&quot;&gt;The New York Times&lt;/a&gt;.&lt;/p&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;I start my morning with a cup of coffee and
+&lt;a href=&quot;http://www.nytimes.com/&quot;&gt;The New York Times&lt;/a&gt;.&lt;/p&gt;
 
 
-<h3 data-v-a056081e>Images</h3>
+</code></pre><h3 data-v-a056081e>Images</h3>
 <p data-v-a056081e>Image syntax is very much like link syntax.</p>
 
 <p data-v-a056081e>Inline (titles are optional):</p>
 
-<p data-v-a056081e>    <img src=\\"/path/to/img.jpg\\" alt=\\"alt text\\" title=\\"Title\\" data-v-a056081e></p>
+<pre data-v-a056081e><code data-v-a056081e>![alt text](/path/to/img.jpg &quot;Title&quot;)
 
-<p data-v-a056081e>Reference-style:</p>
+</code></pre><p data-v-a056081e>Reference-style:</p>
 
-<p data-v-a056081e>    ![alt text][id]</p>
+<pre data-v-a056081e><code data-v-a056081e>![alt text][id]
 
-<p data-v-a056081e>    [id]: /path/to/img.jpg &quot;Title&quot;</p>
+[id]: /path/to/img.jpg &quot;Title&quot;
 
-<p data-v-a056081e>Both of the above examples produce the same output:</p>
+</code></pre><p data-v-a056081e>Both of the above examples produce the same output:</p>
 
-<p data-v-a056081e>    &lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot; /&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot; /&gt;
 
 
 
-<h3 data-v-a056081e>Code</h3>
+</code></pre><h3 data-v-a056081e>Code</h3>
 <p data-v-a056081e>In a regular paragraph, you can create code span by wrapping text in
 backtick quotes. Any ampersands (<code data-v-a056081e>&amp;</code>) and angle brackets (<code data-v-a056081e>&lt;</code> or
 <code data-v-a056081e>&gt;</code>) will automatically be translated into HTML entities. This makes
 it easy to use Markdown to write about HTML example code:</p>
 
-<p data-v-a056081e>    I strongly recommend against using any <code data-v-a056081e>&lt;blink&gt;</code> tags.</p>
+<pre data-v-a056081e><code data-v-a056081e>I strongly recommend against using any \`&lt;blink&gt;\` tags.
 
-<p data-v-a056081e>    I wish SmartyPants used named entities like <code data-v-a056081e>&amp;mdash;</code>
-    instead of decimal-encoded entites like <code data-v-a056081e>&amp;#8212;</code>.</p>
+I wish SmartyPants used named entities like \`&amp;mdash;\`
+instead of decimal-encoded entites like \`&amp;#8212;\`.
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;I strongly recommend against using any
-    &lt;code&gt;&amp;lt;blink&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;I strongly recommend against using any
+&lt;code&gt;&amp;lt;blink&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;I wish SmartyPants used named entities like
+&lt;code&gt;&amp;amp;mdash;&lt;/code&gt; instead of decimal-encoded
+entites like &lt;code&gt;&amp;amp;#8212;&lt;/code&gt;.&lt;/p&gt;
 
-    &lt;p&gt;I wish SmartyPants used named entities like
-    &lt;code&gt;&amp;amp;mdash;&lt;/code&gt; instead of decimal-encoded
-    entites like &lt;code&gt;&amp;amp;#8212;&lt;/code&gt;.&lt;/p&gt;</p>
 
-
-<p data-v-a056081e>To specify an entire block of pre-formatted code, indent every line of
+</code></pre><p data-v-a056081e>To specify an entire block of pre-formatted code, indent every line of
 the block by 4 spaces or 1 tab. Just like with code spans, <code data-v-a056081e>&amp;</code>, <code data-v-a056081e>&lt;</code>,
 and <code data-v-a056081e>&gt;</code> characters will be escaped automatically.</p>
 
 <p data-v-a056081e>Markdown:</p>
 
-<p data-v-a056081e>    If you want your page to validate under XHTML 1.0 Strict,
-    you've got to put paragraph tags in your blockquotes:</p>
+<pre data-v-a056081e><code data-v-a056081e>If you want your page to validate under XHTML 1.0 Strict,
+you've got to put paragraph tags in your blockquotes:
 
-<p data-v-a056081e>        &lt;blockquote&gt;
-            &lt;p&gt;For example.&lt;/p&gt;
-        &lt;/blockquote&gt;</p>
+    &lt;blockquote&gt;
+        &lt;p&gt;For example.&lt;/p&gt;
+    &lt;/blockquote&gt;
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;If you want your page to validate under XHTML 1.0 Strict,
-    you've got to put paragraph tags in your blockquotes:&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;&amp;lt;blockquote&amp;gt;
-        &amp;lt;p&amp;gt;For example.&amp;lt;/p&amp;gt;
-    &amp;lt;/blockquote&amp;gt;
-    &lt;/code&gt;&lt;/pre&gt;</p>
-</article>"
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;If you want your page to validate under XHTML 1.0 Strict,
+you've got to put paragraph tags in your blockquotes:&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;pre&gt;&lt;code&gt;&amp;lt;blockquote&amp;gt;
+    &amp;lt;p&amp;gt;For example.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre></article>"
 `;
 
 exports[`./__tests__/compiled_tests/nested_blockquotes.md snapshot 1`] = `
@@ -1048,9 +1059,9 @@ exports[`./__tests__/compiled_tests/nested_code.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/nested_em.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e>*test <strong data-v-a056081e>test</strong> test*</p>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><em data-v-a056081e>test <strong data-v-a056081e>test</strong> test</em></p>
 
-<p data-v-a056081e>_test <strong data-v-a056081e>test</strong> test_</p>
+<p data-v-a056081e><em data-v-a056081e>test <strong data-v-a056081e>test</strong> test</em></p>
 </article>"
 `;
 
@@ -1247,13 +1258,13 @@ multiline&quot; test!</p>
 `;
 
 exports[`./__tests__/compiled_tests/strong_and_em_together.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><hr data-v-a056081e><h2 data-v-a056081e>gfm: false</h2><p data-v-a056081e><strong data-v-a056081e>*This is strong and em.*</strong></p>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><hr data-v-a056081e><h2 data-v-a056081e>gfm: false</h2><p data-v-a056081e><strong data-v-a056081e><em data-v-a056081e>This is strong and em.</em></strong></p>
 
-<p data-v-a056081e>So is <strong data-v-a056081e>*this*</strong> word.</p>
+<p data-v-a056081e>So is <strong data-v-a056081e><em data-v-a056081e>this</em></strong> word.</p>
 
-<p data-v-a056081e><strong data-v-a056081e>_This is strong and em._</strong></p>
+<p data-v-a056081e><strong data-v-a056081e><em data-v-a056081e>This is strong and em.</em></strong></p>
 
-<p data-v-a056081e>So is <strong data-v-a056081e>_this_</strong> word.</p>
+<p data-v-a056081e>So is <strong data-v-a056081e><em data-v-a056081e>this</em></strong> word.</p>
 </article>"
 `;
 
@@ -1265,19 +1276,20 @@ exports[`./__tests__/compiled_tests/tabs.md snapshot 1`] = `
 
 </li></ul><p data-v-a056081e>Code:</p>
 
-<p data-v-a056081e>    this code block is indented by one tab</p>
+<pre data-v-a056081e><code data-v-a056081e>this code block is indented by one tab
 
-<p data-v-a056081e>And:</p>
+</code></pre><p data-v-a056081e>And:</p>
 
-<p data-v-a056081e>        this code block is indented by two tabs</p>
+<pre data-v-a056081e><code data-v-a056081e>    this code block is indented by two tabs
 
-<p data-v-a056081e>And:</p>
+</code></pre><p data-v-a056081e>And:</p>
 
-<ul data-v-a056081e><li data-v-a056081e><p data-v-a056081e>this is an example list item</p>
-<p data-v-a056081e>indented with tabs</p>
-</li><li data-v-a056081e><p data-v-a056081e>this is an example list item</p>
-<p data-v-a056081e>indented with spaces</p>
-</li></ul></article>"
+<pre data-v-a056081e><code data-v-a056081e>+    this is an example list item
+    indented with tabs
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>+   this is an example list item
+    indented with spaces
+</code></pre></article>"
 `;
 
 exports[`./__tests__/compiled_tests/tidyness.md snapshot 1`] = `
@@ -1321,19 +1333,19 @@ are\\" href=\\"/are/you\\" chk=\\"confirm\\" data-v-a056081e>world</b></p>
 `;
 
 exports[`./__tests__/compiled_tests/tricky_list.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><strong data-v-a056081e>hello</strong> _world_</p>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><strong data-v-a056081e>hello</strong> <em data-v-a056081e>world</em></p>
 
 <ul data-v-a056081e><li data-v-a056081e>hello world
 
-</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> _world_</p>
+</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> <em data-v-a056081e>world</em></p>
 
 <ul data-v-a056081e><li data-v-a056081e>hello world
 
-</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> _world_</p>
+</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> <em data-v-a056081e>world</em></p>
 
 <ul data-v-a056081e><li data-v-a056081e>Hello world
 
-</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> _world_</p>
+</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> <em data-v-a056081e>world</em></p>
 
 <ul data-v-a056081e><li data-v-a056081e>hello world
 </li></ul></article>"
@@ -1475,11 +1487,11 @@ exports[`./__tests__/new/cm_blockquotes.md snapshot 1`] = `
 <h3 data-v-a056081e>Example 194</h3>
 <p data-v-a056081e>Four spaces gives us a code block:</p>
 
-<p data-v-a056081e>    &gt; # Foo
-    &gt; bar
-    &gt; baz</p>
+<pre data-v-a056081e><code data-v-a056081e>&gt; # Foo
+&gt; bar
+&gt; baz
 
-<h3 data-v-a056081e>Example 195</h3>
+</code></pre><h3 data-v-a056081e>Example 195</h3>
 <p data-v-a056081e>The Laziness clause allows us to omit the <code data-v-a056081e>&gt;</code> before paragraph continuation text:</p>
 
 <blockquote data-v-a056081e><h1 data-v-a056081e>Foo</h1><p data-v-a056081e>bar</p>
@@ -1497,36 +1509,38 @@ exports[`./__tests__/new/cm_blockquotes.md snapshot 1`] = `
 <p data-v-a056081e>without changing the meaning.</p>
 
 <h3 data-v-a056081e>Example 198</h3>
-<p data-v-a056081e>    Similarly, if we omit the <code data-v-a056081e>&gt;</code> in the second line then the block quote ends after the first line:</p>
+<pre data-v-a056081e><code data-v-a056081e>Similarly, if we omit the \`&gt;\` in the second line then the block quote ends after the first line:
 
-<p data-v-a056081e>    &gt; - foo</p>
-<ul data-v-a056081e><li data-v-a056081e>bar
+&gt; - foo
+- bar
 
-</li></ul><h3 data-v-a056081e>Example 199</h3>
+</code></pre><h3 data-v-a056081e>Example 199</h3>
 <p data-v-a056081e>For the same reason, we can’t omit the <code data-v-a056081e>&gt;</code> in front of subsequent lines of an indented or fenced code block:</p>
 
-<blockquote data-v-a056081e><p data-v-a056081e>    foo</p></blockquote>
-<p data-v-a056081e>    bar</p>
+<blockquote data-v-a056081e><pre data-v-a056081e><code data-v-a056081e>foo</code></pre></blockquote>
+<pre data-v-a056081e><code data-v-a056081e>bar
 
-<h3 data-v-a056081e>Example 200</h3>
-<p data-v-a056081e>    &gt; <code data-v-a056081e>foo</code></p>
+</code></pre><h3 data-v-a056081e>Example 200</h3>
+<pre data-v-a056081e><code data-v-a056081e>&gt; \`\`\`
+foo
+\`\`\`
 
-<p data-v-a056081e>    &lt;blockquote&gt;
-    &lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;
-    &lt;/blockquote&gt;
-    &lt;p&gt;foo&lt;/p&gt;
-    &lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</p>
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;foo&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;
 
-<h3 data-v-a056081e>Example 201</h3>
-<p data-v-a056081e>    &gt; foo</p>
-<ul data-v-a056081e><li data-v-a056081e><p data-v-a056081e>bar</p>
+</code></pre><h3 data-v-a056081e>Example 201</h3>
+<pre data-v-a056081e><code data-v-a056081e>&gt; foo
+    - bar
 
-<p data-v-a056081e>&lt;blockquote&gt;
+&lt;blockquote&gt;
 &lt;p&gt;foo
 - bar&lt;/p&gt;
 &lt;/blockquote&gt;
 
-</p></li></ul><h3 data-v-a056081e>Example 202</h3>
+</code></pre><h3 data-v-a056081e>Example 202</h3>
 <p data-v-a056081e>A block quote can be empty:</p>
 
 <blockquote data-v-a056081e></blockquote>
@@ -1590,7 +1604,7 @@ exports[`./__tests__/new/cm_blockquotes.md snapshot 1`] = `
 <h3 data-v-a056081e>Example 215</h3>
 <p data-v-a056081e>When including an indented code block in a block quote, remember that the block quote marker includes both the <code data-v-a056081e>&gt;</code> and a following space. So five spaces are needed after the <code data-v-a056081e>&gt;</code>:</p>
 
-<blockquote data-v-a056081e><p data-v-a056081e>    code</p></blockquote>
+<blockquote data-v-a056081e><pre data-v-a056081e><code data-v-a056081e>code</code></pre></blockquote>
 <blockquote data-v-a056081e><p data-v-a056081e>   not code</p></blockquote></article>"
 `;
 
@@ -1601,7 +1615,7 @@ exports[`./__tests__/new/cm_html_blocks.md snapshot 1`] = `
 &lt;pre&gt;
 <strong data-v-a056081e>Hello</strong>,
 
-</p><p data-v-a056081e>_world_.
+</p><p data-v-a056081e><em data-v-a056081e>world</em>.
 &lt;/pre&gt;</p>
 <p data-v-a056081e>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
@@ -1618,17 +1632,17 @@ exports[`./__tests__/new/cm_html_blocks.md snapshot 1`] = `
 
 <h3 data-v-a056081e>Example 118</h3>
 <p data-v-a056081e> &lt;div&gt;
-  *hello*
+  <em data-v-a056081e>hello</em>
          &lt;foo&gt;&lt;a&gt;
 
 </p><h3 data-v-a056081e>Example 119</h3>
 <p data-v-a056081e>&lt;/div&gt;
-*foo*
+<em data-v-a056081e>foo</em>
 
 </p><h3 data-v-a056081e>Example 120</h3>
 <p data-v-a056081e>&lt;DIV CLASS=&quot;foo&quot;&gt;
 
-</p><p data-v-a056081e>*Markdown*</p>
+</p><p data-v-a056081e><em data-v-a056081e>Markdown</em></p>
 
 <p data-v-a056081e>&lt;/DIV&gt;
 
@@ -1644,24 +1658,24 @@ exports[`./__tests__/new/cm_html_blocks.md snapshot 1`] = `
 
 </p><h3 data-v-a056081e>Example 123</h3>
 <p data-v-a056081e>&lt;div&gt;
-*foo*
+<em data-v-a056081e>foo</em>
 
-</p><p data-v-a056081e>*bar*</p>
+</p><p data-v-a056081e><em data-v-a056081e>bar</em></p>
 
 <h3 data-v-a056081e>Example 124</h3>
 <p data-v-a056081e>&lt;div id=&quot;foo&quot;
-*hi*
+<em data-v-a056081e>hi</em>
 
 </p><h3 data-v-a056081e>Example 125</h3>
 <p data-v-a056081e>&lt;div class
 foo
 
 </p><h3 data-v-a056081e>Example 126</h3>
-<p data-v-a056081e>&lt;div *???-&amp;&amp;&amp;-&lt;---
-*foo*
+<p data-v-a056081e>&lt;div <em data-v-a056081e>???-&amp;&amp;&amp;-&lt;---
+*foo</em>
 
 </p><h3 data-v-a056081e>Example 127</h3>
-<p data-v-a056081e>&lt;div&gt;&lt;a href=&quot;bar&quot;&gt;*foo*&lt;/a&gt;&lt;/div&gt;
+<p data-v-a056081e>&lt;div&gt;&lt;a href=&quot;bar&quot;&gt;<em data-v-a056081e>foo</em>&lt;/a&gt;&lt;/div&gt;
 
 </p><h3 data-v-a056081e>Example 128</h3>
 <p data-v-a056081e>&lt;table&gt;&lt;tr&gt;&lt;td&gt;
@@ -1675,37 +1689,37 @@ int x = 33;</code>
 
 </p><h3 data-v-a056081e>Example 130</h3>
 <p data-v-a056081e>&lt;a href=&quot;foo&quot;&gt;
-*bar*
+<em data-v-a056081e>bar</em>
 &lt;/a&gt;
 
 </p><h3 data-v-a056081e>Example 131</h3>
 <p data-v-a056081e>&lt;Warning&gt;
-*bar*
+<em data-v-a056081e>bar</em>
 &lt;/Warning&gt;
 
 </p><h3 data-v-a056081e>Example 132</h3>
 <p data-v-a056081e>&lt;i class=&quot;foo&quot;&gt;
-*bar*
+<em data-v-a056081e>bar</em>
 &lt;/i&gt;
 
 </p><h3 data-v-a056081e>Example 133</h3>
 <p data-v-a056081e>&lt;/ins&gt;
-*bar*
+<em data-v-a056081e>bar</em>
 
 </p><h3 data-v-a056081e>Example 134</h3>
 <p data-v-a056081e>&lt;del&gt;
-*foo*
+<em data-v-a056081e>foo</em>
 &lt;/del&gt;
 
 </p><h3 data-v-a056081e>Example 135</h3>
 <p data-v-a056081e>&lt;del&gt;
 
-</p><p data-v-a056081e>*foo*</p>
+</p><p data-v-a056081e><em data-v-a056081e>foo</em></p>
 
 <p data-v-a056081e>&lt;/del&gt;
 
 </p><h3 data-v-a056081e>Example 136</h3>
-<p data-v-a056081e>&lt;del&gt;*foo*&lt;/del&gt;</p>
+<p data-v-a056081e>&lt;del&gt;<em data-v-a056081e>foo</em>&lt;/del&gt;</p>
 
 <h3 data-v-a056081e>Example 137</h3>
 <p data-v-a056081e>&lt;pre language=&quot;haskell&quot;&gt;&lt;code&gt;
@@ -1743,16 +1757,16 @@ foo</p></blockquote>
 
 </li></ul><h3 data-v-a056081e>Example 143</h3>
 <p data-v-a056081e>&lt;style&gt;p{color:red;}&lt;/style&gt;
-</p><p data-v-a056081e>*foo*</p>
+</p><p data-v-a056081e><em data-v-a056081e>foo</em></p>
 
 <h3 data-v-a056081e>Example 144</h3>
-<p data-v-a056081e>&lt;!-- foo --&gt;*bar*
-</p><p data-v-a056081e>*baz*</p>
+<p data-v-a056081e>&lt;!-- foo --&gt;<em data-v-a056081e>bar</em>
+</p><p data-v-a056081e><em data-v-a056081e>baz</em></p>
 
 <h3 data-v-a056081e>Example 145</h3>
 <p data-v-a056081e>&lt;script&gt;
 foo
-&lt;/script&gt;1. *bar*
+&lt;/script&gt;1. <em data-v-a056081e>bar</em>
 
 </p><h3 data-v-a056081e>Example 146</h3>
 <p data-v-a056081e>&lt;!-- Foo
@@ -1790,14 +1804,14 @@ function matchwo(a,b)
 <h3 data-v-a056081e>Example 150</h3>
 <p data-v-a056081e>  &lt;!-- foo --&gt;
 
-</p><p data-v-a056081e>    &lt;!-- foo --&gt;</p>
+</p><pre data-v-a056081e><code data-v-a056081e>&lt;!-- foo --&gt;
 
-<h3 data-v-a056081e>Example 151</h3>
+</code></pre><h3 data-v-a056081e>Example 151</h3>
 <p data-v-a056081e>  &lt;div&gt;
 
-</p><p data-v-a056081e>    &lt;div&gt;</p>
+</p><pre data-v-a056081e><code data-v-a056081e>&lt;div&gt;
 
-<h3 data-v-a056081e>Example 152</h3>
+</code></pre><h3 data-v-a056081e>Example 152</h3>
 <p data-v-a056081e>Foo</p>
 <p data-v-a056081e>&lt;div&gt;
 bar
@@ -1807,7 +1821,7 @@ bar
 <p data-v-a056081e>&lt;div&gt;
 bar
 &lt;/div&gt;
-*foo*
+<em data-v-a056081e>foo</em>
 
 </p><h3 data-v-a056081e>Example 154</h3>
 <p data-v-a056081e>Foo
@@ -1817,13 +1831,13 @@ baz</p>
 <h3 data-v-a056081e>Example 155</h3>
 <p data-v-a056081e>&lt;div&gt;
 
-</p><p data-v-a056081e>*Emphasized* text.</p>
+</p><p data-v-a056081e><em data-v-a056081e>Emphasized</em> text.</p>
 
 <p data-v-a056081e>&lt;/div&gt;
 
 </p><h3 data-v-a056081e>Example 156</h3>
 <p data-v-a056081e>&lt;div&gt;
-*Emphasized* text.
+<em data-v-a056081e>Emphasized</em> text.
 &lt;/div&gt;
 
 </p><h3 data-v-a056081e>Example 157</h3>
@@ -1844,11 +1858,11 @@ Hi
 
 </p><p data-v-a056081e>  &lt;tr&gt;
 
-</p><p data-v-a056081e>    &lt;td&gt;
-      Hi
-    &lt;/td&gt;</p>
+</p><pre data-v-a056081e><code data-v-a056081e>&lt;td&gt;
+  Hi
+&lt;/td&gt;
 
-<p data-v-a056081e>  &lt;/tr&gt;
+</code></pre><p data-v-a056081e>  &lt;/tr&gt;
 
 </p><p data-v-a056081e>&lt;/table&gt;
 
@@ -1904,15 +1918,15 @@ url\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e>foo165</b></p>
 <p data-v-a056081e>[foo166]</p>
 
 <h3 data-v-a056081e>Example 167</h3>
-<p data-v-a056081e>    [foo167]: /url\\\\bar*baz &quot;foo&quot;bar\\\\baz&quot;</p>
+<pre data-v-a056081e><code data-v-a056081e>[foo167]: /url\\\\bar\\\\*baz &quot;foo\\\\&quot;bar\\\\baz&quot;
 
-<p data-v-a056081e>    [foo167]</p>
+[foo167]
 
-<p data-v-a056081e>    should render to</p>
+should render to
 
-<p data-v-a056081e>    &lt;p&gt;&lt;a href=&quot;/url%5Cbar*baz&quot; title=&quot;foo&amp;quot;bar\\\\baz&quot;&gt;foo167&lt;/a&gt;&lt;/p&gt;</p>
+&lt;p&gt;&lt;a href=&quot;/url%5Cbar*baz&quot; title=&quot;foo&amp;quot;bar\\\\baz&quot;&gt;foo167&lt;/a&gt;&lt;/p&gt;
 
-<h3 data-v-a056081e>Example 168</h3>
+</code></pre><h3 data-v-a056081e>Example 168</h3>
 <p data-v-a056081e><b title=\\"url
 \\" href=\\"url\\" chk=\\"confirm\\" data-v-a056081e>foo168</b></p>
 
@@ -1944,9 +1958,9 @@ url\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e>Foo170</b></p>
 <p data-v-a056081e>&quot;title&quot; ok</p>
 
 <h3 data-v-a056081e>Example 176</h3>
-<p data-v-a056081e>    [foo176]: /url &quot;title&quot;</p>
+<pre data-v-a056081e><code data-v-a056081e>[foo176]: /url &quot;title&quot;
 
-<p data-v-a056081e>[foo176]</p>
+</code></pre><p data-v-a056081e>[foo176]</p>
 
 <h3 data-v-a056081e>Example 177</h3>
 <pre data-v-a056081e><code data-v-a056081e>[foo177]: /url</code></pre>
@@ -2091,7 +2105,7 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>link [bar</b></p>
 
 <h3 data-v-a056081e>Example 487</h3>
 <p data-v-a056081e><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>link *foo <strong data-v-a056081e>bar</strong> <code data-v-a056081e>#</code>*</b></p>
+uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>link <em data-v-a056081e>foo <strong data-v-a056081e>bar</strong> <code data-v-a056081e>#</code></em></b></p>
 
 <h3 data-v-a056081e>Example 488</h3>
 <p data-v-a056081e><b title=\\"
@@ -2102,7 +2116,7 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e><img src=\\"moon.jpg\\"
 \\" href=\\"baz*\\" chk=\\"confirm\\" data-v-a056081e>foo *bar</b></p>
 
 <h3 data-v-a056081e>Example 494</h3>
-<p data-v-a056081e>*foo [bar* baz]</p>
+<p data-v-a056081e><em data-v-a056081e>foo [bar</em> baz]</p>
 
 <h3 data-v-a056081e>Example 498</h3>
 <p data-v-a056081e><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e>foo</b></p>
@@ -2120,7 +2134,7 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>link [bar</b></p>
 
 <h3 data-v-a056081e>Example 501</h3>
 <p data-v-a056081e><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>link *foo <strong data-v-a056081e>bar</strong> <code data-v-a056081e>#</code>*</b></p>
+uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>link <em data-v-a056081e>foo <strong data-v-a056081e>bar</strong> <code data-v-a056081e>#</code></em></b></p>
 
 
 <h3 data-v-a056081e>Example 502</h3>
@@ -2136,8 +2150,8 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>bar</b></b></p>
 
 <h3 data-v-a056081e>Example 504</h3>
 <p data-v-a056081e><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>foo *bar <b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>baz</b>*</b></p>
+uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>foo <em data-v-a056081e>bar <b title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>baz</b></em></b></p>
 
 
 <h3 data-v-a056081e>Example 506</h3>
@@ -2219,7 +2233,7 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>bar\\\\</b></p>
 
 
 <h3 data-v-a056081e>Example 525</h3>
-<p data-v-a056081e><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e>*foo* bar</b></p>
+<p data-v-a056081e><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e><em data-v-a056081e>foo</em> bar</b></p>
 
 
 <h3 data-v-a056081e>Example 526</h3>
@@ -2236,11 +2250,11 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\" data-v-a056081e>bar\\\\</b></p>
 
 
 <h3 data-v-a056081e>Example 529</h3>
-<p data-v-a056081e><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e>*foo* bar</b></p>
+<p data-v-a056081e><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e><em data-v-a056081e>foo</em> bar</b></p>
 
 
 <h3 data-v-a056081e>Example 530</h3>
-<p data-v-a056081e><kbd data-v-a056081e>*foo* bar</kbd></p>
+<p data-v-a056081e><kbd data-v-a056081e><em data-v-a056081e>foo</em> bar</kbd></p>
 
 
 <h3 data-v-a056081e>Example 531</h3>
@@ -2301,7 +2315,7 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\" data-v-a056081e>bar542</b></p>
 <p data-v-a056081e><img src=\\"/url\\" alt=\\"foo543\\" title=\\"title\\" data-v-a056081e></p>
 
 <h3 data-v-a056081e>Example 5440</h3>
-<p data-v-a056081e><img src=\\"train.jpg\\" alt=\\"foo ,*bar,*544\\" title=\\"train &amp; tracks\\" data-v-a056081e></p>
+<p data-v-a056081e><img src=\\"train.jpg\\" alt=\\"foo ,[object Object],544\\" title=\\"train &amp; tracks\\" data-v-a056081e></p>
 
 
 <h3 data-v-a056081e>Example 5450</h3>
@@ -2311,11 +2325,11 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\" data-v-a056081e>bar542</b></p>
 <p data-v-a056081e><img src=\\"/url2\\" alt=\\"foo [bar](/url)\\" data-v-a056081e></p>
 
 <h3 data-v-a056081e>Example 5470</h3>
-<p data-v-a056081e><img src=\\"train.jpg\\" alt=\\"foo ,*bar,*547\\" title=\\"train &amp; tracks\\" data-v-a056081e></p>
+<p data-v-a056081e><img src=\\"train.jpg\\" alt=\\"foo ,[object Object],547\\" title=\\"train &amp; tracks\\" data-v-a056081e></p>
 
 
 <h3 data-v-a056081e>Example 5480</h3>
-<p data-v-a056081e><img src=\\"train.jpg\\" alt=\\"foo ,*bar,*\\" title=\\"train &amp; tracks\\" data-v-a056081e></p>
+<p data-v-a056081e><img src=\\"train.jpg\\" alt=\\"foo ,[object Object]\\" title=\\"train &amp; tracks\\" data-v-a056081e></p>
 
 
 <h3 data-v-a056081e>Example 549</h3>
@@ -2343,7 +2357,7 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\" data-v-a056081e>bar542</b></p>
 
 
 <h3 data-v-a056081e>Example 5560</h3>
-<p data-v-a056081e><img src=\\"/url\\" alt=\\"*foo,* bar\\" title=\\"title\\" data-v-a056081e></p>
+<p data-v-a056081e><img src=\\"/url\\" alt=\\"[object Object], bar\\" title=\\"title\\" data-v-a056081e></p>
 
 
 <h3 data-v-a056081e>Example 557</h3>
@@ -2360,7 +2374,7 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\" data-v-a056081e>bar542</b></p>
 
 
 <h3 data-v-a056081e>Example 5600</h3>
-<p data-v-a056081e><img src=\\"/url\\" alt=\\"*foo,* bar\\" title=\\"title\\" data-v-a056081e></p>
+<p data-v-a056081e><img src=\\"/url\\" alt=\\"[object Object], bar\\" title=\\"title\\" data-v-a056081e></p>
 
 
 <h3 data-v-a056081e>Example 561</h3>
@@ -2463,9 +2477,9 @@ __</p>
 <h3 data-v-a056081e>Example 17</h3>
 <hr data-v-a056081e><hr data-v-a056081e><hr data-v-a056081e>
 <h3 data-v-a056081e>Example 18</h3>
-<p data-v-a056081e>    ***</p>
+<pre data-v-a056081e><code data-v-a056081e>***
 
-<h3 data-v-a056081e>Example 19</h3>
+</code></pre><h3 data-v-a056081e>Example 19</h3>
 <p data-v-a056081e>Foo
     ***</p>
 
@@ -2487,7 +2501,7 @@ __</p>
 <p data-v-a056081e>-<s data-v-a056081e>a-</s></p>
 
 <h3 data-v-a056081e>Example 26</h3>
-<p data-v-a056081e> *-*</p>
+<p data-v-a056081e> <em data-v-a056081e>-</em></p>
 
 <h3 data-v-a056081e>Example 27</h3>
 <ul data-v-a056081e><li data-v-a056081e>foo
@@ -2538,17 +2552,17 @@ example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\" data-v-a056081e>
 `;
 
 exports[`./__tests__/new/em_2char.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e>_123_</p>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><em data-v-a056081e>123</em></p>
 
-<p data-v-a056081e>*123*</p>
+<p data-v-a056081e><em data-v-a056081e>123</em></p>
 
-<p data-v-a056081e>_12_</p>
+<p data-v-a056081e><em data-v-a056081e>12</em></p>
 
-<p data-v-a056081e>*12*</p>
+<p data-v-a056081e><em data-v-a056081e>12</em></p>
 
-<p data-v-a056081e>_1_</p>
+<p data-v-a056081e><em data-v-a056081e>1</em></p>
 
-<p data-v-a056081e>*1*</p>
+<p data-v-a056081e><em data-v-a056081e>1</em></p>
 
 <p data-v-a056081e>__</p>
 
@@ -2560,9 +2574,9 @@ exports[`./__tests__/new/em_2char.md snapshot 1`] = `
 
 <p data-v-a056081e>_ 123_</p>
 
-<p data-v-a056081e>_1__</p>
+<p data-v-a056081e><em data-v-a056081e>1_</em></p>
 
-<p data-v-a056081e>*1**</p>
+<p data-v-a056081e><em data-v-a056081e>1*</em></p>
 </article>"
 `;
 
@@ -2667,8 +2681,8 @@ foo.bar.baz\\" href=\\"ftp://foo.bar.baz\\" chk=\\"confirm\\" data-v-a056081e>ft
 
 <p data-v-a056081e>a.b-c_d@a.b-</p>
 
-<p data-v-a056081e>    a.b-c_d@a.b_</p>
-</article>"
+<pre data-v-a056081e><code data-v-a056081e>a.b-c_d@a.b_
+</code></pre></article>"
 `;
 
 exports[`./__tests__/new/gfm_break.md snapshot 1`] = `
@@ -2725,8 +2739,10 @@ exports[`./__tests__/new/gfm_code_hr_list.md snapshot 1`] = `
  ---
  bar</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
 
-<h2 data-v-a056081e>     foo</h2><p data-v-a056081e>     bar</p>
-</li><li data-v-a056081e><p data-v-a056081e>foo</p>
+<pre data-v-a056081e><code data-v-a056081e> foo
+ ---
+ bar
+</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo</p>
 </li></ol></li></ol></article>"
 `;
 
@@ -2755,16 +2771,16 @@ exports[`./__tests__/new/gfm_links_invalid.md snapshot 1`] = `
 exports[`./__tests__/new/gfm_tables.md snapshot 1`] = `
 "<article data-server-rendered=\\"true\\" data-v-a056081e><div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Heading 1 </th><th data-v-a056081e> Heading 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1    </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3    </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
 <div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"c\\" data-v-a056081e>Header 1 </th><th class=\\"r\\" data-v-a056081e> Header 2 </th><th class=\\"l\\" data-v-a056081e> Header 3 </th><th data-v-a056081e> Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 1   </td><td class=\\"r\\" data-v-a056081e> Cell 2   </td><td class=\\"l\\" data-v-a056081e> Cell 3   </td><td data-v-a056081e> Cell 4</td></tr><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 5   </td><td class=\\"r\\" data-v-a056081e> Cell 6   </td><td class=\\"l\\" data-v-a056081e> Cell 7   </td><td data-v-a056081e> Cell 8</td></tr></tbody></table></div>
-<p data-v-a056081e>    Test code</p>
+<pre data-v-a056081e><code data-v-a056081e>Test code
 
-<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Header 1 </th><th data-v-a056081e> Header 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1   </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3   </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
-<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"l\\" data-v-a056081e>Header 1</th><th class=\\"c\\" data-v-a056081e>Header 2</th><th class=\\"r\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>Cell 1  </td><td class=\\"c\\" data-v-a056081e>Cell 2  </td><td class=\\"r\\" data-v-a056081e>Cell 3  </td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>*Cell 5*</td><td class=\\"c\\" data-v-a056081e>Cell 6  </td><td class=\\"r\\" data-v-a056081e>Cell 7  </td><td data-v-a056081e>Cell 8</td></tr></tbody></table></div></article>"
+</code></pre><div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Header 1 </th><th data-v-a056081e> Header 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1   </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3   </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
+<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"l\\" data-v-a056081e>Header 1</th><th class=\\"c\\" data-v-a056081e>Header 2</th><th class=\\"r\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>Cell 1  </td><td class=\\"c\\" data-v-a056081e>Cell 2  </td><td class=\\"r\\" data-v-a056081e>Cell 3  </td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e><em data-v-a056081e>Cell 5</em></td><td class=\\"c\\" data-v-a056081e>Cell 6  </td><td class=\\"r\\" data-v-a056081e>Cell 7  </td><td data-v-a056081e>Cell 8</td></tr></tbody></table></div></article>"
 `;
 
 exports[`./__tests__/new/headings_id.md snapshot 1`] = `
 "<article data-server-rendered=\\"true\\" data-v-a056081e><h3 data-v-a056081e>Heading with a <b title=\\"http
 github.com\\" href=\\"http://github.com/\\" chk=\\"confirm\\" data-v-a056081e>link</b></h3>
-<h3 data-v-a056081e>Heading with some _italic text_</h3>
+<h3 data-v-a056081e>Heading with some <em data-v-a056081e>italic text</em></h3>
 <h3 data-v-a056081e>Or some <strong data-v-a056081e>strong</strong></h3><p data-v-a056081e>(which doesn't really make any difference, here)</p>
 
 <h3 data-v-a056081e>Or even <code data-v-a056081e>code</code></h3>
@@ -2818,9 +2834,9 @@ comment
 </p><h3 data-v-a056081e>Example 11</h3>
 <p data-v-a056081e>   &lt;!-- indented comment --&gt;
 
-</p><p data-v-a056081e>    &lt;!-- too much indentation --&gt;</p>
+</p><pre data-v-a056081e><code data-v-a056081e>&lt;!-- too much indentation --&gt;
 
-<h3 data-v-a056081e>Example 12</h3>
+</code></pre><h3 data-v-a056081e>Example 12</h3>
 <p data-v-a056081e>&lt;!<s data-v-a056081e>&gt; not a comment </s>&gt;</p>
 
 <p data-v-a056081e>&lt;!<s data-v-a056081e>-&gt; not a comment </s>&gt;</p>
@@ -2928,8 +2944,8 @@ markdown.js doesnt acknowledge arbitrary html blocks =/&lt;/aside&gt;
 <ul data-v-a056081e><li data-v-a056081e>New List Item 1
 Hi, this is a list item.</li><li data-v-a056081e>New List Item 2
 Another item
-    Code goes here.
-    Lots of it...</li><li data-v-a056081e>New List Item 3
+<pre data-v-a056081e><code data-v-a056081e>Code goes here.
+Lots of it...</code></pre></li><li data-v-a056081e>New List Item 3
 The last item
 </li></ul></li><li data-v-a056081e><p data-v-a056081e>List Item 3</p>
 <p data-v-a056081e>The final item.</p>
@@ -2948,13 +2964,13 @@ Text here</li></ul></li></ul></blockquote>
 <p data-v-a056081e>mockup text..</p>
 <p data-v-a056081e>markdown.js breaks here again</p></blockquote>
 <h2 data-v-a056081e>Another Heading</h2>
-<p data-v-a056081e>Hello *world*. Here is a <b title=\\"
+<p data-v-a056081e>Hello <em data-v-a056081e>world</em>. Here is a <b title=\\"
 \\" href=\\"//hello\\" chk=\\"confirm\\" data-v-a056081e>link</b>.
 And an image <img src=\\"src\\" alt=\\"alt\\" data-v-a056081e>.</p>
 
-<p data-v-a056081e>    Code goes here.
-    Lots of it...</p>
-</article>"
+<pre data-v-a056081e><code data-v-a056081e>Code goes here.
+Lots of it...
+</code></pre></article>"
 `;
 
 exports[`./__tests__/new/mangle_xss.md snapshot 1`] = `
@@ -2978,9 +2994,9 @@ exports[`./__tests__/new/nested_code.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/nested_em.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e>*test <strong data-v-a056081e>test</strong> test*</p>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><em data-v-a056081e>test <strong data-v-a056081e>test</strong> test</em></p>
 
-<p data-v-a056081e>_test <strong data-v-a056081e>test</strong> test_</p>
+<p data-v-a056081e><em data-v-a056081e>test <strong data-v-a056081e>test</strong> test</em></p>
 </article>"
 `;
 
@@ -3103,19 +3119,19 @@ are\\" href=\\"/are/you\\" chk=\\"confirm\\" data-v-a056081e>world</b></p>
 `;
 
 exports[`./__tests__/new/tricky_list.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><strong data-v-a056081e>hello</strong> _world_</p>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><strong data-v-a056081e>hello</strong> <em data-v-a056081e>world</em></p>
 
 <ul data-v-a056081e><li data-v-a056081e>hello world
 
-</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> _world_</p>
+</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> <em data-v-a056081e>world</em></p>
 
 <ul data-v-a056081e><li data-v-a056081e>hello world
 
-</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> _world_</p>
+</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> <em data-v-a056081e>world</em></p>
 
 <ul data-v-a056081e><li data-v-a056081e>Hello world
 
-</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> _world_</p>
+</li></ul><p data-v-a056081e><strong data-v-a056081e>hello</strong> <em data-v-a056081e>world</em></p>
 
 <ul data-v-a056081e><li data-v-a056081e>hello world
 </li></ul></article>"
@@ -3168,9 +3184,8 @@ example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\" data-v-a056081e>
 example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\" data-v-a056081e>http://example.com/</b></p></blockquote>
 <p data-v-a056081e>Auto-links should not occur here: <code data-v-a056081e>&lt;http://example.com/&gt;</code></p>
 
-<p data-v-a056081e>    or here: <b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\" data-v-a056081e>http://example.com/</b></p>
-</article>"
+<pre data-v-a056081e><code data-v-a056081e>or here: &lt;http://example.com/&gt;
+</code></pre></article>"
 `;
 
 exports[`./__tests__/original/backslash_escapes.md snapshot 1`] = `
@@ -3212,40 +3227,40 @@ exports[`./__tests__/original/backslash_escapes.md snapshot 1`] = `
 
 <p data-v-a056081e>These should not, because they occur within a code block:</p>
 
-<p data-v-a056081e>    Backslash: \\\\</p>
+<pre data-v-a056081e><code data-v-a056081e>Backslash: \\\\\\\\
 
-<p data-v-a056081e>    Backtick: \`</p>
+Backtick: \\\\\`
 
-<p data-v-a056081e>    Asterisk: *</p>
+Asterisk: \\\\*
 
-<p data-v-a056081e>    Underscore: _</p>
+Underscore: \\\\_
 
-<p data-v-a056081e>    Left brace: {</p>
+Left brace: \\\\{
 
-<p data-v-a056081e>    Right brace: }</p>
+Right brace: \\\\}
 
-<p data-v-a056081e>    Left bracket: [</p>
+Left bracket: \\\\[
 
-<p data-v-a056081e>    Right bracket: ]</p>
+Right bracket: \\\\]
 
-<p data-v-a056081e>    Left paren: (</p>
+Left paren: \\\\(
 
-<p data-v-a056081e>    Right paren: )</p>
+Right paren: \\\\)
 
-<p data-v-a056081e>    Greater-than: &gt;</p>
+Greater-than: \\\\&gt;
 
-<p data-v-a056081e>    Hash: #</p>
+Hash: \\\\#
 
-<p data-v-a056081e>    Period: .</p>
+Period: \\\\.
 
-<p data-v-a056081e>    Bang: !</p>
+Bang: \\\\!
 
-<p data-v-a056081e>    Plus: +</p>
+Plus: \\\\+
 
-<p data-v-a056081e>    Minus: -</p>
+Minus: \\\\-
 
 
-<p data-v-a056081e>Nor should these, which occur in code spans:</p>
+</code></pre><p data-v-a056081e>Nor should these, which occur in code spans:</p>
 
 <p data-v-a056081e>Backslash: <code data-v-a056081e>\\\\\\\\</code></p>
 
@@ -3300,33 +3315,33 @@ other Markdown constructs:</p>
 exports[`./__tests__/original/blockquotes_with_code_blocks.md snapshot 1`] = `
 "<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e><p data-v-a056081e>Example:</p>
 
-<p data-v-a056081e>    sub status {</p>
-<p data-v-a056081e>        print &quot;working&quot;;</p>
-<p data-v-a056081e>    }</p>
+<pre data-v-a056081e><code data-v-a056081e>sub status {
+    print &quot;working&quot;;
+}
 
-<p data-v-a056081e>Or:</p>
+</code></pre><p data-v-a056081e>Or:</p>
 
-<p data-v-a056081e>    sub status {</p>
-<p data-v-a056081e>        return &quot;working&quot;;</p>
-<p data-v-a056081e>    }</p></blockquote></article>"
+<pre data-v-a056081e><code data-v-a056081e>sub status {
+    return &quot;working&quot;;
+}</code></pre></blockquote></article>"
 `;
 
 exports[`./__tests__/original/code_blocks.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e>    code block on the first line
-
-Regular text.</p>
-
-<p data-v-a056081e>    code block indented by spaces</p>
-
+"<article data-server-rendered=\\"true\\" data-v-a056081e><pre data-v-a056081e><code data-v-a056081e>code block on the first line
+</code></pre>    
 <p data-v-a056081e>Regular text.</p>
 
-<p data-v-a056081e>    the lines in this block
-    all contain trailing spaces  </p>
+<pre data-v-a056081e><code data-v-a056081e>code block indented by spaces
 
-<p data-v-a056081e>Regular Text.</p>
+</code></pre><p data-v-a056081e>Regular text.</p>
 
-<p data-v-a056081e>    code block on the last line</p>
-</article>"
+<pre data-v-a056081e><code data-v-a056081e>the lines in this block  
+all contain trailing spaces  
+
+</code></pre><p data-v-a056081e>Regular Text.</p>
+
+<pre data-v-a056081e><code data-v-a056081e>code block on the last line
+</code></pre></article>"
 `;
 
 exports[`./__tests__/original/code_spans.md snapshot 1`] = `
@@ -3358,47 +3373,47 @@ exports[`./__tests__/original/horizontal_rules.md snapshot 1`] = `
 <hr data-v-a056081e> 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
-<p data-v-a056081e>    ---</p>
+<pre data-v-a056081e><code data-v-a056081e>---
+
+</code></pre><hr data-v-a056081e>
+<hr data-v-a056081e> 
+<hr data-v-a056081e>
+<hr data-v-a056081e>
+<pre data-v-a056081e><code data-v-a056081e>- - -
+
+
+</code></pre><p data-v-a056081e>Asterisks:</p>
 
 <hr data-v-a056081e>
 <hr data-v-a056081e> 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
-<ul data-v-a056081e><li data-v-a056081e><ul data-v-a056081e><li data-v-a056081e>-
+<pre data-v-a056081e><code data-v-a056081e>***
+
+</code></pre><hr data-v-a056081e>
+<hr data-v-a056081e> 
+<hr data-v-a056081e>
+<hr data-v-a056081e>
+<pre data-v-a056081e><code data-v-a056081e>* * *
 
 
-</li></ul></li></ul><p data-v-a056081e>Asterisks:</p>
+</code></pre><p data-v-a056081e>Underscores:</p>
 
 <hr data-v-a056081e>
 <hr data-v-a056081e> 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
-<p data-v-a056081e>    ***</p>
+<pre data-v-a056081e><code data-v-a056081e>___
 
-<hr data-v-a056081e>
+</code></pre><hr data-v-a056081e>
 <hr data-v-a056081e> 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
-<ul data-v-a056081e><li data-v-a056081e><ul data-v-a056081e><li data-v-a056081e>*
-
-
-</li></ul></li></ul><p data-v-a056081e>Underscores:</p>
-
-<hr data-v-a056081e>
-<hr data-v-a056081e> 
-<hr data-v-a056081e>
-<hr data-v-a056081e>
-<p data-v-a056081e>    ___</p>
-
-<hr data-v-a056081e>
-<hr data-v-a056081e> 
-<hr data-v-a056081e>
-<hr data-v-a056081e>
-<p data-v-a056081e>    _ _ _</p>
+<pre data-v-a056081e><code data-v-a056081e>_ _ _
 
 
 
-<p data-v-a056081e>Not horizontal rules:</p>
+</code></pre><p data-v-a056081e>Not horizontal rules:</p>
 
 <p data-v-a056081e>--*</p>
 
@@ -3412,10 +3427,10 @@ exports[`./__tests__/original/horizontal_rules.md snapshot 1`] = `
 
 <p data-v-a056081e>   -__</p>
 
-<p data-v-a056081e>    _-_</p>
+<pre data-v-a056081e><code data-v-a056081e>_-_
 
 
-<p data-v-a056081e>Long rules:</p>
+</code></pre><p data-v-a056081e>Long rules:</p>
 
 <hr data-v-a056081e>
 <hr data-v-a056081e>
@@ -3467,15 +3482,15 @@ exports[`./__tests__/original/inline_html_simple.md snapshot 1`] = `
 
 </p><p data-v-a056081e>This should be a code block, though:</p>
 
-<p data-v-a056081e>    &lt;div&gt;
-        foo
-    &lt;/div&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;div&gt;
+    foo
+&lt;/div&gt;
 
-<p data-v-a056081e>As should this:</p>
+</code></pre><p data-v-a056081e>As should this:</p>
 
-<p data-v-a056081e>    &lt;div&gt;foo&lt;/div&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;div&gt;foo&lt;/div&gt;
 
-<p data-v-a056081e>Now, nested:</p>
+</code></pre><p data-v-a056081e>Now, nested:</p>
 
 <p data-v-a056081e>&lt;div&gt;
     &lt;div&gt;
@@ -3498,17 +3513,17 @@ Blah
 
 </p><p data-v-a056081e>Code block:</p>
 
-<p data-v-a056081e>    &lt;!-- Comment --&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;!-- Comment --&gt;
 
-<p data-v-a056081e>Just plain comment, with trailing spaces on the line:</p>
+</code></pre><p data-v-a056081e>Just plain comment, with trailing spaces on the line:</p>
 
 <p data-v-a056081e>&lt;!-- foo --&gt;   
 
 </p><p data-v-a056081e>Code:</p>
 
-<p data-v-a056081e>    &lt;hr /&gt;
-
-Hr's:</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;hr /&gt;
+</code></pre>    
+<p data-v-a056081e>Hr's:</p>
 
 <p data-v-a056081e>&lt;hr&gt;
 
@@ -3582,10 +3597,10 @@ url\\" href=\\"/url\\" chk=\\"confirm\\" data-v-a056081e>thrice</b>.</p>
 
 
 
-<p data-v-a056081e>    [four]: /url</p>
+<pre data-v-a056081e><code data-v-a056081e>[four]: /url
 
 
-
+</code></pre>
 <hr data-v-a056081e>
 <p data-v-a056081e><b title=\\"foo
 \\" href=\\"foo\\" chk=\\"confirm\\" data-v-a056081e>this</b> <b title=\\"foo
@@ -3709,7 +3724,7 @@ by one or more blank lines. (A blank line is any line that looks like a
 blank line -- a line containing nothing spaces or tabs is considered
 blank.) Normal paragraphs should not be intended with spaces or tabs.</p>
 
-<p data-v-a056081e>Markdown offers two styles of headers: *Setext* and *atx*.
+<p data-v-a056081e>Markdown offers two styles of headers: <em data-v-a056081e>Setext</em> and <em data-v-a056081e>atx</em>.
 Setext-style headers for <code data-v-a056081e>&lt;h1&gt;</code> and <code data-v-a056081e>&lt;h2&gt;</code> are created by
 &quot;underlining&quot; with equal signs (<code data-v-a056081e>=</code>) and hyphens (<code data-v-a056081e>-</code>), respectively.
 To create an atx-style header, you put 1-6 hash marks (<code data-v-a056081e>#</code>) at the
@@ -3720,67 +3735,72 @@ HTML header level.</p>
 
 <p data-v-a056081e>Markdown:</p>
 
-<h1 data-v-a056081e>    A First Level Header</h1>    
-<h2 data-v-a056081e>    A Second Level Header</h2>
-<p data-v-a056081e>    Now is the time for all good men to come to
-    the aid of their country. This is just a
-    regular paragraph.</p>
+<pre data-v-a056081e><code data-v-a056081e>A First Level Header
+====================
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>A Second Level Header
+---------------------
 
-<p data-v-a056081e>    The quick brown fox jumped over the lazy
-    dog's back.
-    </p>
-<h3 data-v-a056081e>Header 3</h3>
-<p data-v-a056081e>    &gt; This is a blockquote.
-    &gt;
-    &gt; This is the second paragraph in the blockquote.
-    &gt;
-    &gt; ## This is an H2 in a blockquote</p>
+Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.
 
+The quick brown fox jumped over the lazy
+dog's back.
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>### Header 3
 
-<p data-v-a056081e>Output:</p>
-
-<p data-v-a056081e>    &lt;h1&gt;A First Level Header&lt;/h1&gt;
-
-    &lt;h2&gt;A Second Level Header&lt;/h2&gt;
-
-    &lt;p&gt;Now is the time for all good men to come to
-    the aid of their country. This is just a
-    regular paragraph.&lt;/p&gt;
-
-    &lt;p&gt;The quick brown fox jumped over the lazy
-    dog's back.&lt;/p&gt;
-
-    &lt;h3&gt;Header 3&lt;/h3&gt;
-
-    &lt;blockquote&gt;
-        &lt;p&gt;This is a blockquote.&lt;/p&gt;
-
-        &lt;p&gt;This is the second paragraph in the blockquote.&lt;/p&gt;
-
-        &lt;h2&gt;This is an H2 in a blockquote&lt;/h2&gt;
-    &lt;/blockquote&gt;</p>
+&gt; This is a blockquote.
+&gt; 
+&gt; This is the second paragraph in the blockquote.
+&gt;
+&gt; ## This is an H2 in a blockquote
 
 
+</code></pre><p data-v-a056081e>Output:</p>
 
-<h3 data-v-a056081e>Phrase Emphasis</h3>
+<pre data-v-a056081e><code data-v-a056081e>&lt;h1&gt;A First Level Header&lt;/h1&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;h2&gt;A Second Level Header&lt;/h2&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;Now is the time for all good men to come to
+the aid of their country. This is just a
+regular paragraph.&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;The quick brown fox jumped over the lazy
+dog's back.&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;h3&gt;Header 3&lt;/h3&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;blockquote&gt;
+    &lt;p&gt;This is a blockquote.&lt;/p&gt;
+    
+    &lt;p&gt;This is the second paragraph in the blockquote.&lt;/p&gt;
+    
+    &lt;h2&gt;This is an H2 in a blockquote&lt;/h2&gt;
+&lt;/blockquote&gt;
+
+
+
+</code></pre><h3 data-v-a056081e>Phrase Emphasis</h3>
 <p data-v-a056081e>Markdown uses asterisks and underscores to indicate spans of emphasis.</p>
 
 <p data-v-a056081e>Markdown:</p>
 
-<p data-v-a056081e>    Some of these words *are emphasized*.
-    Some of these words _are emphasized also_.
+<pre data-v-a056081e><code data-v-a056081e>Some of these words *are emphasized*.
+Some of these words _are emphasized also_.
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>Use two asterisks for **strong emphasis**.
+Or, if you prefer, __use two underscores instead__.
 
-    Use two asterisks for <strong data-v-a056081e>strong emphasis</strong>.
-    Or, if you prefer, <strong data-v-a056081e>use two underscores instead</strong>.</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>Output:</p>
-
-<p data-v-a056081e>    &lt;p&gt;Some of these words &lt;em&gt;are emphasized&lt;/em&gt;.
-    Some of these words &lt;em&gt;are emphasized also&lt;/em&gt;.&lt;/p&gt;
-
-    &lt;p&gt;Use two asterisks for &lt;strong&gt;strong emphasis&lt;/strong&gt;.
-    Or, if you prefer, &lt;strong&gt;use two underscores instead&lt;/strong&gt;.&lt;/p&gt;
-   </p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;Some of these words &lt;em&gt;are emphasized&lt;/em&gt;.
+Some of these words &lt;em&gt;are emphasized also&lt;/em&gt;.&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;Use two asterisks for &lt;strong&gt;strong emphasis&lt;/strong&gt;.
+Or, if you prefer, &lt;strong&gt;use two underscores instead&lt;/strong&gt;.&lt;/p&gt;
+</code></pre>   
 
 
 <h2 data-v-a056081e>Lists</h2>
@@ -3788,179 +3808,183 @@ HTML header level.</p>
 <code data-v-a056081e>+</code>, and <code data-v-a056081e>-</code>) as list markers. These three markers are
 interchangable; this:</p>
 
-<ul data-v-a056081e><li data-v-a056081e>Candy.</li><li data-v-a056081e>Gum.</li><li data-v-a056081e>Booze.
+<pre data-v-a056081e><code data-v-a056081e>*   Candy.
+*   Gum.
+*   Booze.
 
-</li></ul><p data-v-a056081e>this:</p>
+</code></pre><p data-v-a056081e>this:</p>
 
-<ul data-v-a056081e><li data-v-a056081e>Candy.</li><li data-v-a056081e>Gum.</li><li data-v-a056081e>Booze.
+<pre data-v-a056081e><code data-v-a056081e>+   Candy.
++   Gum.
++   Booze.
 
-</li></ul><p data-v-a056081e>and this:</p>
+</code></pre><p data-v-a056081e>and this:</p>
 
-<ul data-v-a056081e><li data-v-a056081e>Candy.</li><li data-v-a056081e>Gum.</li><li data-v-a056081e>Booze.
+<pre data-v-a056081e><code data-v-a056081e>-   Candy.
+-   Gum.
+-   Booze.
 
-</li></ul><p data-v-a056081e>all produce the same output:</p>
+</code></pre><p data-v-a056081e>all produce the same output:</p>
 
-<p data-v-a056081e>    &lt;ul&gt;
-    &lt;li&gt;Candy.&lt;/li&gt;
-    &lt;li&gt;Gum.&lt;/li&gt;
-    &lt;li&gt;Booze.&lt;/li&gt;
-    &lt;/ul&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;ul&gt;
+&lt;li&gt;Candy.&lt;/li&gt;
+&lt;li&gt;Gum.&lt;/li&gt;
+&lt;li&gt;Booze.&lt;/li&gt;
+&lt;/ul&gt;
 
-<p data-v-a056081e>Ordered (numbered) lists use regular numbers, followed by periods, as
+</code></pre><p data-v-a056081e>Ordered (numbered) lists use regular numbers, followed by periods, as
 list markers:</p>
 
-<ol data-v-a056081e><li data-v-a056081e>Red</li><li data-v-a056081e>Green</li><li data-v-a056081e>Blue
+<pre data-v-a056081e><code data-v-a056081e>1.  Red
+2.  Green
+3.  Blue
 
-</li></ol><p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;ol&gt;
-    &lt;li&gt;Red&lt;/li&gt;
-    &lt;li&gt;Green&lt;/li&gt;
-    &lt;li&gt;Blue&lt;/li&gt;
-    &lt;/ol&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;ol&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;/li&gt;
+&lt;/ol&gt;
 
-<p data-v-a056081e>If you put blank lines between items, you'll get <code data-v-a056081e>&lt;p&gt;</code> tags for the
+</code></pre><p data-v-a056081e>If you put blank lines between items, you'll get <code data-v-a056081e>&lt;p&gt;</code> tags for the
 list item text. You can create multi-paragraph list items by indenting
 the paragraphs by 4 spaces or 1 tab:</p>
 
-<ul data-v-a056081e><li data-v-a056081e><p data-v-a056081e>A list item.</p>
+<pre data-v-a056081e><code data-v-a056081e>*   A list item.
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>    With multiple paragraphs.
 
-<p data-v-a056081e>With multiple paragraphs.</p>
-</li><li data-v-a056081e><p data-v-a056081e>Another item in the list.</p>
+*   Another item in the list.
 
-</li></ul><p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;ul&gt;
-    &lt;li&gt;&lt;p&gt;A list item.&lt;/p&gt;
-    &lt;p&gt;With multiple paragraphs.&lt;/p&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;p&gt;Another item in the list.&lt;/p&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    </p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;A list item.&lt;/p&gt;
+&lt;p&gt;With multiple paragraphs.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Another item in the list.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>    
 
 
 <h3 data-v-a056081e>Links</h3>
-<p data-v-a056081e>Markdown supports two styles for creating links: *inline* and
-*reference*. With both styles, you use square brackets to delimit the
+<p data-v-a056081e>Markdown supports two styles for creating links: <em data-v-a056081e>inline</em> and
+<em data-v-a056081e>reference</em>. With both styles, you use square brackets to delimit the
 text you want to turn into a link.</p>
 
 <p data-v-a056081e>Inline-style links use parentheses immediately after the link text.
 For example:</p>
 
-<p data-v-a056081e>    This is an <b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\" data-v-a056081e>example link</b>.</p>
+<pre data-v-a056081e><code data-v-a056081e>This is an [example link](http://example.com/).
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot;&gt;
-    example link&lt;/a&gt;.&lt;/p&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot;&gt;
+example link&lt;/a&gt;.&lt;/p&gt;
 
-<p data-v-a056081e>Optionally, you may include a title attribute in the parentheses:</p>
+</code></pre><p data-v-a056081e>Optionally, you may include a title attribute in the parentheses:</p>
 
-<p data-v-a056081e>    This is an <b title=\\"With a Title\\" href=\\"http://example.com/\\" chk=\\"confirm\\" data-v-a056081e>example link</b>.</p>
+<pre data-v-a056081e><code data-v-a056081e>This is an [example link](http://example.com/ &quot;With a Title&quot;).
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot; title=&quot;With a Title&quot;&gt;
-    example link&lt;/a&gt;.&lt;/p&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot; title=&quot;With a Title&quot;&gt;
+example link&lt;/a&gt;.&lt;/p&gt;
 
-<p data-v-a056081e>Reference-style links allow you to refer to your links by names, which
+</code></pre><p data-v-a056081e>Reference-style links allow you to refer to your links by names, which
 you define elsewhere in your document:</p>
 
-<p data-v-a056081e>    I get 10 times more traffic from [Google][1] than from
-    [Yahoo][2] or [MSN][3].</p>
+<pre data-v-a056081e><code data-v-a056081e>I get 10 times more traffic from [Google][1] than from
+[Yahoo][2] or [MSN][3].
 
-<p data-v-a056081e>    [1]: <b title=\\"http
-google.com\\" href=\\"http://google.com/\\" chk=\\"confirm\\" data-v-a056081e>http://google.com/</b>        &quot;Google&quot;
-    [2]: <b title=\\"http
-search.yahoo.com\\" href=\\"http://search.yahoo.com/\\" chk=\\"confirm\\" data-v-a056081e>http://search.yahoo.com/</b>  &quot;Yahoo Search&quot;
-    [3]: <b title=\\"http
-search.msn.com\\" href=\\"http://search.msn.com/\\" chk=\\"confirm\\" data-v-a056081e>http://search.msn.com/</b>    &quot;MSN Search&quot;</p>
+[1]: http://google.com/        &quot;Google&quot;
+[2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
+[3]: http://search.msn.com/    &quot;MSN Search&quot;
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot;
-    title=&quot;Google&quot;&gt;Google&lt;/a&gt; than from &lt;a href=&quot;http://search.yahoo.com/&quot;
-    title=&quot;Yahoo Search&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot;
-    title=&quot;MSN Search&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot;
+title=&quot;Google&quot;&gt;Google&lt;/a&gt; than from &lt;a href=&quot;http://search.yahoo.com/&quot;
+title=&quot;Yahoo Search&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot;
+title=&quot;MSN Search&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;
 
-<p data-v-a056081e>The title attribute is optional. Link names may contain letters,
-numbers and spaces, but are *not* case sensitive:</p>
+</code></pre><p data-v-a056081e>The title attribute is optional. Link names may contain letters,
+numbers and spaces, but are <em data-v-a056081e>not</em> case sensitive:</p>
 
-<p data-v-a056081e>    I start my morning with a cup of coffee and
-    [The New York Times][NY Times].</p>
+<pre data-v-a056081e><code data-v-a056081e>I start my morning with a cup of coffee and
+[The New York Times][NY Times].
 
-<p data-v-a056081e>    [ny times]: <b title=\\"http
-www.nytimes.com\\" href=\\"http://www.nytimes.com/\\" chk=\\"confirm\\" data-v-a056081e>http://www.nytimes.com/</b></p>
+[ny times]: http://www.nytimes.com/
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;I start my morning with a cup of coffee and
-    &lt;a href=&quot;http://www.nytimes.com/&quot;&gt;The New York Times&lt;/a&gt;.&lt;/p&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;I start my morning with a cup of coffee and
+&lt;a href=&quot;http://www.nytimes.com/&quot;&gt;The New York Times&lt;/a&gt;.&lt;/p&gt;
 
 
-<h3 data-v-a056081e>Images</h3>
+</code></pre><h3 data-v-a056081e>Images</h3>
 <p data-v-a056081e>Image syntax is very much like link syntax.</p>
 
 <p data-v-a056081e>Inline (titles are optional):</p>
 
-<p data-v-a056081e>    <img src=\\"/path/to/img.jpg\\" alt=\\"alt text\\" title=\\"Title\\" data-v-a056081e></p>
+<pre data-v-a056081e><code data-v-a056081e>![alt text](/path/to/img.jpg &quot;Title&quot;)
 
-<p data-v-a056081e>Reference-style:</p>
+</code></pre><p data-v-a056081e>Reference-style:</p>
 
-<p data-v-a056081e>    ![alt text][id]</p>
+<pre data-v-a056081e><code data-v-a056081e>![alt text][id]
 
-<p data-v-a056081e>    [id]: /path/to/img.jpg &quot;Title&quot;</p>
+[id]: /path/to/img.jpg &quot;Title&quot;
 
-<p data-v-a056081e>Both of the above examples produce the same output:</p>
+</code></pre><p data-v-a056081e>Both of the above examples produce the same output:</p>
 
-<p data-v-a056081e>    &lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot; /&gt;</p>
+<pre data-v-a056081e><code data-v-a056081e>&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot; /&gt;
 
 
 
-<h3 data-v-a056081e>Code</h3>
+</code></pre><h3 data-v-a056081e>Code</h3>
 <p data-v-a056081e>In a regular paragraph, you can create code span by wrapping text in
 backtick quotes. Any ampersands (<code data-v-a056081e>&amp;</code>) and angle brackets (<code data-v-a056081e>&lt;</code> or
 <code data-v-a056081e>&gt;</code>) will automatically be translated into HTML entities. This makes
 it easy to use Markdown to write about HTML example code:</p>
 
-<p data-v-a056081e>    I strongly recommend against using any <code data-v-a056081e>&lt;blink&gt;</code> tags.</p>
+<pre data-v-a056081e><code data-v-a056081e>I strongly recommend against using any \`&lt;blink&gt;\` tags.
 
-<p data-v-a056081e>    I wish SmartyPants used named entities like <code data-v-a056081e>&amp;mdash;</code>
-    instead of decimal-encoded entites like <code data-v-a056081e>&amp;#8212;</code>.</p>
+I wish SmartyPants used named entities like \`&amp;mdash;\`
+instead of decimal-encoded entites like \`&amp;#8212;\`.
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;I strongly recommend against using any
-    &lt;code&gt;&amp;lt;blink&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;I strongly recommend against using any
+&lt;code&gt;&amp;lt;blink&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;I wish SmartyPants used named entities like
+&lt;code&gt;&amp;amp;mdash;&lt;/code&gt; instead of decimal-encoded
+entites like &lt;code&gt;&amp;amp;#8212;&lt;/code&gt;.&lt;/p&gt;
 
-    &lt;p&gt;I wish SmartyPants used named entities like
-    &lt;code&gt;&amp;amp;mdash;&lt;/code&gt; instead of decimal-encoded
-    entites like &lt;code&gt;&amp;amp;#8212;&lt;/code&gt;.&lt;/p&gt;</p>
 
-
-<p data-v-a056081e>To specify an entire block of pre-formatted code, indent every line of
+</code></pre><p data-v-a056081e>To specify an entire block of pre-formatted code, indent every line of
 the block by 4 spaces or 1 tab. Just like with code spans, <code data-v-a056081e>&amp;</code>, <code data-v-a056081e>&lt;</code>,
 and <code data-v-a056081e>&gt;</code> characters will be escaped automatically.</p>
 
 <p data-v-a056081e>Markdown:</p>
 
-<p data-v-a056081e>    If you want your page to validate under XHTML 1.0 Strict,
-    you've got to put paragraph tags in your blockquotes:</p>
+<pre data-v-a056081e><code data-v-a056081e>If you want your page to validate under XHTML 1.0 Strict,
+you've got to put paragraph tags in your blockquotes:
 
-<p data-v-a056081e>        &lt;blockquote&gt;
-            &lt;p&gt;For example.&lt;/p&gt;
-        &lt;/blockquote&gt;</p>
+    &lt;blockquote&gt;
+        &lt;p&gt;For example.&lt;/p&gt;
+    &lt;/blockquote&gt;
 
-<p data-v-a056081e>Output:</p>
+</code></pre><p data-v-a056081e>Output:</p>
 
-<p data-v-a056081e>    &lt;p&gt;If you want your page to validate under XHTML 1.0 Strict,
-    you've got to put paragraph tags in your blockquotes:&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;&amp;lt;blockquote&amp;gt;
-        &amp;lt;p&amp;gt;For example.&amp;lt;/p&amp;gt;
-    &amp;lt;/blockquote&amp;gt;
-    &lt;/code&gt;&lt;/pre&gt;</p>
-</article>"
+<pre data-v-a056081e><code data-v-a056081e>&lt;p&gt;If you want your page to validate under XHTML 1.0 Strict,
+you've got to put paragraph tags in your blockquotes:&lt;/p&gt;
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>&lt;pre&gt;&lt;code&gt;&amp;lt;blockquote&amp;gt;
+    &amp;lt;p&amp;gt;For example.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre></article>"
 `;
 
 exports[`./__tests__/original/nested_blockquotes.md snapshot 1`] = `
@@ -4079,13 +4103,13 @@ exports[`./__tests__/original/ordered_and_unordered_lists.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/original/strong_and_em_together.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><strong data-v-a056081e>*This is strong and em.*</strong></p>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e><strong data-v-a056081e><em data-v-a056081e>This is strong and em.</em></strong></p>
 
-<p data-v-a056081e>So is <strong data-v-a056081e>*this*</strong> word.</p>
+<p data-v-a056081e>So is <strong data-v-a056081e><em data-v-a056081e>this</em></strong> word.</p>
 
-<p data-v-a056081e><strong data-v-a056081e>_This is strong and em._</strong></p>
+<p data-v-a056081e><strong data-v-a056081e><em data-v-a056081e>This is strong and em.</em></strong></p>
 
-<p data-v-a056081e>So is <strong data-v-a056081e>_this_</strong> word.</p>
+<p data-v-a056081e>So is <strong data-v-a056081e><em data-v-a056081e>this</em></strong> word.</p>
 </article>"
 `;
 
@@ -4097,19 +4121,20 @@ exports[`./__tests__/original/tabs.md snapshot 1`] = `
 
 </li></ul><p data-v-a056081e>Code:</p>
 
-<p data-v-a056081e>    this code block is indented by one tab</p>
+<pre data-v-a056081e><code data-v-a056081e>this code block is indented by one tab
 
-<p data-v-a056081e>And:</p>
+</code></pre><p data-v-a056081e>And:</p>
 
-<p data-v-a056081e>        this code block is indented by two tabs</p>
+<pre data-v-a056081e><code data-v-a056081e>    this code block is indented by two tabs
 
-<p data-v-a056081e>And:</p>
+</code></pre><p data-v-a056081e>And:</p>
 
-<ul data-v-a056081e><li data-v-a056081e><p data-v-a056081e>this is an example list item</p>
-<p data-v-a056081e>indented with tabs</p>
-</li><li data-v-a056081e><p data-v-a056081e>this is an example list item</p>
-<p data-v-a056081e>indented with spaces</p>
-</li></ul></article>"
+<pre data-v-a056081e><code data-v-a056081e>+    this is an example list item
+    indented with tabs
+</code></pre>    
+<pre data-v-a056081e><code data-v-a056081e>+   this is an example list item
+    indented with spaces
+</code></pre></article>"
 `;
 
 exports[`./__tests__/original/tidyness.md snapshot 1`] = `
