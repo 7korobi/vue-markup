@@ -401,7 +401,7 @@ module.exports = require("vue-test-utils");
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Render, border_width, dagre, edge_label_width, init, marker, parse;
+var Renderer, border_width, dagre, edge_label_width, init, marker, options, parse, vm;
 
 dagre = __webpack_require__(14);
 
@@ -426,12 +426,7 @@ marker = function(key) {
   }
 };
 
-Render = class Render {
-  constructor(graph) {
-    this.graph = graph;
-    this.graph.errors = [];
-  }
-
+Renderer = class Renderer {
   newline() {}
 
   error(line) {
@@ -559,7 +554,13 @@ init = function() {
   });
 };
 
-module.exports = {
+options = {
+  renderer: new Renderer
+};
+
+vm = {
+  name: 'Dagre',
+  options: options,
   props: ["value"],
   methods: {
     path_d: function(list) {
@@ -676,15 +677,21 @@ module.exports = {
       return `0 0 ${this.root.width} ${this.root.height}`;
     },
     graph: function() {
-      var g, r;
+      var g;
       g = init();
-      r = new Render(g);
-      parse(r, this.value);
-      dagre.layout(r.graph);
+      options.renderer.options = options;
+      options.renderer.graph = g;
+      options.renderer.graph.errors = [];
+      parse(options.renderer, this.value);
+      dagre.layout(options.renderer.graph);
       return g;
     }
   }
 };
+
+module.exports = vm;
+
+module.exports.default = vm;
 
 
 /***/ }),
@@ -695,7 +702,7 @@ module.exports = {
 "use strict";
 
 
-var Dagre, createRenderer, fs, glob, i, len, list, path, shallow;
+var Dagre, createRenderer, fs, glob, shallow;
 
 glob = __webpack_require__(0);
 
@@ -707,11 +714,8 @@ Dagre = __webpack_require__(11);
 
 ({ shallow } = __webpack_require__(7));
 
-list = glob.sync("./__tests__/**/*.dagre");
-
-for (i = 0, len = list.length; i < len; i++) {
-  path = list[i];
-  describe(path, function () {
+glob.sync("./__tests__/**/*.dagre").map(function (path) {
+  return describe(path, function () {
     return test('snapshot', function () {
       var value, wrapper;
       value = fs.readFileSync(path, 'utf8');
@@ -726,7 +730,7 @@ for (i = 0, len = list.length; i < len; i++) {
       });
     });
   });
-}
+});
 
 /***/ }),
 /* 11 */
@@ -794,7 +798,7 @@ exports = module.exports = __webpack_require__(2)(true);
 
 
 // module
-exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > rect[data-v-42a55e88],\n.nodes-move:not(.nodes-leave-active) > image[data-v-42a55e88] {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move[data-v-42a55e88]:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n", "", {"version":3,"sources":["C:/Dropbox/www/vue-blog/lib/lib/dagre.vue","C:/Dropbox/www/vue-blog/lib/dagre.vue"],"names":[],"mappings":";AAyME;;EAEE,2BAAA;CCxMH;ADyMD;EACE,mBAAA;CCvMD","file":"dagre.vue","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.nodes-move:not(.nodes-leave-active)\n  > rect\n  > image\n    transition: x .5s, y .5s\n.edges-move:not(.edges-leave-active)\n  transition: d .5s\n\n",".nodes-move:not(.nodes-leave-active) > rect,\n.nodes-move:not(.nodes-leave-active) > image {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > rect[data-v-42a55e88],\n.nodes-move:not(.nodes-leave-active) > image[data-v-42a55e88] {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move[data-v-42a55e88]:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n", "", {"version":3,"sources":["C:/Dropbox/www/vue-blog/lib/lib/dagre.vue","C:/Dropbox/www/vue-blog/lib/dagre.vue"],"names":[],"mappings":";AA2BE;;EAEE,2BAAA;CC1BH;AD2BD;EACE,mBAAA;CCzBD","file":"dagre.vue","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.nodes-move:not(.nodes-leave-active)\n  > rect\n  > image\n    transition: x .5s, y .5s\n.edges-move:not(.edges-leave-active)\n  transition: d .5s\n\n",".nodes-move:not(.nodes-leave-active) > rect,\n.nodes-move:not(.nodes-leave-active) > image {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n"],"sourceRoot":""}]);
 
 // exports
 

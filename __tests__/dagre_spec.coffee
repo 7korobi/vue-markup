@@ -5,8 +5,9 @@ Dagre = require '../lib/dagre.vue'
 { createRenderer } = require 'vue-server-renderer'
 { shallow } = require 'vue-test-utils'
 
-list = glob.sync("./__tests__/**/*.dagre")
-for path in list
+glob
+.sync("./__tests__/**/*.dagre")
+.map (path)->
   describe path, ->
     test 'snapshot', ->
       value = fs.readFileSync path, 'utf8'

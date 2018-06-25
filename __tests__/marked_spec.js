@@ -402,7 +402,7 @@ module.exports = require("vue-test-utils");
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Renderer, itself, marked, options;
+var Renderer, itself, marked, options, vm;
 
 marked = __webpack_require__(21);
 
@@ -412,10 +412,6 @@ itself = function(o) {
 
 Renderer = (function() {
   class Renderer {
-    constructor(options1) {
-      this.options = options1;
-    }
-
     code(code, lang) {
       var m;
       ({m} = this.options);
@@ -690,19 +686,26 @@ options = {
   em: false
 };
 
-module.exports = {
+vm = {
+  name: "Marked",
+  options: options,
   props: ["value"],
   render: function(m) {
     var value;
     ({value} = this);
     if (value) {
       options.m = m;
+      options.renderer.options = options;
       return marked(value, options);
     } else {
       return '';
     }
   }
 };
+
+module.exports = vm;
+
+module.exports.default = vm;
 
 
 /***/ }),
@@ -719,7 +722,11 @@ module.exports = {
 "use strict";
 
 
-var Marked, createRenderer, fs, glob, i, len, list, path, shallow;
+var Marked, createRenderer, fs, glob, shallow;
+
+({ createRenderer } = __webpack_require__(6));
+
+({ shallow } = __webpack_require__(7));
 
 glob = __webpack_require__(0);
 
@@ -727,15 +734,17 @@ fs = __webpack_require__(1);
 
 Marked = __webpack_require__(18);
 
-({ createRenderer } = __webpack_require__(6));
-
-({ shallow } = __webpack_require__(7));
-
-list = glob.sync("./__tests__/**/*.md");
-
-for (i = 0, len = list.length; i < len; i++) {
-  path = list[i];
-  describe(path, function () {
+/*
+Object.assign Marked.options,
+  indentCode: true
+  em: true
+Object.assign Marked.options.renderer,
+  paragraph: (text)->
+    { m } = @options
+    m 'p', {}, text
+*/
+glob.sync("./__tests__/**/*.md").map(function (path) {
+  return describe(path, function () {
     return test('snapshot', function () {
       var value, wrapper;
       value = fs.readFileSync(path, 'utf8');
@@ -750,7 +759,7 @@ for (i = 0, len = list.length; i < len; i++) {
       });
     });
   });
-}
+});
 
 /***/ }),
 /* 18 */
@@ -2152,7 +2161,7 @@ marked = function (src, opt) {
   } catch (error) {
     e = error;
     ({ m } = opt);
-    e.message += '\nPlease report this to https://github.com/7korobi/marked-pre.';
+    e.message += '\nPlease report this to https://github.com/7korobi/vue-markup.';
     if (opt.silent) {
       message = `${e.message}`;
       return m('p', {}, ["An error occured:", m('pre', {}, message)]);

@@ -1,3 +1,38 @@
+<template lang="pug">
+no-ssr
+  article
+    svg(:style="`max-width: 100%; width: ${root.width}px;`" :viewBox="view_box")
+      marker.edgePath#svg-marker-circle(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="2" refY="5" orient="auto")
+        circle(cx="5" cy="5" r="4")
+      marker.edgePath#svg-marker-arrow-start(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="3" refY="5" orient="auto")
+        path.path(d="M10,0 L0,5 L10,10 z")
+      marker.edgePath#svg-marker-arrow-end(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="3" refY="5" orient="auto")
+        path.path(d="M0,0 L10,5 L0,10 z")
+      marker.edgePath#svg-marker-cross(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="5" refY="5" orient="0")
+        path.path(d="M0,0 L10,10 M0,10 L10,0 z")
+      transition-group(tag="g" name="nodes")
+        rect( v-for="o in node_rects"  v-if="o" v-bind="o")
+        image(v-for="o in node_images" v-if="o" v-bind="o")
+      transition-group.edgePath(tag="g" name="edges")
+        path.path(v-for="o in edge_paths" fill="none" v-if="o" v-bind="o")
+        rect.path(v-for="o in edge_rects" v-if="o" v-bind="o")
+        text.messageText(v-for="o in edge_labels" v-if="o" v-bind="o")
+          | {{ o.label }}
+    .errors
+      .error(v-for="err in graph.errors") {{ err }}
+</template>
+
+<style lang="stylus" scoped>
+
+.nodes-move:not(.nodes-leave-active)
+  > rect
+  > image
+    transition: x .5s, y .5s
+.edges-move:not(.edges-leave-active)
+  transition: d .5s
+
+</style>
+
 <script lang="coffee">
 dagre = require "dagre"
 parse = require "./dagre-parse"
@@ -17,9 +52,7 @@ marker = (key)->
       null
 
 
-class Render
-  constructor: (@graph)->
-    @graph.errors = []
+class Renderer
   newline: ->
   error: (line)->
     @graph.errors.push line
@@ -117,7 +150,13 @@ init = ->
     marginx:  3
     marginy:  3
 
-module.exports =
+options =
+  renderer: new Renderer
+
+vm =
+  name: 'Dagre'
+  options: options
+
   props: ["value"]
   methods:
     path_d: (list)->
@@ -190,43 +229,13 @@ module.exports =
 
     graph: ->
       g = init()
-      r = new Render g
-      parse r, @value
-      dagre.layout r.graph
+      options.renderer.options = options
+      options.renderer.graph = g
+      options.renderer.graph.errors = []
+      parse options.renderer, @value
+      dagre.layout options.renderer.graph
       g
 
+module.exports = vm
+module.exports.default = vm
 </script>
-<style lang="stylus" scoped>
-
-.nodes-move:not(.nodes-leave-active)
-  > rect
-  > image
-    transition: x .5s, y .5s
-.edges-move:not(.edges-leave-active)
-  transition: d .5s
-
-</style>
-<template lang="pug">
-no-ssr
-  article
-    svg(:style="`max-width: 100%; width: ${root.width}px;`" :viewBox="view_box")
-      marker.edgePath#svg-marker-circle(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="2" refY="5" orient="auto")
-        circle(cx="5" cy="5" r="4")
-      marker.edgePath#svg-marker-arrow-start(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="3" refY="5" orient="auto")
-        path.path(d="M10,0 L0,5 L10,10 z")
-      marker.edgePath#svg-marker-arrow-end(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="3" refY="5" orient="auto")
-        path.path(d="M0,0 L10,5 L0,10 z")
-      marker.edgePath#svg-marker-cross(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="5" refY="5" orient="0")
-        path.path(d="M0,0 L10,10 M0,10 L10,0 z")
-      transition-group(tag="g" name="nodes")
-        rect( v-for="o in node_rects"  v-if="o" v-bind="o")
-        image(v-for="o in node_images" v-if="o" v-bind="o")
-      transition-group.edgePath(tag="g" name="edges")
-        path.path(v-for="o in edge_paths" fill="none" v-if="o" v-bind="o")
-        rect.path(v-for="o in edge_rects" v-if="o" v-bind="o")
-        text.messageText(v-for="o in edge_labels" v-if="o" v-bind="o")
-          | {{ o.label }}
-    .errors
-      .error(v-for="err in graph.errors") {{ err }}
-</template>
-

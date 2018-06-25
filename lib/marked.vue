@@ -1,11 +1,11 @@
+<style lang="stylus" scoped>
+</style>
 <script lang="coffee">
 marked = require './marked'
 
 itself = (o)-> o
 
 class Renderer
-  constructor: (@options)->
-
   paragraph: itself
   text: itself
   html: itself
@@ -210,17 +210,20 @@ options =
   silent: true
   em: false
 
-module.exports =
+vm =
+  name: "Marked"
+  options: options
   props: ["value"]
 
   render: (m)->
     { value } = @
     if value
       options.m = m
+      options.renderer.options = options
       marked value, options
     else
       ''
-</script>
 
-<style lang="stylus" scoped>
-</style>
+module.exports = vm
+module.exports.default = vm
+</script>

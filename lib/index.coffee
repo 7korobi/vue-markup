@@ -1,5 +1,5 @@
 Vue = require "vue"
-if window?
+if Vue.default?
   Vue = Vue.default
 
 Vue.component "marked", require("./marked.vue").default

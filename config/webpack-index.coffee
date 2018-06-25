@@ -14,7 +14,7 @@ module.exports =
   entry:
     index:  './lib/index.coffee'
   output:
-    path: path.join current
+    path: path.join current, 'lib'
     filename: '[name].js' # Important
     libraryTarget: 'this' # Important
 

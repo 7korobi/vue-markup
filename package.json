@@ -38,7 +38,7 @@
     "vue-test-utils": "^1.0.0-beta.11"
   },
   "scripts": {
-    "test": "run-s make jest",
+    "test": "run-s make:spec jest",
     "make": "run-p make:*",
     "make:index": "webpack --config config/webpack-index.coffee",
     "make:spec":  "webpack --config config/webpack-spec.coffee",
