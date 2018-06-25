@@ -2,7 +2,7 @@
   "name": "vue-markup",
   "description": "markdown + support components for Vue.js",
   "author": "7korobi",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "./lib/index.js",
   "preferGlobal": true,
   "repository": "git@github.com:7korobi/vue-markup   .git",

@@ -200,6 +200,7 @@ vm =
 
     node_images: ->
       { renderer } = options
+      { border_width } = options.style
       for key in @graph.nodes()
         o = @graph.node key
         unless 'icon' == o.class
