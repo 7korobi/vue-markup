@@ -1,0 +1,715 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`./__tests__/compiled_tests/escaped_angles.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_autolinks.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_break.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_code.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_code_hr_list.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_del.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_em.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_hashtag.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_links_invalid.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/gfm_tables.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/hard_wrapped_paragraphs_with_list_like_lines.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/headings_id.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/horizontal_rules.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/hr_list_break.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/html_comments.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/inline_html_advanced.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/inline_html_comments.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/inline_html_simple.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/lazy_blockquotes.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/link_lt.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/links.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/links_inline_style.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/links_reference_style.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/links_shortcut_references.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/list_item_text.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/literal_quotes_in_titles.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/loose_lists.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/main.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/mangle_xss.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/markdown_documentation_basics.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/markdown_documentation_syntax.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/nested_blockquotes.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/nested_code.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/nested_em.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/nested_square_link.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/nogfm_hashtag.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/not_a_link.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/ordered_and_unordered_lists.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/redos_html_closing.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/redos_nolink.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/ref_paren.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/relative_urls.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/same_bullet.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/smartypants.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/strong_and_em_together.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/tabs.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/tidyness.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/toplevel_paragraphs.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/tricky_list.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/compiled_tests/uppercase_hex.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/autolink_lines.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/blockquote_list_item.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/case_insensitive_refs.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/cm_autolinks.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/cm_blockquotes.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/cm_html_blocks.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/cm_link_defs.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/cm_links.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/cm_raw_html.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/cm_thematic_breaks.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/def_blocks.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/double_link.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/em_2char.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/escaped_angles.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_autolinks.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_break.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_code.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_code_hr_list.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_del.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_em.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_hashtag.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_links_invalid.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/gfm_tables.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/headings_id.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/hr_list_break.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/html_comments.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/lazy_blockquotes.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/link_lt.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/links.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/list_item_text.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/loose_lists.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/main.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/mangle_xss.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/nested_code.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/nested_em.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/nested_square_link.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/nogfm_hashtag.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/not_a_link.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/redos_html_closing.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/redos_nolink.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/ref_paren.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/relative_urls.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/same_bullet.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/smartypants.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/toplevel_paragraphs.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/tricky_list.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/new/uppercase_hex.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/amps_and_angles_encoding.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/auto_links.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/backslash_escapes.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/blockquotes_with_code_blocks.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/code_blocks.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/code_spans.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/hard_wrapped_paragraphs_with_list_like_lines.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/horizontal_rules.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/inline_html_advanced.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/inline_html_comments.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/inline_html_simple.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/links_inline_style.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/links_reference_style.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/links_shortcut_references.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/literal_quotes_in_titles.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/markdown_documentation_basics.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/markdown_documentation_syntax.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/nested_blockquotes.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/ordered_and_unordered_lists.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/strong_and_em_together.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/tabs.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
+
+exports[`./__tests__/original/tidyness.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><blockquote data-v-a056081e>A list within a blockquote:
+
+<ul data-v-a056081e><li data-v-a056081e>asterisk 1</li><li data-v-a056081e>asterisk 2</li><li data-v-a056081e>asterisk 3</li></ul></blockquote></article>"
+`;
