@@ -56,19 +56,14 @@ class Renderer
   error: (line)->
     @graph.errors.push line
 
-  dic: (v)->
-    v
-  href: (key)->
-    key
+  href: (key)-> key
+  dic: (v)-> ['box', v, v]
 
   is_edge: (v, w)->
     @graph.edge { v, w }
 
   is_node: (v)->
     @graph.node v
-
-  node: (v, label)->
-    @box v, label
 
   edge: (v, w, line, start, end, label)->
     { edge_label_width } = @options.style

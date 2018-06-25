@@ -575,12 +575,12 @@ Renderer = class Renderer {
     return this.graph.errors.push(line);
   }
 
-  dic(v) {
-    return v;
-  }
-
   href(key) {
     return key;
+  }
+
+  dic(v) {
+    return ['box', v, v];
   }
 
   is_edge(v, w) {
@@ -589,10 +589,6 @@ Renderer = class Renderer {
 
   is_node(v) {
     return this.graph.node(v);
-  }
-
-  node(v, label) {
-    return this.box(v, label);
   }
 
   edge(v, w, line, start, end, label) {
@@ -1018,7 +1014,7 @@ syntax.nodes = regexp_join(syntax.nodes, '_node_', '_arrow_', '_comment_', '_eol
 syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol_');
 
 parse = function (render, src) {
-  var $, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, results, start, tokens, v, w;
+  var $, _, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, pl, results, start, tokens, v, vl, vm, w, wl, wm;
   parents = {};
   tokens = [];
   last = {
@@ -1067,10 +1063,10 @@ parse = function (render, src) {
         v = edges[idx];
         [v, start, line, end, w] = edges.slice(idx, +(idx + 4) + 1 || 9e9);
         if (w) {
-          v = render.dic(v);
-          w = render.dic(w);
-          render.node(v);
-          render.node(w);
+          [vm, v, vl] = render.dic(v);
+          [wm, w, wl] = render.dic(w);
+          render[vm](v, vl);
+          render[wm](w, wl);
           render.edge(v, w, line, start, end, label);
         }
       }
@@ -1083,13 +1079,13 @@ parse = function (render, src) {
       nodes = nodes.trim().split(/ +/);
       for (idx = j = 0, len1 = nodes.length; j < len1; idx = ++j) {
         v = nodes[idx];
-        v = render.dic(v);
-        render.node(v, label);
+        [vm, v, vl] = render.dic(v);
+        render[vm](v, label || vl);
         if (label) {
           render.edge(v, v, "", "", "", label);
         }
         if (parent = find_parent(v, depth)) {
-          parent = render.dic(parent);
+          [_, parent, pl] = render.dic(parent);
           ({ label } = render.is_node(parent));
           if (label) {
             render.cluster(v, parent, label);

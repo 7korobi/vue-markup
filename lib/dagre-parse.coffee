@@ -68,10 +68,10 @@ parse = (render, src)->
       for v, idx in edges by 4
         [ v, start, line, end, w ] = edges[idx .. idx + 4]
         if w
-          v = render.dic v
-          w = render.dic w
-          render.node v
-          render.node w
+          [vm, v, vl] = render.dic v
+          [wm, w, wl] = render.dic w
+          render[vm] v, vl
+          render[wm] w, wl
           render.edge v, w, line, start, end, label
       continue
 
@@ -83,13 +83,13 @@ parse = (render, src)->
       .trim()
       .split(/ +/)
       for v, idx in nodes
-        v = render.dic v
-        render.node v, label
+        [vm, v, vl] = render.dic v
+        render[vm] v, label or vl
         if label
           render.edge v, v, "", "", "", label
 
         if parent = find_parent v, depth
-          parent = render.dic parent
+          [_, parent, pl] = render.dic parent
           { label } = render.is_node parent
           if label
             render.cluster v, parent, label
