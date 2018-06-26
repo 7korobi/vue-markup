@@ -11,16 +11,19 @@ class Renderer
   html: itself
 
   code: (code, lang)->
-    { m } = @options
-    if lang
-      lang = @options.langPrefix + lang
-      m 'pre', {}, [
-        m 'code', { class: lang }, code
-      ]
-    else
-      m 'pre', {}, [
-        m 'code', {}, code
-      ]
+    { m, langPrefix } = @options
+    switch lang
+      when '', null, undefined
+        m 'pre', {}, [
+          m 'code', {}, code
+        ]
+      when 'SVG', 'svg'
+        m 'dagre', { value: code }
+      else
+        lang = langPrefix + lang
+        m 'pre', {}, [
+          m 'code', { class: lang }, code
+        ]
 
   blockquote: (quote)->
     { m } = @options
@@ -66,18 +69,12 @@ class Renderer
     else
       m 'li', {}, text
 
-  table: (header, body)->
+  table: (header, body, top)->
     { m } = @options
-    ret =
-    m 'div',
-      class: 'swipe'
-    , [
-      m 'table', {}, [
-        m 'thead', {}, [header]
-        m 'tbody', {}, body
-      ]
+    m 'table', {}, [
+      m 'thead', {}, [header]
+      m 'tbody', {}, body
     ]
-    ret
 
   tablerow: (content)->
     { m } = @options
@@ -201,6 +198,7 @@ class Renderer
 options =
   renderer: new Renderer
   tag: 'article'
+  langPrefix: 'lang-'
   ruby: true
   gfm: true
   tables: true

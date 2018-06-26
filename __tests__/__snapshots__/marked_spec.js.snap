@@ -113,17 +113,17 @@ breaks.</p>
 `;
 
 exports[`./__tests__/compiled_tests/gfm_code.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><pre data-v-a056081e><code class=\\"undefinedjs\\" data-v-a056081e>var a = 'hello';
+"<article data-server-rendered=\\"true\\" data-v-a056081e><pre data-v-a056081e><code class=\\"lang-js\\" data-v-a056081e>var a = 'hello';
 console.log(a + ' world');</code></pre>
-<pre data-v-a056081e><code class=\\"undefinedbash\\" data-v-a056081e>echo &quot;hello, \${WORLD}&quot;</code></pre>
-<pre data-v-a056081e><code class=\\"undefinedlongfence\\" data-v-a056081e>Q: What do you call a tall person who sells stolen goods?</code></pre>
-<pre data-v-a056081e><code class=\\"undefinedManyTildes\\" data-v-a056081e>A longfence!</code></pre>
+<pre data-v-a056081e><code class=\\"lang-bash\\" data-v-a056081e>echo &quot;hello, \${WORLD}&quot;</code></pre>
+<pre data-v-a056081e><code class=\\"lang-longfence\\" data-v-a056081e>Q: What do you call a tall person who sells stolen goods?</code></pre>
+<pre data-v-a056081e><code class=\\"lang-ManyTildes\\" data-v-a056081e>A longfence!</code></pre>
 <p data-v-a056081e>How about an empty code block?</p>
 
-<pre data-v-a056081e><code class=\\"undefinedjs\\" data-v-a056081e></code></pre>
+<pre data-v-a056081e><code class=\\"lang-js\\" data-v-a056081e></code></pre>
 <p data-v-a056081e>How about a code block with only an empty line?</p>
 
-<pre data-v-a056081e><code class=\\"undefinedjs\\" data-v-a056081e></code></pre>
+<pre data-v-a056081e><code class=\\"lang-js\\" data-v-a056081e></code></pre>
 <p data-v-a056081e>With some trailing empty lines:</p>
 
 <pre data-v-a056081e><code data-v-a056081e>ciao
@@ -144,16 +144,16 @@ exports[`./__tests__/compiled_tests/gfm_code_hr_list.md snapshot 1`] = `
 
 <ol data-v-a056081e><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
 
-<pre data-v-a056081e><code class=\\"undefinederb\\" data-v-a056081e> some code here</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
+<pre data-v-a056081e><code class=\\"lang-erb\\" data-v-a056081e> some code here</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
 
-<pre data-v-a056081e><code class=\\"undefinederb\\" data-v-a056081e> foo
+<pre data-v-a056081e><code class=\\"lang-erb\\" data-v-a056081e> foo
  ---
  bar
  ---
  foo
  bar</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
 
-<pre data-v-a056081e><code class=\\"undefinedhtml\\" data-v-a056081e> ---
+<pre data-v-a056081e><code class=\\"lang-html\\" data-v-a056081e> ---
  foo
  foo
  ---
@@ -189,12 +189,12 @@ exports[`./__tests__/compiled_tests/gfm_links_invalid.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/gfm_tables.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Heading 1 </th><th data-v-a056081e> Heading 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1    </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3    </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
-<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"c\\" data-v-a056081e>Header 1 </th><th class=\\"r\\" data-v-a056081e> Header 2 </th><th class=\\"l\\" data-v-a056081e> Header 3 </th><th data-v-a056081e> Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 1   </td><td class=\\"r\\" data-v-a056081e> Cell 2   </td><td class=\\"l\\" data-v-a056081e> Cell 3   </td><td data-v-a056081e> Cell 4</td></tr><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 5   </td><td class=\\"r\\" data-v-a056081e> Cell 6   </td><td class=\\"l\\" data-v-a056081e> Cell 7   </td><td data-v-a056081e> Cell 8</td></tr></tbody></table></div>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Heading 1</th><th data-v-a056081e>Heading 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1</td><td data-v-a056081e>Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3</td><td data-v-a056081e>Cell 4</td></tr></tbody></table>
+<table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"c\\" data-v-a056081e>Header 1</th><th class=\\"r\\" data-v-a056081e>Header 2</th><th class=\\"l\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 1</td><td class=\\"r\\" data-v-a056081e>Cell 2</td><td class=\\"l\\" data-v-a056081e>Cell 3</td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 5</td><td class=\\"r\\" data-v-a056081e>Cell 6</td><td class=\\"l\\" data-v-a056081e>Cell 7</td><td data-v-a056081e>Cell 8</td></tr></tbody></table>
 <pre data-v-a056081e><code data-v-a056081e>Test code
 
-</code></pre><div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Header 1 </th><th data-v-a056081e> Header 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1   </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3   </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
-<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"l\\" data-v-a056081e>Header 1</th><th class=\\"c\\" data-v-a056081e>Header 2</th><th class=\\"r\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>Cell 1  </td><td class=\\"c\\" data-v-a056081e>Cell 2  </td><td class=\\"r\\" data-v-a056081e>Cell 3  </td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e><em data-v-a056081e>Cell 5</em></td><td class=\\"c\\" data-v-a056081e>Cell 6  </td><td class=\\"r\\" data-v-a056081e>Cell 7  </td><td data-v-a056081e>Cell 8</td></tr></tbody></table></div></article>"
+</code></pre><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Header 1</th><th data-v-a056081e>Header 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1</td><td data-v-a056081e>Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3</td><td data-v-a056081e>Cell 4</td></tr></tbody></table>
+<table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"l\\" data-v-a056081e>Header 1</th><th class=\\"c\\" data-v-a056081e>Header 2</th><th class=\\"r\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>Cell 1</td><td class=\\"c\\" data-v-a056081e>Cell 2</td><td class=\\"r\\" data-v-a056081e>Cell 3</td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e><em data-v-a056081e>Cell 5</em></td><td class=\\"c\\" data-v-a056081e>Cell 6</td><td class=\\"r\\" data-v-a056081e>Cell 7</td><td data-v-a056081e>Cell 8</td></tr></tbody></table></article>"
 `;
 
 exports[`./__tests__/compiled_tests/hard_wrapped_paragraphs_with_list_like_lines.md snapshot 1`] = `
@@ -2693,17 +2693,17 @@ breaks.</p>
 `;
 
 exports[`./__tests__/new/gfm_code.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><pre data-v-a056081e><code class=\\"undefinedjs\\" data-v-a056081e>var a = 'hello';
+"<article data-server-rendered=\\"true\\" data-v-a056081e><pre data-v-a056081e><code class=\\"lang-js\\" data-v-a056081e>var a = 'hello';
 console.log(a + ' world');</code></pre>
-<pre data-v-a056081e><code class=\\"undefinedbash\\" data-v-a056081e>echo &quot;hello, \${WORLD}&quot;</code></pre>
-<pre data-v-a056081e><code class=\\"undefinedlongfence\\" data-v-a056081e>Q: What do you call a tall person who sells stolen goods?</code></pre>
-<pre data-v-a056081e><code class=\\"undefinedManyTildes\\" data-v-a056081e>A longfence!</code></pre>
+<pre data-v-a056081e><code class=\\"lang-bash\\" data-v-a056081e>echo &quot;hello, \${WORLD}&quot;</code></pre>
+<pre data-v-a056081e><code class=\\"lang-longfence\\" data-v-a056081e>Q: What do you call a tall person who sells stolen goods?</code></pre>
+<pre data-v-a056081e><code class=\\"lang-ManyTildes\\" data-v-a056081e>A longfence!</code></pre>
 <p data-v-a056081e>How about an empty code block?</p>
 
-<pre data-v-a056081e><code class=\\"undefinedjs\\" data-v-a056081e></code></pre>
+<pre data-v-a056081e><code class=\\"lang-js\\" data-v-a056081e></code></pre>
 <p data-v-a056081e>How about a code block with only an empty line?</p>
 
-<pre data-v-a056081e><code class=\\"undefinedjs\\" data-v-a056081e></code></pre>
+<pre data-v-a056081e><code class=\\"lang-js\\" data-v-a056081e></code></pre>
 <p data-v-a056081e>With some trailing empty lines:</p>
 
 <pre data-v-a056081e><code data-v-a056081e>ciao
@@ -2724,16 +2724,16 @@ exports[`./__tests__/new/gfm_code_hr_list.md snapshot 1`] = `
 
 <ol data-v-a056081e><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
 
-<pre data-v-a056081e><code class=\\"undefinederb\\" data-v-a056081e> some code here</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
+<pre data-v-a056081e><code class=\\"lang-erb\\" data-v-a056081e> some code here</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
 
-<pre data-v-a056081e><code class=\\"undefinederb\\" data-v-a056081e> foo
+<pre data-v-a056081e><code class=\\"lang-erb\\" data-v-a056081e> foo
  ---
  bar
  ---
  foo
  bar</code></pre></li><li data-v-a056081e><p data-v-a056081e>foo <code data-v-a056081e>bar</code> bar:</p>
 
-<pre data-v-a056081e><code class=\\"undefinedhtml\\" data-v-a056081e> ---
+<pre data-v-a056081e><code class=\\"lang-html\\" data-v-a056081e> ---
  foo
  foo
  ---
@@ -2769,12 +2769,12 @@ exports[`./__tests__/new/gfm_links_invalid.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/gfm_tables.md snapshot 1`] = `
-"<article data-server-rendered=\\"true\\" data-v-a056081e><div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Heading 1 </th><th data-v-a056081e> Heading 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1    </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3    </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
-<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"c\\" data-v-a056081e>Header 1 </th><th class=\\"r\\" data-v-a056081e> Header 2 </th><th class=\\"l\\" data-v-a056081e> Header 3 </th><th data-v-a056081e> Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 1   </td><td class=\\"r\\" data-v-a056081e> Cell 2   </td><td class=\\"l\\" data-v-a056081e> Cell 3   </td><td data-v-a056081e> Cell 4</td></tr><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 5   </td><td class=\\"r\\" data-v-a056081e> Cell 6   </td><td class=\\"l\\" data-v-a056081e> Cell 7   </td><td data-v-a056081e> Cell 8</td></tr></tbody></table></div>
+"<article data-server-rendered=\\"true\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Heading 1</th><th data-v-a056081e>Heading 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1</td><td data-v-a056081e>Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3</td><td data-v-a056081e>Cell 4</td></tr></tbody></table>
+<table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"c\\" data-v-a056081e>Header 1</th><th class=\\"r\\" data-v-a056081e>Header 2</th><th class=\\"l\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 1</td><td class=\\"r\\" data-v-a056081e>Cell 2</td><td class=\\"l\\" data-v-a056081e>Cell 3</td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"c\\" data-v-a056081e>Cell 5</td><td class=\\"r\\" data-v-a056081e>Cell 6</td><td class=\\"l\\" data-v-a056081e>Cell 7</td><td data-v-a056081e>Cell 8</td></tr></tbody></table>
 <pre data-v-a056081e><code data-v-a056081e>Test code
 
-</code></pre><div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Header 1 </th><th data-v-a056081e> Header 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1   </td><td data-v-a056081e> Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3   </td><td data-v-a056081e> Cell 4</td></tr></tbody></table></div>
-<div class=\\"swipe\\" data-v-a056081e><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"l\\" data-v-a056081e>Header 1</th><th class=\\"c\\" data-v-a056081e>Header 2</th><th class=\\"r\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>Cell 1  </td><td class=\\"c\\" data-v-a056081e>Cell 2  </td><td class=\\"r\\" data-v-a056081e>Cell 3  </td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e><em data-v-a056081e>Cell 5</em></td><td class=\\"c\\" data-v-a056081e>Cell 6  </td><td class=\\"r\\" data-v-a056081e>Cell 7  </td><td data-v-a056081e>Cell 8</td></tr></tbody></table></div></article>"
+</code></pre><table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Header 1</th><th data-v-a056081e>Header 2</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>Cell 1</td><td data-v-a056081e>Cell 2</td></tr><tr data-v-a056081e><td data-v-a056081e>Cell 3</td><td data-v-a056081e>Cell 4</td></tr></tbody></table>
+<table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"l\\" data-v-a056081e>Header 1</th><th class=\\"c\\" data-v-a056081e>Header 2</th><th class=\\"r\\" data-v-a056081e>Header 3</th><th data-v-a056081e>Header 4</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e>Cell 1</td><td class=\\"c\\" data-v-a056081e>Cell 2</td><td class=\\"r\\" data-v-a056081e>Cell 3</td><td data-v-a056081e>Cell 4</td></tr><tr data-v-a056081e><td class=\\"l\\" data-v-a056081e><em data-v-a056081e>Cell 5</em></td><td class=\\"c\\" data-v-a056081e>Cell 6</td><td class=\\"r\\" data-v-a056081e>Cell 7</td><td data-v-a056081e>Cell 8</td></tr></tbody></table></article>"
 `;
 
 exports[`./__tests__/new/headings_id.md snapshot 1`] = `
