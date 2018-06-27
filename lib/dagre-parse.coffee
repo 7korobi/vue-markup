@@ -71,7 +71,9 @@ parse = (render, src)->
           [vm, v, vl] = render.dic v
           [wm, w, wl] = render.dic w
           render[vm] v, vl
+          render.edge v, v, "", "", "", vl
           render[wm] w, wl
+          render.edge w, w, "", "", "", wl
           render.edge v, w, line, start, end, label
       continue
 
