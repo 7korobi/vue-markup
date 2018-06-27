@@ -1,7 +1,7 @@
 <template lang="pug">
 article
   svg(:style="`max-width: 100%; width: ${root.width}px;`" :viewBox="view_box")
-    marker.edgePath#svg-marker-circle(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="2" refY="5" orient="auto")
+    marker.edgePath#svg-marker-circle(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="5" refY="5" orient="auto")
       circle(cx="5" cy="5" r="4")
     marker.edgePath#svg-marker-arrow-start(viewBox="0 0 10 10" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" refX="3" refY="5" orient="auto")
       path.path(d="M10,0 L0,5 L10,10 z")
@@ -36,93 +36,6 @@ article
 dagre = require "dagre"
 parse = require "./dagre-parse"
 
-
-marker = (key)->
-  switch key
-    when '<', '('
-      'url(#svg-marker-arrow-start)'
-    when '>', ')'
-      'url(#svg-marker-arrow-end)'
-    when 'O', 'o'
-      'url(#svg-marker-circle)'
-    when 'X', 'x'
-      'url(#svg-marker-cross)'
-    else
-      null
-
-
-class Renderer
-  newline: ->
-  error: (line)->
-    @graph.errors.push line
-
-  href: (key)-> key
-  dic: (v)-> ['box', v, v]
-
-  is_edge: (v, w)->
-    @graph.edge { v, w }
-
-  is_node: (v)->
-    @graph.node v
-
-  edge: (v, w, line, start, end, label)->
-    { edge_label_width } = @options.style
-    weight = line.length
-    start = marker start
-    end   = marker end
-    line =
-      switch line[0]
-        when '='
-          'wide'
-        when '-'
-          'solid'
-        when '.'
-          'dotted'
-        else
-          'hide'
-
-    label ?= "   "
-    @graph.setEdge v, w,
-      key: [v,w].join()
-      "marker-start": start
-      "marker-end": end
-      minlen: 1
-      weight: weight
-      class: line
-      label: label
-      labelpos: 'c'
-      width:  25 * label.length + edge_label_width
-      height: 30
-      rx:      5
-      ry:      5
-
-  box: (v, label)->
-    { border_width } = @options.style
-    @graph.setNode v,
-      label: label
-      class: 'box'
-      width:   90 + border_width
-      height:  90 + border_width
-      rx:      10
-      ry:      10
-
-  icon: (v, label)->
-    { border_width } = @options.style
-    @graph.setNode v,
-      label: label
-      class: 'icon'
-      width:   90 + border_width
-      height: 130 + border_width
-      rx:      10
-      ry:      10
-  
-  cluster: (v, w, label)->
-    @graph.setNode w,
-      key: w
-      label: label
-      class: 'cluster'
-    @graph.setParent v, w
-
 init = (options)->
   g = new dagre.graphlib.Graph
     directed:    true
@@ -135,7 +48,6 @@ init = (options)->
   g
 
 options =
-  renderer: new Renderer
   style:
     edge_label_width: 20
     border_width: 10

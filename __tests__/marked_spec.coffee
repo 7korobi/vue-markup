@@ -3,7 +3,7 @@
 glob = require 'glob'
 fs = require 'file-system'
 
-Marked = require '../lib/marked.vue'
+{ Marked } = require '../lib/index'
 Object.assign Marked.options,
   silent: false
   indentCode: true

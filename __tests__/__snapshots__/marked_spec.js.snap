@@ -1357,6 +1357,11 @@ upperclick meupper</p>
 </article>"
 `;
 
+exports[`./__tests__/giji/svg.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e><h1 data-v-a056081e>header1</h1>
+<article data-v-42a55e88 data-v-a056081e><svg viewBox=\\"0 0 -Infinity -Infinity\\" style=\\"max-width:100%;width:-Infinitypx;\\" data-v-42a55e88><marker id=\\"svg-marker-circle\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><circle cx=\\"5\\" cy=\\"5\\" r=\\"4\\" data-v-42a55e88></circle></marker><marker id=\\"svg-marker-arrow-start\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"path\\" data-v-42a55e88></path></marker><marker id=\\"svg-marker-arrow-end\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"path\\" data-v-42a55e88></path></marker><marker id=\\"svg-marker-cross\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"0\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M0,0 L10,10 M0,10 L10,0 z\\" class=\\"path\\" data-v-42a55e88></path></marker><g data-v-42a55e88></g><g class=\\"edgePath\\" data-v-42a55e88></g></svg><!----></article></article>"
+`;
+
 exports[`./__tests__/new/autolink_lines.md snapshot 1`] = `
 "<article data-server-rendered=\\"true\\" data-v-a056081e><p data-v-a056081e>hello world
 <b title=\\"http
