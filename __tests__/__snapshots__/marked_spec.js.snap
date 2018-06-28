@@ -1366,9 +1366,70 @@ exports[`./__tests__/giji/japanese text.md snapshot 1`] = `
 <table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Tables</th><th class=\\"c\\" data-v-a056081e>Are</th><th class=\\"r\\" data-v-a056081e>Cool</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>col <sup data-v-a056081e>3</sup> is</td><td class=\\"c\\" data-v-a056081e>other</td><td class=\\"r\\" data-v-a056081e>$1600</td></tr><tr data-v-a056081e><td data-v-a056081e>col <sub data-v-a056081e>2</sub> is</td><td class=\\"c\\" data-v-a056081e><q title=\\"１０分とか、５分とか。……ひどいときは１分だぜ。クール！\\" data-v-a056081e>short</q></td><td class=\\"r\\" data-v-a056081e>$12</td></tr><tr data-v-a056081e><td data-v-a056081e>zebra stripes</td><td class=\\"c\\" data-v-a056081e><b title=\\"手引き\\" href=\\"http://crazy-crazy.sakura.ne.jp/giji/?%28Knowledge%29Guidance#l1\\" chk=\\"confirm\\" data-v-a056081e>ガイド</b></td><td class=\\"r\\" data-v-a056081e>$1</td></tr></tbody></table><hr data-v-a056081e><ol data-v-a056081e><li data-v-a056081e>まああんまり<abbr data-v-a056081e>大きい</abbr>と困りま<ruby data-v-a056081e>す<rp data-v-a056081e>《</rp><rt data-v-a056081e>るび</rt><rp data-v-a056081e>》</rp></ruby>けど。</li></ol></article>"
 `;
 
+exports[`./__tests__/giji/sample.md snapshot 1`] = `
+"<article data-server-rendered=\\"true\\" data-v-a056081e>
+<h1 data-v-a056081e>H1</h1><h2 data-v-a056081e>H2</h2><h3 data-v-a056081e>H3</h3><h4 data-v-a056081e>H4</h4><h5 data-v-a056081e>H5</h5><h6 data-v-a056081e>H6</h6>
+<p data-v-a056081e>Alternatively, for H1 and H2, an underline-ish style:</p>
+
+<h1 data-v-a056081e>Alt-H1</h1>
+<h2 data-v-a056081e>Alt-H2</h2>
+<p data-v-a056081e>Hello <q title=\\"日本語のふきだし\\" data-v-a056081e>まーくだうん</q>!
+<b title=\\"ank\\" href=\\"ank\\" chk=\\"confirm\\" data-v-a056081e>間接参照</b></p>
+
+<hr data-v-a056081e><p data-v-a056081e>ようこそ。ここにはこの<b title=\\"ここ！\\" href=\\"/\\" chk=\\"confirm\\" data-v-a056081e>サイト</b>を楽しむためのルールや心構えを綴ってある。
+暖炉のそばが開いているから、腰を下ろして熟読しよう。楽しいゲームは全員が対等で、全員が読んで理解しているルールがあって成り立つんだ。
+
+ただし、やむを得ず、ルール違反をすることもあるだろうね。違反してしまった事実は覆らないけれど、ルールを破らざるをえなかった事情は、落ち着いて聞いてあげよう。</p>
+<hr data-v-a056081e>
+
+<p data-v-a056081e><em data-v-a056081e>em</em> <strong data-v-a056081e>strong</strong> <strong data-v-a056081e><em data-v-a056081e>strong em</em></strong> <em data-v-a056081e>**<em data-v-a056081e>strong strong***</em>
+<em data-v-a056081e>em</em> <strong data-v-a056081e>strong</strong> <strong data-v-a056081e><em data-v-a056081e>strong em</em></strong> <em data-v-a056081e>___strong strong____
+_em</em> <strong data-v-a056081e>strong</strong> *<strong data-v-a056081e>em strong</strong></em> <strong data-v-a056081e><strong data-v-a056081e>strong strong</strong></strong>
+<del data-v-a056081e>DEL</del></p>
+
+<blockquote data-v-a056081e><p data-v-a056081e>block-quote</p>
+<p data-v-a056081e>block-quote</p>
+<p data-v-a056081e>block-quote</p>
+<blockquote data-v-a056081e><p data-v-a056081e>block-quote</p>
+<p data-v-a056081e>block-quote</p>
+<blockquote data-v-a056081e><p data-v-a056081e>block-quote</p></blockquote></blockquote></blockquote>
+<ul data-v-a056081e><li class=\\"task-list-item\\" data-v-a056081e><input type=\\"checkbox\\" class=\\"task-list-item-checkbox\\" data-v-a056081e>task 1</li><li class=\\"task-list-item\\" data-v-a056081e><input type=\\"checkbox\\" checked=\\"checked\\" class=\\"task-list-item-checkbox\\" data-v-a056081e><p data-v-a056081e>task 2</p>
+</li><li data-v-a056081e><p data-v-a056081e>one</p></li><li data-v-a056081e>two
+<ol data-v-a056081e><li data-v-a056081e>three</li><li data-v-a056081e>four</li><li data-v-a056081e>asterisk</li><li data-v-a056081e>minus</li><li data-v-a056081e>plus
+
+</li></ol></li></ul><p data-v-a056081e>Colons can be used to align columns.</p>
+
+<table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th data-v-a056081e>Tables</th><th class=\\"c\\" data-v-a056081e>Are</th><th class=\\"r\\" data-v-a056081e>Cool</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td data-v-a056081e>col 3 is</td><td class=\\"c\\" data-v-a056081e>right-aligned</td><td class=\\"r\\" data-v-a056081e>$1600</td></tr><tr data-v-a056081e><td data-v-a056081e>col 2 is</td><td class=\\"c\\" data-v-a056081e>centered</td><td class=\\"r\\" data-v-a056081e>$12</td></tr><tr data-v-a056081e><td data-v-a056081e>zebra stripes</td><td class=\\"c\\" data-v-a056081e>are neat</td><td class=\\"r\\" data-v-a056081e>$1</td></tr></tbody></table>
+
+<p data-v-a056081e><b title=\\"http
+www.youtube.com\\" href=\\"http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE\\" chk=\\"confirm\\" data-v-a056081e><img src=\\"https://s3-ap-northeast-1.amazonaws.com/giji-assets/images/portrate/c59.jpg\\" alt=\\"IMAGE ALT TEXT HERE\\" data-v-a056081e></b></p>
+
+<p data-v-a056081e>There must be at least 3 dashes separating each header cell.
+The outer pipes (|) are optional, and you don't need to make the
+raw Markdown line up prettily. You can also use inline Markdown.</p>
+
+<blockquote data-v-a056081e><p data-v-a056081e> &lt;dl&gt;
+   &lt;dt&gt;Definition list&lt;/dt&gt;
+   &lt;dd&gt;Is something people use sometimes.&lt;/dd&gt;
+
+</p><p data-v-a056081e>   &lt;dt&gt;Markdown in HTML&lt;/dt&gt;
+   &lt;dd&gt;Does <em data-v-a056081e>not</em> work <strong data-v-a056081e>very</strong> well. Use HTML &lt;em&gt;tags&lt;/em&gt;.&lt;/dd&gt;
+ &lt;/dl&gt;</p></blockquote>
+<table data-v-a056081e><thead data-v-a056081e><tr data-v-a056081e><th class=\\"r\\" data-v-a056081e>Markdown</th><th class=\\"r\\" data-v-a056081e>Less</th><th class=\\"r\\" data-v-a056081e>Pretty</th></tr></thead><tbody data-v-a056081e><tr data-v-a056081e><td class=\\"r\\" data-v-a056081e><em data-v-a056081e>Still</em></td><td class=\\"r\\" data-v-a056081e><code data-v-a056081e>renders</code></td><td class=\\"r\\" data-v-a056081e><strong data-v-a056081e>nicely</strong></td></tr><tr data-v-a056081e><td class=\\"r\\" data-v-a056081e>---</td><td class=\\"r\\" data-v-a056081e>--</td><td class=\\"r\\" data-v-a056081e>...</td></tr><tr data-v-a056081e><td class=\\"r\\" data-v-a056081e>1</td><td class=\\"r\\" data-v-a056081e>2</td><td class=\\"r\\" data-v-a056081e>3</td></tr></tbody></table>
+
+<pre data-v-a056081e><code data-v-a056081e>indent 4 means 
+pre has code block
+
+</code></pre><pre data-v-a056081e><code class=\\"lang-js\\" data-v-a056081e>here is pre has code.
+it shows white-space: pre</code></pre>
+<p data-v-a056081e><code data-v-a056081e>code</code> <code data-v-a056081e>code</code></p>
+<pre data-v-a056081e><code class=\\"lang-css\\" data-v-a056081e>here is pre has code.
+it shows white-space: pre</code></pre></article>"
+`;
+
 exports[`./__tests__/giji/svg.md snapshot 1`] = `
 "<article data-server-rendered=\\"true\\" data-v-a056081e><h1 data-v-a056081e>header1</h1>
-<article data-v-42a55e88 data-v-a056081e><svg viewBox=\\"0 0 -Infinity -Infinity\\" style=\\"max-width:100%;width:-Infinitypx;\\" data-v-42a55e88><marker id=\\"svg-marker-circle\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><circle cx=\\"5\\" cy=\\"5\\" r=\\"4\\" data-v-42a55e88></circle></marker><marker id=\\"svg-marker-arrow-start\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"path\\" data-v-42a55e88></path></marker><marker id=\\"svg-marker-arrow-end\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"path\\" data-v-42a55e88></path></marker><marker id=\\"svg-marker-cross\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"0\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M0,0 L10,10 M0,10 L10,0 z\\" class=\\"path\\" data-v-42a55e88></path></marker><g data-v-42a55e88></g><g class=\\"edgePath\\" data-v-42a55e88></g></svg><!----></article></article>"
+<article data-v-42a55e88 data-v-a056081e><svg viewBox=\\"0 0 341 186\\" style=\\"max-width:100%;width:341px;\\" data-v-42a55e88><marker id=\\"svg-marker-circle\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><circle cx=\\"5\\" cy=\\"5\\" r=\\"4\\" data-v-42a55e88></circle></marker><marker id=\\"svg-marker-arrow-start\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"path\\" data-v-42a55e88></path></marker><marker id=\\"svg-marker-arrow-end\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"path\\" data-v-42a55e88></path></marker><marker id=\\"svg-marker-cross\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"0\\" class=\\"edgePath\\" data-v-42a55e88><path d=\\"M0,0 L10,10 M0,10 L10,0 z\\" class=\\"path\\" data-v-42a55e88></path></marker><g data-v-42a55e88><rect rx=\\"10\\" ry=\\"10\\" x=\\"228\\" y=\\"3\\" width=\\"100\\" height=\\"100\\" data-v-42a55e88></rect><rect rx=\\"10\\" ry=\\"10\\" x=\\"3\\" y=\\"3\\" width=\\"100\\" height=\\"100\\" data-v-42a55e88></rect></g><g class=\\"edgePath\\" data-v-42a55e88><path fill=\\"none\\" minlen=\\"1\\" weight=\\"0\\" label=\\"ルーカス\\" labelpos=\\"c\\" width=\\"120\\" height=\\"30\\" rx=\\"5\\" ry=\\"5\\" x=\\"278\\" y=\\"123\\" d=\\"M317.4736842105263,103L328,116.33333333333334L328,119.66666666666667L278,123L228,119.66666666666667L228,116.33333333333334L238.5263157894737,103\\" class=\\"path hide\\" data-v-42a55e88></path><path fill=\\"none\\" minlen=\\"1\\" weight=\\"0\\" label=\\"グロリア\\" labelpos=\\"c\\" width=\\"120\\" height=\\"30\\" rx=\\"5\\" ry=\\"5\\" x=\\"53\\" y=\\"123\\" d=\\"M92.4736842105263,103L103,116.33333333333334L103,119.66666666666667L53,123L3,119.66666666666667L3,116.33333333333334L13.526315789473692,103\\" class=\\"path hide\\" data-v-42a55e88></path><path fill=\\"none\\" marker-start=\\"url(#svg-marker-circle)\\" marker-end=\\"url(#svg-marker-circle)\\" minlen=\\"1\\" weight=\\"2\\" label=\\"   \\" labelpos=\\"c\\" width=\\"95\\" height=\\"30\\" rx=\\"5\\" ry=\\"5\\" x=\\"165.5\\" y=\\"53\\" d=\\"M228,53L165.5,53L103,53\\" class=\\"path solid\\" data-v-42a55e88></path><rect minlen=\\"1\\" weight=\\"0\\" label=\\"ルーカス\\" labelpos=\\"c\\" width=\\"100\\" height=\\"30\\" rx=\\"5\\" ry=\\"5\\" x=\\"228\\" y=\\"102\\" class=\\"path hide\\" data-v-42a55e88></rect><rect minlen=\\"1\\" weight=\\"0\\" label=\\"グロリア\\" labelpos=\\"c\\" width=\\"100\\" height=\\"30\\" rx=\\"5\\" ry=\\"5\\" x=\\"3\\" y=\\"102\\" class=\\"path hide\\" data-v-42a55e88></rect><text minlen=\\"1\\" weight=\\"0\\" label=\\"ルーカス\\" labelpos=\\"c\\" width=\\"120\\" height=\\"30\\" rx=\\"5\\" ry=\\"5\\" x=\\"278\\" y=\\"123\\" class=\\"messageText hide\\" data-v-42a55e88>ルーカス</text><text minlen=\\"1\\" weight=\\"0\\" label=\\"グロリア\\" labelpos=\\"c\\" width=\\"120\\" height=\\"30\\" rx=\\"5\\" ry=\\"5\\" x=\\"53\\" y=\\"123\\" class=\\"messageText hide\\" data-v-42a55e88>グロリア</text><text marker-start=\\"url(#svg-marker-circle)\\" marker-end=\\"url(#svg-marker-circle)\\" minlen=\\"1\\" weight=\\"2\\" label=\\"   \\" labelpos=\\"c\\" width=\\"95\\" height=\\"30\\" rx=\\"5\\" ry=\\"5\\" x=\\"165.5\\" y=\\"53\\" class=\\"messageText solid\\" data-v-42a55e88>   </text></g></svg><!----></article></article>"
 `;
 
 exports[`./__tests__/new/autolink_lines.md snapshot 1`] = `

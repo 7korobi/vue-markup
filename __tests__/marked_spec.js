@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -811,7 +811,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42a55e88_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42a55e88_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(15);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -946,35 +946,9 @@ module.exports = require("dagre");
 "use strict";
 
 
-var parse, regexp_join, syntax;
+var parse, syntax;
 
-regexp_join = function (regex, ...names) {
-  var flags, i, key, len, name, source, val;
-  ({ flags, source } = regex);
-  for (i = 0, len = names.length; i < len; i++) {
-    name = names[i];
-    key = new RegExp(name, 'g');
-    val = syntax[name];
-    val = val.source || val;
-    source = source.replace(key, val);
-  }
-  return new RegExp(source, flags);
-};
-
-syntax = {
-  edges: /^( *)((_node_)?(?: *_arrow_ *_node_)+) *(?:_comment_)?(?:_eol_)/,
-  nodes: /^( *)((?:_node_| )+)(?:_comment_)?(?:_eol_)/,
-  newline: /^ *\n|^ +$/,
-  error: /^[^\n]*\n|[^\n]+$/,
-  _node_: /[^\s:]+/,
-  _arrow_: /(<|X|x|O|o)?(-+|=+|\.+)(>|X|x|O|o)?/,
-  _comment_: /: *(.*) */,
-  _eol_: / *(?:\n|$)/
-};
-
-syntax.nodes = regexp_join(syntax.nodes, '_node_', '_arrow_', '_comment_', '_eol_');
-
-syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol_');
+({ syntax } = __webpack_require__(14));
 
 parse = function (render, src) {
   var $, _, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, pl, results, start, tokens, v, vl, vm, w, wl, wm;
@@ -1029,7 +1003,9 @@ parse = function (render, src) {
           [vm, v, vl] = render.dic(v);
           [wm, w, wl] = render.dic(w);
           render[vm](v, vl);
+          render.edge(v, v, "", "", "", vl);
           render[wm](w, wl);
+          render.edge(w, w, "", "", "", wl);
           render.edge(v, w, line, start, end, label);
         }
       }
@@ -1073,6 +1049,45 @@ module.exports = parse;
 
 /***/ }),
 /* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var regexp_join, syntax;
+
+regexp_join = function (regex, ...names) {
+  var flags, i, key, len, name, source, val;
+  ({ flags, source } = regex);
+  for (i = 0, len = names.length; i < len; i++) {
+    name = names[i];
+    key = new RegExp(name, 'g');
+    val = syntax[name];
+    val = val.source || val;
+    source = source.replace(key, val);
+  }
+  return new RegExp(source, flags);
+};
+
+syntax = {
+  edges: /^( *)((_node_)?(?: *_arrow_ *_node_)+) *(?:_comment_)?(?:_eol_)/,
+  nodes: /^( *)((?:_node_| )+)(?:_comment_)?(?:_eol_)/,
+  newline: /^ *\n|^ +$/,
+  error: /^[^\n]*\n|[^\n]+$/,
+  _node_: /[^\s:]+/,
+  _arrow_: /(<|X|x|O|o)?(-+|=+|\.+)(>|X|x|O|o)?/,
+  _comment_: /: *(.*) */,
+  _eol_: / *(?:\n|$)/
+};
+
+syntax.nodes = regexp_join(syntax.nodes, '_node_', '_arrow_', '_comment_', '_eol_');
+
+syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol_');
+
+module.exports = { syntax };
+
+/***/ }),
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1244,12 +1259,12 @@ if (false) {
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Dagre, MarkedRenderer, itself, marked, options, vm;
 
-marked = __webpack_require__(21);
+marked = __webpack_require__(22);
 
 Dagre = __webpack_require__(8).default;
 
@@ -1269,7 +1284,11 @@ MarkedRenderer = (function() {
           return m('pre', {}, [m('code', {}, code)]);
         case 'svg':
         case 'dagre':
-          return m(Dagre, {}, code);
+          return m(Dagre, {
+            attrs: {
+              value: code
+            }
+          });
         default:
           lang = langPrefix + lang;
           return m('pre', {}, [
@@ -1566,8 +1585,8 @@ module.exports.default = vm;
 
 
 /***/ }),
-/* 16 */,
-/* 17 */
+/* 17 */,
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1583,7 +1602,7 @@ glob = __webpack_require__(6);
 
 fs = __webpack_require__(7);
 
-Marked = __webpack_require__(18);
+Marked = __webpack_require__(19);
 
 Object.assign(Marked.options, {
   silent: false,
@@ -1618,18 +1637,18 @@ glob.sync("./__tests__/**/*.md").map(function (path) {
 });
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(19)
+  __webpack_require__(20)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -1675,13 +1694,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(20);
+var content = __webpack_require__(21);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -1701,7 +1720,7 @@ if(false) {
 }
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(true);
@@ -1715,7 +1734,7 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1733,7 +1752,7 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
  */
 var InlineLexer, Lexer, Parser, baseUrls, block, escape, inline, marked, noop, originIndependentUrl, resolveUrl, splitCells, unescape;
 
-({ block, inline, noop } = __webpack_require__(22));
+({ block, inline, noop } = __webpack_require__(23));
 
 escape = function (html, is_encode) {
   var r_encode;
@@ -2624,7 +2643,7 @@ marked.parse = marked;
 module.exports = marked;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

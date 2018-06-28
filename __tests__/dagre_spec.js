@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -811,7 +811,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42a55e88_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42a55e88_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(15);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -946,35 +946,9 @@ module.exports = require("dagre");
 "use strict";
 
 
-var parse, regexp_join, syntax;
+var parse, syntax;
 
-regexp_join = function (regex, ...names) {
-  var flags, i, key, len, name, source, val;
-  ({ flags, source } = regex);
-  for (i = 0, len = names.length; i < len; i++) {
-    name = names[i];
-    key = new RegExp(name, 'g');
-    val = syntax[name];
-    val = val.source || val;
-    source = source.replace(key, val);
-  }
-  return new RegExp(source, flags);
-};
-
-syntax = {
-  edges: /^( *)((_node_)?(?: *_arrow_ *_node_)+) *(?:_comment_)?(?:_eol_)/,
-  nodes: /^( *)((?:_node_| )+)(?:_comment_)?(?:_eol_)/,
-  newline: /^ *\n|^ +$/,
-  error: /^[^\n]*\n|[^\n]+$/,
-  _node_: /[^\s:]+/,
-  _arrow_: /(<|X|x|O|o)?(-+|=+|\.+)(>|X|x|O|o)?/,
-  _comment_: /: *(.*) */,
-  _eol_: / *(?:\n|$)/
-};
-
-syntax.nodes = regexp_join(syntax.nodes, '_node_', '_arrow_', '_comment_', '_eol_');
-
-syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol_');
+({ syntax } = __webpack_require__(14));
 
 parse = function (render, src) {
   var $, _, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, pl, results, start, tokens, v, vl, vm, w, wl, wm;
@@ -1029,7 +1003,9 @@ parse = function (render, src) {
           [vm, v, vl] = render.dic(v);
           [wm, w, wl] = render.dic(w);
           render[vm](v, vl);
+          render.edge(v, v, "", "", "", vl);
           render[wm](w, wl);
+          render.edge(w, w, "", "", "", wl);
           render.edge(v, w, line, start, end, label);
         }
       }
@@ -1073,6 +1049,45 @@ module.exports = parse;
 
 /***/ }),
 /* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var regexp_join, syntax;
+
+regexp_join = function (regex, ...names) {
+  var flags, i, key, len, name, source, val;
+  ({ flags, source } = regex);
+  for (i = 0, len = names.length; i < len; i++) {
+    name = names[i];
+    key = new RegExp(name, 'g');
+    val = syntax[name];
+    val = val.source || val;
+    source = source.replace(key, val);
+  }
+  return new RegExp(source, flags);
+};
+
+syntax = {
+  edges: /^( *)((_node_)?(?: *_arrow_ *_node_)+) *(?:_comment_)?(?:_eol_)/,
+  nodes: /^( *)((?:_node_| )+)(?:_comment_)?(?:_eol_)/,
+  newline: /^ *\n|^ +$/,
+  error: /^[^\n]*\n|[^\n]+$/,
+  _node_: /[^\s:]+/,
+  _arrow_: /(<|X|x|O|o)?(-+|=+|\.+)(>|X|x|O|o)?/,
+  _comment_: /: *(.*) */,
+  _eol_: / *(?:\n|$)/
+};
+
+syntax.nodes = regexp_join(syntax.nodes, '_node_', '_arrow_', '_comment_', '_eol_');
+
+syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol_');
+
+module.exports = { syntax };
+
+/***/ }),
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1244,8 +1259,8 @@ if (false) {
 }
 
 /***/ }),
-/* 15 */,
-/* 16 */
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
