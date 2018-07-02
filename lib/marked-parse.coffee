@@ -375,14 +375,17 @@ class InlineLexer
       else
         @rules = inline.gfm
 
-    if ! @options.cite
-      @rules.cite = noop
+    @rules.cite =
+      if @options.cite && @options.context
+        @rules._cite
+      else
+        noop
 
-    if ! @options.context
-      @rules.cite = noop
-
-    if ! @options.em
-      @rules.em = noop
+    @rules.em =
+      if @options.em
+        @rules._em
+      else
+        noop
 
   output: (src)->
     out = []
@@ -404,29 +407,12 @@ class InlineLexer
         text = cap[0]
 
         cite1 = cap[1][1...].split("-")
-        size1 = cite1.length
-        chat_idx1 = cite1.pop()
-        phase_idx1 = cite1.pop()
-        part_idx = cite1.pop()
-        cite1 = [ undefined, undefined, part_idx, phase_idx1, chat_idx1]
-
         if cap[2]
           cite2 = cap[2][1...].split("-")
-          size2 = cite2.length
-          chat_idx2 = cite2.pop()
-          phase_idx2 = cite2.pop()
-          phase_idx2 ?= phase_idx1
-          cite2 = [ undefined, undefined, part_idx, phase_idx2, chat_idx2]
 
-        if 2 <= size1 <= 3
-          if ! cite2 || 1 <= size2 <= 2
-            out.push @renderer.cite text, cite1, cite2
-            out.plain += text
-            continue
-        out.push @renderer.text text
+        out.push @renderer.cite text, ...@cite_range cite1, cite2
         out.plain += text
         continue
-        
 
       # autolink
       if cap = @rules.autolink.exec src
@@ -679,6 +665,36 @@ class InlineLexer
     # ellipses
     .replace /\.{3}/g, '\u2026'
 
+  cite_range: ( cite1, cite2 )->
+    { part_id } = @options.context
+    return [] unless part_id
+    return [] unless cite1
+
+    size1 = cite1.length
+    return [] unless 2 <= size1 <= 3
+
+    [a, b, c] = part_id.split("-")
+    chat_idx1 = cite1.pop()
+    phase_idx1 = cite1.pop()
+    part_idx = cite1.pop() or c
+    cite1 = [a, b, part_idx, phase_idx1, chat_idx1].join("-")
+    return [] unless @renderer.cite_exist cite1
+
+
+    return [ cite1 ] unless cite2
+
+    size2 = cite2.length
+    return [ cite1 ] unless  1 <= size2 <= 2
+
+    chat_idx2 = cite2.pop()
+    phase_idx2 = cite2.pop()
+    phase_idx2 ?= phase_idx1
+    cite2 = [a, b, part_idx, phase_idx2, chat_idx2].join("-")
+    return [ cite1 ] unless @renderer.cite_exist cite2
+
+    return [ cite1, cite2 ]
+
+
 # Parsing & Compiling
 class Parser
   @parse = (src, options, renderer)->
@@ -758,7 +774,7 @@ class Parser
         body = []
         for row, i in @token.cells
           body.push tr false, row
-        @renderer.table(header, body, top)
+        @renderer.table(header, body, @token.top)
 
       when 'container_start'
         { lang } = @token

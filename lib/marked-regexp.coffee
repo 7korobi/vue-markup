@@ -128,7 +128,7 @@ block.tables = Object.assign {}, block.gfm,
 # Inline-Level Grammar
 ###
 inline =
-  cite: /^((?:-\w+){2,})(?:\s*\.\.\s*((?:-\w+){1,}))?(?![-.])/
+  _cite: /^((?:-\w+){2,})(?:\s*\.\.\s*((?:-\w+){1,}))?(?![-.])/
   escape: /^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/
   autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/
   url: noop
@@ -163,7 +163,7 @@ inline =
     )+codecode(?!code)
   ///
 
-  em: ///
+  _em: ///
      ^_([^\s][\s\S]*?[^\s_])_(?!_)
     |^_([^\s_][\s\S]*?[^\s])_(?!_)
     |^\*([^\s][\s\S]*?[^\s*])\*(?!\*)

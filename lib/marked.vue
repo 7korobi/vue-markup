@@ -198,18 +198,16 @@ class MarkedRenderer
     m 'sub', {}, text
 
   cite: (text, cite, end)->
-    { m, context } = @options
-    if context?.part_id?
-      part_ary = context.part_id.split("-")
-      cite = _.merge [], part_ary, cite
-      if end
-        end  = _.merge [], part_ary, end
-    cite = cite.join("-")
-    if end
-      end  = end.join("-")
-    m 'q',
-      attrs: { cite, end }
-    , text
+    { m } = @options
+    if cite
+      m 'q',
+        attrs: { cite, end }
+      , text
+    else
+      text
+
+  cite_exist: (cite)->
+    true
 
 options =
   renderer: new MarkedRenderer

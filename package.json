@@ -2,7 +2,7 @@
   "name": "vue-markup",
   "description": "markdown + support components for Vue.js",
   "author": "7korobi",
-  "version": "0.0.14",
+  "version": "0.0.19",
   "main": "./lib/index.coffee",
   "preferGlobal": true,
   "repository": "git@github.com:7korobi/vue-markup.git",

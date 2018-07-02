@@ -1535,22 +1535,19 @@ MarkedRenderer = (function() {
     }
 
     cite(text, cite, end) {
-      var context, m, part_ary;
-      ({m, context} = this.options);
-      if ((context != null ? context.part_id : void 0) != null) {
-        part_ary = context.part_id.split("-");
-        cite = _.merge([], part_ary, cite);
-        if (end) {
-          end = _.merge([], part_ary, end);
-        }
+      var m;
+      ({m} = this.options);
+      if (cite) {
+        return m('q', {
+          attrs: {cite, end}
+        }, text);
+      } else {
+        return text;
       }
-      cite = cite.join("-");
-      if (end) {
-        end = end.join("-");
-      }
-      return m('q', {
-        attrs: {cite, end}
-      }, text);
+    }
+
+    cite_exist(cite) {
+      return true;
     }
 
   };
@@ -2193,19 +2190,12 @@ InlineLexer = function () {
           this.rules = inline.gfm;
         }
       }
-      if (!this.options.cite) {
-        this.rules.cite = noop;
-      }
-      if (!this.options.context) {
-        this.rules.cite = noop;
-      }
-      if (!this.options.em) {
-        this.rules.em = noop;
-      }
+      this.rules.cite = this.options.cite && this.options.context ? this.rules._cite : noop;
+      this.rules.em = this.options.em ? this.rules._em : noop;
     }
 
     output(src) {
-      var cap, chat_idx1, chat_idx2, cite1, cite2, href, j, len, link, mark, method, num, o, out, part_idx, phase_idx1, phase_idx2, ref, ref1, s, size1, size2, text, title;
+      var cap, cite1, cite2, href, j, len, link, mark, method, num, o, out, ref, ref1, s, text, title;
       out = [];
       out.plain = "";
       while (src) {
@@ -2224,33 +2214,13 @@ InlineLexer = function () {
           src = src.slice(cap[0].length);
           text = cap[0];
           cite1 = cap[1].slice(1).split("-");
-          size1 = cite1.length;
-          chat_idx1 = cite1.pop();
-          phase_idx1 = cite1.pop();
-          part_idx = cite1.pop();
-          cite1 = [void 0, void 0, part_idx, phase_idx1, chat_idx1];
           if (cap[2]) {
             cite2 = cap[2].slice(1).split("-");
-            size2 = cite2.length;
-            chat_idx2 = cite2.pop();
-            phase_idx2 = cite2.pop();
-            if (phase_idx2 == null) {
-              phase_idx2 = phase_idx1;
-            }
-            cite2 = [void 0, void 0, part_idx, phase_idx2, chat_idx2];
           }
-          if (2 <= size1 && size1 <= 3) {
-            if (!cite2 || 1 <= size2 && size2 <= 2) {
-              out.push(this.renderer.cite(text, cite1, cite2));
-              out.plain += text;
-              continue;
-            }
-          }
-          out.push(this.renderer.text(text));
+          out.push(this.renderer.cite(text, ...this.cite_range(cite1, cite2)));
           out.plain += text;
           continue;
         }
-
         // autolink
         if (cap = this.rules.autolink.exec(src)) {
           // console.log 'autolink', cap
@@ -2505,6 +2475,46 @@ InlineLexer = function () {
       return text.replace(/\+\-/g, '\u00B1').replace(/\+\-/g, '\u00B1').replace(/---/g, '\u2014').replace(/--/g, '\u2013').replace(/(^|[-\u2014\/(\[{"\s])'/g, '$1\u2018').replace(/'/g, '\u2019').replace(/(^|[-\u2014\/(\[{\u2018\s])"/g, '$1\u201c').replace(/"/g, '\u201d').replace(/\.{3}/g, '\u2026');
     }
 
+    cite_range(cite1, cite2) {
+      var a, b, c, chat_idx1, chat_idx2, part_id, part_idx, phase_idx1, phase_idx2, size1, size2;
+      ({ part_id } = this.options.context);
+      if (!part_id) {
+        return [];
+      }
+      if (!cite1) {
+        return [];
+      }
+      size1 = cite1.length;
+      if (!(2 <= size1 && size1 <= 3)) {
+        return [];
+      }
+      [a, b, c] = part_id.split("-");
+      chat_idx1 = cite1.pop();
+      phase_idx1 = cite1.pop();
+      part_idx = cite1.pop() || c;
+      cite1 = [a, b, part_idx, phase_idx1, chat_idx1].join("-");
+      if (!this.renderer.cite_exist(cite1)) {
+        return [];
+      }
+      if (!cite2) {
+        return [cite1];
+      }
+      size2 = cite2.length;
+      if (!(1 <= size2 && size2 <= 2)) {
+        return [cite1];
+      }
+      chat_idx2 = cite2.pop();
+      phase_idx2 = cite2.pop();
+      if (phase_idx2 == null) {
+        phase_idx2 = phase_idx1;
+      }
+      cite2 = [a, b, part_idx, phase_idx2, chat_idx2].join("-");
+      if (!this.renderer.cite_exist(cite2)) {
+        return [cite1];
+      }
+      return [cite1, cite2];
+    }
+
   };
 
   /*
@@ -2611,7 +2621,7 @@ Parser = class Parser {
           row = ref[i];
           body.push(tr(false, row));
         }
-        return this.renderer.table(header, body, top);
+        return this.renderer.table(header, body, this.token.top);
       case 'container_start':
         ({ lang } = this.token);
         body = [];
@@ -2820,7 +2830,7 @@ block.tables = Object.assign({}, block.gfm, {
 });
 
 inline = {
-  cite: /^((?:-\w+){2,})(?:\s*\.\.\s*((?:-\w+){1,}))?(?![-.])/,
+  _cite: /^((?:-\w+){2,})(?:\s*\.\.\s*((?:-\w+){1,}))?(?![-.])/,
   escape: /^\\([!"#$%&'()*+,\-.\/:;<=>?@\[\]\\^_`{|}~])/,
   autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
   url: noop,
@@ -2829,7 +2839,7 @@ inline = {
   reflink: /^!?\[(label)\]\[(?!\s*\])((?:\\[\[\]]?|[^\[\]\\])+)\]/,
   nolink: /^!?\[(?!\s*\])((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\](?:\[\])?/,
   _strong: /^codecode(?:[^code]|[^code]code|code[^code])+codecode(?!code)/,
-  em: /^_([^\s][\s\S]*?[^\s_])_(?!_)|^_([^\s_][\s\S]*?[^\s])_(?!_)|^\*([^\s][\s\S]*?[^\s*])\*(?!\*)|^\*([^\s*][\s\S]*?[^\s])\*(?!\*)|^_([^\s_])_(?!_)|^\*([^\s*])\*(?!\*)/,
+  _em: /^_([^\s][\s\S]*?[^\s_])_(?!_)|^_([^\s_][\s\S]*?[^\s])_(?!_)|^\*([^\s][\s\S]*?[^\s*])\*(?!\*)|^\*([^\s*][\s\S]*?[^\s])\*(?!\*)|^_([^\s_])_(?!_)|^\*([^\s*])\*(?!\*)/,
   mdi: /^:(mdi-[^:]+):(?!:)/,
   code: /^(`+)\s*([\s\S]*?[^`]?)\s*\1(?!`)/,
   br: /^ {2,}\n(?!\s*$)/,
