@@ -226,7 +226,7 @@ options = {
 vm = {
   name: 'Dagre',
   options: options,
-  props: ["value"],
+  props: ["value", "context"],
   methods: {
     path_d: function(list) {
       return 'M' + list.map(function({x, y}) {
@@ -1281,10 +1281,14 @@ Dagre = __webpack_require__(8).default;
 glob.sync("./__tests__/**/*.dagre").map(function (path) {
   return describe(path, function () {
     return test('snapshot', function () {
-      var value, wrapper;
+      var context, value, wrapper;
       value = fs.readFileSync(path, 'utf8');
+      context = {
+        book_id: 'spec-1',
+        part_id: 'spec-1-1'
+      };
       wrapper = shallow(Dagre, {
-        propsData: { value }
+        propsData: { value, context }
       });
       return createRenderer().renderToString(wrapper.vm, function (err, str) {
         if (err) {

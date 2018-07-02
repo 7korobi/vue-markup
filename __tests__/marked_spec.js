@@ -226,7 +226,7 @@ options = {
 vm = {
   name: 'Dagre',
   options: options,
-  props: ["value"],
+  props: ["value", "context"],
   methods: {
     path_d: function(list) {
       return 'M' + list.map(function({x, y}) {
@@ -1262,9 +1262,11 @@ if (false) {
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Dagre, MarkedRenderer, itself, marked, options, vm;
+var Dagre, MarkedRenderer, _, itself, marked, options, vm;
 
-marked = __webpack_require__(22);
+_ = __webpack_require__(22);
+
+marked = __webpack_require__(23);
 
 Dagre = __webpack_require__(8).default;
 
@@ -1532,6 +1534,25 @@ MarkedRenderer = (function() {
       return m('sub', {}, text);
     }
 
+    cite(text, cite, end) {
+      var context, m, part_ary;
+      ({m, context} = this.options);
+      if ((context != null ? context.part_id : void 0) != null) {
+        part_ary = context.part_id.split("-");
+        cite = _.merge([], part_ary, cite);
+        if (end) {
+          end = _.merge([], part_ary, end);
+        }
+      }
+      cite = cite.join("-");
+      if (end) {
+        end = end.join("-");
+      }
+      return m('q', {
+        attrs: {cite, end}
+      }, text);
+    }
+
   };
 
   MarkedRenderer.prototype.paragraph = itself;
@@ -1549,6 +1570,7 @@ options = {
   tag: 'article',
   langPrefix: 'lang-',
   ruby: true,
+  cite: true,
   gfm: true,
   tables: true,
   indentCode: false,
@@ -1565,12 +1587,13 @@ options = {
 vm = {
   name: "Marked",
   options: options,
-  props: ["value"],
+  props: ["value", "context"],
   render: function(m) {
-    var value;
-    ({value} = this);
+    var context, value;
+    ({value, context} = this);
     if (value) {
       options.m = m;
+      options.context = context;
       options.renderer.options = options;
       return marked(value, options);
     } else {
@@ -1621,10 +1644,14 @@ Object.assign(Marked.options.renderer, {
 glob.sync("./__tests__/**/*.md").map(function (path) {
   return describe(path, function () {
     return test('snapshot', function () {
-      var value, wrapper;
+      var context, value, wrapper;
       value = fs.readFileSync(path, 'utf8');
+      context = {
+        book_id: 'spec-1',
+        part_id: 'spec-1-1'
+      };
       wrapper = shallow(Marked.default, {
-        propsData: { value }
+        propsData: { value, context }
       });
       return createRenderer().renderToString(wrapper.vm, function (err, str) {
         if (err) {
@@ -1735,6 +1762,12 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
 
 /***/ }),
 /* 22 */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash");
+
+/***/ }),
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1752,7 +1785,7 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
  */
 var InlineLexer, Lexer, Parser, baseUrls, block, escape, inline, marked, noop, originIndependentUrl, resolveUrl, splitCells, unescape;
 
-({ block, inline, noop } = __webpack_require__(23));
+({ block, inline, noop } = __webpack_require__(24));
 
 escape = function (html, is_encode) {
   var r_encode;
@@ -2160,13 +2193,19 @@ InlineLexer = function () {
           this.rules = inline.gfm;
         }
       }
+      if (!this.options.cite) {
+        this.rules.cite = noop;
+      }
+      if (!this.options.context) {
+        this.rules.cite = noop;
+      }
       if (!this.options.em) {
         this.rules.em = noop;
       }
     }
 
     output(src) {
-      var cap, href, j, len, link, mark, method, num, o, out, ref, ref1, s, text, title;
+      var cap, chat_idx1, chat_idx2, cite1, cite2, href, j, len, link, mark, method, num, o, out, part_idx, phase_idx1, phase_idx2, ref, ref1, s, size1, size2, text, title;
       out = [];
       out.plain = "";
       while (src) {
@@ -2179,6 +2218,39 @@ InlineLexer = function () {
           out.plain += text;
           continue;
         }
+        // cite
+        if (cap = this.rules.cite.exec(src)) {
+          // console.log 'cite', cap
+          src = src.slice(cap[0].length);
+          text = cap[0];
+          cite1 = cap[1].slice(1).split("-");
+          size1 = cite1.length;
+          chat_idx1 = cite1.pop();
+          phase_idx1 = cite1.pop();
+          part_idx = cite1.pop();
+          cite1 = [void 0, void 0, part_idx, phase_idx1, chat_idx1];
+          if (cap[2]) {
+            cite2 = cap[2].slice(1).split("-");
+            size2 = cite2.length;
+            chat_idx2 = cite2.pop();
+            phase_idx2 = cite2.pop();
+            if (phase_idx2 == null) {
+              phase_idx2 = phase_idx1;
+            }
+            cite2 = [void 0, void 0, part_idx, phase_idx2, chat_idx2];
+          }
+          if (2 <= size1 && size1 <= 3) {
+            if (!cite2 || 1 <= size2 && size2 <= 2) {
+              out.push(this.renderer.cite(text, cite1, cite2));
+              out.plain += text;
+              continue;
+            }
+          }
+          out.push(this.renderer.text(text));
+          out.plain += text;
+          continue;
+        }
+
         // autolink
         if (cap = this.rules.autolink.exec(src)) {
           // console.log 'autolink', cap
@@ -2643,7 +2715,7 @@ marked.parse = marked;
 module.exports = marked;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2748,6 +2820,7 @@ block.tables = Object.assign({}, block.gfm, {
 });
 
 inline = {
+  cite: /^((?:-\w+){2,})(?:\s*\.\.\s*((?:-\w+){1,}))?(?![-.])/,
   escape: /^\\([!"#$%&'()*+,\-.\/:;<=>?@\[\]\\^_`{|}~])/,
   autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
   url: noop,

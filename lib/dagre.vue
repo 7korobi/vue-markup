@@ -154,7 +154,7 @@ vm =
   name: 'Dagre'
   options: options
 
-  props: ["value"]
+  props: ["value", "context"]
   methods:
     path_d: (list)->
       'M' + list

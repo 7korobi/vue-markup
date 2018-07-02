@@ -375,6 +375,12 @@ class InlineLexer
       else
         @rules = inline.gfm
 
+    if ! @options.cite
+      @rules.cite = noop
+
+    if ! @options.context
+      @rules.cite = noop
+
     if ! @options.em
       @rules.em = noop
 
@@ -390,6 +396,37 @@ class InlineLexer
         out.push text
         out.plain += text
         continue
+
+      # cite
+      if cap = @rules.cite.exec src
+        # console.log 'cite', cap
+        src = src[cap[0].length ..]
+        text = cap[0]
+
+        cite1 = cap[1][1...].split("-")
+        size1 = cite1.length
+        chat_idx1 = cite1.pop()
+        phase_idx1 = cite1.pop()
+        part_idx = cite1.pop()
+        cite1 = [ undefined, undefined, part_idx, phase_idx1, chat_idx1]
+
+        if cap[2]
+          cite2 = cap[2][1...].split("-")
+          size2 = cite2.length
+          chat_idx2 = cite2.pop()
+          phase_idx2 = cite2.pop()
+          phase_idx2 ?= phase_idx1
+          cite2 = [ undefined, undefined, part_idx, phase_idx2, chat_idx2]
+
+        if 2 <= size1 <= 3
+          if ! cite2 || 1 <= size2 <= 2
+            out.push @renderer.cite text, cite1, cite2
+            out.plain += text
+            continue
+        out.push @renderer.text text
+        out.plain += text
+        continue
+        
 
       # autolink
       if cap = @rules.autolink.exec src

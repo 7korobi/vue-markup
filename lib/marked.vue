@@ -1,6 +1,7 @@
 <style lang="stylus" scoped>
 </style>
 <script lang="coffee">
+_ = require 'lodash'
 marked = require './marked-parse'
 Dagre = require('./dagre.vue').default
 
@@ -196,11 +197,26 @@ class MarkedRenderer
     { m } = @options
     m 'sub', {}, text
 
+  cite: (text, cite, end)->
+    { m, context } = @options
+    if context?.part_id?
+      part_ary = context.part_id.split("-")
+      cite = _.merge [], part_ary, cite
+      if end
+        end  = _.merge [], part_ary, end
+    cite = cite.join("-")
+    if end
+      end  = end.join("-")
+    m 'q',
+      attrs: { cite, end }
+    , text
+
 options =
   renderer: new MarkedRenderer
   tag: 'article'
-  langPrefix: 'lang-'
+  langPrefix: 'lang-' 
   ruby: true
+  cite: true
   gfm: true
   tables: true
   indentCode: false
@@ -216,12 +232,13 @@ options =
 vm =
   name: "Marked"
   options: options
-  props: ["value"]
+  props: ["value", "context"]
 
   render: (m)->
-    { value } = @
+    { value, context } = @
     if value
       options.m = m
+      options.context = context
       options.renderer.options = options
       marked value, options
     else

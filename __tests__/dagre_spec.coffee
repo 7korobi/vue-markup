@@ -12,8 +12,11 @@ glob
   describe path, ->
     test 'snapshot', ->
       value = fs.readFileSync path, 'utf8'
+      context =
+        book_id: 'spec-1'
+        part_id: 'spec-1-1'
       wrapper = shallow Dagre,
-        propsData: { value }
+        propsData: { value, context }
       createRenderer().renderToString wrapper.vm, (err, str)->
         if err
           throw new Error(err)
