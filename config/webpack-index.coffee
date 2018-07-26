@@ -11,15 +11,15 @@ vue =
   loader: 'vue-loader'
 
 module.exports =
+  target: 'node' # Important
+  devtool: 'source-map'
   entry:
-    index:  './lib/index.coffee'
+    "lib/index.min":  './src/index.coffee'
   output:
-    path: path.join current, 'lib'
+    path: current
     filename: '[name].js' # Important
     libraryTarget: 'this' # Important
 
-  target: 'node' # Important
-  devtool: 'source-map'
   module:
     rules: [
       coffee

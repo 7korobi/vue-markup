@@ -21,7 +21,7 @@ article
     .error(v-for="err in graph.errors") {{ err }}
 </template>
 
-<style lang="stylus" scoped>
+<style lang="sass" scoped>
 
 .nodes-move:not(.nodes-leave-active)
   > rect
@@ -233,6 +233,5 @@ vm =
       dagre.layout g
       g
 
-module.exports = vm
-module.exports.default = vm
+export default vm
 </script>

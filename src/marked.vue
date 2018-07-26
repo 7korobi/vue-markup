@@ -1,4 +1,4 @@
-<style lang="stylus" scoped>
+<style lang="sass" scoped>
 </style>
 <script lang="coffee">
 _ = require 'lodash'
@@ -242,6 +242,5 @@ vm =
     else
       ''
 
-module.exports = vm
-module.exports.default = vm
+export default vm
 </script>

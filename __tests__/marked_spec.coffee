@@ -3,7 +3,8 @@
 glob = require 'glob'
 fs = require 'file-system'
 
-Marked = require '../lib/marked.vue'
+{ Marked } = require '../src/index'
+
 Object.assign Marked.options,
   silent: false
   indentCode: true
@@ -22,7 +23,7 @@ glob
       context =
         book_id: 'spec-1'
         part_id: 'spec-1-1'
-      wrapper = shallow Marked.default,
+      wrapper = shallow Marked,
         propsData: { value, context }
       createRenderer().renderToString wrapper.vm, (err, str)->
         if err

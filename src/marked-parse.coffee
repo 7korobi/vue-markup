@@ -92,6 +92,7 @@ class Lexer
     @tokens.notes = []
     @tokens.links = {}
     @tokens.abbrs = {}
+    @tokens.count = {}
     @rules = block.normal
 
     if @options.gfm
@@ -359,7 +360,7 @@ class InlineLexer
   @escapes: (text)->
     text?.replace(InlineLexer.rules._escapes, '$1') or text
 
-  constructor: ({ @notes, @links, @abbrs, @abbrs_reg }, options)->
+  constructor: ({ @count, @notes, @links, @abbrs, @abbrs_reg }, options)->
     @options = options
     @rules = inline.normal
     @renderer = @options.renderer
@@ -450,7 +451,9 @@ class InlineLexer
       if cap = @rules.strong.exec src
         # console.log 'strong', cap
         src = src[cap[0].length ..]
-        method = 
+        count = @count[cap[0][1]] ?= 0
+        ++@count[cap[0][1]]
+        method =
           switch cap[0][1]
             when '_', '*'
               'strong'
@@ -473,7 +476,7 @@ class InlineLexer
               # Mark (markdown preview enhanced extended syntax)
               'mark'
         text = @output cap[0][2...-2]
-        out.push @renderer[method] text
+        out.push @renderer[method] text, count
         out.plain += text.plain
         continue
 

@@ -60,307 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 25);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var DagreRenderer, dagre, init, marker, options, parse, vm;
-
-dagre = __webpack_require__(12);
-
-parse = __webpack_require__(13);
-
-marker = function(key) {
-  switch (key) {
-    case '<':
-    case '(':
-      return 'url(#svg-marker-arrow-start)';
-    case '>':
-    case ')':
-      return 'url(#svg-marker-arrow-end)';
-    case 'O':
-    case 'o':
-      return 'url(#svg-marker-circle)';
-    case 'X':
-    case 'x':
-      return 'url(#svg-marker-cross)';
-    default:
-      return null;
-  }
-};
-
-DagreRenderer = class DagreRenderer {
-  newline() {}
-
-  error(line) {
-    return this.graph.errors.push(line);
-  }
-
-  href(key) {
-    return key;
-  }
-
-  dic(v) {
-    return ['box', v, v];
-  }
-
-  is_edge(v, w) {
-    return this.graph.edge({v, w});
-  }
-
-  is_node(v) {
-    return this.graph.node(v);
-  }
-
-  edge(v, w, line, start, end, label) {
-    var edge_label_width, weight;
-    ({edge_label_width} = this.options.style);
-    weight = line.length;
-    start = marker(start);
-    end = marker(end);
-    line = (function() {
-      switch (line[0]) {
-        case '=':
-          return 'wide';
-        case '-':
-          return 'solid';
-        case '.':
-          return 'dotted';
-        default:
-          return 'hide';
-      }
-    })();
-    if (label == null) {
-      label = "   ";
-    }
-    return this.graph.setEdge(v, w, {
-      key: [v, w].join(),
-      "marker-start": start,
-      "marker-end": end,
-      minlen: 1,
-      weight: weight,
-      class: line,
-      label: label,
-      labelpos: 'c',
-      width: 25 * label.length + edge_label_width,
-      height: 30,
-      rx: 5,
-      ry: 5
-    });
-  }
-
-  box(v, label) {
-    var border_width;
-    ({border_width} = this.options.style);
-    return this.graph.setNode(v, {
-      label: label,
-      class: 'box',
-      width: 90 + border_width,
-      height: 90 + border_width,
-      rx: 10,
-      ry: 10
-    });
-  }
-
-  icon(v, label) {
-    var border_width;
-    ({border_width} = this.options.style);
-    return this.graph.setNode(v, {
-      label: label,
-      class: 'icon',
-      width: 90 + border_width,
-      height: 130 + border_width,
-      rx: 10,
-      ry: 10
-    });
-  }
-
-  cluster(v, w, label) {
-    this.graph.setNode(w, {
-      key: w,
-      label: label,
-      class: 'cluster'
-    });
-    return this.graph.setParent(v, w);
-  }
-
-};
-
-init = function(options) {
-  var g;
-  g = new dagre.graphlib.Graph({
-    directed: true,
-    compound: true,
-    multigraph: false
-  });
-  g.setGraph(options.graph);
-  g.errors = [];
-  options.renderer.options = options;
-  options.renderer.graph = g;
-  return g;
-};
-
-options = {
-  renderer: new DagreRenderer,
-  style: {
-    edge_label_width: 20,
-    border_width: 10
-  },
-  graph: {
-    // acyclicer: 'greedy'
-    // ranker: 'network-simplex'
-    // ranker: 'tight-tree'
-    ranker: 'longest-path',
-    rankdir: 'RL', // TB / BT / LR / RL
-    nodesep: 10,
-    ranksep: 10,
-    edgesep: 0,
-    marginx: 3,
-    marginy: 3
-  }
-};
-
-vm = {
-  name: 'Dagre',
-  options: options,
-  props: ["value", "context"],
-  methods: {
-    path_d: function(list) {
-      return 'M' + list.map(function({x, y}) {
-        return `${x},${y}`;
-      // .join('T') # CurveTo Cx1,y1 x2,y2 x,y Sx2y2 x,y Qx1,y1, x,y Tx,y
-      }).join('L'); // LineTo Lx,y Hx Vy
-    }
-  },
-  computed: {
-    root: function() {
-      return this.graph.graph();
-    },
-    edge_paths: function() {
-      var i, key, len, o, ref, results;
-      ref = this.graph.edges();
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        key = ref[i];
-        o = this.graph.edge(key);
-        if (!(o != null ? o.points : void 0)) {
-          continue;
-        }
-        results.push(Object.assign({}, o, {
-          key: "path-" + o.key,
-          d: this.path_d(o.points),
-          points: void 0
-        }));
-      }
-      return results;
-    },
-    edge_rects: function() {
-      var edge_label_width, i, key, len, o, ref, ref1, results;
-      ({edge_label_width} = options.style);
-      ref = this.graph.edges();
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        key = ref[i];
-        o = this.graph.edge(key);
-        if (!(o != null ? (ref1 = o.label) != null ? ref1.trim() : void 0 : void 0)) {
-          continue;
-        }
-        results.push(Object.assign({}, o, {
-          key: "labelrect-" + o.key,
-          width: o.width - edge_label_width,
-          x: o.x - o.width * 0.5 + edge_label_width * 0.5,
-          y: o.y - o.height * 0.7,
-          points: void 0
-        }));
-      }
-      return results;
-    },
-    edge_labels: function() {
-      var i, key, len, o, ref, results;
-      ref = this.graph.edges();
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        key = ref[i];
-        o = this.graph.edge(key);
-        if (!(o != null ? o.label : void 0)) {
-          continue;
-        }
-        results.push(Object.assign({}, o, {
-          key: "text-" + o.key,
-          label: o.label,
-          points: void 0
-        }));
-      }
-      return results;
-    },
-    node_images: function() {
-      var border_width, i, key, len, o, ref, renderer, results;
-      ({renderer} = options);
-      ({border_width} = options.style);
-      ref = this.graph.nodes();
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        key = ref[i];
-        o = this.graph.node(key);
-        if ('icon' !== o.class) {
-          continue;
-        }
-        results.push({
-          key: "image-" + key,
-          x: o.x - o.width * 0.5 + border_width * 0.5,
-          y: o.y - o.height * 0.5 + border_width * 0.5,
-          width: o.width - border_width,
-          height: o.height - border_width,
-          href: renderer.href(key)
-        });
-      }
-      return results;
-    },
-    node_rects: function() {
-      var i, key, len, o, ref, results;
-      ref = this.graph.nodes();
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        key = ref[i];
-        o = this.graph.node(key);
-        if (!o) {
-          continue;
-        }
-        results.push({
-          key: "rect-" + key,
-          rx: o.rx,
-          ry: o.ry,
-          x: o.x - o.width / 2,
-          y: o.y - o.height / 2,
-          width: o.width,
-          height: o.height
-        });
-      }
-      return results;
-    },
-    view_box: function() {
-      return `0 0 ${this.root.width} ${this.root.height}`;
-    },
-    graph: function() {
-      var g;
-      g = init(options);
-      parse(options.renderer, this.value);
-      dagre.layout(g);
-      return g;
-    }
-  }
-};
-
-module.exports = vm;
-
-module.exports.default = vm;
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 /*
@@ -442,7 +146,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -461,7 +165,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(11)
+var listToStyles = __webpack_require__(14)
 
 /*
 type StyleObject = {
@@ -670,7 +374,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -779,496 +483,17 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("vue-server-renderer");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("vue-test-utils");
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("glob");
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("file-system");
-
-/***/ }),
-/* 8 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__);
-/* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42a55e88_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(15);
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(9)
-}
-var normalizeComponent = __webpack_require__(3)
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-42a55e88"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue___default.a,
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42a55e88_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "lib\\dagre.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-42a55e88", Component.options)
-  } else {
-    hotAPI.reload("data-v-42a55e88", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(10);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("525402b5", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42a55e88\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/stylus-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dagre.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42a55e88\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/stylus-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dagre.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(true);
-// imports
-
-
-// module
-exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > rect[data-v-42a55e88],\n.nodes-move:not(.nodes-leave-active) > image[data-v-42a55e88] {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move[data-v-42a55e88]:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n", "", {"version":3,"sources":["C:/Dropbox/www/vue-markup/lib/lib/dagre.vue","C:/Dropbox/www/vue-markup/lib/dagre.vue"],"names":[],"mappings":";AA0BE;;EAEE,2BAAA;CCzBH;AD0BD;EACE,mBAAA;CCxBD","file":"dagre.vue","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.nodes-move:not(.nodes-leave-active)\n  > rect\n  > image\n    transition: x .5s, y .5s\n.edges-move:not(.edges-leave-active)\n  transition: d .5s\n\n",".nodes-move:not(.nodes-leave-active) > rect,\n.nodes-move:not(.nodes-leave-active) > image {\n  transition: x 0.5s, y 0.5s;\n}\n.edges-move:not(.edges-leave-active) {\n  transition: d 0.5s;\n}\n"],"sourceRoot":""}]);
-
-// exports
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-module.exports = require("dagre");
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var parse, syntax;
-
-({ syntax } = __webpack_require__(14));
-
-parse = function (render, src) {
-  var $, _, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, pl, results, start, tokens, v, vl, vm, w, wl, wm;
-  parents = {};
-  tokens = [];
-  last = {
-    v: "",
-    depth: 0
-  };
-  find_parent = function (v, depth) {
-    var ref;
-    depth = depth.length;
-    if (last.depth < depth) {
-      parents[depth] = last;
-    }
-    last = { depth, v };
-    return (ref = parents[depth]) != null ? ref.v : void 0;
-  };
-  results = [];
-  while (src) {
-    // console.log src
-    if (cap = syntax.newline.exec(src)) {
-      [all] = cap;
-      src = src.slice(all.length);
-      // console.log "newline", cap
-      render.newline();
-      continue;
-    }
-    if (cap = syntax.edges.exec(src)) {
-      [all, depth, edges, v, $, $, $, label] = cap;
-      src = src.slice(all.length);
-      // console.log "edges", cap
-      edges = edges.split(syntax._arrow_).map(function (s) {
-        return s != null ? s.trim() : void 0;
-      });
-      if (v) {
-        if (find_parent("", depth)) {
-          render.error(all);
-          continue;
-        }
-      } else {
-        if (!(v = find_parent("", depth))) {
-          render.error(all);
-          continue;
-        }
-      }
-      edges[0] = v;
-      for (idx = i = 0, len = edges.length; i < len; idx = i += 4) {
-        v = edges[idx];
-        [v, start, line, end, w] = edges.slice(idx, +(idx + 4) + 1 || 9e9);
-        if (w) {
-          [vm, v, vl] = render.dic(v);
-          [wm, w, wl] = render.dic(w);
-          render[vm](v, vl);
-          render.edge(v, v, "", "", "", vl);
-          render[wm](w, wl);
-          render.edge(w, w, "", "", "", wl);
-          render.edge(v, w, line, start, end, label);
-        }
-      }
-      continue;
-    }
-    if (cap = syntax.nodes.exec(src)) {
-      [all, depth, nodes, label] = cap;
-      src = src.slice(all.length);
-      // console.log "nodes", cap
-      nodes = nodes.trim().split(/ +/);
-      for (idx = j = 0, len1 = nodes.length; j < len1; idx = ++j) {
-        v = nodes[idx];
-        [vm, v, vl] = render.dic(v);
-        render[vm](v, label || vl);
-        if (label) {
-          render.edge(v, v, "", "", "", label);
-        }
-        if (parent = find_parent(v, depth)) {
-          [_, parent, pl] = render.dic(parent);
-          ({ label } = render.is_node(parent));
-          if (label) {
-            render.cluster(v, parent, label);
-          }
-        }
-      }
-      continue;
-    }
-    if (cap = syntax.error.exec(src)) {
-      [all] = cap;
-      src = src.slice(all.length);
-      render.error(all, "解釈できない文字列です。");
-      continue;
-    } else {
-      results.push(void 0);
-    }
-  }
-  return results;
-};
-
-module.exports = parse;
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var regexp_join, syntax;
-
-regexp_join = function (regex, ...names) {
-  var flags, i, key, len, name, source, val;
-  ({ flags, source } = regex);
-  for (i = 0, len = names.length; i < len; i++) {
-    name = names[i];
-    key = new RegExp(name, 'g');
-    val = syntax[name];
-    val = val.source || val;
-    source = source.replace(key, val);
-  }
-  return new RegExp(source, flags);
-};
-
-syntax = {
-  edges: /^( *)((_node_)?(?: *_arrow_ *_node_)+) *(?:_comment_)?(?:_eol_)/,
-  nodes: /^( *)((?:_node_| )+)(?:_comment_)?(?:_eol_)/,
-  newline: /^ *\n|^ +$/,
-  error: /^[^\n]*\n|[^\n]+$/,
-  _node_: /[^\s:]+/,
-  _arrow_: /(<|X|x|O|o)?(-+|=+|\.+)(>|X|x|O|o)?/,
-  _comment_: /: *(.*) */,
-  _eol_: / *(?:\n|$)/
-};
-
-syntax.nodes = regexp_join(syntax.nodes, '_node_', '_arrow_', '_comment_', '_eol_');
-
-syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol_');
-
-module.exports = { syntax };
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("article", [
-    _c(
-      "svg",
-      {
-        style: "max-width: 100%; width: " + _vm.root.width + "px;",
-        attrs: { viewBox: _vm.view_box }
-      },
-      [
-        _c(
-          "marker",
-          {
-            staticClass: "edgePath",
-            attrs: {
-              id: "svg-marker-circle",
-              viewBox: "0 0 10 10",
-              markerUnits: "userSpaceOnUse",
-              markerWidth: "20",
-              markerHeight: "20",
-              refX: "5",
-              refY: "5",
-              orient: "auto"
-            }
-          },
-          [_c("circle", { attrs: { cx: "5", cy: "5", r: "4" } })]
-        ),
-        _c(
-          "marker",
-          {
-            staticClass: "edgePath",
-            attrs: {
-              id: "svg-marker-arrow-start",
-              viewBox: "0 0 10 10",
-              markerUnits: "userSpaceOnUse",
-              markerWidth: "20",
-              markerHeight: "20",
-              refX: "3",
-              refY: "5",
-              orient: "auto"
-            }
-          },
-          [
-            _c("path", {
-              staticClass: "path",
-              attrs: { d: "M10,0 L0,5 L10,10 z" }
-            })
-          ]
-        ),
-        _c(
-          "marker",
-          {
-            staticClass: "edgePath",
-            attrs: {
-              id: "svg-marker-arrow-end",
-              viewBox: "0 0 10 10",
-              markerUnits: "userSpaceOnUse",
-              markerWidth: "20",
-              markerHeight: "20",
-              refX: "3",
-              refY: "5",
-              orient: "auto"
-            }
-          },
-          [
-            _c("path", {
-              staticClass: "path",
-              attrs: { d: "M0,0 L10,5 L0,10 z" }
-            })
-          ]
-        ),
-        _c(
-          "marker",
-          {
-            staticClass: "edgePath",
-            attrs: {
-              id: "svg-marker-cross",
-              viewBox: "0 0 10 10",
-              markerUnits: "userSpaceOnUse",
-              markerWidth: "20",
-              markerHeight: "20",
-              refX: "5",
-              refY: "5",
-              orient: "0"
-            }
-          },
-          [
-            _c("path", {
-              staticClass: "path",
-              attrs: { d: "M0,0 L10,10 M0,10 L10,0 z" }
-            })
-          ]
-        ),
-        _c(
-          "transition-group",
-          { attrs: { tag: "g", name: "nodes" } },
-          [
-            _vm._l(_vm.node_rects, function(o) {
-              return o ? _c("rect", _vm._b({}, "rect", o, false)) : _vm._e()
-            }),
-            _vm._l(_vm.node_images, function(o) {
-              return o ? _c("image", _vm._b({}, "image", o, false)) : _vm._e()
-            })
-          ],
-          2
-        ),
-        _c(
-          "transition-group",
-          { staticClass: "edgePath", attrs: { tag: "g", name: "edges" } },
-          [
-            _vm._l(_vm.edge_paths, function(o) {
-              return o
-                ? _c(
-                    "path",
-                    _vm._b(
-                      { staticClass: "path", attrs: { fill: "none" } },
-                      "path",
-                      o,
-                      false
-                    )
-                  )
-                : _vm._e()
-            }),
-            _vm._l(_vm.edge_rects, function(o) {
-              return o
-                ? _c("rect", _vm._b({ staticClass: "path" }, "rect", o, false))
-                : _vm._e()
-            }),
-            _vm._l(_vm.edge_labels, function(o) {
-              return o
-                ? _c(
-                    "text",
-                    _vm._b({ staticClass: "messageText" }, "text", o, false),
-                    [_vm._v(_vm._s(o.label))]
-                  )
-                : _vm._e()
-            })
-          ],
-          2
-        )
-      ],
-      1
-    ),
-    _vm.graph.errors.length
-      ? _c(
-          "div",
-          { staticClass: "errors" },
-          _vm._l(_vm.graph.errors, function(err) {
-            return _c("div", { staticClass: "error" }, [_vm._v(_vm._s(err))])
-          })
-        )
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-42a55e88", esExports)
-  }
-}
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var Dagre, MarkedRenderer, _, itself, marked, options, vm;
 
-_ = __webpack_require__(22);
+_ = __webpack_require__(15);
 
-marked = __webpack_require__(23);
+marked = __webpack_require__(16);
 
-Dagre = __webpack_require__(8).default;
+Dagre = __webpack_require__(4).default;
 
 itself = function(o) {
   return o;
@@ -1599,104 +824,46 @@ vm = {
   }
 };
 
-module.exports = vm;
-
-module.exports.default = vm;
+/* harmony default export */ __webpack_exports__["a"] = (vm);
 
 
 /***/ }),
-/* 17 */,
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Marked, createRenderer, fs, glob, shallow;
-
-({ createRenderer } = __webpack_require__(4));
-
-({ shallow } = __webpack_require__(5));
-
-glob = __webpack_require__(6);
-
-fs = __webpack_require__(7);
-
-Marked = __webpack_require__(19);
-
-Object.assign(Marked.options, {
-  silent: false,
-  indentCode: true,
-  em: true
-});
-
-Object.assign(Marked.options.renderer, {
-  paragraph: function (text) {
-    var m;
-    ({ m } = this.options);
-    return m('p', {}, text);
-  }
-});
-
-glob.sync("./__tests__/**/*.md").map(function (path) {
-  return describe(path, function () {
-    return test('snapshot', function () {
-      var context, value, wrapper;
-      value = fs.readFileSync(path, 'utf8');
-      context = {
-        book_id: 'spec-1',
-        part_id: 'spec-1-1'
-      };
-      wrapper = shallow(Marked.default, {
-        propsData: { value, context }
-      });
-      return createRenderer().renderToString(wrapper.vm, function (err, str) {
-        if (err) {
-          throw new Error(err);
-        }
-        return expect(str).toMatchSnapshot();
-      });
-    });
-  });
-});
-
-/***/ }),
-/* 19 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__);
-/* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__ = __webpack_require__(5);
+/* empty harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bb43e1b2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(23);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(20)
+  __webpack_require__(18)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 
 
 /* template */
-var __vue_template__ = null
+
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-a056081e"
+var __vue_scopeId__ = "data-v-bb43e1b2"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue___default.a,
-  __vue_template__,
+  __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bb43e1b2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "lib\\marked.vue"
+Component.options.__file = "src\\dagre.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -1705,9 +872,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a056081e", Component.options)
+    hotAPI.createRecord("data-v-bb43e1b2", Component.options)
   } else {
-    hotAPI.reload("data-v-a056081e", Component.options)
+    hotAPI.reload("data-v-bb43e1b2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -1718,23 +885,413 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 20 */
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var DagreRenderer, dagre, init, marker, options, parse, vm;
+
+dagre = __webpack_require__(20);
+
+parse = __webpack_require__(21);
+
+marker = function(key) {
+  switch (key) {
+    case '<':
+    case '(':
+      return 'url(#svg-marker-arrow-start)';
+    case '>':
+    case ')':
+      return 'url(#svg-marker-arrow-end)';
+    case 'O':
+    case 'o':
+      return 'url(#svg-marker-circle)';
+    case 'X':
+    case 'x':
+      return 'url(#svg-marker-cross)';
+    default:
+      return null;
+  }
+};
+
+DagreRenderer = class DagreRenderer {
+  newline() {}
+
+  error(line) {
+    return this.graph.errors.push(line);
+  }
+
+  href(key) {
+    return key;
+  }
+
+  dic(v) {
+    return ['box', v, v];
+  }
+
+  is_edge(v, w) {
+    return this.graph.edge({v, w});
+  }
+
+  is_node(v) {
+    return this.graph.node(v);
+  }
+
+  edge(v, w, line, start, end, label) {
+    var edge_label_width, weight;
+    ({edge_label_width} = this.options.style);
+    weight = line.length;
+    start = marker(start);
+    end = marker(end);
+    line = (function() {
+      switch (line[0]) {
+        case '=':
+          return 'wide';
+        case '-':
+          return 'solid';
+        case '.':
+          return 'dotted';
+        default:
+          return 'hide';
+      }
+    })();
+    if (label == null) {
+      label = "   ";
+    }
+    return this.graph.setEdge(v, w, {
+      key: [v, w].join(),
+      "marker-start": start,
+      "marker-end": end,
+      minlen: 1,
+      weight: weight,
+      class: line,
+      label: label,
+      labelpos: 'c',
+      width: 25 * label.length + edge_label_width,
+      height: 30,
+      rx: 5,
+      ry: 5
+    });
+  }
+
+  box(v, label) {
+    var border_width;
+    ({border_width} = this.options.style);
+    return this.graph.setNode(v, {
+      label: label,
+      class: 'box',
+      width: 90 + border_width,
+      height: 90 + border_width,
+      rx: 10,
+      ry: 10
+    });
+  }
+
+  icon(v, label) {
+    var border_width;
+    ({border_width} = this.options.style);
+    return this.graph.setNode(v, {
+      label: label,
+      class: 'icon',
+      width: 90 + border_width,
+      height: 130 + border_width,
+      rx: 10,
+      ry: 10
+    });
+  }
+
+  cluster(v, w, label) {
+    this.graph.setNode(w, {
+      key: w,
+      label: label,
+      class: 'cluster'
+    });
+    return this.graph.setParent(v, w);
+  }
+
+};
+
+init = function(options) {
+  var g;
+  g = new dagre.graphlib.Graph({
+    directed: true,
+    compound: true,
+    multigraph: false
+  });
+  g.setGraph(options.graph);
+  g.errors = [];
+  options.renderer.options = options;
+  options.renderer.graph = g;
+  return g;
+};
+
+options = {
+  renderer: new DagreRenderer,
+  style: {
+    edge_label_width: 20,
+    border_width: 10
+  },
+  graph: {
+    // acyclicer: 'greedy'
+    // ranker: 'network-simplex'
+    // ranker: 'tight-tree'
+    ranker: 'longest-path',
+    rankdir: 'RL', // TB / BT / LR / RL
+    nodesep: 10,
+    ranksep: 10,
+    edgesep: 0,
+    marginx: 3,
+    marginy: 3
+  }
+};
+
+vm = {
+  name: 'Dagre',
+  options: options,
+  props: ["value", "context"],
+  methods: {
+    path_d: function(list) {
+      return 'M' + list.map(function({x, y}) {
+        return `${x},${y}`;
+      // .join('T') # CurveTo Cx1,y1 x2,y2 x,y Sx2y2 x,y Qx1,y1, x,y Tx,y
+      }).join('L'); // LineTo Lx,y Hx Vy
+    }
+  },
+  computed: {
+    root: function() {
+      return this.graph.graph();
+    },
+    edge_paths: function() {
+      var i, key, len, o, ref, results;
+      ref = this.graph.edges();
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        key = ref[i];
+        o = this.graph.edge(key);
+        if (!(o != null ? o.points : void 0)) {
+          continue;
+        }
+        results.push(Object.assign({}, o, {
+          key: "path-" + o.key,
+          d: this.path_d(o.points),
+          points: void 0
+        }));
+      }
+      return results;
+    },
+    edge_rects: function() {
+      var edge_label_width, i, key, len, o, ref, ref1, results;
+      ({edge_label_width} = options.style);
+      ref = this.graph.edges();
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        key = ref[i];
+        o = this.graph.edge(key);
+        if (!(o != null ? (ref1 = o.label) != null ? ref1.trim() : void 0 : void 0)) {
+          continue;
+        }
+        results.push(Object.assign({}, o, {
+          key: "labelrect-" + o.key,
+          width: o.width - edge_label_width,
+          x: o.x - o.width * 0.5 + edge_label_width * 0.5,
+          y: o.y - o.height * 0.7,
+          points: void 0
+        }));
+      }
+      return results;
+    },
+    edge_labels: function() {
+      var i, key, len, o, ref, results;
+      ref = this.graph.edges();
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        key = ref[i];
+        o = this.graph.edge(key);
+        if (!(o != null ? o.label : void 0)) {
+          continue;
+        }
+        results.push(Object.assign({}, o, {
+          key: "text-" + o.key,
+          label: o.label,
+          points: void 0
+        }));
+      }
+      return results;
+    },
+    node_images: function() {
+      var border_width, i, key, len, o, ref, renderer, results;
+      ({renderer} = options);
+      ({border_width} = options.style);
+      ref = this.graph.nodes();
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        key = ref[i];
+        o = this.graph.node(key);
+        if ('icon' !== o.class) {
+          continue;
+        }
+        results.push({
+          key: "image-" + key,
+          x: o.x - o.width * 0.5 + border_width * 0.5,
+          y: o.y - o.height * 0.5 + border_width * 0.5,
+          width: o.width - border_width,
+          height: o.height - border_width,
+          href: renderer.href(key)
+        });
+      }
+      return results;
+    },
+    node_rects: function() {
+      var i, key, len, o, ref, results;
+      ref = this.graph.nodes();
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        key = ref[i];
+        o = this.graph.node(key);
+        if (!o) {
+          continue;
+        }
+        results.push({
+          key: "rect-" + key,
+          rx: o.rx,
+          ry: o.ry,
+          x: o.x - o.width / 2,
+          y: o.y - o.height / 2,
+          width: o.width,
+          height: o.height
+        });
+      }
+      return results;
+    },
+    view_box: function() {
+      return `0 0 ${this.root.width} ${this.root.height}`;
+    },
+    graph: function() {
+      var g;
+      g = init(options);
+      parse(options.renderer, this.value);
+      dagre.layout(g);
+      return g;
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (vm);
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("vue-server-renderer");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("vue-test-utils");
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("glob");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("file-system");
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__marked_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dagre_vue__ = __webpack_require__(4);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Marked", function() { return __WEBPACK_IMPORTED_MODULE_0__marked_vue__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Dagre", function() { return __WEBPACK_IMPORTED_MODULE_1__dagre_vue__["default"]; });
+
+
+
+
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__ = __webpack_require__(3);
+/* unused harmony namespace reexport */
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(12)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+
+
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-47325f32"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marked_vue__["a" /* default */],
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\marked.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-47325f32", Component.options)
+  } else {
+    hotAPI.reload("data-v-47325f32", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(21);
+var content = __webpack_require__(13);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("2dd6369a", content, false, {});
+var update = __webpack_require__(1)("2f442584", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a056081e\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/stylus-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./marked.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a056081e\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/stylus-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./marked.vue");
+   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-47325f32\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js?indentedSyntax!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./marked.vue", function() {
+     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-47325f32\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js?indentedSyntax!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./marked.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -1744,10 +1301,10 @@ if(false) {
 }
 
 /***/ }),
-/* 21 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(1)(true);
+exports = module.exports = __webpack_require__(0)(true);
 // imports
 
 
@@ -1758,16 +1315,47 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
 
 
 /***/ }),
-/* 22 */
+/* 14 */
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
 
 /***/ }),
-/* 23 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 /*
@@ -1782,7 +1370,7 @@ module.exports = require("lodash");
  */
 var InlineLexer, Lexer, Parser, baseUrls, block, escape, inline, marked, noop, originIndependentUrl, resolveUrl, splitCells, unescape;
 
-({ block, inline, noop } = __webpack_require__(24));
+({ block, inline, noop } = __webpack_require__(17));
 
 escape = function (html, is_encode) {
   var r_encode;
@@ -1875,6 +1463,7 @@ Lexer = function () {
       this.tokens.notes = [];
       this.tokens.links = {};
       this.tokens.abbrs = {};
+      this.tokens.count = {};
       this.rules = block.normal;
       if (this.options.gfm) {
         this.rules = this.options.tables ? block.tables : block.gfm;
@@ -2151,7 +1740,7 @@ Lexer = function () {
   Lexer.rules = block;
 
   return Lexer;
-}.call(undefined);
+}.call(this);
 
 InlineLexer = function () {
   class InlineLexer {
@@ -2164,11 +1753,13 @@ InlineLexer = function () {
     }
 
     constructor({
+      count: count1,
       notes: notes1,
       links,
       abbrs,
       abbrs_reg
     }, options) {
+      this.count = count1;
       this.notes = notes1;
       this.links = links;
       this.abbrs = abbrs;
@@ -2195,7 +1786,7 @@ InlineLexer = function () {
     }
 
     output(src) {
-      var cap, cite1, cite2, href, j, len, link, mark, method, num, o, out, ref, ref1, s, text, title;
+      var base1, cap, cite1, cite2, count, href, j, len, link, mark, method, name, num, o, out, ref, ref1, s, text, title;
       out = [];
       out.plain = "";
       while (src) {
@@ -2259,6 +1850,8 @@ InlineLexer = function () {
         if (cap = this.rules.strong.exec(src)) {
           // console.log 'strong', cap
           src = src.slice(cap[0].length);
+          count = (base1 = this.count)[name = cap[0][1]] != null ? base1[name] : base1[name] = 0;
+          ++this.count[cap[0][1]];
           method = function () {
             switch (cap[0][1]) {
               case '_':
@@ -2285,7 +1878,7 @@ InlineLexer = function () {
             }
           }();
           text = this.output(cap[0].slice(2, -2));
-          out.push(this.renderer[method](text));
+          out.push(this.renderer[method](text, count));
           out.plain += text.plain;
           continue;
         }
@@ -2523,7 +2116,7 @@ InlineLexer = function () {
   InlineLexer.rules = inline;
 
   return InlineLexer;
-}.call(undefined);
+}.call(this);
 
 // Parsing & Compiling
 Parser = class Parser {
@@ -2725,10 +2318,8 @@ marked.parse = marked;
 module.exports = marked;
 
 /***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
+/* 17 */
+/***/ (function(module, exports) {
 
 
 /*
@@ -2938,6 +2529,418 @@ inline.breaks = Object.assign({}, inline.gfm, {
 });
 
 module.exports = { block, inline, noop };
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(19);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(1)("b8c7c79e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bb43e1b2\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js?indentedSyntax!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dagre.vue", function() {
+     var newContent = require("!!../node_modules/css-loader/index.js?sourceMap!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bb43e1b2\",\"scoped\":true,\"hasInlineConfig\":false}!../node_modules/sass-loader/lib/loader.js?indentedSyntax!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dagre.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > image[data-v-bb43e1b2] {\n  transition: x .5s, y .5s;\n}\n.edges-move[data-v-bb43e1b2]:not(.edges-leave-active) {\n  transition: d .5s;\n}\n", "", {"version":3,"sources":["C:/Dropbox/www/vue-markup/src/dagre.vue"],"names":[],"mappings":";AAAA;EACE,yBAAyB;CAAE;AAE7B;EACE,kBAAkB;CAAE","file":"dagre.vue","sourcesContent":[".nodes-move:not(.nodes-leave-active) > image {\n  transition: x .5s, y .5s; }\n\n.edges-move:not(.edges-leave-active) {\n  transition: d .5s; }\n"],"sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+module.exports = require("dagre");
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var parse, syntax;
+
+({ syntax } = __webpack_require__(22));
+
+parse = function (render, src) {
+  var $, _, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, pl, results, start, tokens, v, vl, vm, w, wl, wm;
+  parents = {};
+  tokens = [];
+  last = {
+    v: "",
+    depth: 0
+  };
+  find_parent = function (v, depth) {
+    var ref;
+    depth = depth.length;
+    if (last.depth < depth) {
+      parents[depth] = last;
+    }
+    last = { depth, v };
+    return (ref = parents[depth]) != null ? ref.v : void 0;
+  };
+  results = [];
+  while (src) {
+    // console.log src
+    if (cap = syntax.newline.exec(src)) {
+      [all] = cap;
+      src = src.slice(all.length);
+      // console.log "newline", cap
+      render.newline();
+      continue;
+    }
+    if (cap = syntax.edges.exec(src)) {
+      [all, depth, edges, v, $, $, $, label] = cap;
+      src = src.slice(all.length);
+      // console.log "edges", cap
+      edges = edges.split(syntax._arrow_).map(function (s) {
+        return s != null ? s.trim() : void 0;
+      });
+      if (v) {
+        if (find_parent("", depth)) {
+          render.error(all);
+          continue;
+        }
+      } else {
+        if (!(v = find_parent("", depth))) {
+          render.error(all);
+          continue;
+        }
+      }
+      edges[0] = v;
+      for (idx = i = 0, len = edges.length; i < len; idx = i += 4) {
+        v = edges[idx];
+        [v, start, line, end, w] = edges.slice(idx, +(idx + 4) + 1 || 9e9);
+        if (w) {
+          [vm, v, vl] = render.dic(v);
+          [wm, w, wl] = render.dic(w);
+          render[vm](v, vl);
+          render.edge(v, v, "", "", "", vl);
+          render[wm](w, wl);
+          render.edge(w, w, "", "", "", wl);
+          render.edge(v, w, line, start, end, label);
+        }
+      }
+      continue;
+    }
+    if (cap = syntax.nodes.exec(src)) {
+      [all, depth, nodes, label] = cap;
+      src = src.slice(all.length);
+      // console.log "nodes", cap
+      nodes = nodes.trim().split(/ +/);
+      for (idx = j = 0, len1 = nodes.length; j < len1; idx = ++j) {
+        v = nodes[idx];
+        [vm, v, vl] = render.dic(v);
+        render[vm](v, label || vl);
+        if (label) {
+          render.edge(v, v, "", "", "", label);
+        }
+        if (parent = find_parent(v, depth)) {
+          [_, parent, pl] = render.dic(parent);
+          ({ label } = render.is_node(parent));
+          if (label) {
+            render.cluster(v, parent, label);
+          }
+        }
+      }
+      continue;
+    }
+    if (cap = syntax.error.exec(src)) {
+      [all] = cap;
+      src = src.slice(all.length);
+      render.error(all, "解釈できない文字列です。");
+      continue;
+    } else {
+      results.push(void 0);
+    }
+  }
+  return results;
+};
+
+module.exports = parse;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+var regexp_join, syntax;
+
+regexp_join = function (regex, ...names) {
+  var flags, i, key, len, name, source, val;
+  ({ flags, source } = regex);
+  for (i = 0, len = names.length; i < len; i++) {
+    name = names[i];
+    key = new RegExp(name, 'g');
+    val = syntax[name];
+    val = val.source || val;
+    source = source.replace(key, val);
+  }
+  return new RegExp(source, flags);
+};
+
+syntax = {
+  edges: /^( *)((_node_)?(?: *_arrow_ *_node_)+) *(?:_comment_)?(?:_eol_)/,
+  nodes: /^( *)((?:_node_| )+)(?:_comment_)?(?:_eol_)/,
+  newline: /^ *\n|^ +$/,
+  error: /^[^\n]*\n|[^\n]+$/,
+  _node_: /[^\s:]+/,
+  _arrow_: /(<|X|x|O|o)?(-+|=+|\.+)(>|X|x|O|o)?/,
+  _comment_: /: *(.*) */,
+  _eol_: / *(?:\n|$)/
+};
+
+syntax.nodes = regexp_join(syntax.nodes, '_node_', '_arrow_', '_comment_', '_eol_');
+
+syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol_');
+
+module.exports = { syntax };
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("article", [
+    _c(
+      "svg",
+      {
+        style: "max-width: 100%; width: " + _vm.root.width + "px;",
+        attrs: { viewBox: _vm.view_box }
+      },
+      [
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-circle",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "5",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [_c("circle", { attrs: { cx: "5", cy: "5", r: "4" } })]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-arrow-start",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "3",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M10,0 L0,5 L10,10 z" }
+            })
+          ]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-arrow-end",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "3",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M0,0 L10,5 L0,10 z" }
+            })
+          ]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-cross",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "5",
+              refY: "5",
+              orient: "0"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M0,0 L10,10 M0,10 L10,0 z" }
+            })
+          ]
+        ),
+        _c(
+          "transition-group",
+          { attrs: { tag: "g", name: "nodes" } },
+          [
+            _vm._l(_vm.node_rects, function(o) {
+              return o ? _c("rect", _vm._b({}, "rect", o, false)) : _vm._e()
+            }),
+            _vm._l(_vm.node_images, function(o) {
+              return o ? _c("image", _vm._b({}, "image", o, false)) : _vm._e()
+            })
+          ],
+          2
+        ),
+        _c(
+          "transition-group",
+          { staticClass: "edgePath", attrs: { tag: "g", name: "edges" } },
+          [
+            _vm._l(_vm.edge_paths, function(o) {
+              return o
+                ? _c(
+                    "path",
+                    _vm._b(
+                      { staticClass: "path", attrs: { fill: "none" } },
+                      "path",
+                      o,
+                      false
+                    )
+                  )
+                : _vm._e()
+            }),
+            _vm._l(_vm.edge_rects, function(o) {
+              return o
+                ? _c("rect", _vm._b({ staticClass: "path" }, "rect", o, false))
+                : _vm._e()
+            }),
+            _vm._l(_vm.edge_labels, function(o) {
+              return o
+                ? _c(
+                    "text",
+                    _vm._b({ staticClass: "messageText" }, "text", o, false),
+                    [_vm._v(_vm._s(o.label))]
+                  )
+                : _vm._e()
+            })
+          ],
+          2
+        )
+      ],
+      1
+    ),
+    _vm.graph.errors.length
+      ? _c(
+          "div",
+          { staticClass: "errors" },
+          _vm._l(_vm.graph.errors, function(err) {
+            return _c("div", { staticClass: "error" }, [_vm._v(_vm._s(err))])
+          })
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-bb43e1b2", esExports)
+  }
+}
+
+/***/ }),
+/* 24 */,
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Marked, createRenderer, fs, glob, shallow;
+
+({ createRenderer } = __webpack_require__(6));
+
+({ shallow } = __webpack_require__(7));
+
+glob = __webpack_require__(8);
+
+fs = __webpack_require__(9);
+
+({ Marked } = __webpack_require__(10));
+
+Object.assign(Marked.options, {
+  silent: false,
+  indentCode: true,
+  em: true
+});
+
+Object.assign(Marked.options.renderer, {
+  paragraph: function (text) {
+    var m;
+    ({ m } = this.options);
+    return m('p', {}, text);
+  }
+});
+
+glob.sync("./__tests__/**/*.md").map(function (path) {
+  return describe(path, function () {
+    return test('snapshot', function () {
+      var context, value, wrapper;
+      value = fs.readFileSync(path, 'utf8');
+      context = {
+        book_id: 'spec-1',
+        part_id: 'spec-1-1'
+      };
+      wrapper = shallow(Marked, {
+        propsData: { value, context }
+      });
+      return createRenderer().renderToString(wrapper.vm, function (err, str) {
+        if (err) {
+          throw new Error(err);
+        }
+        return expect(str).toMatchSnapshot();
+      });
+    });
+  });
+});
 
 /***/ })
 /******/ ])));

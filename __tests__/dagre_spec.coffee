@@ -4,7 +4,7 @@
 glob = require 'glob'
 fs = require 'file-system'
 
-Dagre = require('../lib/dagre.vue').default
+{ Dagre } = require '../src/index'
 
 glob
 .sync("./__tests__/**/*.dagre")

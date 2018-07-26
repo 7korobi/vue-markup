@@ -11,15 +11,15 @@ vue =
   loader: 'vue-loader'
 
 module.exports =
+  devtool: 'source-map'
   entry:
-    dagre_spec:  './__tests__/dagre_spec.coffee'
-    marked_spec: './__tests__/marked_spec.coffee'
+    "__tests__/dagre_spec":  './__tests__/dagre_spec.coffee'
+    "__tests__/marked_spec": './__tests__/marked_spec.coffee'
   output:
-    path: path.join current, '__tests__'
+    path: current
     filename: '[name].js' # Important
     libraryTarget: 'this' # Important
 
-  devtool: 'source-map'
   module:
     rules: [
       coffee
