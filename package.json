@@ -42,7 +42,8 @@
   "scripts": {
     "test": "run-s make jest",
     "make": "run-p make:*",
-    "make:spec": "webpack --config config/webpack-spec.coffee",
+    "make:index": "webpack --config config/webpack-index.coffee",
+    "make:spec":  "webpack --config config/webpack-spec.coffee",
     "jest": "jest",
     "bench": "node test --bench",
     "preversion": "npm run build && (git diff --quiet || git commit -am 'minify')"

@@ -60,11 +60,120 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 24);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 /*
@@ -146,7 +255,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -165,7 +274,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(14)
+var listToStyles = __webpack_require__(15)
 
 /*
 type StyleObject = {
@@ -374,124 +483,15 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
 /* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var Dagre, MarkedRenderer, _, itself, marked, options, vm;
 
-_ = __webpack_require__(15);
+_ = __webpack_require__(16);
 
-marked = __webpack_require__(16);
+marked = __webpack_require__(17);
 
 Dagre = __webpack_require__(4).default;
 
@@ -835,13 +835,13 @@ vm = {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__ = __webpack_require__(5);
 /* empty harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bb43e1b2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bb43e1b2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(24);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(18)
+  __webpack_require__(19)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 
 
@@ -891,9 +891,9 @@ if (false) {(function () {
 "use strict";
 var DagreRenderer, dagre, init, marker, options, parse, vm;
 
-dagre = __webpack_require__(20);
+dagre = __webpack_require__(21);
 
-parse = __webpack_require__(21);
+parse = __webpack_require__(22);
 
 marker = function(key) {
   switch (key) {
@@ -1181,36 +1181,499 @@ vm = {
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = require("vue-server-renderer");
+"use strict";
+// inspired by https://github.com/wakufactory/MarkDownDiagram
+var SvgRenderer, marker, options, parse, pos, syntax, vm;
+
+parse = __webpack_require__(26);
+
+syntax = __webpack_require__(7);
+
+marker = function(key) {
+  switch (key) {
+    case '<':
+    case '(':
+      return 'url(#svg-marker-arrow-start)';
+    case '>':
+    case ')':
+      return 'url(#svg-marker-arrow-end)';
+    case 'O':
+    case 'o':
+      return 'url(#svg-marker-circle)';
+    case 'X':
+    case 'x':
+      return 'url(#svg-marker-cross)';
+    default:
+      return null;
+  }
+};
+
+pos = function({x, y, width, height}, mark) {
+  var vx, vy;
+  switch (mark) {
+    case '^':
+    case 'u':
+      x += 0.5 * width;
+      
+      // y origin
+      vx = 0;
+      vy = -1;
+      break;
+    case 'v':
+    case 'd':
+      x += 0.5 * width;
+      y += 1.0 * height;
+      vx = 0;
+      vy = 1;
+      break;
+    case '<':
+    case 'l':
+      // x origin
+      y += 0.5 * height;
+      vx = -1;
+      vy = 0;
+      break;
+    case '>':
+    case 'r':
+      x += 1.0 * width;
+      y += 0.5 * height;
+      vx = 1;
+      vy = 0;
+  }
+  return {x, y, vx, vy};
+};
+
+SvgRenderer = class SvgRenderer {
+  plain() {
+    return this.data = {
+      paths: {},
+      rects: {},
+      texts: {},
+      images: {},
+      errors: []
+    };
+  }
+
+  newline() {}
+
+  error(line) {
+    return this.data.errors.push(line);
+  }
+
+  href(key) {
+    return key;
+  }
+
+  dic(v) {
+    return ['box', v, v];
+  }
+
+  label(v, label, x, y) {
+    var className, height, key, label_height, label_width, labelpos, rx, ry, width;
+    ({label_width, label_height} = this.options.style);
+    if (!label) {
+      return;
+    }
+    if (label == null) {
+      label = "   ";
+    }
+    labelpos = "c";
+    width = 25 * label.length + label_width;
+    height = label_height;
+    className = "text";
+    rx = 5;
+    ry = 5;
+    key = `label-${v}`;
+    // text
+    return this.data.texts[v] = {
+      class: className,
+      key,
+      labelpos,
+      label,
+      width,
+      height,
+      x,
+      y,
+      rx,
+      ry
+    };
+  }
+
+  edge(v, w, line, start, end, headpos, tailpos, label) {
+    var className, curve, d, gap_width, key, markerEnd, markerStart, vo, vp, vw, weight, wo, wp, x, y;
+    ({gap_width} = this.options.style);
+    weight = line.length;
+    markerStart = marker(start);
+    markerEnd = marker(end);
+    className = (function() {
+      switch (line[0]) {
+        case '=':
+          return 'wide';
+        case '-':
+          return 'solid';
+        case '.':
+          return 'dotted';
+        default:
+          return 'hide';
+      }
+    })();
+    vw = [v, w].join("+");
+    key = `path=${vw}`;
+    curve = 50;
+    vo = this.data.rects[v];
+    wo = this.data.rects[w];
+    vp = pos(vo, headpos);
+    wp = pos(wo, tailpos);
+    d = `M ${vp.x} ${vp.y} C ${vp.x + vp.vx * curve} ${vp.y + vp.vy * curve} ${wp.x + wp.vx * curve} ${wp.y + wp.vy * curve} ${wp.x} ${wp.y}`;
+    // path
+    this.data.paths[vw] = {
+      class: className,
+      key,
+      d,
+      markerStart,
+      markerEnd
+    };
+    // x, y は中点
+    x = parseInt(0.5 * (vo.x + wo.x) + 0.25 * (vo.width + wo.width));
+    y = parseInt(0.5 * (vo.y + wo.y) + 0.25 * (vo.height + wo.height));
+    if (label) {
+      this.point(label, x, y);
+    }
+    return this.label(vw, label, x, y);
+  }
+
+  auto_xy(x, y) {
+    var key, xs;
+    if ((x != null) && (y != null)) {
+      return [parseInt(x), parseInt(y)];
+    }
+    xs = (function() {
+      var ref, results;
+      ref = this.data.rects;
+      results = [];
+      for (key in ref) {
+        ({x} = ref[key]);
+        results.push(x);
+      }
+      return results;
+    }).call(this);
+    xs.push(-90);
+    x = Math.max(...xs);
+    x += 100;
+    y = 10;
+    return [x, y];
+  }
+
+  point(v, x, y) {
+    var className, height, key, rx, ry, width;
+    [x, y] = this.auto_xy(x, y);
+    width = 0;
+    height = 0;
+    rx = 0;
+    ry = 0;
+    className = 'point';
+    key = `rect=${v}`;
+    // rect
+    return this.data.rects[v] = {
+      class: className,
+      key,
+      width,
+      height,
+      x,
+      y,
+      rx,
+      ry
+    };
+  }
+
+  box(v, label, x, y) {
+    var border_width, className, height, key, label_height, rx, ry, width;
+    ({border_width, label_height} = this.options.style);
+    [x, y] = this.auto_xy(x, y);
+    width = 90 + 2 * border_width;
+    height = 90 + 2 * border_width;
+    rx = 10;
+    ry = 10;
+    className = 'box';
+    key = `rect=${v}`;
+    // rect
+    this.data.rects[v] = {
+      class: className,
+      key,
+      width,
+      height,
+      x,
+      y,
+      rx,
+      ry
+    };
+    // x, y はボトム
+    x += 0.5 * width;
+    y += 1.0 * height + label_height;
+    return this.label(v, label, x, y);
+  }
+
+  icon(v, label, x, y) {
+    var border_width, className, height, href, key, label_height, rx, ry, width;
+    ({border_width, label_height} = this.options.style);
+    [x, y] = this.auto_xy(x, y);
+    width = 90;
+    height = 130;
+    rx = 10;
+    ry = 10;
+    href = this.href(key);
+    className = 'icon';
+    key = `image=${v}`;
+    // image
+    this.data.images[v] = {
+      class: className,
+      key,
+      href,
+      width,
+      height,
+      x,
+      y,
+      rx,
+      ry
+    };
+    width += 2 * border_width;
+    height += 2 * border_width;
+    x -= border_width;
+    y -= border_width;
+    className = 'box';
+    key = `rect=${v}`;
+    // rect
+    this.data.rects[v] = {
+      class: className,
+      key,
+      width,
+      height,
+      x,
+      y,
+      rx,
+      ry
+    };
+    // x, y はボトム
+    x += 0.5 * width;
+    y += 1.0 * height + label_height;
+    return this.label(v, label, x, y);
+  }
+
+  cluster(vs, label) {
+    var className, height, key, label_height, rx, ry, vos, width, x, y;
+    ({label_height} = this.options.style);
+    vos = vs.map((v) => {
+      return this.data.rects[v];
+    });
+    rx = 10;
+    ry = 10;
+    className = 'cluster';
+    key = `rect=${label}`;
+    ({x, y, width, height} = this.cover(vos));
+    // rect
+    this.data.rects[label] = {
+      class: className,
+      key,
+      width,
+      height,
+      x,
+      y,
+      rx,
+      ry
+    };
+    // x, y はボトム
+    x += 0.5 * width;
+    y += 1.0 * height + label_height;
+    return this.label(label, label, x, y);
+  }
+
+  cover(vos) {
+    var border_width, height, width, x, xmax, xmin, y, ymax, ymin;
+    ({border_width} = this.options.style);
+    vos.push({
+      x: border_width,
+      y: border_width,
+      width: 90 + 2 * border_width,
+      height: 90 + 2 * border_width
+    });
+    xmin = Math.min(...vos.map(function(o) {
+      return o.x;
+    }));
+    xmax = Math.max(...vos.map(function(o) {
+      return o.x + o.width;
+    }));
+    ymin = Math.min(...vos.map(function(o) {
+      return o.y;
+    }));
+    ymax = Math.max(...vos.map(function(o) {
+      return o.y + o.height;
+    }));
+    width = xmax - xmin + 2 * border_width;
+    height = ymax - ymin + 2 * border_width;
+    x = xmin - border_width;
+    y = ymin - border_width;
+    return {x, y, width, height};
+  }
+
+};
+
+options = {
+  renderer: new SvgRenderer,
+  style: {
+    label_width: 20,
+    label_height: 30,
+    border_width: 10,
+    gap_width: 20
+  }
+};
+
+options.renderer.options = options;
+
+vm = {
+  name: 'MarkSVG',
+  options: options,
+  props: ["value", "context"],
+  data: function() {
+    return {
+      moving: "",
+      start_x: 0,
+      start_y: 0,
+      data: {}
+    };
+  },
+  methods: {
+    start: function({
+        pageX: pageX1,
+        pageY: pageY1
+      }, moving) {
+      this.pageX = pageX1;
+      this.pageY = pageY1;
+      this.moving = moving;
+    },
+    drop: function({pageX, pageY}, id) {
+      var x, y;
+      if (id !== this.moving) {
+        return;
+      }
+      x = pageX - this.pageX;
+      y = pageY - this.pageY;
+      return this.recalc(id, x, y);
+    },
+    recalc: function(v, x, y) {
+      console.log({id, x, y});
+      Object.assign(this.data.rects[v], {x, y});
+      return this.$emit('input', this.value.replace(syntax.pick_node, (x, y, id) => {
+        ({x, y} = this.data.rects[id]);
+        return `<${x},${y}>${id}`;
+      }));
+    },
+    nop: function() {
+      return false;
+    }
+  },
+  computed: {
+    root: function() {
+      return options.renderer.cover(Object.values(this.rects));
+    },
+    paths: function() {
+      return this.graph.paths;
+    },
+    rects: function() {
+      return this.graph.rects;
+    },
+    texts: function() {
+      return this.graph.texts;
+    },
+    images: function() {
+      return this.graph.images;
+    },
+    view_box: function() {
+      return `${this.root.x} ${this.root.y} ${this.root.width} ${this.root.height}`;
+    },
+    graph: function() {
+      this.data = options.renderer.plain();
+      parse(options.renderer, this.value);
+      return this.data;
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (vm);
+
 
 /***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("vue-test-utils");
+var regexp_join, syntax;
+
+regexp_join = function (regex, ...names) {
+  var flags, i, key, len, name, source, val;
+  ({ flags, source } = regex);
+  for (i = 0, len = names.length; i < len; i++) {
+    name = names[i];
+    key = new RegExp(name, 'g');
+    val = syntax[name];
+    val = val.source || val;
+    source = source.replace(key, val);
+  }
+  return new RegExp(source, flags);
+};
+
+syntax = {
+  edges: /^ *((_id_)?(?: *_arrow_ *_id_)+) *(?:_comment_)?(?:_eol_)/,
+  nodes: /^ *((?:(?:(?:(?:_xy_)?_id_)| |\n))+)(?:_comment_)?(?:_eol_)/,
+  cluster: /^ *=+ *(_id_) *(?:_comment_)?(?:_eol_)/,
+  newline: /^ *\n|^ +$/,
+  pick_node: /(?:<(\d+),(\d+)>)?(_id_)/,
+  error: /^[^\n]*\n|[^\n]+$/,
+  _xy_: /<\d+,\d+>/,
+  _id_: /[^\s<>:]+/,
+  _arrow_: /(<|X|x|O|o)?(-|=|\.)+([udlrUDLRv^<>]{2,2})?(-|=|\.)+(>|X|x|O|o)?/,
+  _comment_: /: *(.*) */,
+  _eol_: / *(?:\n|$)/
+};
+
+syntax.edges = regexp_join(syntax.edges, '_id_', '_arrow_', '_comment_', '_eol_');
+
+syntax.nodes = regexp_join(syntax.nodes, '_xy_', '_id_', '_arrow_', '_comment_', '_eol_');
+
+syntax.cluster = regexp_join(syntax.cluster, '_id_', '_comment_', '_eol_');
+
+syntax.pick_node = regexp_join(syntax.pick_node, '_id_');
+
+module.exports = { syntax };
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("glob");
+module.exports = require("vue-test-utils");
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = require("file-system");
+module.exports = require("glob");
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("file-system");
+
+/***/ }),
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__marked_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__marked_vue__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dagre_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__marksvg_vue__ = __webpack_require__(25);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MarkSVG", function() { return __WEBPACK_IMPORTED_MODULE_2__marksvg_vue__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Marked", function() { return __WEBPACK_IMPORTED_MODULE_0__marked_vue__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Dagre", function() { return __WEBPACK_IMPORTED_MODULE_1__dagre_vue__["default"]; });
 
@@ -1219,8 +1682,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1229,9 +1694,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(12)
+  __webpack_require__(13)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(0)
 /* script */
 
 
@@ -1275,17 +1740,17 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(13);
+var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(1)("2f442584", content, false, {});
+var update = __webpack_require__(2)("2f442584", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -1301,10 +1766,10 @@ if(false) {
 }
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(0)(true);
+exports = module.exports = __webpack_require__(1)(true);
 // imports
 
 
@@ -1315,7 +1780,7 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /**
@@ -1348,13 +1813,13 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -1370,7 +1835,7 @@ module.exports = require("lodash");
  */
 var InlineLexer, Lexer, Parser, baseUrls, block, escape, inline, marked, noop, originIndependentUrl, resolveUrl, splitCells, unescape;
 
-({ block, inline, noop } = __webpack_require__(17));
+({ block, inline, noop } = __webpack_require__(18));
 
 escape = function (html, is_encode) {
   var r_encode;
@@ -2318,7 +2783,7 @@ marked.parse = marked;
 module.exports = marked;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 
@@ -2531,17 +2996,17 @@ inline.breaks = Object.assign({}, inline.gfm, {
 module.exports = { block, inline, noop };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(19);
+var content = __webpack_require__(20);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(1)("b8c7c79e", content, false, {});
+var update = __webpack_require__(2)("b8c7c79e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -2557,10 +3022,10 @@ if(false) {
 }
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(0)(true);
+exports = module.exports = __webpack_require__(1)(true);
 // imports
 
 
@@ -2571,18 +3036,18 @@ exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > image[data-v-b
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("dagre");
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse, syntax;
 
-({ syntax } = __webpack_require__(22));
+({ syntax } = __webpack_require__(23));
 
 parse = function (render, src) {
   var $, _, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, pl, results, start, tokens, v, vl, vm, w, wl, wm;
@@ -2682,7 +3147,7 @@ parse = function (render, src) {
 module.exports = parse;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 var regexp_join, syntax;
@@ -2718,7 +3183,7 @@ syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol
 module.exports = { syntax };
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2890,20 +3355,351 @@ if (false) {
 }
 
 /***/ }),
-/* 24 */
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marksvg_vue__ = __webpack_require__(6);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_b52af23e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_marksvg_vue__ = __webpack_require__(27);
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marksvg_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_b52af23e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_marksvg_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src\\marksvg.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b52af23e", Component.options)
+  } else {
+    hotAPI.reload("data-v-b52af23e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Dagre, createRenderer, fs, glob, shallow;
+var parse, parse_base, syntax;
 
-({ createRenderer } = __webpack_require__(6));
+({ syntax } = __webpack_require__(7));
 
-({ shallow } = __webpack_require__(7));
+parse_base = function (render, src) {
+  var parents, tokens;
+  parents = {};
+  tokens = [];
+  return parse(render, src);
+};
 
-glob = __webpack_require__(8);
+parse = function (render, src) {
+  var $, all, cap, edges, end, headpos, i, idx, label, len, line, line2, nodes, rects, ref, ref1, results, side, start, tailpos, v, vl, vm, vs, w, wl, wm, x, y;
+  results = [];
+  while (src) {
+    // console.log src
+    if (cap = syntax.newline.exec(src)) {
+      [all] = cap;
+      src = src.slice(all.length);
+      // console.log "newline", cap
+      render.newline();
+      continue;
+    }
+    if (cap = syntax.edges.exec(src)) {
+      [all, edges, v, $, $, $, $, $, label] = cap;
+      src = src.slice(all.length);
+      // console.log "edges", cap
+      edges = edges.split(syntax._arrow_).map(function (s) {
+        return s != null ? s.trim() : void 0;
+      });
+      for (idx = i = 0, len = edges.length; i < len; idx = i += 6) {
+        v = edges[idx];
+        [v, start, line, side, line2, end, w] = edges.slice(idx, +(idx + 6) + 1 || 9e9);
+        if (line !== line2) {
+          render.error(` ${edges.slice(idx, +(idx + 6) + 1 || 9e9).join("")} 線の前後が異なります。`);
+          break;
+        }
+        if (!w) {
+          continue;
+        }
+        [vm, v, vl] = render.dic(v);
+        [wm, w, wl] = render.dic(w);
+        ({ rects } = render.data);
+        if (rects[v] && rects[w]) {
+          headpos = (ref = side != null ? side[0] : void 0) != null ? ref : '>';
+          tailpos = (ref1 = side != null ? side[1] : void 0) != null ? ref1 : '<';
+          render.edge(v, w, line, start, end, headpos, tailpos, label);
+        } else {
+          render.error(` ${edges.slice(idx, +(idx + 6) + 1 || 9e9).join("")} 要素が未定義です。`);
+        }
+      }
+      continue;
+    }
+    if (cap = syntax.nodes.exec(src)) {
+      [all, nodes, label] = cap;
+      src = src.slice(all.length);
+      // console.log "nodes", cap
+      nodes = nodes.trim().split(syntax.pick_node);
+      vs = function () {
+        var j, len1, results1;
+        results1 = [];
+        for (idx = j = 0, len1 = nodes.length; j < len1; idx = j += 4) {
+          $ = nodes[idx];
+          [$, x, y, v] = nodes.slice(idx, +(idx + 3) + 1 || 9e9);
+          if (!v) {
+            continue;
+          }
+          [vm, v, vl] = render.dic(v);
+          render[vm](v, vl, x, y);
+          results1.push(v);
+        }
+        return results1;
+      }();
+      if (label) {
+        render.cluster(vs, label);
+      }
+      continue;
+    }
+    if (cap = syntax.error.exec(src)) {
+      [all] = cap;
+      src = src.slice(all.length);
+      render.error(all, "解釈できない文字列です。");
+      continue;
+    } else {
+      results.push(void 0);
+    }
+  }
+  return results;
+};
 
-fs = __webpack_require__(9);
+module.exports = parse_base;
 
-({ Dagre } = __webpack_require__(10));
+/***/ }),
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("article", [
+    _c(
+      "svg",
+      {
+        style: "max-width: 100%; width: " + _vm.root.width + "px;",
+        attrs: { viewBox: _vm.view_box }
+      },
+      [
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-circle",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "5",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [_c("circle", { attrs: { cx: "5", cy: "5", r: "4" } })]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-arrow-start",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "3",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M10,0 L0,5 L10,10 z" }
+            })
+          ]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-arrow-end",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "3",
+              refY: "5",
+              orient: "auto"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M0,0 L10,5 L0,10 z" }
+            })
+          ]
+        ),
+        _c(
+          "marker",
+          {
+            staticClass: "edgePath",
+            attrs: {
+              id: "svg-marker-cross",
+              viewBox: "0 0 10 10",
+              markerUnits: "userSpaceOnUse",
+              markerWidth: "20",
+              markerHeight: "20",
+              refX: "5",
+              refY: "5",
+              orient: "0"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "path",
+              attrs: { d: "M0,0 L10,10 M0,10 L10,0 z" }
+            })
+          ]
+        ),
+        _c(
+          "g",
+          [
+            _vm._l(_vm.rects, function(o, key) {
+              return o
+                ? _c(
+                    "rect",
+                    _vm._b(
+                      {
+                        on: {
+                          dragstart: function($event) {
+                            _vm.start($event, key)
+                          },
+                          dragenter: _vm.nop,
+                          dragover: _vm.nop,
+                          drop: function($event) {
+                            _vm.finish($event, key)
+                          }
+                        }
+                      },
+                      "rect",
+                      o,
+                      false
+                    )
+                  )
+                : _vm._e()
+            }),
+            _vm._l(_vm.images, function(o, key) {
+              return o ? _c("image", _vm._b({}, "image", o, false)) : _vm._e()
+            })
+          ],
+          2
+        ),
+        _c(
+          "g",
+          [
+            _vm._l(_vm.paths, function(o, key) {
+              return o
+                ? _c(
+                    "path",
+                    _vm._b(
+                      { staticClass: "path", attrs: { fill: "none" } },
+                      "path",
+                      o,
+                      false
+                    )
+                  )
+                : _vm._e()
+            }),
+            _vm._l(_vm.texts, function(o, key) {
+              return o
+                ? _c(
+                    "text",
+                    _vm._b({ staticClass: "messageText" }, "text", o, false),
+                    [_vm._v(_vm._s(o.label))]
+                  )
+                : _vm._e()
+            })
+          ],
+          2
+        )
+      ]
+    ),
+    _vm.graph.errors.length
+      ? _c(
+          "div",
+          { staticClass: "errors" },
+          _vm._l(_vm.graph.errors, function(err) {
+            return _c("div", { staticClass: "error" }, [_vm._v(_vm._s(err))])
+          })
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b52af23e", esExports)
+  }
+}
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Dagre, fs, glob, shallow;
+
+({ shallow } = __webpack_require__(8));
+
+glob = __webpack_require__(9);
+
+fs = __webpack_require__(10);
+
+({ Dagre } = __webpack_require__(11));
 
 glob.sync("./__tests__/**/*.dagre").map(function (path) {
   return describe(path, function () {
@@ -2917,12 +3713,7 @@ glob.sync("./__tests__/**/*.dagre").map(function (path) {
       wrapper = shallow(Dagre, {
         propsData: { value, context }
       });
-      return createRenderer().renderToString(wrapper.vm, function (err, str) {
-        if (err) {
-          throw new Error(err);
-        }
-        return expect(str).toMatchSnapshot();
-      });
+      return expect(wrapper.html().replace(/></g, ">\n<")).toMatchSnapshot();
     });
   });
 });

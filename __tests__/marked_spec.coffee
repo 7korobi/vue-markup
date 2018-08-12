@@ -1,4 +1,3 @@
-{ createRenderer } = require 'vue-server-renderer'
 { shallow } = require 'vue-test-utils'
 glob = require 'glob'
 fs = require 'file-system'
@@ -25,7 +24,4 @@ glob
         part_id: 'spec-1-1'
       wrapper = shallow Marked,
         propsData: { value, context }
-      createRenderer().renderToString wrapper.vm, (err, str)->
-        if err
-          throw new Error(err)
-        expect(str).toMatchSnapshot()
+      expect(wrapper.html()).toMatchSnapshot()

@@ -1,0 +1,8 @@
+aaa bbb ccc ddd : first
+eee fff ggg hhh : second
+
+aaa -^^-> bbb -^^-> ccc -^^-o ddd -vv-x eee -vv-X fff -- aaa
+first -- second
+first -- aaa
+
+

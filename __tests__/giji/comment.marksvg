@@ -1,0 +1,7 @@
+aaa bbb ccc ddd : first
+eee fff ggg hhh : second
+
+first == second : main relation
+first o--o aaa    : sub relation
+
+

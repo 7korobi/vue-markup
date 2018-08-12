@@ -13,8 +13,9 @@ vue =
 module.exports =
   devtool: 'source-map'
   entry:
-    "__tests__/dagre_spec":  './__tests__/dagre_spec.coffee'
+    "__tests__/dagre_spec": './__tests__/dagre_spec.coffee'
     "__tests__/marked_spec": './__tests__/marked_spec.coffee'
+    "__tests__/marksvg_spec": './__tests__/marksvg_spec.coffee'
   output:
     path: current
     filename: '[name].js' # Important

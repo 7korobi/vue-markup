@@ -3,10 +3,10 @@
 glob = require 'glob'
 fs = require 'file-system'
 
-{ Dagre } = require '../src/index'
+{ MarkSVG } = require '../src/index'
 
 glob
-.sync("./__tests__/**/*.dagre")
+.sync("./__tests__/**/*.marksvg")
 .map (path)->
   describe path, ->
     test 'snapshot', ->
@@ -14,6 +14,6 @@ glob
       context =
         book_id: 'spec-1'
         part_id: 'spec-1-1'
-      wrapper = shallow Dagre,
+      wrapper = shallow MarkSVG,
         propsData: { value, context }
       expect(wrapper.html().replace /></g, ">\n<").toMatchSnapshot()

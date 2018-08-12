@@ -1,4 +1,5 @@
-import Marked from './marked.vue'
-import Dagre  from './dagre.vue'
+import Marked  from './marked.vue'
+import Dagre   from './dagre.vue'
+import MarkSVG from './marksvg.vue'
 
-export { Marked, Dagre }
+export { MarkSVG, Marked, Dagre }

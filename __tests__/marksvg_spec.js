@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 29);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -3689,10 +3689,11 @@ if (false) {
 
 /***/ }),
 /* 28 */,
-/* 29 */
+/* 29 */,
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Marked, fs, glob, shallow;
+var MarkSVG, fs, glob, shallow;
 
 ({ shallow } = __webpack_require__(8));
 
@@ -3700,23 +3701,9 @@ glob = __webpack_require__(9);
 
 fs = __webpack_require__(10);
 
-({ Marked } = __webpack_require__(11));
+({ MarkSVG } = __webpack_require__(11));
 
-Object.assign(Marked.options, {
-  silent: false,
-  indentCode: true,
-  em: true
-});
-
-Object.assign(Marked.options.renderer, {
-  paragraph: function (text) {
-    var m;
-    ({ m } = this.options);
-    return m('p', {}, text);
-  }
-});
-
-glob.sync("./__tests__/**/*.md").map(function (path) {
+glob.sync("./__tests__/**/*.marksvg").map(function (path) {
   return describe(path, function () {
     return test('snapshot', function () {
       var context, value, wrapper;
@@ -3725,14 +3712,14 @@ glob.sync("./__tests__/**/*.md").map(function (path) {
         book_id: 'spec-1',
         part_id: 'spec-1-1'
       };
-      wrapper = shallow(Marked, {
+      wrapper = shallow(MarkSVG, {
         propsData: { value, context }
       });
-      return expect(wrapper.html()).toMatchSnapshot();
+      return expect(wrapper.html().replace(/></g, ">\n<")).toMatchSnapshot();
     });
   });
 });
 
 /***/ })
 /******/ ])));
-//# sourceMappingURL=marked_spec.js.map
+//# sourceMappingURL=marksvg_spec.js.map
