@@ -17,6 +17,8 @@ article
       rect(v-for="(o, key) in graph.labels"  v-if="o" v-bind="o" :ref="o.key")
       text(v-for="(o, key) in graph.texts" v-if="o" v-bind="o" :ref="o.key")
         | {{ o.label }}
+    g(v-if="move.id")
+      rect.move(v-bind="moved")
   .errors(v-if="graph.errors.length")
     .error(v-for="err in graph.errors") {{ err }}
 </template>
@@ -24,8 +26,7 @@ article
 <script lang="coffee">
 # inspired by https://github.com/wakufactory/MarkDownDiagram
 
-parse = require "./marksvg-parse"
-{ syntax, util } = require "./marksvg-regexp"
+SVG = require "./marksvg-parse"
 
 marker = (key)->
   switch key
@@ -253,6 +254,12 @@ options =
     gap_width:    20
 options.renderer.options = options
 
+
+parse_touch = (e)->
+  { pageX, pageY } = e.changedTouches[0]
+  { target } = e
+  { pageX, pageY, target }
+
 vm =
   name: 'MarkSVG'
   options: options
@@ -260,65 +267,79 @@ vm =
   props: ["value", "context"]
 
   data: ->
+    move =
+      id: null
+      x: 0
+      y: 0
+      px: 0
+      py: 0
+    moved =
+      x: 0
+      y: 0
+      rx: 0
+      ry: 0
+      width: 0
+      height: 0
     zoom = 1.0
-    move: null
-    gdata: options.renderer.plain()
+    gdata = options.renderer.plain()
+    tokens = []
+
+    { zoom, move, moved, gdata, tokens }
 
   methods:
+    move_xy: ->
+      { x, y, dx, dy } = @move
+      x = parseInt Math.max 0, x + dx
+      y = parseInt Math.max 0, y + dy
+      console.log { x, y }
+      { x, y }
+
     movespace: ->
       move = ({ pageX, pageY, target })=>
-        if @move
+        if @move.id
           { px, py } = @move
           @move.dx = @zoom * (pageX - px)
           @move.dy = @zoom * (pageY - py)
           @recalc()
       finish = ({ pageX, pageY, target })=>
-        if @move
+        if @move.id
           { px, py } = @move
           @move.dx = @zoom * (pageX - px)
           @move.dy = @zoom * (pageY - py)
           @reparse()
 
       cb =
-        touchend: finish
-        touchleave: finish
+        touchend: (e)=>
+          finish parse_touch e
+        touchleave: (e)=>
+          finish parse_touch e
+        touchmove: (e)=>
+          move parse_touch e
         mouseup: finish
         mouseleave: finish
-        touchmove: (e)=>
-          ee = e.changedTouches[0]
-          ee.target = e.target
-          move ee
         mousemove: move
         
     draggable: (id)->
       start = ({ pageX, pageY, target })=>
-        { x, y } = @gdata.rects[id]
+        { x, y, rx, ry, width, height } = @gdata.rects[id]
+        @moved = { x, y, rx, ry, width, height }
         @move = { id, x, y, px: pageX, py: pageY }
 
       cb =
         touchstart: (e)=>
           e.preventDefault()
-          ee = e.changedTouches[0]
-          ee.target = e.target
-          start ee
+          start parse_touch e
         mousedown: (e)=>
           e.preventDefault()
           start e
     
     recalc: ->
-      { id, x, y, dx, dy } = @move
-      x = parseInt Math.max 0, x + dx
-      y = parseInt Math.max 0, y + dy
-      Object.assign @gdata.rects[id], { x, y }
-      @gdata.rects = @gdata.rects
+      Object.assign @moved, @move_xy()
 
     reparse: ->
-      @recalc()
-      value = @value.replace @all_nodes, ( $, xy, name )=>
-        { x, y } = @gdata.nodes[name]
-        "<#{x},#{y}>#{name}"
-      @$emit 'input', value
-      @move = null
+      Object.assign @gdata.rects[@move.id], @move_xy()
+      @$emit 'input', SVG.stringify @tokens, @gdata
+      @move.id = null
 
     nop: -> false
 
@@ -326,22 +347,19 @@ vm =
     root: ->
       options.renderer.cover Object.values(@graph.rects)
 
-    all_nodes: ->
-      util.exist_node Object.keys @gdata.nodes
-
     view_box: ->
       "#{@root.x} #{@root.y} #{@root.width} #{@root.height}"
 
     graph: ->
       @gdata = options.renderer.plain()
-      parse options.renderer, @value
+      @tokens = SVG.parse options.renderer, @value
       @$nextTick =>
-        return unless @$refs.root.getClientRects
+        return unless @$refs.root?.getClientRects
         @zoom = @root.width / @$refs.root.getClientRects()[0].width
         for key of @gdata.texts
           tk =      'label-' + key
           lk = 'rect-label-' + key
-          continue unless @$refs[tk][0].getClientRects
+          continue unless @$refs[tk]?[0]?.getClientRects
 
           { width, height, x, y }  = @$refs[tk][0].getBBox()
           { rect_label } = options.style

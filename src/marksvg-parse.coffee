@@ -1,12 +1,9 @@
 { syntax } = require './marksvg-regexp'
 
-parse_base = (render, src)->
-  parents = {}
-  tokens = []
-
-  parse(render, src)
-
 parse = (render, src)->
+  do_parse([], render, src)
+
+do_parse = (tokens, render, src)->
   while src
     # console.log src
     if cap = syntax.newline.exec src
@@ -14,6 +11,8 @@ parse = (render, src)->
       src = src[all.length ..]
       # console.log "newline", cap
       render.newline()
+      type = "newline"
+      tokens.push { type, all }
       continue
 
     if cap = syntax.edges.exec src
@@ -39,6 +38,8 @@ parse = (render, src)->
           render.edge v, w, line, start, end, headpos, tailpos, label
         else
           render.error " #{edges[idx .. idx + 6].join("")} 要素が未定義です。"
+      type = "edges"
+      tokens.push { type, all }
       continue
 
     if cap = syntax.nodes.exec src
@@ -58,13 +59,39 @@ parse = (render, src)->
           vid
       if label
         render.cluster vs, label
+      type = "nodes"
+      tokens.push { type, all }
       continue
 
     if cap = syntax.error.exec src
       [ all ] = cap
       src = src[all.length ..]
       render.error all, "解釈できない文字列です。"
+      type = "error"
+      tokens.push { type, all }
       continue
+  tokens
+
+stringify = (tokens, data)->
+  dest = ""
+  for { type, all } in tokens
+    switch type
+      when 'nodes'
+        dest += all.replace syntax.pick_node, ( $, x, y, v )->
+          if o = data.nodes[v]
+            { x, y } = o
+            "<#{x},#{y}>#{v}"
+          else
+            v
+      when 'newline'
+        dest += all
+      when 'edges'
+        dest += all
+      when 'error'
+        dest += all
+      else
+        throw new Error "tokens unimplement."
+  dest
 
 
-module.exports = parse_base
+module.exports = { parse, stringify }
