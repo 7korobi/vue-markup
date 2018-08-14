@@ -2,17 +2,17 @@
 
 exports[`./__tests__/giji/comment.marksvg snapshot 1`] = `
 "<article>
-<svg viewBox=\\"-10 -10 850 150\\" style=\\"max-width: 100%; width: 850px;\\">
+<svg viewBox=\\"10 10 1200 210\\" style=\\"max-width: 100%; width: 1200px;\\">
 <marker id=\\"svg-marker-circle\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
 <circle cx=\\"5\\" cy=\\"5\\" r=\\"4\\">
 </circle>
 </marker>
 <marker id=\\"svg-marker-arrow-start\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"path\\">
+<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-arrow-end\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"path\\">
+<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-cross\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"0\\" class=\\"edgePath\\">
@@ -20,48 +20,68 @@ exports[`./__tests__/giji/comment.marksvg snapshot 1`] = `
 </path>
 </marker>
 <g>
-<rect width=\\"110\\" height=\\"110\\" x=\\"10\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"30\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"110\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"180\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"210\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"330\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"310\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"480\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"430\\" height=\\"130\\" x=\\"0\\" y=\\"0\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
+<rect fill=\\"none\\" width=\\"580\\" height=\\"160\\" x=\\"20\\" y=\\"20\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"410\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"630\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"510\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"780\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"610\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"930\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"710\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"1080\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"830\\" height=\\"130\\" x=\\"0\\" y=\\"0\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
-</rect>
-<rect width=\\"0\\" height=\\"0\\" x=\\"315\\" y=\\"65\\" rx=\\"0\\" ry=\\"0\\" class=\\"point\\">
-</rect>
-<rect width=\\"0\\" height=\\"0\\" x=\\"140\\" y=\\"65\\" rx=\\"0\\" ry=\\"0\\" class=\\"point\\">
+<rect fill=\\"none\\" width=\\"580\\" height=\\"160\\" x=\\"620\\" y=\\"20\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
 </rect>
 </g>
-<g>
-<path fill=\\"none\\" d=\\"M 430 65 C 480 65 -50 65 0 65\\" class=\\"path wide\\">
+<g class=\\"edgePath\\">
+<path fill=\\"none\\" d=\\"M 600 100 C 650 100 570 100 620 100\\" class=\\"path wide\\">
 </path>
-<path fill=\\"none\\" d=\\"M 430 65 C 480 65 -40 65 10 65\\" markerStart=\\"url(#svg-marker-circle)\\" markerEnd=\\"url(#svg-marker-circle)\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 600 100 C 650 100 -20 85 30 85\\" markerStart=\\"url(#svg-marker-circle)\\" markerEnd=\\"url(#svg-marker-circle)\\" class=\\"path solid\\">
 </path>
-<text labelpos=\\"c\\" label=\\"aaa\\" width=\\"95\\" height=\\"30\\" x=\\"65\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">aaa</text>
-<text labelpos=\\"c\\" label=\\"bbb\\" width=\\"95\\" height=\\"30\\" x=\\"165\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">bbb</text>
-<text labelpos=\\"c\\" label=\\"ccc\\" width=\\"95\\" height=\\"30\\" x=\\"265\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ccc</text>
-<text labelpos=\\"c\\" label=\\"ddd\\" width=\\"95\\" height=\\"30\\" x=\\"365\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ddd</text>
-<text labelpos=\\"c\\" label=\\"first\\" width=\\"145\\" height=\\"30\\" x=\\"215\\" y=\\"160\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">first</text>
-<text labelpos=\\"c\\" label=\\"eee\\" width=\\"95\\" height=\\"30\\" x=\\"465\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">eee</text>
-<text labelpos=\\"c\\" label=\\"fff\\" width=\\"95\\" height=\\"30\\" x=\\"565\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">fff</text>
-<text labelpos=\\"c\\" label=\\"ggg\\" width=\\"95\\" height=\\"30\\" x=\\"665\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ggg</text>
-<text labelpos=\\"c\\" label=\\"hhh\\" width=\\"95\\" height=\\"30\\" x=\\"765\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">hhh</text>
-<text labelpos=\\"c\\" label=\\"second\\" width=\\"170\\" height=\\"30\\" x=\\"415\\" y=\\"160\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">second</text>
-<text labelpos=\\"c\\" label=\\"main relation\\" width=\\"345\\" height=\\"30\\" x=\\"315\\" y=\\"65\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">main relation</text>
-<text labelpos=\\"c\\" label=\\"sub relation\\" width=\\"320\\" height=\\"30\\" x=\\"140\\" y=\\"65\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">sub relation</text>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<text labelpos=\\"c\\" label=\\"aaa\\" x=\\"85\\" y=\\"140\\" class=\\"pen\\">aaa</text>
+<text labelpos=\\"c\\" label=\\"bbb\\" x=\\"235\\" y=\\"140\\" class=\\"pen\\">bbb</text>
+<text labelpos=\\"c\\" label=\\"ccc\\" x=\\"385\\" y=\\"140\\" class=\\"pen\\">ccc</text>
+<text labelpos=\\"c\\" label=\\"ddd\\" x=\\"535\\" y=\\"140\\" class=\\"pen\\">ddd</text>
+<text labelpos=\\"c\\" label=\\"first\\" x=\\"310\\" y=\\"180\\" class=\\"pen\\">first</text>
+<text labelpos=\\"c\\" label=\\"eee\\" x=\\"685\\" y=\\"140\\" class=\\"pen\\">eee</text>
+<text labelpos=\\"c\\" label=\\"fff\\" x=\\"835\\" y=\\"140\\" class=\\"pen\\">fff</text>
+<text labelpos=\\"c\\" label=\\"ggg\\" x=\\"985\\" y=\\"140\\" class=\\"pen\\">ggg</text>
+<text labelpos=\\"c\\" label=\\"hhh\\" x=\\"1135\\" y=\\"140\\" class=\\"pen\\">hhh</text>
+<text labelpos=\\"c\\" label=\\"second\\" x=\\"910\\" y=\\"180\\" class=\\"pen\\">second</text>
+<text labelpos=\\"c\\" label=\\"main relation\\" x=\\"610\\" y=\\"100\\" class=\\"pen\\">main relation</text>
+<text labelpos=\\"c\\" label=\\"sub relation\\" x=\\"315\\" y=\\"92\\" class=\\"pen\\">sub relation</text>
 </g>
 </svg>
 <!---->
@@ -70,17 +90,17 @@ exports[`./__tests__/giji/comment.marksvg snapshot 1`] = `
 
 exports[`./__tests__/giji/japanease.marksvg snapshot 1`] = `
 "<article>
-<svg viewBox=\\"-10 -10 640 340\\" style=\\"max-width: 100%; width: 640px;\\">
+<svg viewBox=\\"80 10 600 380\\" style=\\"max-width: 100%; width: 600px;\\">
 <marker id=\\"svg-marker-circle\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
 <circle cx=\\"5\\" cy=\\"5\\" r=\\"4\\">
 </circle>
 </marker>
 <marker id=\\"svg-marker-arrow-start\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"path\\">
+<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-arrow-end\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"path\\">
+<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-cross\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"0\\" class=\\"edgePath\\">
@@ -98,9 +118,9 @@ exports[`./__tests__/giji/japanease.marksvg snapshot 1`] = `
 </rect>
 <rect width=\\"110\\" height=\\"110\\" x=\\"200\\" y=\\"200\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"500\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"550\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"620\\" height=\\"320\\" x=\\"0\\" y=\\"0\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
+<rect fill=\\"none\\" width=\\"580\\" height=\\"330\\" x=\\"90\\" y=\\"20\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
 </rect>
 <rect width=\\"110\\" height=\\"110\\" x=\\"100\\" y=\\"200\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
@@ -108,11 +128,11 @@ exports[`./__tests__/giji/japanease.marksvg snapshot 1`] = `
 </rect>
 <rect width=\\"110\\" height=\\"110\\" x=\\"300\\" y=\\"200\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"420\\" height=\\"320\\" x=\\"0\\" y=\\"0\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
+<rect fill=\\"none\\" width=\\"330\\" height=\\"160\\" x=\\"90\\" y=\\"190\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
 </rect>
 </g>
-<g>
-<path fill=\\"none\\" d=\\"M 310 320 C 310 370 -50 160 0 160\\" markerStart=\\"url(#svg-marker-cross)\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
+<g class=\\"edgePath\\">
+<path fill=\\"none\\" d=\\"M 380 350 C 380 400 40 270 90 270\\" markerStart=\\"url(#svg-marker-cross)\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
 </path>
 <path fill=\\"none\\" d=\\"M 310 255 C 360 255 50 155 100 155\\" class=\\"path dotted\\">
 </path>
@@ -124,23 +144,45 @@ exports[`./__tests__/giji/japanease.marksvg snapshot 1`] = `
 </path>
 <path fill=\\"none\\" d=\\"M 510 155 C 560 155 50 255 100 255\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
 </path>
-<path fill=\\"none\\" d=\\"M 610 65 C 660 65 250 255 300 255\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 660 85 C 710 85 250 255 300 255\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
 </path>
 <path fill=\\"none\\" d=\\"M 410 255 C 460 255 50 255 100 255\\" markerStart=\\"url(#svg-marker-arrow-start)\\" markerEnd=\\"url(#svg-marker-arrow-end)\\" class=\\"path wide\\">
 </path>
 <path fill=\\"none\\" d=\\"M 410 255 C 460 255 50 155 100 155\\" markerStart=\\"url(#svg-marker-circle)\\" markerEnd=\\"url(#svg-marker-circle)\\" class=\\"path wide\\">
 </path>
-<text labelpos=\\"c\\" label=\\"参休\\" width=\\"70\\" height=\\"30\\" x=\\"155\\" y=\\"240\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">参休</text>
-<text labelpos=\\"c\\" label=\\"ミツボシ\\" width=\\"120\\" height=\\"30\\" x=\\"255\\" y=\\"240\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ミツボシ</text>
-<text labelpos=\\"c\\" label=\\"ネイサン\\" width=\\"120\\" height=\\"30\\" x=\\"355\\" y=\\"240\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ネイサン</text>
-<text labelpos=\\"c\\" label=\\"サイラス\\" width=\\"120\\" height=\\"30\\" x=\\"455\\" y=\\"240\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">サイラス</text>
-<text labelpos=\\"c\\" label=\\"はのん\\" width=\\"95\\" height=\\"30\\" x=\\"255\\" y=\\"340\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">はのん</text>
-<text labelpos=\\"c\\" label=\\"ペラジー\\" width=\\"120\\" height=\\"30\\" x=\\"555\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ペラジー</text>
-<text labelpos=\\"c\\" label=\\"ほのぼのぐみ\\" width=\\"170\\" height=\\"30\\" x=\\"310\\" y=\\"350\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ほのぼのぐみ</text>
-<text labelpos=\\"c\\" label=\\"皇帝\\" width=\\"70\\" height=\\"30\\" x=\\"155\\" y=\\"340\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">皇帝</text>
-<text labelpos=\\"c\\" label=\\"はおう\\" width=\\"95\\" height=\\"30\\" x=\\"155\\" y=\\"340\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">はおう</text>
-<text labelpos=\\"c\\" label=\\"かみさま\\" width=\\"120\\" height=\\"30\\" x=\\"355\\" y=\\"340\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">かみさま</text>
-<text labelpos=\\"c\\" label=\\"がちがちぐみ\\" width=\\"170\\" height=\\"30\\" x=\\"210\\" y=\\"350\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">がちがちぐみ</text>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<text labelpos=\\"c\\" label=\\"参休\\" x=\\"155\\" y=\\"210\\" class=\\"pen\\">参休</text>
+<text labelpos=\\"c\\" label=\\"ミツボシ\\" x=\\"255\\" y=\\"210\\" class=\\"pen\\">ミツボシ</text>
+<text labelpos=\\"c\\" label=\\"ネイサン\\" x=\\"355\\" y=\\"210\\" class=\\"pen\\">ネイサン</text>
+<text labelpos=\\"c\\" label=\\"サイラス\\" x=\\"455\\" y=\\"210\\" class=\\"pen\\">サイラス</text>
+<text labelpos=\\"c\\" label=\\"はのん\\" x=\\"255\\" y=\\"310\\" class=\\"pen\\">はのん</text>
+<text labelpos=\\"c\\" label=\\"ペラジー\\" x=\\"605\\" y=\\"140\\" class=\\"pen\\">ペラジー</text>
+<text labelpos=\\"c\\" label=\\"ほのぼのぐみ\\" x=\\"380\\" y=\\"350\\" class=\\"pen\\">ほのぼのぐみ</text>
+<text labelpos=\\"c\\" label=\\"皇帝\\" x=\\"155\\" y=\\"310\\" class=\\"pen\\">皇帝</text>
+<text labelpos=\\"c\\" label=\\"はおう\\" x=\\"155\\" y=\\"310\\" class=\\"pen\\">はおう</text>
+<text labelpos=\\"c\\" label=\\"かみさま\\" x=\\"355\\" y=\\"310\\" class=\\"pen\\">かみさま</text>
+<text labelpos=\\"c\\" label=\\"がちがちぐみ\\" x=\\"255\\" y=\\"350\\" class=\\"pen\\">がちがちぐみ</text>
 </g>
 </svg>
 <!---->
@@ -149,17 +191,17 @@ exports[`./__tests__/giji/japanease.marksvg snapshot 1`] = `
 
 exports[`./__tests__/giji/node_only.marksvg snapshot 1`] = `
 "<article>
-<svg viewBox=\\"0 0 830 130\\" style=\\"max-width: 100%; width: 830px;\\">
+<svg viewBox=\\"20 20 1180 160\\" style=\\"max-width: 100%; width: 1180px;\\">
 <marker id=\\"svg-marker-circle\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
 <circle cx=\\"5\\" cy=\\"5\\" r=\\"4\\">
 </circle>
 </marker>
 <marker id=\\"svg-marker-arrow-start\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"path\\">
+<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-arrow-end\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"path\\">
+<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-cross\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"0\\" class=\\"edgePath\\">
@@ -167,32 +209,48 @@ exports[`./__tests__/giji/node_only.marksvg snapshot 1`] = `
 </path>
 </marker>
 <g>
-<rect width=\\"110\\" height=\\"110\\" x=\\"10\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"30\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"110\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"180\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"210\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"330\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"310\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"480\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"410\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"630\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"510\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"780\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"610\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"930\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"710\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"1080\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
 </g>
-<g>
-<text labelpos=\\"c\\" label=\\"aaa\\" width=\\"95\\" height=\\"30\\" x=\\"65\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">aaa</text>
-<text labelpos=\\"c\\" label=\\"bbb\\" width=\\"95\\" height=\\"30\\" x=\\"165\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">bbb</text>
-<text labelpos=\\"c\\" label=\\"ccc\\" width=\\"95\\" height=\\"30\\" x=\\"265\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ccc</text>
-<text labelpos=\\"c\\" label=\\"ddd\\" width=\\"95\\" height=\\"30\\" x=\\"365\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ddd</text>
-<text labelpos=\\"c\\" label=\\"eee\\" width=\\"95\\" height=\\"30\\" x=\\"465\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">eee</text>
-<text labelpos=\\"c\\" label=\\"fff\\" width=\\"95\\" height=\\"30\\" x=\\"565\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">fff</text>
-<text labelpos=\\"c\\" label=\\"ggg\\" width=\\"95\\" height=\\"30\\" x=\\"665\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ggg</text>
-<text labelpos=\\"c\\" label=\\"hhh\\" width=\\"95\\" height=\\"30\\" x=\\"765\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">hhh</text>
+<g class=\\"edgePath\\">
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<text labelpos=\\"c\\" label=\\"aaa\\" x=\\"85\\" y=\\"140\\" class=\\"pen\\">aaa</text>
+<text labelpos=\\"c\\" label=\\"bbb\\" x=\\"235\\" y=\\"140\\" class=\\"pen\\">bbb</text>
+<text labelpos=\\"c\\" label=\\"ccc\\" x=\\"385\\" y=\\"140\\" class=\\"pen\\">ccc</text>
+<text labelpos=\\"c\\" label=\\"ddd\\" x=\\"535\\" y=\\"140\\" class=\\"pen\\">ddd</text>
+<text labelpos=\\"c\\" label=\\"eee\\" x=\\"685\\" y=\\"140\\" class=\\"pen\\">eee</text>
+<text labelpos=\\"c\\" label=\\"fff\\" x=\\"835\\" y=\\"140\\" class=\\"pen\\">fff</text>
+<text labelpos=\\"c\\" label=\\"ggg\\" x=\\"985\\" y=\\"140\\" class=\\"pen\\">ggg</text>
+<text labelpos=\\"c\\" label=\\"hhh\\" x=\\"1135\\" y=\\"140\\" class=\\"pen\\">hhh</text>
 </g>
 </svg>
 <!---->
@@ -201,17 +259,17 @@ exports[`./__tests__/giji/node_only.marksvg snapshot 1`] = `
 
 exports[`./__tests__/giji/relation.marksvg snapshot 1`] = `
 "<article>
-<svg viewBox=\\"-10 -10 850 150\\" style=\\"max-width: 100%; width: 850px;\\">
+<svg viewBox=\\"10 10 1200 210\\" style=\\"max-width: 100%; width: 1200px;\\">
 <marker id=\\"svg-marker-circle\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
 <circle cx=\\"5\\" cy=\\"5\\" r=\\"4\\">
 </circle>
 </marker>
 <marker id=\\"svg-marker-arrow-start\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"path\\">
+<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-arrow-end\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"path\\">
+<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-cross\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"0\\" class=\\"edgePath\\">
@@ -219,54 +277,74 @@ exports[`./__tests__/giji/relation.marksvg snapshot 1`] = `
 </path>
 </marker>
 <g>
-<rect width=\\"110\\" height=\\"110\\" x=\\"10\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"30\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"110\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"180\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"210\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"330\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"310\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"480\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"430\\" height=\\"130\\" x=\\"0\\" y=\\"0\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
+<rect fill=\\"none\\" width=\\"580\\" height=\\"160\\" x=\\"20\\" y=\\"20\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"410\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"630\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"510\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"780\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"610\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"930\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"110\\" height=\\"110\\" x=\\"710\\" y=\\"10\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
+<rect width=\\"110\\" height=\\"110\\" x=\\"1080\\" y=\\"30\\" rx=\\"10\\" ry=\\"10\\" class=\\"box\\">
 </rect>
-<rect width=\\"830\\" height=\\"130\\" x=\\"0\\" y=\\"0\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
+<rect fill=\\"none\\" width=\\"580\\" height=\\"160\\" x=\\"620\\" y=\\"20\\" rx=\\"10\\" ry=\\"10\\" class=\\"cluster\\">
 </rect>
 </g>
-<g>
-<path fill=\\"none\\" d=\\"M 65 10 C 65 -40 165 -40 165 10\\" markerEnd=\\"url(#svg-marker-arrow-end)\\" class=\\"path solid\\">
+<g class=\\"edgePath\\">
+<path fill=\\"none\\" d=\\"M 85 30 C 85 -20 235 -20 235 30\\" markerEnd=\\"url(#svg-marker-arrow-end)\\" class=\\"path solid\\">
 </path>
-<path fill=\\"none\\" d=\\"M 165 10 C 165 -40 265 -40 265 10\\" markerEnd=\\"url(#svg-marker-arrow-end)\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 235 30 C 235 -20 385 -20 385 30\\" markerEnd=\\"url(#svg-marker-arrow-end)\\" class=\\"path solid\\">
 </path>
-<path fill=\\"none\\" d=\\"M 265 10 C 265 -40 365 -40 365 10\\" markerEnd=\\"url(#svg-marker-circle)\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 385 30 C 385 -20 535 -20 535 30\\" markerEnd=\\"url(#svg-marker-circle)\\" class=\\"path solid\\">
 </path>
-<path fill=\\"none\\" d=\\"M 365 120 C 365 170 465 170 465 120\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 535 140 C 535 190 685 190 685 140\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
 </path>
-<path fill=\\"none\\" d=\\"M 465 120 C 465 170 565 170 565 120\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 685 140 C 685 190 835 190 835 140\\" markerEnd=\\"url(#svg-marker-cross)\\" class=\\"path solid\\">
 </path>
-<path fill=\\"none\\" d=\\"M 620 65 C 670 65 -40 65 10 65\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 890 85 C 940 85 -20 85 30 85\\" class=\\"path solid\\">
 </path>
-<path fill=\\"none\\" d=\\"M 430 65 C 480 65 -50 65 0 65\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 600 100 C 650 100 570 100 620 100\\" class=\\"path solid\\">
 </path>
-<path fill=\\"none\\" d=\\"M 430 65 C 480 65 -40 65 10 65\\" class=\\"path solid\\">
+<path fill=\\"none\\" d=\\"M 600 100 C 650 100 -20 85 30 85\\" class=\\"path solid\\">
 </path>
-<text labelpos=\\"c\\" label=\\"aaa\\" width=\\"95\\" height=\\"30\\" x=\\"65\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">aaa</text>
-<text labelpos=\\"c\\" label=\\"bbb\\" width=\\"95\\" height=\\"30\\" x=\\"165\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">bbb</text>
-<text labelpos=\\"c\\" label=\\"ccc\\" width=\\"95\\" height=\\"30\\" x=\\"265\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ccc</text>
-<text labelpos=\\"c\\" label=\\"ddd\\" width=\\"95\\" height=\\"30\\" x=\\"365\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ddd</text>
-<text labelpos=\\"c\\" label=\\"first\\" width=\\"145\\" height=\\"30\\" x=\\"215\\" y=\\"160\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">first</text>
-<text labelpos=\\"c\\" label=\\"eee\\" width=\\"95\\" height=\\"30\\" x=\\"465\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">eee</text>
-<text labelpos=\\"c\\" label=\\"fff\\" width=\\"95\\" height=\\"30\\" x=\\"565\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">fff</text>
-<text labelpos=\\"c\\" label=\\"ggg\\" width=\\"95\\" height=\\"30\\" x=\\"665\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">ggg</text>
-<text labelpos=\\"c\\" label=\\"hhh\\" width=\\"95\\" height=\\"30\\" x=\\"765\\" y=\\"150\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">hhh</text>
-<text labelpos=\\"c\\" label=\\"second\\" width=\\"170\\" height=\\"30\\" x=\\"415\\" y=\\"160\\" rx=\\"5\\" ry=\\"5\\" class=\\"messageText text\\">second</text>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<rect rx=\\"5\\" ry=\\"5\\" class=\\"pen\\">
+</rect>
+<text labelpos=\\"c\\" label=\\"aaa\\" x=\\"85\\" y=\\"140\\" class=\\"pen\\">aaa</text>
+<text labelpos=\\"c\\" label=\\"bbb\\" x=\\"235\\" y=\\"140\\" class=\\"pen\\">bbb</text>
+<text labelpos=\\"c\\" label=\\"ccc\\" x=\\"385\\" y=\\"140\\" class=\\"pen\\">ccc</text>
+<text labelpos=\\"c\\" label=\\"ddd\\" x=\\"535\\" y=\\"140\\" class=\\"pen\\">ddd</text>
+<text labelpos=\\"c\\" label=\\"first\\" x=\\"310\\" y=\\"180\\" class=\\"pen\\">first</text>
+<text labelpos=\\"c\\" label=\\"eee\\" x=\\"685\\" y=\\"140\\" class=\\"pen\\">eee</text>
+<text labelpos=\\"c\\" label=\\"fff\\" x=\\"835\\" y=\\"140\\" class=\\"pen\\">fff</text>
+<text labelpos=\\"c\\" label=\\"ggg\\" x=\\"985\\" y=\\"140\\" class=\\"pen\\">ggg</text>
+<text labelpos=\\"c\\" label=\\"hhh\\" x=\\"1135\\" y=\\"140\\" class=\\"pen\\">hhh</text>
+<text labelpos=\\"c\\" label=\\"second\\" x=\\"910\\" y=\\"180\\" class=\\"pen\\">second</text>
 </g>
 </svg>
 <!---->
@@ -275,17 +353,17 @@ exports[`./__tests__/giji/relation.marksvg snapshot 1`] = `
 
 exports[`./__tests__/giji/relation_only.marksvg snapshot 1`] = `
 "<article>
-<svg viewBox=\\"0 0 130 130\\" style=\\"max-width: 100%; width: 130px;\\">
+<svg viewBox=\\"0 0 130 160\\" style=\\"max-width: 100%; width: 130px;\\">
 <marker id=\\"svg-marker-circle\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
 <circle cx=\\"5\\" cy=\\"5\\" r=\\"4\\">
 </circle>
 </marker>
 <marker id=\\"svg-marker-arrow-start\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"path\\">
+<path d=\\"M10,0 L0,5 L10,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-arrow-end\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"3\\" refY=\\"5\\" orient=\\"auto\\" class=\\"edgePath\\">
-<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"path\\">
+<path d=\\"M0,0 L10,5 L0,10 z\\" class=\\"fill\\">
 </path>
 </marker>
 <marker id=\\"svg-marker-cross\\" viewBox=\\"0 0 10 10\\" markerUnits=\\"userSpaceOnUse\\" markerWidth=\\"20\\" markerHeight=\\"20\\" refX=\\"5\\" refY=\\"5\\" orient=\\"0\\" class=\\"edgePath\\">
@@ -294,7 +372,7 @@ exports[`./__tests__/giji/relation_only.marksvg snapshot 1`] = `
 </marker>
 <g>
 </g>
-<g>
+<g class=\\"edgePath\\">
 </g>
 </svg>
 <div class=\\"errors\\">

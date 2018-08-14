@@ -52,9 +52,10 @@ parse = (render, src)->
         for $, idx in nodes by 4
           [$, x, y, v] = nodes[idx .. idx + 3]
           continue unless v
-          [vm, v, vl] = render.dic v
-          render[vm] v, vl, x, y
-          v
+          [vm, vid, vl] = render.dic v
+          render[vm] vid, vl, x, y
+          render.node v, vid
+          vid
       if label
         render.cluster vs, label
       continue
