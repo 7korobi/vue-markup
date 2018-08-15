@@ -177,7 +177,7 @@ class SvgRenderer
 
     # x, y はボトム
     x += 0.5 * width
-    y += 1.0 * height - 1 * border_width
+    y += 1.0 * height - 2 * border_width
     @label v, label, 'middle', x, y
 
   icon: (v, label, x, y)->
@@ -207,7 +207,7 @@ class SvgRenderer
 
     # x, y はボトム
     x += 0.5 * width
-    y += 1.0 * height - 1 * border_width
+    y += 1.0 * height - 2 * border_width
     @label v, label, 'middle', x, y
 
   cluster: (vs, label)->
@@ -227,15 +227,15 @@ class SvgRenderer
 
     # x, y は右上
     x += 1.0 * width
-    y += 1.0 * label_height 
+    y += 0.5 * label_height 
     @label label, label, 'end', x, y
 
   cover: (vos)->
-    { border_width, icon_width } = @options.style
+    { label_height, icon_width } = @options.style
     unless vos.length
       vos.push
-        x: border_width
-        y: border_width
+        x: label_height
+        y: label_height
         width:  icon_width
         height: icon_width
 
@@ -243,10 +243,10 @@ class SvgRenderer
     xmax = Math.max ...vos.map (o)-> o.x + o.width
     ymin = Math.min ...vos.map (o)-> o.y
     ymax = Math.max ...vos.map (o)-> o.y + o.height
-    width  = xmax - xmin + 2 * border_width
-    height = ymax - ymin + 2 * border_width
-    x = xmin - 1 * border_width
-    y = ymin - 1 * border_width
+    width  = xmax - xmin + label_height
+    height = ymax - ymin + label_height
+    x = xmin - 0.5 * label_height
+    y = ymin - 0.5 * label_height
 
     { x, y, width, height }
 
@@ -256,9 +256,9 @@ options =
     gap_size:     50
     icon_width:   90
     icon_height: 130
-    radius:       10
-    label_height: 20
+    label_height: 28
     border_width:  5
+    radius:        3
 options.renderer.options = options
 
 
