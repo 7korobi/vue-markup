@@ -41,31 +41,6 @@ marker = (key)->
     else
       null
 
-pos = ({ x, y, width, height }, mark)->
-  curve = 50
-  switch mark
-    when '^','u'
-      x += 0.5 * width 
-      # y origin
-      vx =  0
-      vy = -curve
-    when 'v','d'
-      x += 0.5 * width
-      y += 1.0 * height
-      vx =  0
-      vy =  curve
-    when '<','l'
-      # x origin
-      y += 0.5 * height
-      vx = -curve
-      vy =  0
-    when '>','r'
-      x += 1.0 * width
-      y += 0.5 * height
-      vx =  curve
-      vy =  0
-  { x, y, vx, vy }
-
 class SvgRenderer
   plain: ->
     @data =
@@ -77,6 +52,32 @@ class SvgRenderer
       images: {}
       errors: []
 
+  pos: ({ x, y, width, height }, mark)->
+    { gap_size } = @options.style
+    curve = 1 * gap_size
+    switch mark
+      when '^','u'
+        x += 0.5 * width 
+        # y origin
+        vx =  0
+        vy = -curve
+      when 'v','d'
+        x += 0.5 * width
+        y += 1.0 * height
+        vx =  0
+        vy =  curve
+      when '<','l'
+        # x origin
+        y += 0.5 * height
+        vx = -curve
+        vy =  0
+      when '>','r'
+        x += 1.0 * width
+        y += 0.5 * height
+        vx =  curve
+        vy =  0
+    { x, y, vx, vy }
+
   newline: ->
   error: (line)->
     @data.errors.push line
@@ -87,26 +88,29 @@ class SvgRenderer
   node: (name, v)->
     @data.nodes[name] = @data.rects[v]
 
-  label: (v, label, x, y)->
+  is_cluster: (v)->
+    @data.rects[v]?.class == 'cluster'
+
+  label: (v, label, pos, x, y)->
     return unless label
+
+    { radius } = @options.style
 
     # text
     key = "label-#{v}"
     label ?= "   "
-    labelpos = "c"
     className = "pen"
-    @data.texts[v] = { class: className, key, labelpos, label, x, y }
+    @data.texts[v] = { class: className, "text-anchor": pos, key, label, x, y }
 
     # label
     # x, y, width, height は後で。
+    { radius } = @options.style
     key = "rect-label-#{v}"
-    rx     =  5
-    ry     =  5
+    rx  = radius
+    ry  = radius
     @data.labels[v] = { class: className, key, rx, ry } 
 
-
   edge: (v, w, line, start, end, headpos, tailpos, label)->
-    { gap_width } = @options.style
     weight = line.length
     start = marker start
     end   = marker end
@@ -126,43 +130,44 @@ class SvgRenderer
 
     vo = @data.rects[v]
     wo = @data.rects[w]
-    vp = pos vo, headpos
-    wp = pos wo, tailpos
+    vp = @pos vo, headpos
+    wp = @pos wo, tailpos
 
     cvpx = vp.x + vp.vx
     cvpy = vp.y + vp.vy
     cwpx = wp.x + wp.vx
     cwpy = wp.y + wp.vy
-    d  = "M #{ vp.x } #{ vp.y } C #{ cvpx } #{ cvpy } #{ cwpx } #{ cwpy } #{ wp.x } #{ wp.y }"
+    lx = parseInt 0.5 * (cvpx + cwpx)
+    ly = parseInt 0.5 * (cvpy + cwpy)
+    d  = "M#{ vp.x },#{ vp.y }C#{ cvpx },#{ cvpy },#{ cwpx },#{ cwpy },#{ wp.x },#{ wp.y }"
 
     # path
     @data.paths[vw] = { class: className, key, d, "marker-start": start, "marker-end": end }
 
     # x, y は中点
-    x = parseInt 0.5 * (cvpx + cwpx)
-    y = parseInt 0.5 * (cvpy + cwpy)
-    @label vw, label, x, y
+    @label vw, label, 'middle', lx, ly
 
   auto_xy: (x, y)->
     return [parseInt(x), parseInt(y)] if x? && y?
 
+    { icon_width, gap_size } = @options.style
     xs =
       for key, { x } of @data.rects
         x
-    xs.push -120
+    xs.push -( icon_width + gap_size )
     x  = Math.max ...xs
-    x += 150
-    y  = 30
+    x += icon_width + gap_size
+    y  = gap_size
     [x, y]
 
   box: (v, label, x, y)->
-    { border_width } = @options.style
+    { border_width, icon_width, radius } = @options.style
 
     [x, y] = @auto_xy x, y
-    width  = 90 + 2 * border_width
-    height = 90 + 2 * border_width
-    rx     = 10
-    ry     = 10
+    width  = icon_width + 2 * border_width
+    height = icon_width + 2 * border_width
+    rx     = radius
+    ry     = radius
 
     className = 'box'
     key = "rect=#{v}"
@@ -172,17 +177,17 @@ class SvgRenderer
 
     # x, y はボトム
     x += 0.5 * width
-    y += 1.0 * height
-    @label v, label, x, y
+    y += 1.0 * height - 1 * border_width
+    @label v, label, 'middle', x, y
 
   icon: (v, label, x, y)->
-    { border_width } = @options.style
+    { border_width, label_height, icon_width, icon_height, radius } = @options.style
 
     [x, y] = @auto_xy x, y
-    width  =  90
-    height = 130
-    rx     =  10
-    ry     =  10
+    width  = icon_width
+    height = icon_height
+    rx     = radius
+    ry     = radius
 
     href = @href v
     className = 'icon'
@@ -192,7 +197,7 @@ class SvgRenderer
     @data.images[v] = { class: className, key, href, width, height, x: x + border_width , y: y + border_width, rx, ry }
 
     width  += 2 * border_width
-    height += 2 * border_width
+    height += 2 * border_width + label_height
 
     className = 'box'
     key = "rect=#{v}"
@@ -202,56 +207,58 @@ class SvgRenderer
 
     # x, y はボトム
     x += 0.5 * width
-    y += 1.0 * height
-    @label v, label, x, y
+    y += 1.0 * height - 1 * border_width
+    @label v, label, 'middle', x, y
 
   cluster: (vs, label)->
-    vos = vs.map (v)=> @data.rects[v]
+    { label_height, radius } = @options.style
 
-    rx     = 10
-    ry     = 10
+    vos = vs.map (v)=> @data.rects[v]
     className = 'cluster'
     fill = 'none'
     key = "rect=#{label}"
 
     { x, y, width, height } = @cover vos
+    rx = radius
+    ry = radius
 
     # rect
     @data.rects[label] = { class: className, key, fill, width, height, x, y, rx, ry }
 
-    # x, y はボトム
-    x += 0.5 * width
-    y += 1.0 * height
-    @label label, label, x, y
+    # x, y は右上
+    x += 1.0 * width
+    y += 1.0 * label_height 
+    @label label, label, 'end', x, y
 
   cover: (vos)->
-    { border_width } = @options.style
+    { border_width, icon_width } = @options.style
     unless vos.length
       vos.push
         x: border_width
         y: border_width
-        width:  90 + 2 * border_width
-        height: 90 + 2 * border_width
+        width:  icon_width
+        height: icon_width
 
     xmin = Math.min ...vos.map (o)-> o.x
     xmax = Math.max ...vos.map (o)-> o.x + o.width
     ymin = Math.min ...vos.map (o)-> o.y
-    ymax = Math.max ...vos.map (o)-> o.y + o.height + 30
+    ymax = Math.max ...vos.map (o)-> o.y + o.height
     width  = xmax - xmin + 2 * border_width
     height = ymax - ymin + 2 * border_width
-    x = xmin - border_width
-    y = ymin - border_width
+    x = xmin - 1 * border_width
+    y = ymin - 1 * border_width
 
     { x, y, width, height }
 
 options =
   renderer: new SvgRenderer
   style:
-    rect_label:
-      height:      5
-      width:      20
-    border_width: 10
-    gap_width:    20
+    gap_size:     50
+    icon_width:   90
+    icon_height: 130
+    radius:       10
+    label_height: 20
+    border_width:  5
 options.renderer.options = options
 
 
@@ -278,16 +285,16 @@ vm =
   data: ->
     move =
       id: null
-      x: 0
-      y: 0
+      x:  0
+      y:  0
       px: 0
       py: 0
     moved =
-      x: 0
-      y: 0
+      x:  0
+      y:  0
       rx: 0
       ry: 0
-      width: 0
+      width:  0
       height: 0
     zoom = 1.0
     gdata = options.renderer.plain()
@@ -296,11 +303,31 @@ vm =
     { zoom, move, moved, gdata, tokens }
 
   methods:
+    do_graph: ->
+      @gdata = options.renderer.plain()
+      @tokens = SVG.parse options.renderer, @value
+      @$nextTick =>
+        return unless width = @$refs.root?.getClientRects?()?[0]?.width
+        @zoom = @root.width / width
+        for key of @gdata.texts
+          tk =      'label-' + key
+          lk = 'rect-label-' + key
+          continue unless box = @$refs[tk]?[0]?.getBBox?()
+
+          { width, height, x, y } = box
+          { border_width } = options.style
+          width  += 4 * border_width
+          height += 2 * border_width
+          x -= 2 * border_width
+          y -= 1 * border_width
+          options.style.label_height = height
+          for key, val of { x, y, width, height }
+            @$refs[lk][0].setAttribute key, val
+
     move_xy: ->
       { x, y, dx, dy } = @move
       x = parseInt Math.max 0, x + dx
       y = parseInt Math.max 0, y + dy
-      console.log { x, y }
       { x, y }
 
     movespace: ->
@@ -351,6 +378,7 @@ vm =
       return unless @edit
       Object.assign @gdata.rects[id], @move_xy()
       @$emit 'input', SVG.stringify @tokens, @gdata
+      @do_graph()
 
     nop: -> false
 
@@ -362,24 +390,7 @@ vm =
       "#{@root.x} #{@root.y} #{@root.width} #{@root.height}"
 
     graph: ->
-      @gdata = options.renderer.plain()
-      @tokens = SVG.parse options.renderer, @value
-      @$nextTick =>
-        return unless @$refs.root?.getClientRects
-        @zoom = @root.width / @$refs.root.getClientRects()[0].width
-        for key of @gdata.texts
-          tk =      'label-' + key
-          lk = 'rect-label-' + key
-          continue unless @$refs[tk]?[0]?.getClientRects
-
-          { width, height, x, y }  = @$refs[tk][0].getBBox()
-          { rect_label } = options.style
-          width  += rect_label.width
-          height += rect_label.height
-          x -= 0.5 * rect_label.width
-          y -= 0.5 * rect_label.height
-          for key, val of { x, y, width, height }
-            @$refs[lk][0].setAttribute key, val
+      @do_graph()
       @gdata
 
 export default vm
