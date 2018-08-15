@@ -108,8 +108,8 @@ class SvgRenderer
   edge: (v, w, line, start, end, headpos, tailpos, label)->
     { gap_width } = @options.style
     weight = line.length
-    markerStart = marker start
-    markerEnd   = marker end
+    start = marker start
+    end   = marker end
     className =
       switch line[0]
         when '='
@@ -136,7 +136,7 @@ class SvgRenderer
     d  = "M #{ vp.x } #{ vp.y } C #{ cvpx } #{ cvpy } #{ cwpx } #{ cwpy } #{ wp.x } #{ wp.y }"
 
     # path
-    @data.paths[vw] = { class: className, key, d, markerStart, markerEnd }
+    @data.paths[vw] = { class: className, key, d, "marker-start": start, "marker-end": end }
 
     # x, y は中点
     x = parseInt 0.5 * (cvpx + cwpx)
@@ -264,7 +264,16 @@ vm =
   name: 'MarkSVG'
   options: options
 
-  props: ["value", "context"]
+  props:
+    edit:
+      type: Boolean
+      default: false
+
+    value:
+      type: String
+      default: ""
+
+    context: Object
 
   data: ->
     move =
@@ -306,7 +315,7 @@ vm =
           { px, py } = @move
           @move.dx = @zoom * (pageX - px)
           @move.dy = @zoom * (pageY - py)
-          @reparse()
+          @reparse @move.id
 
       cb =
         touchend: (e)=>
@@ -334,12 +343,14 @@ vm =
           start e
     
     recalc: ->
+      return unless @edit
       Object.assign @moved, @move_xy()
 
-    reparse: ->
-      Object.assign @gdata.rects[@move.id], @move_xy()
-      @$emit 'input', SVG.stringify @tokens, @gdata
+    reparse: (id)->
       @move.id = null
+      return unless @edit
+      Object.assign @gdata.rects[id], @move_xy()
+      @$emit 'input', SVG.stringify @tokens, @gdata
 
     nop: -> false
 
