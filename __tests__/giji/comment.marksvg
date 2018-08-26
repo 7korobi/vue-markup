@@ -1,7 +1,10 @@
-aaa bbb ccc ddd : first
-eee fff ggg hhh : second
+### first
+aaa bbb ccc ddd
 
-first == second : main relation
-first o--o aaa    : sub relation
+### second
+eee fff ggg hhh
+
+first == second # main relation
+first o--o aaa  # sub relation
 
 

@@ -274,7 +274,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(15)
+var listToStyles = __webpack_require__(14)
 
 /*
 type StyleObject = {
@@ -489,9 +489,9 @@ function applyToTag (styleElement, obj) {
 "use strict";
 var Dagre, MarkedRenderer, _, itself, marked, options, vm;
 
-_ = __webpack_require__(16);
+_ = __webpack_require__(15);
 
-marked = __webpack_require__(17);
+marked = __webpack_require__(16);
 
 Dagre = __webpack_require__(4).default;
 
@@ -835,11 +835,11 @@ vm = {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__ = __webpack_require__(5);
 /* empty harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bb43e1b2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bb43e1b2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(23);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(19)
+  __webpack_require__(18)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -891,9 +891,9 @@ if (false) {(function () {
 "use strict";
 var DagreRenderer, dagre, init, marker, options, parse, vm;
 
-dagre = __webpack_require__(21);
+dagre = __webpack_require__(20);
 
-parse = __webpack_require__(22);
+parse = __webpack_require__(21);
 
 marker = function(key) {
   switch (key) {
@@ -1185,11 +1185,9 @@ vm = {
 
 "use strict";
 // inspired by https://github.com/wakufactory/MarkDownDiagram
-var SvgRenderer, marker, options, parse, pos, syntax, util, vm;
+var SVG, SvgRenderer, marker, options, parse_touch, vm;
 
-parse = __webpack_require__(26);
-
-({syntax, util} = __webpack_require__(7));
+SVG = __webpack_require__(25);
 
 marker = function(key) {
   switch (key) {
@@ -1210,42 +1208,6 @@ marker = function(key) {
   }
 };
 
-pos = function({x, y, width, height}, mark) {
-  var curve, vx, vy;
-  curve = 50;
-  switch (mark) {
-    case '^':
-    case 'u':
-      x += 0.5 * width;
-      
-      // y origin
-      vx = 0;
-      vy = -curve;
-      break;
-    case 'v':
-    case 'd':
-      x += 0.5 * width;
-      y += 1.0 * height;
-      vx = 0;
-      vy = curve;
-      break;
-    case '<':
-    case 'l':
-      // x origin
-      y += 0.5 * height;
-      vx = -curve;
-      vy = 0;
-      break;
-    case '>':
-    case 'r':
-      x += 1.0 * width;
-      y += 0.5 * height;
-      vx = curve;
-      vy = 0;
-  }
-  return {x, y, vx, vy};
-};
-
 SvgRenderer = class SvgRenderer {
   plain() {
     return this.data = {
@@ -1259,6 +1221,43 @@ SvgRenderer = class SvgRenderer {
     };
   }
 
+  pos({x, y, width, height}, mark) {
+    var curve, gap_size, vx, vy;
+    ({gap_size} = this.options.style);
+    curve = 1 * gap_size;
+    switch (mark) {
+      case '^':
+      case 'u':
+        x += 0.5 * width;
+        
+        // y origin
+        vx = 0;
+        vy = -curve;
+        break;
+      case 'v':
+      case 'd':
+        x += 0.5 * width;
+        y += 1.0 * height;
+        vx = 0;
+        vy = curve;
+        break;
+      case '<':
+      case 'l':
+        // x origin
+        y += 0.5 * height;
+        vx = -curve;
+        vy = 0;
+        break;
+      case '>':
+      case 'r':
+        x += 1.0 * width;
+        y += 0.5 * height;
+        vx = curve;
+        vy = 0;
+    }
+    return {x, y, vx, vy};
+  }
+
   newline() {}
 
   error(line) {
@@ -1270,38 +1269,44 @@ SvgRenderer = class SvgRenderer {
   }
 
   dic(v) {
-    return ['box', v, v];
+    return ['icon', v, v];
   }
 
   node(name, v) {
     return this.data.nodes[name] = this.data.rects[v];
   }
 
-  label(v, label, x, y) {
-    var className, key, labelpos, rx, ry;
+  is_cluster(v) {
+    var ref;
+    return ((ref = this.data.rects[v]) != null ? ref.class : void 0) === 'cluster';
+  }
+
+  label(v, label, pos, x, y) {
+    var className, key, radius, rx, ry;
     if (!label) {
       return;
     }
+    ({radius} = this.options.style);
     // text
     key = `label-${v}`;
     if (label == null) {
       label = "   ";
     }
-    labelpos = "c";
     className = "pen";
     this.data.texts[v] = {
       class: className,
+      "text-anchor": pos,
       key,
-      labelpos,
       label,
       x,
       y
     };
     // label
     // x, y, width, height は後で。
+    ({radius} = this.options.style);
     key = `rect-label-${v}`;
-    rx = 5;
-    ry = 5;
+    rx = radius;
+    ry = radius;
     return this.data.labels[v] = {
       class: className,
       key,
@@ -1311,11 +1316,10 @@ SvgRenderer = class SvgRenderer {
   }
 
   edge(v, w, line, start, end, headpos, tailpos, label) {
-    var className, cvpx, cvpy, cwpx, cwpy, d, gap_width, key, markerEnd, markerStart, vo, vp, vw, weight, wo, wp, x, y;
-    ({gap_width} = this.options.style);
+    var className, cvpx, cvpy, cwpx, cwpy, d, key, lx, ly, vo, vp, vw, weight, wo, wp;
     weight = line.length;
-    markerStart = marker(start);
-    markerEnd = marker(end);
+    start = marker(start);
+    end = marker(end);
     className = (function() {
       switch (line[0]) {
         case '=':
@@ -1332,32 +1336,33 @@ SvgRenderer = class SvgRenderer {
     key = `path=${vw}`;
     vo = this.data.rects[v];
     wo = this.data.rects[w];
-    vp = pos(vo, headpos);
-    wp = pos(wo, tailpos);
+    vp = this.pos(vo, headpos);
+    wp = this.pos(wo, tailpos);
     cvpx = vp.x + vp.vx;
     cvpy = vp.y + vp.vy;
     cwpx = wp.x + wp.vx;
     cwpy = wp.y + wp.vy;
-    d = `M ${vp.x} ${vp.y} C ${cvpx} ${cvpy} ${cwpx} ${cwpy} ${wp.x} ${wp.y}`;
+    lx = parseInt(0.5 * (cvpx + cwpx));
+    ly = parseInt(0.5 * (cvpy + cwpy));
+    d = `M${vp.x},${vp.y}C${cvpx},${cvpy},${cwpx},${cwpy},${wp.x},${wp.y}`;
     // path
     this.data.paths[vw] = {
       class: className,
       key,
       d,
-      markerStart,
-      markerEnd
+      "marker-start": start,
+      "marker-end": end
     };
     // x, y は中点
-    x = parseInt(0.5 * (cvpx + cwpx));
-    y = parseInt(0.5 * (cvpy + cwpy));
-    return this.label(vw, label, x, y);
+    return this.label(vw, label, 'middle', lx, ly);
   }
 
   auto_xy(x, y) {
-    var key, xs;
+    var gap_size, icon_width, key, xs;
     if ((x != null) && (y != null)) {
       return [parseInt(x), parseInt(y)];
     }
+    ({icon_width, gap_size} = this.options.style);
     xs = (function() {
       var ref, results;
       ref = this.data.rects;
@@ -1368,23 +1373,23 @@ SvgRenderer = class SvgRenderer {
       }
       return results;
     }).call(this);
-    xs.push(-120);
+    xs.push(-(icon_width + gap_size));
     x = Math.max(...xs);
-    x += 150;
-    y = 30;
+    x += icon_width + gap_size;
+    y = gap_size;
     return [x, y];
   }
 
-  box(v, label, x, y) {
-    var border_width, className, height, key, rx, ry, width;
-    ({border_width} = this.options.style);
+  box(v, label, side = ' ', x, y) {
+    var border_width, className, height, icon_width, key, radius, rx, ry, width;
+    ({border_width, icon_width, radius} = this.options.style);
     [x, y] = this.auto_xy(x, y);
-    width = 90 + 2 * border_width;
-    height = 90 + 2 * border_width;
-    rx = 10;
-    ry = 10;
+    width = icon_width + 2 * border_width;
+    height = icon_width + 2 * border_width;
+    rx = radius;
+    ry = radius;
     className = 'box';
-    key = `rect=${v}`;
+    key = `${side}rect=${v}`;
     // rect
     this.data.rects[v] = {
       class: className,
@@ -1398,18 +1403,51 @@ SvgRenderer = class SvgRenderer {
     };
     // x, y はボトム
     x += 0.5 * width;
-    y += 1.0 * height;
-    return this.label(v, label, x, y);
+    y += 1.0 * height - 2 * border_width;
+    return this.label(v, label, 'middle', x, y);
   }
 
-  icon(v, label, x, y) {
-    var border_width, className, height, href, key, rx, ry, width;
-    ({border_width} = this.options.style);
+  icon(v, label, side = ' ', x, y) {
+    var border_width, className, extrax, extray, height, href, icon_height, icon_width, is_horizontal, is_vertical, key, label_height, radius, roll, rx, ry, transform, width;
+    ({border_width, label_height, icon_width, icon_height, radius} = this.options.style);
+    switch (side) {
+      case '^':
+      case 'u':
+      case ' ':
+        roll = 0;
+        is_vertical = true;
+        extrax = 0;
+        extray = 0;
+        break;
+      case 'v':
+      case 'd':
+        roll = 180;
+        is_vertical = true;
+        extrax = 0;
+        extray = 0;
+        break;
+      case '<':
+      case 'l':
+        roll = 270;
+        is_horizontal = true;
+        extrax = 0;
+        extray = -0.5;
+        break;
+      case '>':
+      case 'r':
+        roll = 90;
+        is_horizontal = true;
+        extrax = 0.5;
+        extray = 0;
+    }
     [x, y] = this.auto_xy(x, y);
-    width = 90;
-    height = 130;
-    rx = 10;
-    ry = 10;
+    width = icon_width;
+    height = icon_height;
+    rx = radius;
+    ry = radius;
+    extrax *= height - width;
+    extray *= height - width;
+    transform = roll ? `rotate(${roll}, ${x + border_width + extrax + 0.5 * width}, ${y + border_width + extray + 0.5 * height})` : void 0;
     href = this.href(v);
     className = 'icon';
     key = `image=${v}`;
@@ -1418,17 +1456,21 @@ SvgRenderer = class SvgRenderer {
       class: className,
       key,
       href,
+      transform,
       width,
       height,
-      x: x + border_width,
-      y: y + border_width,
       rx,
-      ry
+      ry,
+      x: x + border_width,
+      y: y + border_width
     };
-    width += 2 * border_width;
-    height += 2 * border_width;
+    if (is_horizontal) {
+      [width, height] = [height, width];
+    }
+    width = width + 2 * border_width;
+    height = height + 2 * border_width + label_height;
     className = 'box';
-    key = `rect=${v}`;
+    key = `${side}rect=${v}`;
     // rect
     this.data.rects[v] = {
       class: className,
@@ -1442,21 +1484,22 @@ SvgRenderer = class SvgRenderer {
     };
     // x, y はボトム
     x += 0.5 * width;
-    y += 1.0 * height;
-    return this.label(v, label, x, y);
+    y += 1.0 * height - 2 * border_width;
+    return this.label(v, label, 'middle', x, y);
   }
 
   cluster(vs, label) {
-    var className, fill, height, key, rx, ry, vos, width, x, y;
+    var className, fill, height, key, label_height, radius, rx, ry, vos, width, x, y;
+    ({label_height, radius} = this.options.style);
     vos = vs.map((v) => {
       return this.data.rects[v];
     });
-    rx = 10;
-    ry = 10;
     className = 'cluster';
     fill = 'none';
     key = `rect=${label}`;
     ({x, y, width, height} = this.cover(vos));
+    rx = radius;
+    ry = radius;
     // rect
     this.data.rects[label] = {
       class: className,
@@ -1469,21 +1512,21 @@ SvgRenderer = class SvgRenderer {
       rx,
       ry
     };
-    // x, y はボトム
-    x += 0.5 * width;
-    y += 1.0 * height;
-    return this.label(label, label, x, y);
+    // x, y は右上
+    x += 1.0 * width;
+    y += 0.5 * label_height;
+    return this.label(label, label, 'end', x, y);
   }
 
   cover(vos) {
-    var border_width, height, width, x, xmax, xmin, y, ymax, ymin;
-    ({border_width} = this.options.style);
+    var height, icon_width, label_height, width, x, xmax, xmin, y, ymax, ymin;
+    ({label_height, icon_width} = this.options.style);
     if (!vos.length) {
       vos.push({
-        x: border_width,
-        y: border_width,
-        width: 90 + 2 * border_width,
-        height: 90 + 2 * border_width
+        x: label_height,
+        y: label_height,
+        width: icon_width,
+        height: icon_width
       });
     }
     xmin = Math.min(...vos.map(function(o) {
@@ -1496,12 +1539,12 @@ SvgRenderer = class SvgRenderer {
       return o.y;
     }));
     ymax = Math.max(...vos.map(function(o) {
-      return o.y + o.height + 30;
+      return o.y + o.height;
     }));
-    width = xmax - xmin + 2 * border_width;
-    height = ymax - ymin + 2 * border_width;
-    x = xmin - border_width;
-    y = ymin - border_width;
+    width = xmax - xmin + label_height;
+    height = ymax - ymin + label_height;
+    x = xmin - 0.5 * label_height;
+    y = ymin - 0.5 * label_height;
     return {x, y, width, height};
   }
 
@@ -1510,69 +1553,155 @@ SvgRenderer = class SvgRenderer {
 options = {
   renderer: new SvgRenderer,
   style: {
-    rect_label: {
-      height: 5,
-      width: 20
-    },
-    border_width: 10,
-    gap_width: 20
+    gap_size: 50,
+    icon_width: 90,
+    icon_height: 130,
+    label_height: 28,
+    border_width: 5,
+    radius: 3
   }
 };
 
 options.renderer.options = options;
 
+parse_touch = function(e) {
+  var pageX, pageY, target;
+  ({pageX, pageY} = e.changedTouches[0]);
+  ({target} = e);
+  return {pageX, pageY, target};
+};
+
 vm = {
   name: 'MarkSVG',
   options: options,
-  props: ["value", "context"],
+  props: {
+    edit: {
+      type: Boolean,
+      default: false
+    },
+    value: {
+      type: String,
+      default: ""
+    },
+    context: Object
+  },
   data: function() {
-    var zoom;
-    zoom = 1.0;
-    return {
-      move: null,
-      gdata: options.renderer.plain()
+    var gdata, move, moved, tokens, zoom;
+    move = {
+      id: null,
+      x: 0,
+      y: 0,
+      px: 0,
+      py: 0
     };
+    moved = {
+      x: 0,
+      y: 0,
+      rx: 0,
+      ry: 0,
+      width: 0,
+      height: 0
+    };
+    zoom = 1.0;
+    gdata = options.renderer.plain();
+    tokens = [];
+    return {zoom, move, moved, gdata, tokens};
   },
   methods: {
+    do_graph: function() {
+      this.gdata = options.renderer.plain();
+      this.tokens = SVG.parse(options.renderer, this.value);
+      return this.$nextTick(() => {
+        var border_width, box, height, key, lk, ref, ref1, ref2, ref3, ref4, results, tk, val, width, x, y;
+        if (!(width = (ref = this.$refs.root) != null ? typeof ref.getClientRects === "function" ? (ref1 = ref.getClientRects()) != null ? (ref2 = ref1[0]) != null ? ref2.width : void 0 : void 0 : void 0 : void 0)) {
+          return;
+        }
+        this.zoom = this.root.width / width;
+        results = [];
+        for (key in this.gdata.texts) {
+          tk = 'label-' + key;
+          lk = 'rect-label-' + key;
+          if (!(box = (ref3 = this.$refs[tk]) != null ? (ref4 = ref3[0]) != null ? typeof ref4.getBBox === "function" ? ref4.getBBox() : void 0 : void 0 : void 0)) {
+            continue;
+          }
+          ({width, height, x, y} = box);
+          ({border_width} = options.style);
+          width += 4 * border_width;
+          height += 2 * border_width;
+          x -= 2 * border_width;
+          y -= 1 * border_width;
+          options.style.label_height = height;
+          results.push((function() {
+            var ref5, results1;
+            ref5 = {x, y, width, height};
+            results1 = [];
+            for (key in ref5) {
+              val = ref5[key];
+              results1.push(this.$refs[lk][0].setAttribute(key, val));
+            }
+            return results1;
+          }).call(this));
+        }
+        return results;
+      });
+    },
+    move_xy: function() {
+      var dx, dy, x, y;
+      ({x, y, dx, dy} = this.move);
+      x = parseInt(Math.max(0, x + dx));
+      y = parseInt(Math.max(0, y + dy));
+      return {x, y};
+    },
     movespace: function() {
       var cb, finish, move;
       move = ({pageX, pageY, target}) => {
-        var px, py;
-        if (this.move) {
+        var dx, dy, px, py;
+        if (this.move.id) {
           ({px, py} = this.move);
-          this.move.dx = this.zoom * (pageX - px);
-          this.move.dy = this.zoom * (pageY - py);
+          dx = pageX - px;
+          dy = pageY - py;
+          this.move.dx = this.zoom * dx;
+          this.move.dy = this.zoom * dy;
           return this.recalc();
         }
       };
       finish = ({pageX, pageY, target}) => {
-        var px, py;
-        if (this.move) {
+        var dx, dy, px, py;
+        if (this.move.id) {
           ({px, py} = this.move);
-          this.move.dx = this.zoom * (pageX - px);
-          this.move.dy = this.zoom * (pageY - py);
-          return this.reparse();
+          dx = pageX - px;
+          dy = pageY - py;
+          if ((dx === dy && dy === 0)) {
+            this.do_roll(this.move.id);
+          } else {
+            this.move.dx = this.zoom * dx;
+            this.move.dy = this.zoom * dy;
+            this.do_move(this.move.id);
+          }
+          return this.move.id = null;
         }
       };
       return cb = {
-        touchend: finish,
-        touchleave: finish,
+        touchend: (e) => {
+          return finish(parse_touch(e));
+        },
+        touchleave: (e) => {
+          return finish(parse_touch(e));
+        },
+        touchmove: (e) => {
+          return move(parse_touch(e));
+        },
         mouseup: finish,
         mouseleave: finish,
-        touchmove: (e) => {
-          var ee;
-          ee = e.changedTouches[0];
-          ee.target = e.target;
-          return move(ee);
-        },
         mousemove: move
       };
     },
     draggable: function(id) {
       var cb, start;
       start = ({pageX, pageY, target}) => {
-        var x, y;
-        ({x, y} = this.gdata.rects[id]);
+        var height, rx, ry, width, x, y;
+        ({x, y, rx, ry, width, height} = this.gdata.rects[id]);
+        this.moved = {x, y, rx, ry, width, height};
         return this.move = {
           id,
           x,
@@ -1583,11 +1712,8 @@ vm = {
       };
       return cb = {
         touchstart: (e) => {
-          var ee;
           e.preventDefault();
-          ee = e.changedTouches[0];
-          ee.target = e.target;
-          return start(ee);
+          return start(parse_touch(e));
         },
         mousedown: (e) => {
           e.preventDefault();
@@ -1596,23 +1722,32 @@ vm = {
       };
     },
     recalc: function() {
-      var dx, dy, id, x, y;
-      ({id, x, y, dx, dy} = this.move);
-      x = parseInt(Math.max(0, x + dx));
-      y = parseInt(Math.max(0, y + dy));
-      Object.assign(this.gdata.rects[id], {x, y});
-      return this.gdata.rects = this.gdata.rects;
+      if (!this.edit) {
+        return;
+      }
+      return Object.assign(this.moved, this.move_xy());
     },
-    reparse: function() {
-      var value;
-      this.recalc();
-      value = this.value.replace(this.all_nodes, ($, xy, name) => {
-        var x, y;
-        ({x, y} = this.gdata.nodes[name]);
-        return `<${x},${y}>${name}`;
-      });
-      this.$emit('input', value);
-      return this.move = null;
+    do_move: function(id) {
+      if (!this.edit) {
+        return;
+      }
+      Object.assign(this.gdata.rects[id], this.move_xy());
+      this.$emit('input', SVG.stringify(this.tokens, this.gdata));
+      return this.do_graph();
+    },
+    do_roll: function(id) {
+      var idx, key, side, sides;
+      if (!this.edit) {
+        return;
+      }
+      ({key} = this.gdata.rects[id]);
+      sides = ' >v<^>';
+      side = key[0];
+      idx = 1 + sides.indexOf(side);
+      key = sides[idx] + key.slice(1);
+      this.gdata.rects[id].key = key;
+      this.$emit('input', SVG.stringify(this.tokens, this.gdata));
+      return this.do_graph();
     },
     nop: function() {
       return false;
@@ -1622,47 +1757,11 @@ vm = {
     root: function() {
       return options.renderer.cover(Object.values(this.graph.rects));
     },
-    all_nodes: function() {
-      return util.exist_node(Object.keys(this.gdata.nodes));
-    },
     view_box: function() {
       return `${this.root.x} ${this.root.y} ${this.root.width} ${this.root.height}`;
     },
     graph: function() {
-      this.gdata = options.renderer.plain();
-      parse(options.renderer, this.value);
-      this.$nextTick(() => {
-        var height, key, lk, rect_label, results, tk, val, width, x, y;
-        if (!this.$refs.root.getClientRects) {
-          return;
-        }
-        this.zoom = this.root.width / this.$refs.root.getClientRects()[0].width;
-        results = [];
-        for (key in this.gdata.texts) {
-          tk = 'label-' + key;
-          lk = 'rect-label-' + key;
-          if (!this.$refs[tk][0].getClientRects) {
-            continue;
-          }
-          ({width, height, x, y} = this.$refs[tk][0].getBBox());
-          ({rect_label} = options.style);
-          width += rect_label.width;
-          height += rect_label.height;
-          x -= 0.5 * rect_label.width;
-          y -= 0.5 * rect_label.height;
-          results.push((function() {
-            var ref, results1;
-            ref = {x, y, width, height};
-            results1 = [];
-            for (key in ref) {
-              val = ref[key];
-              results1.push(this.$refs[lk][0].setAttribute(key, val));
-            }
-            return results1;
-          }).call(this));
-        }
-        return results;
-      });
+      this.do_graph();
       return this.gdata;
     }
   }
@@ -1675,82 +1774,29 @@ vm = {
 /* 7 */
 /***/ (function(module, exports) {
 
-var regexp_join, syntax, util;
-
-regexp_join = function (regex, ...names) {
-  var flags, i, key, len, name, source, val;
-  ({ flags, source } = regex);
-  for (i = 0, len = names.length; i < len; i++) {
-    name = names[i];
-    key = new RegExp(name, 'g');
-    val = syntax[name];
-    val = val.source || val;
-    source = source.replace(key, val);
-  }
-  return new RegExp(source, flags);
-};
-
-syntax = {
-  edges: /^ *((_id_)?(?: *_arrow_ *_id_)+) *(?:_comment_)?(?:_eol_)/,
-  nodes: /^ *((?:(?:(?:(?:_xy_)?_id_)| |\n))+)(?:_comment_)?(?:_eol_)/,
-  cluster: /^ *=+ *(_id_) *(?:_comment_)?(?:_eol_)/,
-  newline: /^ *\n|^ +$/,
-  pick_node: /(?:<(\d+),(\d+)>)?(_id_)/,
-  exist_node: /(<\d+,\d+>)?(_ids_)/g,
-  error: /^[^\n]*\n|[^\n]+$/,
-  _xy_: /<\d+,\d+>/,
-  _id_: /[^\s<>:]+/,
-  _arrow_: /(<|X|x|O|o)?(-|=|\.)+([udlrUDLRv^<>]{2,2})?(-|=|\.)+(>|X|x|O|o)?/,
-  _comment_: /: *(.*) */,
-  _eol_: / *(?:\n|$)/
-};
-
-syntax.edges = regexp_join(syntax.edges, '_id_', '_arrow_', '_comment_', '_eol_');
-
-syntax.nodes = regexp_join(syntax.nodes, '_xy_', '_id_', '_arrow_', '_comment_', '_eol_');
-
-syntax.cluster = regexp_join(syntax.cluster, '_id_', '_comment_', '_eol_');
-
-syntax.pick_node = regexp_join(syntax.pick_node, '_id_');
-
-util = {
-  exist_node: function (ids) {
-    var flags, source;
-    ({ flags, source } = syntax.exist_node);
-    source = source.replace(/_ids_/g, ids.join("|"));
-    return new RegExp(source, flags);
-  }
-};
-
-module.exports = { syntax, util };
+module.exports = require("vue-test-utils");
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("vue-test-utils");
+module.exports = require("glob");
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = require("glob");
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
 module.exports = require("file-system");
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__marked_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__marked_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dagre_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__marksvg_vue__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__marksvg_vue__ = __webpack_require__(24);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MarkSVG", function() { return __WEBPACK_IMPORTED_MODULE_2__marksvg_vue__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Marked", function() { return __WEBPACK_IMPORTED_MODULE_0__marked_vue__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Dagre", function() { return __WEBPACK_IMPORTED_MODULE_1__dagre_vue__["default"]; });
@@ -1763,7 +1809,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1772,7 +1818,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(13)
+  __webpack_require__(12)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1818,13 +1864,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(14);
+var content = __webpack_require__(13);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -1844,7 +1890,7 @@ if(false) {
 }
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(true);
@@ -1858,7 +1904,7 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 /**
@@ -1891,13 +1937,13 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -1913,7 +1959,7 @@ module.exports = require("lodash");
  */
 var InlineLexer, Lexer, Parser, baseUrls, block, escape, inline, marked, noop, originIndependentUrl, resolveUrl, splitCells, unescape;
 
-({ block, inline, noop } = __webpack_require__(18));
+({ block, inline, noop } = __webpack_require__(17));
 
 escape = function (html, is_encode) {
   var r_encode;
@@ -2861,7 +2907,7 @@ marked.parse = marked;
 module.exports = marked;
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 
@@ -3074,13 +3120,13 @@ inline.breaks = Object.assign({}, inline.gfm, {
 module.exports = { block, inline, noop };
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(20);
+var content = __webpack_require__(19);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -3100,7 +3146,7 @@ if(false) {
 }
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(true);
@@ -3114,18 +3160,18 @@ exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > image[data-v-b
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("dagre");
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse, syntax;
 
-({ syntax } = __webpack_require__(23));
+({ syntax } = __webpack_require__(22));
 
 parse = function (render, src) {
   var $, _, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, pl, results, start, tokens, v, vl, vm, w, wl, wm;
@@ -3225,7 +3271,7 @@ parse = function (render, src) {
 module.exports = parse;
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports) {
 
 var regexp_join, syntax;
@@ -3261,7 +3307,7 @@ syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol
 module.exports = { syntax };
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3433,7 +3479,7 @@ if (false) {
 }
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3485,23 +3531,19 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse, parse_base, syntax;
+var do_parse, parse, stringify, syntax;
 
-({ syntax } = __webpack_require__(7));
-
-parse_base = function (render, src) {
-  var parents, tokens;
-  parents = {};
-  tokens = [];
-  return parse(render, src);
-};
+({ syntax } = __webpack_require__(26));
 
 parse = function (render, src) {
-  var $, all, cap, edges, end, headpos, i, idx, label, len, line, line2, nodes, rects, ref, ref1, results, side, start, tailpos, v, vid, vl, vm, vs, w, wl, wm, x, y;
-  results = [];
+  return do_parse([], render, src);
+};
+
+do_parse = function (tokens, render, src) {
+  var $, all, cap, edges, end, headpos, i, idx, label, len, line, line2, nodes, rects, ref, ref1, side, start, tailpos, type, v, vid, vl, vm, vs, w, wl, wm, x, y;
   while (src) {
     // console.log src
     if (cap = syntax.newline.exec(src)) {
@@ -3509,6 +3551,8 @@ parse = function (render, src) {
       src = src.slice(all.length);
       // console.log "newline", cap
       render.newline();
+      type = "newline";
+      tokens.push({ type, all });
       continue;
     }
     if (cap = syntax.edges.exec(src)) {
@@ -3539,47 +3583,134 @@ parse = function (render, src) {
           render.error(` ${edges.slice(idx, +(idx + 6) + 1 || 9e9).join("")} 要素が未定義です。`);
         }
       }
+      type = "edges";
+      tokens.push({ type, all });
       continue;
     }
     if (cap = syntax.nodes.exec(src)) {
-      [all, nodes, label] = cap;
+      [all, label, nodes] = cap;
       src = src.slice(all.length);
       // console.log "nodes", cap
       nodes = nodes.trim().split(syntax.pick_node);
       vs = function () {
-        var j, len1, results1;
-        results1 = [];
-        for (idx = j = 0, len1 = nodes.length; j < len1; idx = j += 4) {
+        var j, len1, results;
+        results = [];
+        for (idx = j = 0, len1 = nodes.length; j < len1; idx = j += 5) {
           $ = nodes[idx];
-          [$, x, y, v] = nodes.slice(idx, +(idx + 3) + 1 || 9e9);
+          [$, x, side, y, v] = nodes.slice(idx, +(idx + 4) + 1 || 9e9);
           if (!v) {
             continue;
           }
           [vm, vid, vl] = render.dic(v);
-          render[vm](vid, vl, x, y);
-          render.node(v, vid);
-          results1.push(vid);
+          if (!render.is_cluster(vid)) {
+            render[vm](vid, vl, side, x, y);
+            render.node(v, vid);
+          }
+          results.push(vid);
         }
-        return results1;
+        return results;
       }();
       if (label) {
         render.cluster(vs, label);
       }
+      type = "nodes";
+      tokens.push({ type, all });
       continue;
     }
     if (cap = syntax.error.exec(src)) {
       [all] = cap;
       src = src.slice(all.length);
-      render.error(all, "解釈できない文字列です。");
+      render.error(`${all} 解釈できない文字列です。`);
+      type = "error";
+      tokens.push({ type, all });
       continue;
-    } else {
-      results.push(void 0);
     }
   }
-  return results;
+  return tokens;
 };
 
-module.exports = parse_base;
+stringify = function (tokens, data) {
+  var all, dest, i, len, type;
+  dest = "";
+  for (i = 0, len = tokens.length; i < len; i++) {
+    ({ type, all } = tokens[i]);
+    switch (type) {
+      case 'nodes':
+        dest += all.replace(syntax.pick_node, function ($, x, side, y, v) {
+          var key, o;
+          if (o = data.nodes[v]) {
+            ({ x, y, key } = o);
+            return `<${x}${key[0]}${y}>${v}`;
+          } else {
+            return v;
+          }
+        });
+        break;
+      case 'newline':
+        dest += all;
+        break;
+      case 'edges':
+        dest += all;
+        break;
+      case 'error':
+        dest += all;
+        break;
+      default:
+        throw new Error("tokens unimplement.");
+    }
+  }
+  return dest;
+};
+
+module.exports = { parse, stringify };
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+var regexp_join, syntax;
+
+regexp_join = function (regex, ...names) {
+  var flags, i, key, len, name, source, val;
+  ({ flags, source } = regex);
+  for (i = 0, len = names.length; i < len; i++) {
+    name = names[i];
+    key = new RegExp(name, 'g');
+    val = syntax[name];
+    val = val.source || val;
+    source = source.replace(key, val);
+  }
+  return new RegExp(source, flags);
+};
+
+syntax = {
+  nodes: /^(?:_header_)? *((?:(?:_xy_)?_id__sep_)+)_eol_/,
+  edges: /^ *((_id_)?(?: *_arrow_ *_id_)+) *(?:_comment_)?_eol_/,
+  newline: /^ *\n|^ +$/,
+  error: /^[^\n]*\n|[^\n]+$/,
+  pick_node: /(?:<(\d+)(_side_| )?(\d+)>)?(_id_)/g,
+  _xy_: /<\d+(?:_side_| )?\d+>/,
+  _id_: /[^\n\s<>#]+/,
+  _arrow_: /(<|X|x|O|o)?_line_(_side_{2,2})?_line_(>|X|x|O|o)?/,
+  _header_: /#{1,3} *(.*) *\n/,
+  _comment_: /#{1,3} *(.*) */,
+  _line_: /(-|=|\.)+/,
+  _side_: /[udlrUDLRv^<>]/,
+  _sep_: / *\n? */,
+  _eol_: / *(?:\n|$)/
+};
+
+syntax._xy_ = regexp_join(syntax._xy_, '_side_');
+
+syntax._arrow_ = regexp_join(syntax._arrow_, '_line_', '_side_');
+
+syntax.pick_node = regexp_join(syntax.pick_node, '_id_', '_side_');
+
+syntax.nodes = regexp_join(syntax.nodes, '_xy_', '_id_', '_header_', '_sep_', '_eol_');
+
+syntax.edges = regexp_join(syntax.edges, '_id_', '_arrow_', '_comment_', '_eol_');
+
+module.exports = { syntax };
 
 /***/ }),
 /* 27 */
@@ -3743,7 +3874,15 @@ var render = function() {
             })
           ],
           2
-        )
+        ),
+        _vm.move.id
+          ? _c("g", [
+              _c(
+                "rect",
+                _vm._b({ staticClass: "move" }, "rect", _vm.moved, false)
+              )
+            ])
+          : _vm._e()
       ]
     ),
     _vm.graph.errors.length
@@ -3776,13 +3915,13 @@ if (false) {
 
 var MarkSVG, fs, glob, shallow;
 
-({ shallow } = __webpack_require__(8));
+({ shallow } = __webpack_require__(7));
 
-glob = __webpack_require__(9);
+glob = __webpack_require__(8);
 
-fs = __webpack_require__(10);
+fs = __webpack_require__(9);
 
-({ MarkSVG } = __webpack_require__(11));
+({ MarkSVG } = __webpack_require__(10));
 
 glob.sync("./__tests__/**/*.marksvg").map(function (path) {
   return describe(path, function () {

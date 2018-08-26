@@ -32,7 +32,7 @@ do_parse = (tokens, render, src)->
         [vm, v, vl] = render.dic v
         [wm, w, wl] = render.dic w
         { rects } = render.data
-        if rects[v] &&  rects[w]
+        if rects[v] && rects[w]
           headpos = side?[0] ? '>'
           tailpos = side?[1] ? '<'
           render.edge v, w, line, start, end, headpos, tailpos, label
@@ -43,19 +43,20 @@ do_parse = (tokens, render, src)->
       continue
 
     if cap = syntax.nodes.exec src
-      [ all, nodes, label ] = cap
+      [ all, label, nodes ] = cap
       src = src[all.length ..]
       # console.log "nodes", cap
       nodes = nodes
       .trim()
       .split syntax.pick_node
       vs =
-        for $, idx in nodes by 4
-          [$, x, y, v] = nodes[idx .. idx + 3]
+        for $, idx in nodes by 5
+          [$, x, side, y, v] = nodes[idx .. idx + 4]
           continue unless v
           [vm, vid, vl] = render.dic v
-          render[vm] vid, vl, x, y
-          render.node v, vid
+          unless render.is_cluster vid
+            render[vm] vid, vl, side, x, y
+            render.node v, vid
           vid
       if label
         render.cluster vs, label
@@ -66,7 +67,7 @@ do_parse = (tokens, render, src)->
     if cap = syntax.error.exec src
       [ all ] = cap
       src = src[all.length ..]
-      render.error all, "解釈できない文字列です。"
+      render.error "#{all} 解釈できない文字列です。"
       type = "error"
       tokens.push { type, all }
       continue
@@ -77,10 +78,10 @@ stringify = (tokens, data)->
   for { type, all } in tokens
     switch type
       when 'nodes'
-        dest += all.replace syntax.pick_node, ( $, x, y, v )->
+        dest += all.replace syntax.pick_node, ( $, x, side, y, v )->
           if o = data.nodes[v]
-            { x, y } = o
-            "<#{x},#{y}>#{v}"
+            { x, y, key } = o
+            "<#{x}#{key[0]}#{y}>#{v}"
           else
             v
       when 'newline'
