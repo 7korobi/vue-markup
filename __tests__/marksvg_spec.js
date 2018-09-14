@@ -2995,7 +2995,7 @@ block.gfm = Object.assign({}, block.normal, {
   fences: /^ *(`{3,}|~{3,}|:{3,})[ \.]*(\S+)? *\n([\s\S]*?)\n? *\1 *(?:\n|$)/,
   paragraph: /^/,
   heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n|$)/,
-  abbr: /^ *\[\]((\s+item)+\s*)(?:\n|$)/,
+  abbr: /^ *\[\](([^\S\n]+item)+[^\S\n]*)(?:\n|$)/,
   _abbr_item: /(\S+)[\/|](\S+)/g
 });
 
