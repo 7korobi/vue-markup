@@ -293,9 +293,8 @@ class Lexer
       if cap = @rules.abbr.exec src
         # console.log 'abbr', cap
         src = src[cap[0].length ..]
-        tag = cap[1]
-        @tokens.abbrs[tag] ||=
-          title: cap[2]
+        cap[1].replace @rules._abbr_item, ( _, tag, title )=>
+          @tokens.abbrs[tag] ||= { title }
         @tokens.abbrs_reg = inline.words Object.keys @tokens.abbrs
         continue
 

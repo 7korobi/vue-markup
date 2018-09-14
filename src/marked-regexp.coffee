@@ -103,12 +103,12 @@ block.gfm = Object.assign {}, block.normal,
   fences: /^ *(`{3,}|~{3,}|:{3,})[ \.]*(\S+)? *\n([\s\S]*?)\n? *\1 *(?:\n|$)/
   paragraph: /^/
   heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n|$)/
-  abbr: /^\*\[(label)\] *\n? *: *([^\n]+?) *(?:\n|$)/
+  abbr: /^ *\[\]((\s+item)+\s*)(?:\n|$)/
+  _abbr_item: /(\S+)[\/|](\S+)/g
 
 block.gfm.abbr = edit(block.gfm.abbr
-)( 'label', block._label
+)( 'item', block.gfm._abbr_item
 )()
-
 block.gfm.paragraph = edit(block.paragraph
 )( '(?!', "(?!#{
   block.gfm.fences.source.replace('\\1', '\\2')

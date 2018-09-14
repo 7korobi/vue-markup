@@ -1,4 +1,4 @@
-*[す]: るび
+[] す|るび
 [guide]: <http://crazy-crazy.sakura.ne.jp/giji/?%28Knowledge%29Guidance#l1> "手引き"
 [other]: http://wolfbbs.jp/%BF%CD%CF%B5%A5%AF%A5%ED%A1%BC%A5%F3.html#content_1_18 "短期サーバー紹介"
 [short]: # "１０分とか、５分とか。……ひどいときは１分だぜ。クール！"
