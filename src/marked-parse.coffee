@@ -289,13 +289,15 @@ class Lexer
           text: cap[0]
         continue
 
-      # abbr
-      if cap = @rules.abbr.exec src
-        # console.log 'abbr', cap
+      # ruby_heads
+      if cap = @rules.ruby_heads.exec src
+        # console.log 'ruby', cap
         src = src[cap[0].length ..]
-        cap[1].replace @rules._abbr_item, ( _, tag, title )=>
-          @tokens.abbrs[tag] ||= { title }
+        for idx in [1..4] when cap[idx]
+          cap[idx].replace @rules.ruby[idx].item, (_, tag, title)=>
+            @tokens.abbrs[tag] ||= { title }
         @tokens.abbrs_reg = inline.words Object.keys @tokens.abbrs
+        console.log @tokens.abbrs_reg
         continue
 
       # def
@@ -599,6 +601,15 @@ class InlineLexer
         src = src[cap[0].length ..]
         out.push @renderer.mdi cap[1]
         out.plain += "@"
+        continue
+
+      # ruby (inline)
+      if cap = @rules.ruby.exec src
+        # console.log 'ruby', cap
+        src = src[cap[0].length ..]
+        text = cap[2] || cap[1]
+        out.plain += text
+        out.push @renderer.abbr text, cap[3]
         continue
 
       # text

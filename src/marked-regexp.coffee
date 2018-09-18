@@ -42,7 +42,7 @@ block =
   checkbox: /^\[([ xX])\] +/
   paragraph: /^([^\n]+(?:\n(?!hr|heading|lheading| {0,3}>|<\/?(?:tag)(?: +|\n|\/?>)|<(?:script|pre|style|!--))[^\n]+)*)/
   text: /^[^\n]+/
-  abbr: noop
+  ruby: noop
 
 block._label = /(?!\s*\])(?:\\[\[\]]|[^\[\]])+/
 block._title = /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/
@@ -103,12 +103,16 @@ block.gfm = Object.assign {}, block.normal,
   fences: /^ *(`{3,}|~{3,}|:{3,})[ \.]*(\S+)? *\n([\s\S]*?)\n? *\1 *(?:\n|$)/
   paragraph: /^/
   heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n|$)/
-  abbr: /^ *\[\](([^\S\n]+item)+[^\S\n]*)(?:\n|$)/
-  _abbr_item: /(\S+)[\/|](\S+)/g
+  _ruby_item: /\s+([^A]+)A([^Z]+)Z/g
+  _ruby_head: /^AZ((?:[^\S\n]+[^A\n]+A[^Z\n]+Z)+[^\S\n]*)(?:\n|$)/
 
-block.gfm.abbr = edit(block.gfm.abbr
-)( 'item', block.gfm._abbr_item
-)()
+block.gfm.ruby =
+  for [a,z] in ['()', '{}', '[]', '《》']
+    item: edit(block.gfm._ruby_item,'g')(/A/g, '\\'+a)(/Z/g, '\\'+z)()
+    head: edit(block.gfm._ruby_head    )(/A/g, '\\'+a)(/Z/g, '\\'+z)()
+block.gfm.ruby_heads = new RegExp block.gfm.ruby.map(({ head })=> head.source ).join("|")
+block.gfm.ruby.unshift {}
+
 block.gfm.paragraph = edit(block.paragraph
 )( '(?!', "(?!#{
   block.gfm.fences.source.replace('\\1', '\\2')
@@ -175,9 +179,16 @@ inline =
   code: /^(`+)\s*([\s\S]*?[^`]?)\s*\1(?!`)/
   br: /^ {2,}\n(?!\s*$)/
   del: noop,
-  text: /^[\s\S]+?(?=[\\<!\[`*~=+:\-\^]|\b_| {2,}\n|$)/
+  text: /^[\s\S]+?(?=[\\<!\[`*~=+:\-\^]|ruby|\b_| {2,}\n|$)/
   # extended
   note: /^\^\[(label)\]/
+  ruby: ///^(
+     [|｜]([^《]+)
+    |(?:\w+)                 # 英数_
+    |(?:[\u30A1-\u30FF]+)    # カタカナ
+    |(?:[\u3041-\u309F・ー]+) # ひらがなと・ー
+    |(?:(?:[々〇〻\u3400-\u9FFF\uF900-\uFAFF]|[\uD840-\uD87F][\uDC00-\uDFFF])+) # 漢字
+  )《([^》]+)》///
   _supsub: /^code(?:[^\s]|codecode)+code(?!code)/
 
   _url_peice: ///
@@ -187,6 +198,10 @@ inline =
     | ^(\.{0,2})[\?\#\/]
     | ^[\w()%+:/]+$
   ///ig
+
+inline.text = edit(inline.text)(
+  'ruby', inline.ruby
+)()
 
 inline.words = (list)->
   keys = list.map (s)-> s.replace /[-\/\\^$*+?.()|[\]{}]/g, '\\$&'
