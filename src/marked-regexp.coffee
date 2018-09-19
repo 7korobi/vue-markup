@@ -251,10 +251,6 @@ inline =
     |(?:(?:[々〇〻\u3400-\u9FFF\uF900-\uFAFF]|[\uD840-\uD87F][\uDC00-\uDFFF])+) # 漢字
   )《([^\n》]+)》///
 
-inline.words = (list)->
-  keys = list.map (s)-> s.replace /[-\/\\^$*+?.()|[\]{}]/g, '\\$&'
-  ///(#{ keys.join '|' })///g
-
 list =
   for c in ['_', '~', '=', ':', '\\*', '\\+', '\\-']
     edit(inline._strong)(/code/g, c)().source
@@ -296,6 +292,13 @@ inline.text = edit(inline.text
 )('ruby', inline.ruby
 )()
 
+inline.words = ( list, extra = [] )->
+  keys = [
+    ...extra.map (s)-> s.source || s
+    ...list.map (s)-> s.replace /[-\/\\^$*+?.()|[\]{}]/g, '\\$&'
+  ]
+  ///(#{ keys.join '|' })///g
+
 inline.normal = Object.assign({}, inline)
 
 inline.gfm = Object.assign {}, inline.normal, 
@@ -331,4 +334,46 @@ inline.gfm.url = edit(inline.gfm._url
 )( 'email', inline.gfm._extended_email
 )()
 
-module.exports = { block, inline, noop }
+
+replacements = (hash, extra, cb)->
+  cb ?= (s)-> @[s]
+  key = inline.words Object.keys(hash), extra
+  (src)->
+    src.replace key, cb.bind hash
+
+repl =
+  lexer: replacements
+    '\r\n': '\n'
+    '\r': '\n'
+    '\t': '    '
+    '\u00a0': ' '
+    '\u2424': '\n'
+
+  smartypants: replacements
+    '...': '\u2026' # ellipses
+    '---': '\u2014' # em-dashes
+    '--':  '\u2013' # en-dashes
+    '+-':  '\u00B1' # markdown-it replacements
+    "'":   '\u2019' # closing singles & apostrophes
+    '"':   '\u201d' # closing doubles
+  , [
+    ///
+      (^|---|['"/({\-\s\[])
+      (['"])
+    ///
+  ], (__, str, hd, chr)->
+    switch chr
+      when undefined
+        @[str]
+      when hd
+        console.log { str, hd, chr }
+        str
+      when "'"
+        "#{hd}\u2018"
+      when '"'
+        "#{hd}\u201c"
+      else
+        @[str]
+
+
+module.exports = { block, inline, repl, noop }

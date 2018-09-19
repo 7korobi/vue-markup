@@ -1,4 +1,4 @@
-{ block, inline, noop } = require './marked-regexp'
+{ block, inline, repl, noop } = require './marked-regexp'
 
 ###
 # Helpers
@@ -6,7 +6,7 @@
 
 escape = (html, is_encode)->
   if escape[is_encode].test html
-    html.replace escape[is_encode].replace (ch)->
+    html.replace escape[is_encode].replace, (ch)->
       escape.replacements[ch]
 
 escape[true]  = /[&<>"']/g
@@ -107,11 +107,7 @@ class Lexer
       @rules.code = noop
 
   lex: (src)->
-    src = src
-    .replace /\r\n|\r/g, '\n'
-    .replace /\t/g, '    '
-    .replace /\u00a0/g, ' '
-    .replace /\u2424/g, '\n'
+    src = repl.lexer src
     @token src, true
 
   token: (src, top)->
@@ -615,16 +611,18 @@ class InlineLexer
         # console.log 'text', cap
         src = src[cap[0].length ..]
         text = cap[0]
-        out.plain += text
         if @abbrs_reg
           for s in text.split @abbrs_reg
             o = @abbrs[s]
             text = @smartypants s
+            out.plain += text
             if o
               out.push @renderer.abbr text, o.title
             else
               out.push @renderer.text text
         else
+          text = @smartypants text
+          out.plain += text
           out.push @renderer.text text
         continue
 
@@ -656,25 +654,7 @@ class InlineLexer
   smartypants: (text)->
     if !@options.smartypants
       return text
-    text
-    # markdown-it replacements
-    .replace /\+\-/g, '\u00B1'
-    # markdown-it replacements
-    .replace /\+\-/g, '\u00B1'
-    # em-dashes
-    .replace /---/g, '\u2014'
-    # en-dashes
-    .replace /--/g, '\u2013'
-    # opening singles
-    .replace /(^|[-\u2014/(\[{"\s])'/g, '$1\u2018'
-    # closing singles & apostrophes
-    .replace /'/g, '\u2019'
-    # opening doubles
-    .replace /(^|[-\u2014/(\[{\u2018\s])"/g, '$1\u201c'
-    # closing doubles
-    .replace /"/g, '\u201d'
-    # ellipses
-    .replace /\.{3}/g, '\u2026'
+    repl.smartypants text
 
   cite_range: ( cite1, cite2 )->
     { part_id } = @options.context

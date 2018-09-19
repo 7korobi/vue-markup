@@ -89,7 +89,7 @@ foo.bar.baz\\" href=\\"ftp://foo.bar.baz\\" chk=\\"confirm\\">ftp://foo.bar.baz<
 \\" href=\\"mailto:foo@bar.baz\\" chk=\\"confirm\\">foo@bar.baz</b></p>
 
 <h3 data-v-47325f32=\\"\\">Example 606</h3>
-<p data-v-47325f32=\\"\\">hello@mail+xyz.example isn't valid, but <b data-v-47325f32=\\"\\" title=\\"mailto:hello+xyz@mail.example
+<p data-v-47325f32=\\"\\">hello@mail+xyz.example isn’t valid, but <b data-v-47325f32=\\"\\" title=\\"mailto:hello+xyz@mail.example
 \\" href=\\"mailto:hello+xyz@mail.example\\" chk=\\"confirm\\">hello+xyz@mail.example</b> is.</p>
 
 <h3 data-v-47325f32=\\"\\">Example 607</h3>
@@ -204,7 +204,7 @@ Because a hard-wrapped line in the
 middle of a paragraph looked like a
 list item.
 
-</li></ol><p data-v-47325f32=\\"\\">Here's one with a bullet.</p>
+</li></ol><p data-v-47325f32=\\"\\">Here’s one with a bullet.</p>
 <ul data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">criminey.
 </li></ul></article>"
 `;
@@ -213,7 +213,7 @@ exports[`./__tests__/compiled_tests/headings_id.md snapshot 1`] = `
 "<article data-v-47325f32=\\"\\"><h3 data-v-47325f32=\\"\\">Heading with a <b data-v-47325f32=\\"\\" title=\\"http
 github.com\\" href=\\"http://github.com/\\" chk=\\"confirm\\">link</b></h3>
 <h3 data-v-47325f32=\\"\\">Heading with some <em data-v-47325f32=\\"\\">italic text</em></h3>
-<h3 data-v-47325f32=\\"\\">Or some <strong data-v-47325f32=\\"\\">strong</strong></h3><p data-v-47325f32=\\"\\">(which doesn't really make any difference, here)</p>
+<h3 data-v-47325f32=\\"\\">Or some <strong data-v-47325f32=\\"\\">strong</strong></h3><p data-v-47325f32=\\"\\">(which doesn’t really make any difference, here)</p>
 
 <h3 data-v-47325f32=\\"\\">Or even <code data-v-47325f32=\\"\\">code</code></h3>
 <h3 data-v-47325f32=\\"\\">What about <del data-v-47325f32=\\"\\">strikethrough</del></h3>
@@ -384,7 +384,7 @@ exports[`./__tests__/compiled_tests/inline_html_comments.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/inline_html_simple.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">gfm: false</h2><p data-v-47325f32=\\"\\">Here's a simple block:</p>
+"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">gfm: false</h2><p data-v-47325f32=\\"\\">Here’s a simple block:</p>
 
 <p data-v-47325f32=\\"\\">&lt;div&gt;
     foo
@@ -433,7 +433,7 @@ Blah
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">&lt;hr&gt;
 </code></pre>    
-<p data-v-47325f32=\\"\\">Hr's:</p>
+<p data-v-47325f32=\\"\\">Hr’s:</p>
 
 <p data-v-47325f32=\\"\\">&lt;hr&gt;
 
@@ -496,7 +496,7 @@ url\\" href=\\"/url/\\" chk=\\"confirm\\">URL</b>.</p>
 
 <p data-v-47325f32=\\"\\">[URL and title]( /url/has space ).</p>
 
-<p data-v-47325f32=\\"\\">[URL and title]( /url/has space/ \\"url has space and title\\").</p>
+<p data-v-47325f32=\\"\\">[URL and title]( /url/has space/ “url has space and title”).</p>
 
 <p data-v-47325f32=\\"\\"><q data-v-47325f32=\\"\\" title=\\"
 \\">Empty</q>.</p>
@@ -574,11 +574,11 @@ somethingelse\\" href=\\"/somethingelse/\\" chk=\\"confirm\\">this</b> points to
 
 
 <hr data-v-47325f32=\\"\\">
-<p data-v-47325f32=\\"\\">Here's one where the <b data-v-47325f32=\\"\\" title=\\"
+<p data-v-47325f32=\\"\\">Here’s one where the <b data-v-47325f32=\\"\\" title=\\"
 url\\" href=\\"/url/\\" chk=\\"confirm\\">link
 breaks</b> across lines.</p>
 
-<p data-v-47325f32=\\"\\">Here's another where the <b data-v-47325f32=\\"\\" title=\\"
+<p data-v-47325f32=\\"\\">Here’s another where the <b data-v-47325f32=\\"\\" title=\\"
 url\\" href=\\"/url/\\" chk=\\"confirm\\">link 
 breaks</b> across lines, but with a line-ending space.</p>
 
@@ -627,10 +627,10 @@ exports[`./__tests__/compiled_tests/literal_quotes_in_titles.md snapshot 1`] = `
 <h2 data-v-47325f32=\\"\\">gfm: false</h2>
 <p data-v-47325f32=\\"\\">Foo [bar][].</p>
 
-<p data-v-47325f32=\\"\\">Foo [bar](/url/ \\"Title with \\"quotes\\" inside\\").</p>
+<p data-v-47325f32=\\"\\">Foo [bar](/url/ “Title with “quotes” inside”).</p>
 
 
-<p data-v-47325f32=\\"\\">  [bar]: /url/ \\"Title with \\"quotes\\" inside\\"</p>
+<p data-v-47325f32=\\"\\">  [bar]: /url/ “Title with “quotes” inside”</p>
 
 </article>"
 `;
@@ -688,8 +688,8 @@ exports[`./__tests__/compiled_tests/loose_lists.md snapshot 1`] = `
 exports[`./__tests__/compiled_tests/main.md snapshot 1`] = `
 "<article data-v-47325f32=\\"\\">
 <h1 data-v-47325f32=\\"\\">A heading</h1>
-<p data-v-47325f32=\\"\\">Just a note, I've found that I can't test my markdown parser vs others.
-For example, both markdown.js and showdown code blocks in lists wrong. They're
+<p data-v-47325f32=\\"\\">Just a note, I’ve found that I can’t test my markdown parser vs others.
+For example, both markdown.js and showdown code blocks in lists wrong. They’re
 also completely <b data-v-47325f32=\\"\\" title=\\"Google\\" href=\\"http://google.com/\\" chk=\\"confirm\\">inconsistent</b> with regards to paragraphs in list items.</p>
 
 <p data-v-47325f32=\\"\\">A link. Not anymore.</p>
@@ -733,9 +733,9 @@ Lots of it...
 
 exports[`./__tests__/compiled_tests/mangle_xss.md snapshot 1`] = `
 "<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">sanatize: true</p>
-<h2 data-v-47325f32=\\"\\">mangle: false</h2><p data-v-47325f32=\\"\\">&lt;&lt;svg/onload=\\"alert(1)\\"//@x&gt;</p>
+<h2 data-v-47325f32=\\"\\">mangle: false</h2><p data-v-47325f32=\\"\\">&lt;&lt;svg/onload=”alert(1)”//@x&gt;</p>
 
-<p data-v-47325f32=\\"\\">&lt;bar\\"onclick=\\"alert('XSS')\\"@foo&gt;</p>
+<p data-v-47325f32=\\"\\">&lt;bar”onclick=”alert(‘XSS’)”@foo&gt;</p>
 </article>"
 `;
 
@@ -752,20 +752,20 @@ exports[`./__tests__/compiled_tests/markdown_documentation_basics.md snapshot 1`
 &lt;/ul&gt;
 
 
-</p><h2 data-v-47325f32=\\"\\">Getting the Gist of Markdown's Formatting Syntax</h2>
-<p data-v-47325f32=\\"\\">This page offers a brief overview of what it's like to use Markdown.
+</p><h2 data-v-47325f32=\\"\\">Getting the Gist of Markdown’s Formatting Syntax</h2>
+<p data-v-47325f32=\\"\\">This page offers a brief overview of what it’s like to use Markdown.
 The [syntax page] <b data-v-47325f32=\\"\\" title=\\"Markdown Syntax\\" href=\\"/projects/markdown/syntax\\" chk=\\"confirm\\">s</b> provides complete, detailed documentation for
 every feature, but Markdown should be very easy to pick up simply by
 looking at a few examples of it in action. The examples on this page
 are written in a before/after style, showing example syntax and the
 HTML output produced by Markdown.</p>
 
-<p data-v-47325f32=\\"\\">It's also helpful to simply try Markdown out; the [Dingus] <b data-v-47325f32=\\"\\" title=\\"Markdown Dingus\\" href=\\"/projects/markdown/dingus\\" chk=\\"confirm\\">d</b> is a
+<p data-v-47325f32=\\"\\">It’s also helpful to simply try Markdown out; the [Dingus] <b data-v-47325f32=\\"\\" title=\\"Markdown Dingus\\" href=\\"/projects/markdown/dingus\\" chk=\\"confirm\\">d</b> is a
 web application that allows you type your own Markdown-formatted text
 and translate it to XHTML.</p>
 
 <p data-v-47325f32=\\"\\"><strong data-v-47325f32=\\"\\">Note:</strong> This document is itself written using Markdown; you
-can [see the source for it by adding '.text' to the URL] <b data-v-47325f32=\\"\\" title=\\"
+can [see the source for it by adding ‘.text’ to the URL] <b data-v-47325f32=\\"\\" title=\\"
 projects\\" href=\\"/projects/markdown/basics.text\\" chk=\\"confirm\\">src</b>.</p>
 
 
@@ -778,12 +778,12 @@ blank.) Normal paragraphs should not be intended with spaces or tabs.</p>
 
 <p data-v-47325f32=\\"\\">Markdown offers two styles of headers: <em data-v-47325f32=\\"\\">Setext</em> and <em data-v-47325f32=\\"\\">atx</em>.
 Setext-style headers for <code data-v-47325f32=\\"\\">&lt;h1&gt;</code> and <code data-v-47325f32=\\"\\">&lt;h2&gt;</code> are created by
-\\"underlining\\" with equal signs (<code data-v-47325f32=\\"\\">=</code>) and hyphens (<code data-v-47325f32=\\"\\">-</code>), respectively.
+“underlining” with equal signs (<code data-v-47325f32=\\"\\">=</code>) and hyphens (<code data-v-47325f32=\\"\\">-</code>), respectively.
 To create an atx-style header, you put 1-6 hash marks (<code data-v-47325f32=\\"\\">#</code>) at the
 beginning of the line -- the number of hashes equals the resulting
 HTML header level.</p>
 
-<p data-v-47325f32=\\"\\">Blockquotes are indicated using email-style '<code data-v-47325f32=\\"\\">&gt;</code>' angle brackets.</p>
+<p data-v-47325f32=\\"\\">Blockquotes are indicated using email-style ‘<code data-v-47325f32=\\"\\">&gt;</code>‘ angle brackets.</p>
 
 <p data-v-47325f32=\\"\\">Markdown:</p>
 
@@ -899,7 +899,7 @@ list markers:</p>
 &lt;li&gt;Blue&lt;/li&gt;
 &lt;/ol&gt;
 
-</code></pre><p data-v-47325f32=\\"\\">If you put blank lines between items, you'll get <code data-v-47325f32=\\"\\">&lt;p&gt;</code> tags for the
+</code></pre><p data-v-47325f32=\\"\\">If you put blank lines between items, you’ll get <code data-v-47325f32=\\"\\">&lt;p&gt;</code> tags for the
 list item text. You can create multi-paragraph list items by indenting
 the paragraphs by 4 spaces or 1 tab:</p>
 
@@ -1080,7 +1080,7 @@ autolink\\" href=\\"#autolink\\" chk=\\"confirm\\">Automatic Links</b>
 
 </li></ul></li></ul><p data-v-47325f32=\\"\\"><strong data-v-47325f32=\\"\\">Note:</strong> This document is itself written using Markdown; you
 can <b data-v-47325f32=\\"\\" title=\\"
-projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the source for it by adding '.text' to the URL</b>.</p>
+projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the source for it by adding ‘.text’ to the URL</b>.</p>
 
 
 <hr data-v-47325f32=\\"\\">
@@ -1092,8 +1092,8 @@ projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the 
 
 <p data-v-47325f32=\\"\\">Readability, however, is emphasized above all else. A Markdown-formatted
 document should be publishable as-is, as plain text, without looking
-like it's been marked up with tags or formatting instructions. While
-Markdown's syntax has been influenced by several existing text<q data-v-47325f32=\\"\\" cite=\\"spec-1-1-to-HTML\\">-to-HTML</q>
+like it’s been marked up with tags or formatting instructions. While
+Markdown’s syntax has been influenced by several existing text<q data-v-47325f32=\\"\\" cite=\\"spec-1-1-to-HTML\\">-to-HTML</q>
 filters <s data-v-47325f32=\\"\\"> including [Setext] <b data-v-47325f32=\\"\\" title=\\"http
 docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</b>, [atx] <b data-v-47325f32=\\"\\" title=\\"http
 www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</b>, [Textile] <b data-v-47325f32=\\"\\" title=\\"http
@@ -1102,21 +1102,21 @@ docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/rst.html\\" 
 [Grutatext] <b data-v-47325f32=\\"\\" title=\\"http
 www.triptico.com\\" href=\\"http://www.triptico.com/software/grutatxt.html\\" chk=\\"confirm\\">5</b>, and [EtText] <b data-v-47325f32=\\"\\" title=\\"http
 ettext.taint.org\\" href=\\"http://ettext.taint.org/doc/\\" chk=\\"confirm\\">6</b> </s> the single biggest source of
-inspiration for Markdown's syntax is the format of plain text email.</p>
+inspiration for Markdown’s syntax is the format of plain text email.</p>
 
 
-<p data-v-47325f32=\\"\\">To this end, Markdown's syntax is comprised entirely of punctuation
+<p data-v-47325f32=\\"\\">To this end, Markdown’s syntax is comprised entirely of punctuation
 characters, which punctuation characters have been carefully chosen so
 as to look like what they mean. E.g., asterisks around a word actually
 look like *emphasis*. Markdown lists look like, well, lists. Even
-blockquotes look like quoted passages of text, assuming you've ever
+blockquotes look like quoted passages of text, assuming you’ve ever
 used email.</p>
 
 
 
 <p data-v-47325f32=\\"\\">&lt;h3 id=\\"html\\"&gt;Inline HTML&lt;/h3&gt;
 
-</p><p data-v-47325f32=\\"\\">Markdown's syntax is intended for one purpose: to be used as a
+</p><p data-v-47325f32=\\"\\">Markdown’s syntax is intended for one purpose: to be used as a
 format for <em data-v-47325f32=\\"\\">writing</em> for the web.</p>
 
 <p data-v-47325f32=\\"\\">Markdown is not a replacement for HTML, or even close to it. Its
@@ -1125,12 +1125,12 @@ HTML tags. The idea is <em data-v-47325f32=\\"\\">not</em> to create a syntax th
 to insert HTML tags. In my opinion, HTML tags are already easy to
 insert. The idea for Markdown is to make it easy to read, write, and
 edit prose. HTML is a <em data-v-47325f32=\\"\\">publishing</em> format; Markdown is a <em data-v-47325f32=\\"\\">writing</em>
-format. Thus, Markdown's formatting syntax only addresses issues that
+format. Thus, Markdown’s formatting syntax only addresses issues that
 can be conveyed in plain text.</p>
 
-<p data-v-47325f32=\\"\\">For any markup that is not covered by Markdown's syntax, you simply
-use HTML itself. There's no need to preface it or delimit it to
-indicate that you're switching from Markdown to HTML; you just use
+<p data-v-47325f32=\\"\\">For any markup that is not covered by Markdown’s syntax, you simply
+use HTML itself. There’s no need to preface it or delimit it to
+indicate that you’re switching from Markdown to HTML; you just use
 the tags.</p>
 
 <p data-v-47325f32=\\"\\">The only restrictions are that block-level HTML elements <s data-v-47325f32=\\"\\"> e.g. <code data-v-47325f32=\\"\\">&lt;div&gt;</code>,
@@ -1152,13 +1152,13 @@ to add extra (unwanted) <code data-v-47325f32=\\"\\">&lt;p&gt;</code> tags aroun
 This is another regular paragraph.
 
 </code></pre><p data-v-47325f32=\\"\\">Note that Markdown formatting syntax is not processed within block-level
-HTML tags. E.g., you can't use Markdown-style <code data-v-47325f32=\\"\\">*emphasis*</code> inside an
+HTML tags. E.g., you can’t use Markdown-style <code data-v-47325f32=\\"\\">*emphasis*</code> inside an
 HTML block.</p>
 
 <p data-v-47325f32=\\"\\">Span-level HTML tags <s data-v-47325f32=\\"\\"> e.g. <code data-v-47325f32=\\"\\">&lt;span&gt;</code>, <code data-v-47325f32=\\"\\">&lt;cite&gt;</code>, or <code data-v-47325f32=\\"\\">&lt;del&gt;</code> </s> can be
 used anywhere in a Markdown paragraph, list item, or header. If you
 want, you can even use HTML tags instead of Markdown formatting; e.g. if
-you'd prefer to use HTML <code data-v-47325f32=\\"\\">&lt;a&gt;</code> or <code data-v-47325f32=\\"\\">&lt;img&gt;</code> tags instead of Markdown's
+you’d prefer to use HTML <code data-v-47325f32=\\"\\">&lt;a&gt;</code> or <code data-v-47325f32=\\"\\">&lt;img&gt;</code> tags instead of Markdown’s
 link or image syntax, go right ahead.</p>
 
 <p data-v-47325f32=\\"\\">Unlike block-level HTML tags, Markdown syntax <em data-v-47325f32=\\"\\">is</em> processed within
@@ -1174,7 +1174,7 @@ characters, you must escape them as entities, e.g. <code data-v-47325f32=\\"\\">
 <code data-v-47325f32=\\"\\">&amp;amp;</code>.</p>
 
 <p data-v-47325f32=\\"\\">Ampersands in particular are bedeviling for web writers. If you want to
-write about 'AT&amp;T', you need to write '<code data-v-47325f32=\\"\\">AT&amp;amp;T</code>'. You even need to
+write about ‘AT&amp;T’, you need to write ‘<code data-v-47325f32=\\"\\">AT&amp;amp;T</code>‘. You even need to
 escape ampersands within URLs. Thus, if you want to link to:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">http://images.google.com/images?num=30&amp;q=larry+bird
@@ -1234,18 +1234,18 @@ by one or more blank lines. (A blank line is any line that looks like a
 blank line -- a line containing nothing but spaces or tabs is considered
 blank.) Normal paragraphs should not be intended with spaces or tabs.</p>
 
-<p data-v-47325f32=\\"\\">The implication of the \\"one or more consecutive lines of text\\" rule is
-that Markdown supports \\"hard-wrapped\\" text paragraphs. This differs
+<p data-v-47325f32=\\"\\">The implication of the “one or more consecutive lines of text” rule is
+that Markdown supports “hard-wrapped” text paragraphs. This differs
 significantly from most other text<q data-v-47325f32=\\"\\" cite=\\"spec-1-1-to-HTML\\">-to-HTML</q> formatters (including Movable
-Type's \\"Convert Line Breaks\\" option) which translate every line break
+Type’s “Convert Line Breaks” option) which translate every line break
 character in a paragraph into a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code> tag.</p>
 
 <p data-v-47325f32=\\"\\">When you <em data-v-47325f32=\\"\\">do</em> want to insert a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code> break tag using Markdown, you
 end a line with two or more spaces, then type return.</p>
 
 <p data-v-47325f32=\\"\\">Yes, this takes a tad more effort to create a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code>, but a simplistic
-\\"every line break is a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code>\\" rule wouldn't work for Markdown.
-Markdown's email-style <b data-v-47325f32=\\"\\" title=\\"
+“every line break is a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code>“ rule wouldn’t work for Markdown.
+Markdown’s email-style <b data-v-47325f32=\\"\\" title=\\"
 blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">blockquoting</b> and multi-paragraph <b data-v-47325f32=\\"\\" title=\\"
 list\\" href=\\"#list\\" chk=\\"confirm\\">list items</b>
 work best <s data-v-47325f32=\\"\\"> and look better </s> when you format them with hard breaks.</p>
@@ -1259,7 +1259,7 @@ work best <s data-v-47325f32=\\"\\"> and look better </s> when you format them w
 docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</b> and [atx] <b data-v-47325f32=\\"\\" title=\\"http
 www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</b>.</p>
 
-<p data-v-47325f32=\\"\\">Setext-style headers are \\"underlined\\" using equal signs (for first-level
+<p data-v-47325f32=\\"\\">Setext-style headers are “underlined” using equal signs (for first-level
 headers) and dashes (for second-level headers). For example:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">This is an H1
@@ -1268,7 +1268,7 @@ headers) and dashes (for second-level headers). For example:</p>
 This is an H2
 -------------
 
-</code></pre><p data-v-47325f32=\\"\\">Any number of underlining <code data-v-47325f32=\\"\\">=</code>'s or <code data-v-47325f32=\\"\\">-</code>'s will work.</p>
+</code></pre><p data-v-47325f32=\\"\\">Any number of underlining <code data-v-47325f32=\\"\\">=</code>‘s or <code data-v-47325f32=\\"\\">-</code>‘s will work.</p>
 
 <p data-v-47325f32=\\"\\">Atx-style headers use 1-6 hash characters at the start of the line,
 corresponding to header levels 1-6. For example:</p>
@@ -1279,9 +1279,9 @@ corresponding to header levels 1-6. For example:</p>
 
 ###### This is an H6
 
-</code></pre><p data-v-47325f32=\\"\\">Optionally, you may \\"close\\" atx-style headers. This is purely
+</code></pre><p data-v-47325f32=\\"\\">Optionally, you may “close” atx-style headers. This is purely
 cosmetic -- you can use this if you think it looks better. The
-closing hashes don't even need to match the number of hashes
+closing hashes don’t even need to match the number of hashes
 used to open the header. (The number of opening hashes
 determines the header level.) :</p>
 
@@ -1294,7 +1294,7 @@ determines the header level.) :</p>
 
 </code></pre><p data-v-47325f32=\\"\\">&lt;h3 id=\\"blockquote\\"&gt;Blockquotes&lt;/h3&gt;
 
-</p><p data-v-47325f32=\\"\\">Markdown uses email-style <code data-v-47325f32=\\"\\">&gt;</code> characters for blockquoting. If you're
+</p><p data-v-47325f32=\\"\\">Markdown uses email-style <code data-v-47325f32=\\"\\">&gt;</code> characters for blockquoting. If you’re
 familiar with quoting passages of text in an email message, then you
 know how to create a blockquote in Markdown. It looks best if you hard
 wrap the text and put a <code data-v-47325f32=\\"\\">&gt;</code> before every line:</p>
@@ -1371,7 +1371,7 @@ Quote Level from the Text menu.</p>
 2.  McHale
 3.  Parish
 
-</code></pre><p data-v-47325f32=\\"\\">It's important to note that the actual numbers you use to mark the
+</code></pre><p data-v-47325f32=\\"\\">It’s important to note that the actual numbers you use to mark the
 list have no effect on the HTML output Markdown produces. The HTML
 Markdown produces from the above list is:</p>
 
@@ -1393,10 +1393,10 @@ Markdown produces from the above list is:</p>
 1. McHale
 8. Parish
 
-</code></pre><p data-v-47325f32=\\"\\">you'd get the exact same HTML output. The point is, if you want to,
+</code></pre><p data-v-47325f32=\\"\\">you’d get the exact same HTML output. The point is, if you want to,
 you can use ordinal numbers in your ordered Markdown lists, so that
 the numbers in your source match the numbers in your published HTML.
-But if you want to be lazy, you don't have to.</p>
+But if you want to be lazy, you don’t have to.</p>
 
 <p data-v-47325f32=\\"\\">If you do use lazy list numbering, however, you should still start the
 list with the number 1. At some point in the future, Markdown may support
@@ -1414,7 +1414,7 @@ or a tab.</p>
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
     Suspendisse id sem consectetuer libero luctus adipiscing.
 
-</code></pre><p data-v-47325f32=\\"\\">But if you want to be lazy, you don't have to:</p>
+</code></pre><p data-v-47325f32=\\"\\">But if you want to be lazy, you don’t have to:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
@@ -1474,7 +1474,7 @@ sit amet, consectetuer adipiscing elit.
 
 *   Another item in the same list.
 
-</code></pre><p data-v-47325f32=\\"\\">To put a blockquote within a list item, the blockquote's <code data-v-47325f32=\\"\\">&gt;</code>
+</code></pre><p data-v-47325f32=\\"\\">To put a blockquote within a list item, the blockquote’s <code data-v-47325f32=\\"\\">&gt;</code>
 delimiters need to be indented:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">*   A list item with a blockquote:
@@ -1490,7 +1490,7 @@ to be indented <em data-v-47325f32=\\"\\">twice</em> -- 8 spaces or two tabs:</p
         &lt;code goes here&gt;
 
 
-</code></pre><p data-v-47325f32=\\"\\">It's worth noting that it's possible to trigger an ordered list by
+</code></pre><p data-v-47325f32=\\"\\">It’s worth noting that it’s possible to trigger an ordered list by
 accident, by writing something like this:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">1986. What a great season.
@@ -1563,7 +1563,7 @@ ampersands and angle brackets. For example, this:</p>
 
 </code></pre><p data-v-47325f32=\\"\\">Regular Markdown syntax is not processed within code blocks. E.g.,
 asterisks are just literal asterisks within a code block. This means
-it's also easy to use Markdown to write about Markdown's own syntax.</p>
+it’s also easy to use Markdown to write about Markdown’s own syntax.</p>
 
 
 
@@ -1597,7 +1597,7 @@ _ _ _
 <p data-v-47325f32=\\"\\">In both styles, the link text is delimited by [square brackets].</p>
 
 <p data-v-47325f32=\\"\\">To create an inline link, use a set of regular parentheses immediately
-after the link text's closing square bracket. Inside the parentheses,
+after the link text’s closing square bracket. Inside the parentheses,
 put the URL where you want the link to point, along with an <em data-v-47325f32=\\"\\">optional</em>
 title for the link, surrounded in quotes. For example:</p>
 
@@ -1613,7 +1613,7 @@ an example&lt;/a&gt; inline link.&lt;/p&gt;
 &lt;p&gt;&lt;a href=\\"http://example.net/\\"&gt;This link&lt;/a&gt; has no
 title attribute.&lt;/p&gt;
 
-</code></pre><p data-v-47325f32=\\"\\">If you're referring to a local resource on the same server, you can
+</code></pre><p data-v-47325f32=\\"\\">If you’re referring to a local resource on the same server, you can
 use relative paths:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">See my [About](/about/) page for details.
@@ -1661,7 +1661,7 @@ processing, and are stripped from your document in the HTML output.</p>
 <p data-v-47325f32=\\"\\">The <em data-v-47325f32=\\"\\">implicit link name</em> shortcut allows you to omit the name of the
 link, in which case the link text itself is used as the name.
 Just use an empty set of square brackets -- e.g., to link the word
-\\"Google\\" to the google.com web site, you could simply write:</p>
+“Google” to the google.com web site, you could simply write:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">[Google][]
 
@@ -1680,11 +1680,11 @@ multiple words in the link text:</p>
 daringfireball.net\\" href=\\"http://daringfireball.net/\\" chk=\\"confirm\\">http://daringfireball.net/</b></p>
 
 <p data-v-47325f32=\\"\\">Link definitions can be placed anywhere in your Markdown document. I
-tend to put them immediately after each paragraph in which they're
+tend to put them immediately after each paragraph in which they’re
 used, but if you want, you can put them all at the end of your
 document, sort of like footnotes.</p>
 
-<p data-v-47325f32=\\"\\">Here's an example of reference links in action:</p>
+<p data-v-47325f32=\\"\\">Here’s an example of reference links in action:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">I get 10 times more traffic from [Google] [1] than from
 [Yahoo] [2] or [MSN] [3].
@@ -1710,21 +1710,21 @@ title=\\"Google\\"&gt;Google&lt;/a&gt; than from
 or &lt;a href=\\"http://search.msn.com/\\" title=\\"MSN Search\\"&gt;MSN&lt;/a&gt;.&lt;/p&gt;
 
 </code></pre><p data-v-47325f32=\\"\\">For comparison, here is the same paragraph written using
-Markdown's inline link style:</p>
+Markdown’s inline link style:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">I get 10 times more traffic from [Google](http://google.com/ \\"Google\\")
 than from [Yahoo](http://search.yahoo.com/ \\"Yahoo Search\\") or
 [MSN](http://search.msn.com/ \\"MSN Search\\").
 
-</code></pre><p data-v-47325f32=\\"\\">The point of reference-style links is not that they're easier to
+</code></pre><p data-v-47325f32=\\"\\">The point of reference-style links is not that they’re easier to
 write. The point is that with reference-style links, your document
 source is vastly more readable. Compare the above examples: using
 reference-style links, the paragraph itself is only 81 characters
-long; with inline-style links, it's 176 characters; and as raw HTML,
-it's 234 characters. In the raw HTML, there's more markup than there
+long; with inline-style links, it’s 176 characters; and as raw HTML,
+it’s 234 characters. In the raw HTML, there’s more markup than there
 is text.</p>
 
-<p data-v-47325f32=\\"\\">With Markdown's reference-style links, a source document much more
+<p data-v-47325f32=\\"\\">With Markdown’s reference-style links, a source document much more
 closely resembles the final output, as rendered in a browser. By
 allowing you to move the markup-related metadata out of the paragraph,
 you can add links without interrupting the narrative flow of your
@@ -1735,7 +1735,7 @@ prose.</p>
 
 </p><p data-v-47325f32=\\"\\">Markdown treats asterisks (<code data-v-47325f32=\\"\\">*</code>) and underscores (<code data-v-47325f32=\\"\\">_</code>) as indicators of
 emphasis. Text wrapped with one <code data-v-47325f32=\\"\\">*</code> or <code data-v-47325f32=\\"\\">_</code> will be wrapped with an
-HTML <code data-v-47325f32=\\"\\">&lt;em&gt;</code> tag; double <code data-v-47325f32=\\"\\">*</code>'s or <code data-v-47325f32=\\"\\">_</code>'s will be wrapped with an HTML
+HTML <code data-v-47325f32=\\"\\">&lt;em&gt;</code> tag; double <code data-v-47325f32=\\"\\">*</code>‘s or <code data-v-47325f32=\\"\\">_</code>‘s will be wrapped with an HTML
 <code data-v-47325f32=\\"\\">&lt;strong&gt;</code> tag. E.g., this input:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">*single asterisks*
@@ -1763,7 +1763,7 @@ the same character must be used to open and close an emphasis span.</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">un*fucking*believable
 
-</code></pre><p data-v-47325f32=\\"\\">But if you surround an <code data-v-47325f32=\\"\\">*</code> or <code data-v-47325f32=\\"\\">_</code> with spaces, it'll be treated as a
+</code></pre><p data-v-47325f32=\\"\\">But if you surround an <code data-v-47325f32=\\"\\">*</code> or <code data-v-47325f32=\\"\\">_</code> with spaces, it’ll be treated as a
 literal asterisk or underscore.</p>
 
 <p data-v-47325f32=\\"\\">To produce a literal asterisk or underscore at a position where it
@@ -1832,7 +1832,7 @@ equivalent of &lt;code&gt;&amp;amp;mdash;&lt;/code&gt;.&lt;/p&gt;
 
 </code></pre><p data-v-47325f32=\\"\\">&lt;h3 id=\\"img\\"&gt;Images&lt;/h3&gt;
 
-</p><p data-v-47325f32=\\"\\">Admittedly, it's fairly difficult to devise a \\"natural\\" syntax for
+</p><p data-v-47325f32=\\"\\">Admittedly, it’s fairly difficult to devise a “natural” syntax for
 placing images into a plain text document format.</p>
 
 <p data-v-47325f32=\\"\\">Markdown uses an image syntax that is intended to resemble the syntax
@@ -1855,7 +1855,7 @@ or single quotes.
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">![Alt text][id]
 
-</code></pre><p data-v-47325f32=\\"\\">Where \\"id\\" is the name of a defined image reference. Image references
+</code></pre><p data-v-47325f32=\\"\\">Where “id” is the name of a defined image reference. Image references
 are defined using syntax identical to link references:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">[id]: url/to/image  \\"Optional title attribute\\"
@@ -1871,7 +1871,7 @@ use regular HTML <code data-v-47325f32=\\"\\">&lt;img&gt;</code> tags.</p>
 
 </p><p data-v-47325f32=\\"\\">&lt;h3 id=\\"autolink\\"&gt;Automatic Links&lt;/h3&gt;
 
-</p><p data-v-47325f32=\\"\\">Markdown supports a shortcut style for creating \\"automatic\\" links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:</p>
+</p><p data-v-47325f32=\\"\\">Markdown supports a shortcut style for creating “automatic” links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">&lt;http://example.com/&gt;
 </code></pre>    
@@ -1893,12 +1893,12 @@ spambots. For example, Markdown will turn this:</p>
 &amp;#109;\\"&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;
 &amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
 
-</code></pre><p data-v-47325f32=\\"\\">which will render in a browser as a clickable link to \\"<b data-v-47325f32=\\"\\" title=\\"mailto:address@example.com
-\\" href=\\"mailto:address@example.com\\" chk=\\"confirm\\">address@example.com</b>\\".</p>
+</code></pre><p data-v-47325f32=\\"\\">which will render in a browser as a clickable link to “<b data-v-47325f32=\\"\\" title=\\"mailto:address@example.com
+\\" href=\\"mailto:address@example.com\\" chk=\\"confirm\\">address@example.com</b>“.</p>
 
 <p data-v-47325f32=\\"\\">(This sort of entity-encoding trick will indeed fool many, if not
-most, address-harvesting bots, but it definitely won't fool all of
-them. It's better than nothing, but an address published in this way
+most, address-harvesting bots, but it definitely won’t fool all of
+them. It’s better than nothing, but an address published in this way
 will probably eventually start receiving spam.)</p>
 
 
@@ -1906,7 +1906,7 @@ will probably eventually start receiving spam.)</p>
 <p data-v-47325f32=\\"\\">&lt;h3 id=\\"backslash\\"&gt;Backslash Escapes&lt;/h3&gt;
 
 </p><p data-v-47325f32=\\"\\">Markdown allows you to use backslash escapes to generate literal
-characters which would otherwise have special meaning in Markdown's
+characters which would otherwise have special meaning in Markdown’s
 formatting syntax. For example, if you wanted to surround a word with
 literal asterisks (instead of an HTML <code data-v-47325f32=\\"\\">&lt;em&gt;</code> tag), you can backslashes
 before the asterisks, like this:</p>
@@ -1947,7 +1947,7 @@ exports[`./__tests__/compiled_tests/nested_code.md snapshot 1`] = `
 
 <p data-v-47325f32=\\"\\">A backtick-delimited string in a code span: <code data-v-47325f32=\\"\\">\`foo\` </code></p>
 
-<p data-v-47325f32=\\"\\">Please don't use any <code data-v-47325f32=\\"\\">&lt;blink&gt;</code> tags.</p></article>"
+<p data-v-47325f32=\\"\\">Please don’t use any <code data-v-47325f32=\\"\\">&lt;blink&gt;</code> tags.</p></article>"
 `;
 
 exports[`./__tests__/compiled_tests/nested_em.md snapshot 1`] = `
@@ -2043,7 +2043,7 @@ exports[`./__tests__/compiled_tests/ordered_and_unordered_lists.md snapshot 1`] 
 
 <ol data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">Item 1, graf one.</p>
 
-<p data-v-47325f32=\\"\\">Item 2. graf two. The quick brown fox jumped over the lazy dog's</p>
+<p data-v-47325f32=\\"\\">Item 2. graf two. The quick brown fox jumped over the lazy dog’s</p>
 <p data-v-47325f32=\\"\\">back.</p>
 </li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">Item 2.</p>
 </li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">Item 3.</p>
@@ -2055,7 +2055,7 @@ exports[`./__tests__/compiled_tests/ordered_and_unordered_lists.md snapshot 1`] 
 <ul data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">Tab
 <ul data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">Tab
 
-</li></ul></li></ul></li></ul><p data-v-47325f32=\\"\\">Here's another:</p>
+</li></ul></li></ul></li></ul><p data-v-47325f32=\\"\\">Here’s another:</p>
 
 <ol data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">First</li><li data-v-47325f32=\\"\\">Second:
 <ul data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">Fee</li><li data-v-47325f32=\\"\\">Fie</li><li data-v-47325f32=\\"\\">Foe</li></ul></li><li data-v-47325f32=\\"\\">Third
@@ -2087,7 +2087,7 @@ exports[`./__tests__/compiled_tests/ordered_and_unordered_lists.md snapshot 1`] 
 `;
 
 exports[`./__tests__/compiled_tests/redos_html_closing.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">&lt;tag  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"&lt;\\" /&gt;a'a</p>
+"<article data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">&lt;tag  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”&lt;” /&gt;a’a</p>
 </article>"
 `;
 
@@ -2103,7 +2103,7 @@ exports[`./__tests__/compiled_tests/ref_paren.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/relative_urls.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">baseUrl: \\"<b data-v-47325f32=\\"\\" title=\\"http
+"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">baseUrl: “<b data-v-47325f32=\\"\\" title=\\"http
 example.com\\" href=\\"http://example.com/base/&quot;\\" chk=\\"confirm\\">http://example.com/base/\\"</b></h2><h1 data-v-47325f32=\\"\\">Absolutization of RFC 3986 URIs</h1>
 <h2 data-v-47325f32=\\"\\">Absolute URI</h2><p data-v-47325f32=\\"\\"><b data-v-47325f32=\\"\\" title=\\"http
 example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\"><img data-v-47325f32=\\"\\" src=\\"http://example.com/logo\\" alt=\\"section 4.3\\"></b></p>
@@ -2140,12 +2140,12 @@ exports[`./__tests__/compiled_tests/same_bullet.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/smartypants.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">smartypants: true</h2><p data-v-47325f32=\\"\\">Hello world 'how' \\"are\\" you -- today...</p>
+"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">smartypants: true</h2><p data-v-47325f32=\\"\\">Hello world ‘how’ “are” you -- today…</p>
 
-<p data-v-47325f32=\\"\\">\\"It's a more 'challenging' smartypants test...\\"</p>
+<p data-v-47325f32=\\"\\">“It’s a more ‘challenging’ smartypants test…”</p>
 
-<p data-v-47325f32=\\"\\">'And,' as a bonus --- \\"one
-multiline\\" test!</p>
+<p data-v-47325f32=\\"\\">‘And,’ as a bonus --- “one
+multiline” test!</p>
 </article>"
 `;
 
@@ -2264,7 +2264,8 @@ exports[`./__tests__/giji/japanese text.md snapshot 1`] = `
 <h2 data-v-47325f32=\\"\\">ヘッドライン</h2>
 <h2 data-v-47325f32=\\"\\">テーブル</h2>
 <p data-v-47325f32=\\"\\">　　大きなテーブルも作れま<ruby data-v-47325f32=\\"\\">す<rp data-v-47325f32=\\"\\">《</rp><rt data-v-47325f32=\\"\\">るび</rt><rp data-v-47325f32=\\"\\">》</rp></ruby>。<sup data-v-47325f32=\\"\\" title=\\"まああんまり大きいと困りますけど。\\" class=\\"note\\">1</sup>
-　　道場みたいな処だと窮屈だな。僕は自分で、別の村を建てるよ。僕の村は忙しい人もフォローするし、ルール違反（突然死とか）があっても、厳しく責め立てたくはないんだ。</p>
+　　道場みたいな処だと窮屈だな。僕は自分で、別の村を建てるよ。僕の村は忙しい人もフォローするし、ルール違反（突然死とか）があっても、厳しく責め立てたくはないんだ。
+　　これ +- -- (‘’) (“”)</p>
 
 <table data-v-47325f32=\\"\\"><thead data-v-47325f32=\\"\\"><tr data-v-47325f32=\\"\\"><th data-v-47325f32=\\"\\">Tables</th><th data-v-47325f32=\\"\\" class=\\"c\\">Are</th><th data-v-47325f32=\\"\\" class=\\"r\\">Cool</th></tr></thead><tbody data-v-47325f32=\\"\\"><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\">col <sup data-v-47325f32=\\"\\">3</sup> is</td><td data-v-47325f32=\\"\\" class=\\"c\\">other</td><td data-v-47325f32=\\"\\" class=\\"r\\">$1600</td></tr><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\">col <sub data-v-47325f32=\\"\\">2</sub> is</td><td data-v-47325f32=\\"\\" class=\\"c\\"><q data-v-47325f32=\\"\\" title=\\"１０分とか、５分とか。……ひどいときは１分だぜ。クール！\\">short</q></td><td data-v-47325f32=\\"\\" class=\\"r\\">$12</td></tr><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\">zebra stripes</td><td data-v-47325f32=\\"\\" class=\\"c\\"><b data-v-47325f32=\\"\\" title=\\"手引き\\" href=\\"http://crazy-crazy.sakura.ne.jp/giji/?%28Knowledge%29Guidance#l1\\" chk=\\"confirm\\">ガイド</b></td><td data-v-47325f32=\\"\\" class=\\"r\\">$1</td></tr></tbody></table><hr data-v-47325f32=\\"\\"><ol data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">まああんまり<abbr data-v-47325f32=\\"\\">大きい</abbr>と<ruby data-v-47325f32=\\"\\">困<rp data-v-47325f32=\\"\\">《</rp><rt data-v-47325f32=\\"\\">こま</rt><rp data-v-47325f32=\\"\\">》</rp></ruby>りますけど。</li></ol></article>"
 `;
@@ -2308,7 +2309,7 @@ _em</em> <strong data-v-47325f32=\\"\\">strong</strong> *<strong data-v-47325f32
 www.youtube.com\\" href=\\"http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE\\" chk=\\"confirm\\"><img data-v-47325f32=\\"\\" src=\\"https://s3-ap-northeast-1.amazonaws.com/giji-assets/images/portrate/c59.jpg\\" alt=\\"IMAGE ALT TEXT HERE\\"></b></p>
 
 <p data-v-47325f32=\\"\\">There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
+The outer pipes (|) are optional, and you don’t need to make the 
 raw Markdown line up prettily. You can also use inline Markdown.</p>
 
 <blockquote data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\"> &lt;dl&gt;
@@ -2318,7 +2319,7 @@ raw Markdown line up prettily. You can also use inline Markdown.</p>
 </p><p data-v-47325f32=\\"\\">   &lt;dt&gt;Markdown in HTML&lt;/dt&gt;
    &lt;dd&gt;Does <em data-v-47325f32=\\"\\">not</em> work <strong data-v-47325f32=\\"\\">very</strong> well. Use HTML &lt;em&gt;tags&lt;/em&gt;.&lt;/dd&gt;
  &lt;/dl&gt;</p></blockquote>
-<table data-v-47325f32=\\"\\"><thead data-v-47325f32=\\"\\"><tr data-v-47325f32=\\"\\"><th data-v-47325f32=\\"\\" class=\\"r\\">Markdown</th><th data-v-47325f32=\\"\\" class=\\"r\\">Less</th><th data-v-47325f32=\\"\\" class=\\"r\\">Pretty</th></tr></thead><tbody data-v-47325f32=\\"\\"><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\" class=\\"r\\"><em data-v-47325f32=\\"\\">Still</em></td><td data-v-47325f32=\\"\\" class=\\"r\\"><code data-v-47325f32=\\"\\">renders</code></td><td data-v-47325f32=\\"\\" class=\\"r\\"><strong data-v-47325f32=\\"\\">nicely</strong></td></tr><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\" class=\\"r\\">---</td><td data-v-47325f32=\\"\\" class=\\"r\\">--</td><td data-v-47325f32=\\"\\" class=\\"r\\">...</td></tr><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\" class=\\"r\\">1</td><td data-v-47325f32=\\"\\" class=\\"r\\">2</td><td data-v-47325f32=\\"\\" class=\\"r\\">3</td></tr></tbody></table>
+<table data-v-47325f32=\\"\\"><thead data-v-47325f32=\\"\\"><tr data-v-47325f32=\\"\\"><th data-v-47325f32=\\"\\" class=\\"r\\">Markdown</th><th data-v-47325f32=\\"\\" class=\\"r\\">Less</th><th data-v-47325f32=\\"\\" class=\\"r\\">Pretty</th></tr></thead><tbody data-v-47325f32=\\"\\"><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\" class=\\"r\\"><em data-v-47325f32=\\"\\">Still</em></td><td data-v-47325f32=\\"\\" class=\\"r\\"><code data-v-47325f32=\\"\\">renders</code></td><td data-v-47325f32=\\"\\" class=\\"r\\"><strong data-v-47325f32=\\"\\">nicely</strong></td></tr><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\" class=\\"r\\">---</td><td data-v-47325f32=\\"\\" class=\\"r\\">--</td><td data-v-47325f32=\\"\\" class=\\"r\\">…</td></tr><tr data-v-47325f32=\\"\\"><td data-v-47325f32=\\"\\" class=\\"r\\">1</td><td data-v-47325f32=\\"\\" class=\\"r\\">2</td><td data-v-47325f32=\\"\\" class=\\"r\\">3</td></tr></tbody></table>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">indent 4 means 
 pre has code block
@@ -2641,7 +2642,7 @@ exports[`./__tests__/new/cm_html_blocks.md snapshot 1`] = `
 </p><p data-v-47325f32=\\"\\"><em data-v-47325f32=\\"\\">bar</em></p>
 
 <h3 data-v-47325f32=\\"\\">Example 124</h3>
-<p data-v-47325f32=\\"\\">&lt;div id=\\"foo\\"
+<p data-v-47325f32=\\"\\">&lt;div id=”foo”
 <em data-v-47325f32=\\"\\">hi</em>
 
 </p><h3 data-v-47325f32=\\"\\">Example 125</h3>
@@ -2712,7 +2713,7 @@ main = print $ parseTags tags
 <p data-v-47325f32=\\"\\">&lt;script type=\\"text/javascript\\"&gt;
 // JavaScript example
 
-document.getElementById(\\"demo\\").innerHTML = \\"Hello JavaScript!\\";
+document.getElementById(“demo”).innerHTML = “Hello JavaScript!”;
 &lt;/script&gt;
 </p><p data-v-47325f32=\\"\\">okay</p>
 
@@ -2879,9 +2880,9 @@ line2
 \\" href=\\"/url\\" chk=\\"confirm\\">foo163</b></p>
 
 <h3 data-v-47325f32=\\"\\">Example 164</h3>
-<p data-v-47325f32=\\"\\">[foo164]: /url 'title</p>
+<p data-v-47325f32=\\"\\">[foo164]: /url ‘title</p>
 
-<p data-v-47325f32=\\"\\">with blank line'</p>
+<p data-v-47325f32=\\"\\">with blank line’</p>
 
 <p data-v-47325f32=\\"\\">[foo164]</p>
 
@@ -2930,10 +2931,10 @@ url\\" href=\\"/url\\" chk=\\"confirm\\">Foo170</b></p>
 <p data-v-47325f32=\\"\\">bar</p>
 
 <h3 data-v-47325f32=\\"\\">Example 174</h3>
-<p data-v-47325f32=\\"\\">[foo174]: /url \\"title\\" ok</p>
+<p data-v-47325f32=\\"\\">[foo174]: /url “title” ok</p>
 
 <h3 data-v-47325f32=\\"\\">Example 175</h3>
-<p data-v-47325f32=\\"\\">\\"title\\" ok</p>
+<p data-v-47325f32=\\"\\">“title” ok</p>
 
 <h3 data-v-47325f32=\\"\\">Example 176</h3>
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">[foo176]: /url \\"title\\"
@@ -3013,7 +3014,7 @@ bar&gt;)</p>
 \\" href=\\"foo(and(bar)\\" chk=\\"confirm\\">link</b></p>
 
 <h3 data-v-47325f32=\\"\\">Example 470</h3>
-<p data-v-47325f32=\\"\\">However, if you have ANY unbalanced parentheses, you need to escape or use the &lt;...&gt; form:</p>
+<p data-v-47325f32=\\"\\">However, if you have ANY unbalanced parentheses, you need to escape or use the &lt;…&gt; form:</p>
 
 <p data-v-47325f32=\\"\\"><b data-v-47325f32=\\"\\" title=\\"foo(and(bar)
 \\" href=\\"foo(and(bar)\\" chk=\\"confirm\\">link</b></p>
@@ -3053,7 +3054,7 @@ example.com\\" href=\\"http://example.com?foo=3#frag\\" chk=\\"confirm\\">link</
 <p data-v-47325f32=\\"\\"><b data-v-47325f32=\\"\\" title=\\"title &quot;&amp;quot;\\" href=\\"/url\\" chk=\\"confirm\\">link</b></p>
 
 <h3 data-v-47325f32=\\"\\">Example 479</h3>
-<p data-v-47325f32=\\"\\">[link](/url \\"title \\"and\\" title\\")</p>
+<p data-v-47325f32=\\"\\">[link](/url “title “and” title”)</p>
 
 <h3 data-v-47325f32=\\"\\">Example 480</h3>
 <p data-v-47325f32=\\"\\"><b data-v-47325f32=\\"\\" title=\\"title &quot;and&quot; title\\" href=\\"/url\\" chk=\\"confirm\\">link</b></p>
@@ -3358,7 +3359,7 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\">bar542</b></p>
 <h3 data-v-47325f32=\\"\\">Example 561</h3>
 <p data-v-47325f32=\\"\\">!<kbd data-v-47325f32=\\"\\">foo561</kbd></p>
 
-<p data-v-47325f32=\\"\\"><kbd data-v-47325f32=\\"\\">foo561</kbd>: /url \\"title\\"</p>
+<p data-v-47325f32=\\"\\"><kbd data-v-47325f32=\\"\\">foo561</kbd>: /url “title”</p>
 
 <h3 data-v-47325f32=\\"\\">Example 562</h3>
 <p data-v-47325f32=\\"\\"><img data-v-47325f32=\\"\\" src=\\"/url\\" alt=\\"Foo\\" title=\\"title\\"></p>
@@ -3398,23 +3399,23 @@ _boolean zoop:33=zoop:33 /&gt;</p>
 <p data-v-47325f32=\\"\\">&lt;33&gt; &lt;__&gt;</p>
 
 <h3 data-v-47325f32=\\"\\">Example 590</h3>
-<p data-v-47325f32=\\"\\">&lt;a h*#ref=\\"hi\\"&gt;</p>
+<p data-v-47325f32=\\"\\">&lt;a h*#ref=”hi”&gt;</p>
 
 <h3 data-v-47325f32=\\"\\">Example 591</h3>
-<p data-v-47325f32=\\"\\">&lt;a href=\\"hi'&gt; &lt;a href=hi'&gt;</p>
+<p data-v-47325f32=\\"\\">&lt;a href=”hi’&gt; &lt;a href=hi’&gt;</p>
 
 <h3 data-v-47325f32=\\"\\">Example 592</h3>
 <p data-v-47325f32=\\"\\">&lt; a&gt;&lt;
 foo&gt;&lt;bar/ &gt;</p>
 
 <h3 data-v-47325f32=\\"\\">Example 593</h3>
-<p data-v-47325f32=\\"\\">&lt;a href='bar'title=title&gt;</p>
+<p data-v-47325f32=\\"\\">&lt;a href=’bar’title=title&gt;</p>
 
 <h3 data-v-47325f32=\\"\\">Example 594</h3>
 <p data-v-47325f32=\\"\\">&lt;/a&gt;&lt;/foo &gt;</p>
 
 <h3 data-v-47325f32=\\"\\">Example 595</h3>
-<p data-v-47325f32=\\"\\">&lt;/a href=\\"foo\\"&gt;</p>
+<p data-v-47325f32=\\"\\">&lt;/a href=”foo”&gt;</p>
 
 <h3 data-v-47325f32=\\"\\">Example 596</h3>
 <p data-v-47325f32=\\"\\">foo &lt;!-- this is a
@@ -3658,7 +3659,7 @@ foo.bar.baz\\" href=\\"ftp://foo.bar.baz\\" chk=\\"confirm\\">ftp://foo.bar.baz<
 \\" href=\\"mailto:foo@bar.baz\\" chk=\\"confirm\\">foo@bar.baz</b></p>
 
 <h3 data-v-47325f32=\\"\\">Example 606</h3>
-<p data-v-47325f32=\\"\\">hello@mail+xyz.example isn't valid, but <b data-v-47325f32=\\"\\" title=\\"mailto:hello+xyz@mail.example
+<p data-v-47325f32=\\"\\">hello@mail+xyz.example isn’t valid, but <b data-v-47325f32=\\"\\" title=\\"mailto:hello+xyz@mail.example
 \\" href=\\"mailto:hello+xyz@mail.example\\" chk=\\"confirm\\">hello+xyz@mail.example</b> is.</p>
 
 <h3 data-v-47325f32=\\"\\">Example 607</h3>
@@ -3770,7 +3771,7 @@ exports[`./__tests__/new/headings_id.md snapshot 1`] = `
 "<article data-v-47325f32=\\"\\"><h3 data-v-47325f32=\\"\\">Heading with a <b data-v-47325f32=\\"\\" title=\\"http
 github.com\\" href=\\"http://github.com/\\" chk=\\"confirm\\">link</b></h3>
 <h3 data-v-47325f32=\\"\\">Heading with some <em data-v-47325f32=\\"\\">italic text</em></h3>
-<h3 data-v-47325f32=\\"\\">Or some <strong data-v-47325f32=\\"\\">strong</strong></h3><p data-v-47325f32=\\"\\">(which doesn't really make any difference, here)</p>
+<h3 data-v-47325f32=\\"\\">Or some <strong data-v-47325f32=\\"\\">strong</strong></h3><p data-v-47325f32=\\"\\">(which doesn’t really make any difference, here)</p>
 
 <h3 data-v-47325f32=\\"\\">Or even <code data-v-47325f32=\\"\\">code</code></h3>
 <h3 data-v-47325f32=\\"\\">What about <del data-v-47325f32=\\"\\">strikethrough</del></h3>
@@ -3919,8 +3920,8 @@ exports[`./__tests__/new/loose_lists.md snapshot 1`] = `
 exports[`./__tests__/new/main.md snapshot 1`] = `
 "<article data-v-47325f32=\\"\\">
 <h1 data-v-47325f32=\\"\\">A heading</h1>
-<p data-v-47325f32=\\"\\">Just a note, I've found that I can't test my markdown parser vs others.
-For example, both markdown.js and showdown code blocks in lists wrong. They're
+<p data-v-47325f32=\\"\\">Just a note, I’ve found that I can’t test my markdown parser vs others.
+For example, both markdown.js and showdown code blocks in lists wrong. They’re
 also completely <b data-v-47325f32=\\"\\" title=\\"Google\\" href=\\"http://google.com/\\" chk=\\"confirm\\">inconsistent</b> with regards to paragraphs in list items.</p>
 
 <p data-v-47325f32=\\"\\">A link. Not anymore.</p>
@@ -3964,9 +3965,9 @@ Lots of it...
 
 exports[`./__tests__/new/mangle_xss.md snapshot 1`] = `
 "<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">sanatize: true</p>
-<h2 data-v-47325f32=\\"\\">mangle: false</h2><p data-v-47325f32=\\"\\">&lt;&lt;svg/onload=\\"alert(1)\\"//@x&gt;</p>
+<h2 data-v-47325f32=\\"\\">mangle: false</h2><p data-v-47325f32=\\"\\">&lt;&lt;svg/onload=”alert(1)”//@x&gt;</p>
 
-<p data-v-47325f32=\\"\\">&lt;bar\\"onclick=\\"alert('XSS')\\"@foo&gt;</p>
+<p data-v-47325f32=\\"\\">&lt;bar”onclick=”alert(‘XSS’)”@foo&gt;</p>
 </article>"
 `;
 
@@ -3979,7 +3980,7 @@ exports[`./__tests__/new/nested_code.md snapshot 1`] = `
 
 <p data-v-47325f32=\\"\\">A backtick-delimited string in a code span: <code data-v-47325f32=\\"\\">\`foo\` </code></p>
 
-<p data-v-47325f32=\\"\\">Please don't use any <code data-v-47325f32=\\"\\">&lt;blink&gt;</code> tags.</p></article>"
+<p data-v-47325f32=\\"\\">Please don’t use any <code data-v-47325f32=\\"\\">&lt;blink&gt;</code> tags.</p></article>"
 `;
 
 exports[`./__tests__/new/nested_em.md snapshot 1`] = `
@@ -4011,7 +4012,7 @@ exports[`./__tests__/new/not_a_link.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/redos_html_closing.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">&lt;tag  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"  \\"\\"&lt;\\" /&gt;a'a</p>
+"<article data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">&lt;tag  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”  “”&lt;” /&gt;a’a</p>
 </article>"
 `;
 
@@ -4027,7 +4028,7 @@ exports[`./__tests__/new/ref_paren.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/relative_urls.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">baseUrl: \\"<b data-v-47325f32=\\"\\" title=\\"http
+"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">baseUrl: “<b data-v-47325f32=\\"\\" title=\\"http
 example.com\\" href=\\"http://example.com/base/&quot;\\" chk=\\"confirm\\">http://example.com/base/\\"</b></h2><h1 data-v-47325f32=\\"\\">Absolutization of RFC 3986 URIs</h1>
 <h2 data-v-47325f32=\\"\\">Absolute URI</h2><p data-v-47325f32=\\"\\"><b data-v-47325f32=\\"\\" title=\\"http
 example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\"><img data-v-47325f32=\\"\\" src=\\"http://example.com/logo\\" alt=\\"section 4.3\\"></b></p>
@@ -4064,12 +4065,12 @@ exports[`./__tests__/new/same_bullet.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/smartypants.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">smartypants: true</h2><p data-v-47325f32=\\"\\">Hello world 'how' \\"are\\" you -- today...</p>
+"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">smartypants: true</h2><p data-v-47325f32=\\"\\">Hello world ‘how’ “are” you -- today…</p>
 
-<p data-v-47325f32=\\"\\">\\"It's a more 'challenging' smartypants test...\\"</p>
+<p data-v-47325f32=\\"\\">“It’s a more ‘challenging’ smartypants test…”</p>
 
-<p data-v-47325f32=\\"\\">'And,' as a bonus --- \\"one
-multiline\\" test!</p>
+<p data-v-47325f32=\\"\\">‘And,’ as a bonus --- “one
+multiline” test!</p>
 </article>"
 `;
 
@@ -4083,7 +4084,7 @@ daringfireball.net\\" href=\\"https://daringfireball.net/projects/smartypants/\\
 <p data-v-47325f32=\\"\\">&lt;script&gt;--foo&lt;/script&gt;
 
 </p><p data-v-47325f32=\\"\\">Ensure that text such as custom tags that happen to
-begin with the same letters as the above tags don't
+begin with the same letters as the above tags don’t
 match and thus benefit from Smartypants-ing.</p>
 <p data-v-47325f32=\\"\\">&lt;script-custom&gt;<s data-v-47325f32=\\"\\">foo&lt;/script-custom&gt;
 \`</s>foo\` &lt;codebar --foo codebar&gt;</p>
@@ -4161,15 +4162,15 @@ exports[`./__tests__/original/amps_and_angles_encoding.md snapshot 1`] = `
 
 <p data-v-47325f32=\\"\\">6 &gt; 5.</p>
 
-<p data-v-47325f32=\\"\\">Here's a [link] <b data-v-47325f32=\\"\\" title=\\"http
+<p data-v-47325f32=\\"\\">Here’s a [link] <b data-v-47325f32=\\"\\" title=\\"http
 example.com\\" href=\\"http://example.com/?foo=1&amp;bar=2\\" chk=\\"confirm\\">1</b> with an ampersand in the URL.</p>
 
-<p data-v-47325f32=\\"\\">Here's a link with an amersand in the link text: [AT&amp;T] <b data-v-47325f32=\\"\\" title=\\"AT&amp;T\\" href=\\"http://att.com/\\" chk=\\"confirm\\">2</b>.</p>
+<p data-v-47325f32=\\"\\">Here’s a link with an amersand in the link text: [AT&amp;T] <b data-v-47325f32=\\"\\" title=\\"AT&amp;T\\" href=\\"http://att.com/\\" chk=\\"confirm\\">2</b>.</p>
 
-<p data-v-47325f32=\\"\\">Here's an inline <b data-v-47325f32=\\"\\" title=\\"
+<p data-v-47325f32=\\"\\">Here’s an inline <b data-v-47325f32=\\"\\" title=\\"
 script\\" href=\\"/script?foo=1&amp;bar=2\\" chk=\\"confirm\\">link</b>.</p>
 
-<p data-v-47325f32=\\"\\">Here's an inline <b data-v-47325f32=\\"\\" title=\\"
+<p data-v-47325f32=\\"\\">Here’s an inline <b data-v-47325f32=\\"\\" title=\\"
 script\\" href=\\"/script?foo=1&amp;bar=2\\" chk=\\"confirm\\">link</b>.</p>
 
 
@@ -4301,7 +4302,7 @@ Minus: \\\\-
 <p data-v-47325f32=\\"\\">Minus: <code data-v-47325f32=\\"\\">\\\\-</code></p>
 
 
-<p data-v-47325f32=\\"\\">These should get escaped, even though they're matching pairs for
+<p data-v-47325f32=\\"\\">These should get escaped, even though they’re matching pairs for
 other Markdown constructs:</p>
 
 <p data-v-47325f32=\\"\\">*asterisks*</p>
@@ -4355,7 +4356,7 @@ exports[`./__tests__/original/code_spans.md snapshot 1`] = `
 
 <p data-v-47325f32=\\"\\">Fix for backticks within HTML tag: &lt;span attr='\`ticks\`'&gt;like this&lt;/span&gt;</p>
 
-<p data-v-47325f32=\\"\\">Here's how you put <code data-v-47325f32=\\"\\">\`backticks\` </code> in a code span.</p>
+<p data-v-47325f32=\\"\\">Here’s how you put <code data-v-47325f32=\\"\\">\`backticks\` </code> in a code span.</p>
 
 </article>"
 `;
@@ -4367,7 +4368,7 @@ Because a hard-wrapped line in the
 middle of a paragraph looked like a
 list item.
 
-</li></ol><p data-v-47325f32=\\"\\">Here's one with a bullet.</p>
+</li></ol><p data-v-47325f32=\\"\\">Here’s one with a bullet.</p>
 <ul data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">criminey.
 </li></ul></article>"
 `;
@@ -4480,7 +4481,7 @@ exports[`./__tests__/original/inline_html_comments.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/original/inline_html_simple.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">Here's a simple block:</p>
+"<article data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">Here’s a simple block:</p>
 
 <p data-v-47325f32=\\"\\">&lt;div&gt;
     foo
@@ -4529,7 +4530,7 @@ Blah
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">&lt;hr /&gt;
 </code></pre>    
-<p data-v-47325f32=\\"\\">Hr's:</p>
+<p data-v-47325f32=\\"\\">Hr’s:</p>
 
 <p data-v-47325f32=\\"\\">&lt;hr&gt;
 
@@ -4567,7 +4568,7 @@ url\\" href=\\"/url/\\" chk=\\"confirm\\">URL</b>.</p>
 
 <p data-v-47325f32=\\"\\">[URL and title]( /url/has space ).</p>
 
-<p data-v-47325f32=\\"\\">[URL and title]( /url/has space/ \\"url has space and title\\").</p>
+<p data-v-47325f32=\\"\\">[URL and title]( /url/has space/ “url has space and title”).</p>
 
 <p data-v-47325f32=\\"\\"><q data-v-47325f32=\\"\\" title=\\"
 \\">Empty</q>.</p>
@@ -4644,11 +4645,11 @@ somethingelse\\" href=\\"/somethingelse/\\" chk=\\"confirm\\">this</b> points to
 
 
 <hr data-v-47325f32=\\"\\">
-<p data-v-47325f32=\\"\\">Here's one where the <b data-v-47325f32=\\"\\" title=\\"
+<p data-v-47325f32=\\"\\">Here’s one where the <b data-v-47325f32=\\"\\" title=\\"
 url\\" href=\\"/url/\\" chk=\\"confirm\\">link
 breaks</b> across lines.</p>
 
-<p data-v-47325f32=\\"\\">Here's another where the <b data-v-47325f32=\\"\\" title=\\"
+<p data-v-47325f32=\\"\\">Here’s another where the <b data-v-47325f32=\\"\\" title=\\"
 url\\" href=\\"/url/\\" chk=\\"confirm\\">link 
 breaks</b> across lines, but with a line-ending space.</p>
 
@@ -4686,10 +4687,10 @@ exports[`./__tests__/original/literal_quotes_in_titles.md snapshot 1`] = `
 "<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><h2 data-v-47325f32=\\"\\">pedantic: true</h2>
 <p data-v-47325f32=\\"\\">Foo [bar][].</p>
 
-<p data-v-47325f32=\\"\\">Foo [bar](/url/ \\"Title with \\"quotes\\" inside\\").</p>
+<p data-v-47325f32=\\"\\">Foo [bar](/url/ “Title with “quotes” inside”).</p>
 
 
-<p data-v-47325f32=\\"\\">  [bar]: /url/ \\"Title with \\"quotes\\" inside\\"</p>
+<p data-v-47325f32=\\"\\">  [bar]: /url/ “Title with “quotes” inside”</p>
 
 </article>"
 `;
@@ -4706,20 +4707,20 @@ exports[`./__tests__/original/markdown_documentation_basics.md snapshot 1`] = `
 &lt;/ul&gt;
 
 
-</p><h2 data-v-47325f32=\\"\\">Getting the Gist of Markdown's Formatting Syntax</h2>
-<p data-v-47325f32=\\"\\">This page offers a brief overview of what it's like to use Markdown.
+</p><h2 data-v-47325f32=\\"\\">Getting the Gist of Markdown’s Formatting Syntax</h2>
+<p data-v-47325f32=\\"\\">This page offers a brief overview of what it’s like to use Markdown.
 The [syntax page] <b data-v-47325f32=\\"\\" title=\\"Markdown Syntax\\" href=\\"/projects/markdown/syntax\\" chk=\\"confirm\\">s</b> provides complete, detailed documentation for
 every feature, but Markdown should be very easy to pick up simply by
 looking at a few examples of it in action. The examples on this page
 are written in a before/after style, showing example syntax and the
 HTML output produced by Markdown.</p>
 
-<p data-v-47325f32=\\"\\">It's also helpful to simply try Markdown out; the [Dingus] <b data-v-47325f32=\\"\\" title=\\"Markdown Dingus\\" href=\\"/projects/markdown/dingus\\" chk=\\"confirm\\">d</b> is a
+<p data-v-47325f32=\\"\\">It’s also helpful to simply try Markdown out; the [Dingus] <b data-v-47325f32=\\"\\" title=\\"Markdown Dingus\\" href=\\"/projects/markdown/dingus\\" chk=\\"confirm\\">d</b> is a
 web application that allows you type your own Markdown-formatted text
 and translate it to XHTML.</p>
 
 <p data-v-47325f32=\\"\\"><strong data-v-47325f32=\\"\\">Note:</strong> This document is itself written using Markdown; you
-can [see the source for it by adding '.text' to the URL] <b data-v-47325f32=\\"\\" title=\\"
+can [see the source for it by adding ‘.text’ to the URL] <b data-v-47325f32=\\"\\" title=\\"
 projects\\" href=\\"/projects/markdown/basics.text\\" chk=\\"confirm\\">src</b>.</p>
 
 
@@ -4732,12 +4733,12 @@ blank.) Normal paragraphs should not be intended with spaces or tabs.</p>
 
 <p data-v-47325f32=\\"\\">Markdown offers two styles of headers: <em data-v-47325f32=\\"\\">Setext</em> and <em data-v-47325f32=\\"\\">atx</em>.
 Setext-style headers for <code data-v-47325f32=\\"\\">&lt;h1&gt;</code> and <code data-v-47325f32=\\"\\">&lt;h2&gt;</code> are created by
-\\"underlining\\" with equal signs (<code data-v-47325f32=\\"\\">=</code>) and hyphens (<code data-v-47325f32=\\"\\">-</code>), respectively.
+“underlining” with equal signs (<code data-v-47325f32=\\"\\">=</code>) and hyphens (<code data-v-47325f32=\\"\\">-</code>), respectively.
 To create an atx-style header, you put 1-6 hash marks (<code data-v-47325f32=\\"\\">#</code>) at the
 beginning of the line -- the number of hashes equals the resulting
 HTML header level.</p>
 
-<p data-v-47325f32=\\"\\">Blockquotes are indicated using email-style '<code data-v-47325f32=\\"\\">&gt;</code>' angle brackets.</p>
+<p data-v-47325f32=\\"\\">Blockquotes are indicated using email-style ‘<code data-v-47325f32=\\"\\">&gt;</code>‘ angle brackets.</p>
 
 <p data-v-47325f32=\\"\\">Markdown:</p>
 
@@ -4853,7 +4854,7 @@ list markers:</p>
 &lt;li&gt;Blue&lt;/li&gt;
 &lt;/ol&gt;
 
-</code></pre><p data-v-47325f32=\\"\\">If you put blank lines between items, you'll get <code data-v-47325f32=\\"\\">&lt;p&gt;</code> tags for the
+</code></pre><p data-v-47325f32=\\"\\">If you put blank lines between items, you’ll get <code data-v-47325f32=\\"\\">&lt;p&gt;</code> tags for the
 list item text. You can create multi-paragraph list items by indenting
 the paragraphs by 4 spaces or 1 tab:</p>
 
@@ -5033,7 +5034,7 @@ autolink\\" href=\\"#autolink\\" chk=\\"confirm\\">Automatic Links</b>
 
 </li></ul></li></ul><p data-v-47325f32=\\"\\"><strong data-v-47325f32=\\"\\">Note:</strong> This document is itself written using Markdown; you
 can <b data-v-47325f32=\\"\\" title=\\"
-projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the source for it by adding '.text' to the URL</b>.</p>
+projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the source for it by adding ‘.text’ to the URL</b>.</p>
 
 
 <hr data-v-47325f32=\\"\\">
@@ -5045,8 +5046,8 @@ projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the 
 
 <p data-v-47325f32=\\"\\">Readability, however, is emphasized above all else. A Markdown-formatted
 document should be publishable as-is, as plain text, without looking
-like it's been marked up with tags or formatting instructions. While
-Markdown's syntax has been influenced by several existing text<q data-v-47325f32=\\"\\" cite=\\"spec-1-1-to-HTML\\">-to-HTML</q>
+like it’s been marked up with tags or formatting instructions. While
+Markdown’s syntax has been influenced by several existing text<q data-v-47325f32=\\"\\" cite=\\"spec-1-1-to-HTML\\">-to-HTML</q>
 filters <s data-v-47325f32=\\"\\"> including [Setext] <b data-v-47325f32=\\"\\" title=\\"http
 docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</b>, [atx] <b data-v-47325f32=\\"\\" title=\\"http
 www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</b>, [Textile] <b data-v-47325f32=\\"\\" title=\\"http
@@ -5055,21 +5056,21 @@ docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/rst.html\\" 
 [Grutatext] <b data-v-47325f32=\\"\\" title=\\"http
 www.triptico.com\\" href=\\"http://www.triptico.com/software/grutatxt.html\\" chk=\\"confirm\\">5</b>, and [EtText] <b data-v-47325f32=\\"\\" title=\\"http
 ettext.taint.org\\" href=\\"http://ettext.taint.org/doc/\\" chk=\\"confirm\\">6</b> </s> the single biggest source of
-inspiration for Markdown's syntax is the format of plain text email.</p>
+inspiration for Markdown’s syntax is the format of plain text email.</p>
 
 
-<p data-v-47325f32=\\"\\">To this end, Markdown's syntax is comprised entirely of punctuation
+<p data-v-47325f32=\\"\\">To this end, Markdown’s syntax is comprised entirely of punctuation
 characters, which punctuation characters have been carefully chosen so
 as to look like what they mean. E.g., asterisks around a word actually
 look like *emphasis*. Markdown lists look like, well, lists. Even
-blockquotes look like quoted passages of text, assuming you've ever
+blockquotes look like quoted passages of text, assuming you’ve ever
 used email.</p>
 
 
 
 <p data-v-47325f32=\\"\\">&lt;h3 id=\\"html\\"&gt;Inline HTML&lt;/h3&gt;
 
-</p><p data-v-47325f32=\\"\\">Markdown's syntax is intended for one purpose: to be used as a
+</p><p data-v-47325f32=\\"\\">Markdown’s syntax is intended for one purpose: to be used as a
 format for <em data-v-47325f32=\\"\\">writing</em> for the web.</p>
 
 <p data-v-47325f32=\\"\\">Markdown is not a replacement for HTML, or even close to it. Its
@@ -5078,12 +5079,12 @@ HTML tags. The idea is <em data-v-47325f32=\\"\\">not</em> to create a syntax th
 to insert HTML tags. In my opinion, HTML tags are already easy to
 insert. The idea for Markdown is to make it easy to read, write, and
 edit prose. HTML is a <em data-v-47325f32=\\"\\">publishing</em> format; Markdown is a <em data-v-47325f32=\\"\\">writing</em>
-format. Thus, Markdown's formatting syntax only addresses issues that
+format. Thus, Markdown’s formatting syntax only addresses issues that
 can be conveyed in plain text.</p>
 
-<p data-v-47325f32=\\"\\">For any markup that is not covered by Markdown's syntax, you simply
-use HTML itself. There's no need to preface it or delimit it to
-indicate that you're switching from Markdown to HTML; you just use
+<p data-v-47325f32=\\"\\">For any markup that is not covered by Markdown’s syntax, you simply
+use HTML itself. There’s no need to preface it or delimit it to
+indicate that you’re switching from Markdown to HTML; you just use
 the tags.</p>
 
 <p data-v-47325f32=\\"\\">The only restrictions are that block-level HTML elements <s data-v-47325f32=\\"\\"> e.g. <code data-v-47325f32=\\"\\">&lt;div&gt;</code>,
@@ -5105,13 +5106,13 @@ to add extra (unwanted) <code data-v-47325f32=\\"\\">&lt;p&gt;</code> tags aroun
 This is another regular paragraph.
 
 </code></pre><p data-v-47325f32=\\"\\">Note that Markdown formatting syntax is not processed within block-level
-HTML tags. E.g., you can't use Markdown-style <code data-v-47325f32=\\"\\">*emphasis*</code> inside an
+HTML tags. E.g., you can’t use Markdown-style <code data-v-47325f32=\\"\\">*emphasis*</code> inside an
 HTML block.</p>
 
 <p data-v-47325f32=\\"\\">Span-level HTML tags <s data-v-47325f32=\\"\\"> e.g. <code data-v-47325f32=\\"\\">&lt;span&gt;</code>, <code data-v-47325f32=\\"\\">&lt;cite&gt;</code>, or <code data-v-47325f32=\\"\\">&lt;del&gt;</code> </s> can be
 used anywhere in a Markdown paragraph, list item, or header. If you
 want, you can even use HTML tags instead of Markdown formatting; e.g. if
-you'd prefer to use HTML <code data-v-47325f32=\\"\\">&lt;a&gt;</code> or <code data-v-47325f32=\\"\\">&lt;img&gt;</code> tags instead of Markdown's
+you’d prefer to use HTML <code data-v-47325f32=\\"\\">&lt;a&gt;</code> or <code data-v-47325f32=\\"\\">&lt;img&gt;</code> tags instead of Markdown’s
 link or image syntax, go right ahead.</p>
 
 <p data-v-47325f32=\\"\\">Unlike block-level HTML tags, Markdown syntax <em data-v-47325f32=\\"\\">is</em> processed within
@@ -5127,7 +5128,7 @@ characters, you must escape them as entities, e.g. <code data-v-47325f32=\\"\\">
 <code data-v-47325f32=\\"\\">&amp;amp;</code>.</p>
 
 <p data-v-47325f32=\\"\\">Ampersands in particular are bedeviling for web writers. If you want to
-write about 'AT&amp;T', you need to write '<code data-v-47325f32=\\"\\">AT&amp;amp;T</code>'. You even need to
+write about ‘AT&amp;T’, you need to write ‘<code data-v-47325f32=\\"\\">AT&amp;amp;T</code>‘. You even need to
 escape ampersands within URLs. Thus, if you want to link to:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">http://images.google.com/images?num=30&amp;q=larry+bird
@@ -5187,18 +5188,18 @@ by one or more blank lines. (A blank line is any line that looks like a
 blank line -- a line containing nothing but spaces or tabs is considered
 blank.) Normal paragraphs should not be intended with spaces or tabs.</p>
 
-<p data-v-47325f32=\\"\\">The implication of the \\"one or more consecutive lines of text\\" rule is
-that Markdown supports \\"hard-wrapped\\" text paragraphs. This differs
+<p data-v-47325f32=\\"\\">The implication of the “one or more consecutive lines of text” rule is
+that Markdown supports “hard-wrapped” text paragraphs. This differs
 significantly from most other text<q data-v-47325f32=\\"\\" cite=\\"spec-1-1-to-HTML\\">-to-HTML</q> formatters (including Movable
-Type's \\"Convert Line Breaks\\" option) which translate every line break
+Type’s “Convert Line Breaks” option) which translate every line break
 character in a paragraph into a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code> tag.</p>
 
 <p data-v-47325f32=\\"\\">When you <em data-v-47325f32=\\"\\">do</em> want to insert a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code> break tag using Markdown, you
 end a line with two or more spaces, then type return.</p>
 
 <p data-v-47325f32=\\"\\">Yes, this takes a tad more effort to create a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code>, but a simplistic
-\\"every line break is a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code>\\" rule wouldn't work for Markdown.
-Markdown's email-style <b data-v-47325f32=\\"\\" title=\\"
+“every line break is a <code data-v-47325f32=\\"\\">&lt;br /&gt;</code>“ rule wouldn’t work for Markdown.
+Markdown’s email-style <b data-v-47325f32=\\"\\" title=\\"
 blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">blockquoting</b> and multi-paragraph <b data-v-47325f32=\\"\\" title=\\"
 list\\" href=\\"#list\\" chk=\\"confirm\\">list items</b>
 work best <s data-v-47325f32=\\"\\"> and look better </s> when you format them with hard breaks.</p>
@@ -5212,7 +5213,7 @@ work best <s data-v-47325f32=\\"\\"> and look better </s> when you format them w
 docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</b> and [atx] <b data-v-47325f32=\\"\\" title=\\"http
 www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</b>.</p>
 
-<p data-v-47325f32=\\"\\">Setext-style headers are \\"underlined\\" using equal signs (for first-level
+<p data-v-47325f32=\\"\\">Setext-style headers are “underlined” using equal signs (for first-level
 headers) and dashes (for second-level headers). For example:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">This is an H1
@@ -5221,7 +5222,7 @@ headers) and dashes (for second-level headers). For example:</p>
 This is an H2
 -------------
 
-</code></pre><p data-v-47325f32=\\"\\">Any number of underlining <code data-v-47325f32=\\"\\">=</code>'s or <code data-v-47325f32=\\"\\">-</code>'s will work.</p>
+</code></pre><p data-v-47325f32=\\"\\">Any number of underlining <code data-v-47325f32=\\"\\">=</code>‘s or <code data-v-47325f32=\\"\\">-</code>‘s will work.</p>
 
 <p data-v-47325f32=\\"\\">Atx-style headers use 1-6 hash characters at the start of the line,
 corresponding to header levels 1-6. For example:</p>
@@ -5232,9 +5233,9 @@ corresponding to header levels 1-6. For example:</p>
 
 ###### This is an H6
 
-</code></pre><p data-v-47325f32=\\"\\">Optionally, you may \\"close\\" atx-style headers. This is purely
+</code></pre><p data-v-47325f32=\\"\\">Optionally, you may “close” atx-style headers. This is purely
 cosmetic -- you can use this if you think it looks better. The
-closing hashes don't even need to match the number of hashes
+closing hashes don’t even need to match the number of hashes
 used to open the header. (The number of opening hashes
 determines the header level.) :</p>
 
@@ -5247,7 +5248,7 @@ determines the header level.) :</p>
 
 </code></pre><p data-v-47325f32=\\"\\">&lt;h3 id=\\"blockquote\\"&gt;Blockquotes&lt;/h3&gt;
 
-</p><p data-v-47325f32=\\"\\">Markdown uses email-style <code data-v-47325f32=\\"\\">&gt;</code> characters for blockquoting. If you're
+</p><p data-v-47325f32=\\"\\">Markdown uses email-style <code data-v-47325f32=\\"\\">&gt;</code> characters for blockquoting. If you’re
 familiar with quoting passages of text in an email message, then you
 know how to create a blockquote in Markdown. It looks best if you hard
 wrap the text and put a <code data-v-47325f32=\\"\\">&gt;</code> before every line:</p>
@@ -5324,7 +5325,7 @@ Quote Level from the Text menu.</p>
 2.  McHale
 3.  Parish
 
-</code></pre><p data-v-47325f32=\\"\\">It's important to note that the actual numbers you use to mark the
+</code></pre><p data-v-47325f32=\\"\\">It’s important to note that the actual numbers you use to mark the
 list have no effect on the HTML output Markdown produces. The HTML
 Markdown produces from the above list is:</p>
 
@@ -5346,10 +5347,10 @@ Markdown produces from the above list is:</p>
 1. McHale
 8. Parish
 
-</code></pre><p data-v-47325f32=\\"\\">you'd get the exact same HTML output. The point is, if you want to,
+</code></pre><p data-v-47325f32=\\"\\">you’d get the exact same HTML output. The point is, if you want to,
 you can use ordinal numbers in your ordered Markdown lists, so that
 the numbers in your source match the numbers in your published HTML.
-But if you want to be lazy, you don't have to.</p>
+But if you want to be lazy, you don’t have to.</p>
 
 <p data-v-47325f32=\\"\\">If you do use lazy list numbering, however, you should still start the
 list with the number 1. At some point in the future, Markdown may support
@@ -5367,7 +5368,7 @@ or a tab.</p>
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
     Suspendisse id sem consectetuer libero luctus adipiscing.
 
-</code></pre><p data-v-47325f32=\\"\\">But if you want to be lazy, you don't have to:</p>
+</code></pre><p data-v-47325f32=\\"\\">But if you want to be lazy, you don’t have to:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
@@ -5427,7 +5428,7 @@ sit amet, consectetuer adipiscing elit.
 
 *   Another item in the same list.
 
-</code></pre><p data-v-47325f32=\\"\\">To put a blockquote within a list item, the blockquote's <code data-v-47325f32=\\"\\">&gt;</code>
+</code></pre><p data-v-47325f32=\\"\\">To put a blockquote within a list item, the blockquote’s <code data-v-47325f32=\\"\\">&gt;</code>
 delimiters need to be indented:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">*   A list item with a blockquote:
@@ -5443,7 +5444,7 @@ to be indented <em data-v-47325f32=\\"\\">twice</em> -- 8 spaces or two tabs:</p
         &lt;code goes here&gt;
 
 
-</code></pre><p data-v-47325f32=\\"\\">It's worth noting that it's possible to trigger an ordered list by
+</code></pre><p data-v-47325f32=\\"\\">It’s worth noting that it’s possible to trigger an ordered list by
 accident, by writing something like this:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">1986. What a great season.
@@ -5516,7 +5517,7 @@ ampersands and angle brackets. For example, this:</p>
 
 </code></pre><p data-v-47325f32=\\"\\">Regular Markdown syntax is not processed within code blocks. E.g.,
 asterisks are just literal asterisks within a code block. This means
-it's also easy to use Markdown to write about Markdown's own syntax.</p>
+it’s also easy to use Markdown to write about Markdown’s own syntax.</p>
 
 
 
@@ -5550,7 +5551,7 @@ _ _ _
 <p data-v-47325f32=\\"\\">In both styles, the link text is delimited by [square brackets].</p>
 
 <p data-v-47325f32=\\"\\">To create an inline link, use a set of regular parentheses immediately
-after the link text's closing square bracket. Inside the parentheses,
+after the link text’s closing square bracket. Inside the parentheses,
 put the URL where you want the link to point, along with an <em data-v-47325f32=\\"\\">optional</em>
 title for the link, surrounded in quotes. For example:</p>
 
@@ -5566,7 +5567,7 @@ an example&lt;/a&gt; inline link.&lt;/p&gt;
 &lt;p&gt;&lt;a href=\\"http://example.net/\\"&gt;This link&lt;/a&gt; has no
 title attribute.&lt;/p&gt;
 
-</code></pre><p data-v-47325f32=\\"\\">If you're referring to a local resource on the same server, you can
+</code></pre><p data-v-47325f32=\\"\\">If you’re referring to a local resource on the same server, you can
 use relative paths:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">See my [About](/about/) page for details.
@@ -5614,7 +5615,7 @@ processing, and are stripped from your document in the HTML output.</p>
 <p data-v-47325f32=\\"\\">The <em data-v-47325f32=\\"\\">implicit link name</em> shortcut allows you to omit the name of the
 link, in which case the link text itself is used as the name.
 Just use an empty set of square brackets -- e.g., to link the word
-\\"Google\\" to the google.com web site, you could simply write:</p>
+“Google” to the google.com web site, you could simply write:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">[Google][]
 
@@ -5633,11 +5634,11 @@ multiple words in the link text:</p>
 daringfireball.net\\" href=\\"http://daringfireball.net/\\" chk=\\"confirm\\">http://daringfireball.net/</b></p>
 
 <p data-v-47325f32=\\"\\">Link definitions can be placed anywhere in your Markdown document. I
-tend to put them immediately after each paragraph in which they're
+tend to put them immediately after each paragraph in which they’re
 used, but if you want, you can put them all at the end of your
 document, sort of like footnotes.</p>
 
-<p data-v-47325f32=\\"\\">Here's an example of reference links in action:</p>
+<p data-v-47325f32=\\"\\">Here’s an example of reference links in action:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">I get 10 times more traffic from [Google] [1] than from
 [Yahoo] [2] or [MSN] [3].
@@ -5663,21 +5664,21 @@ title=\\"Google\\"&gt;Google&lt;/a&gt; than from
 or &lt;a href=\\"http://search.msn.com/\\" title=\\"MSN Search\\"&gt;MSN&lt;/a&gt;.&lt;/p&gt;
 
 </code></pre><p data-v-47325f32=\\"\\">For comparison, here is the same paragraph written using
-Markdown's inline link style:</p>
+Markdown’s inline link style:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">I get 10 times more traffic from [Google](http://google.com/ \\"Google\\")
 than from [Yahoo](http://search.yahoo.com/ \\"Yahoo Search\\") or
 [MSN](http://search.msn.com/ \\"MSN Search\\").
 
-</code></pre><p data-v-47325f32=\\"\\">The point of reference-style links is not that they're easier to
+</code></pre><p data-v-47325f32=\\"\\">The point of reference-style links is not that they’re easier to
 write. The point is that with reference-style links, your document
 source is vastly more readable. Compare the above examples: using
 reference-style links, the paragraph itself is only 81 characters
-long; with inline-style links, it's 176 characters; and as raw HTML,
-it's 234 characters. In the raw HTML, there's more markup than there
+long; with inline-style links, it’s 176 characters; and as raw HTML,
+it’s 234 characters. In the raw HTML, there’s more markup than there
 is text.</p>
 
-<p data-v-47325f32=\\"\\">With Markdown's reference-style links, a source document much more
+<p data-v-47325f32=\\"\\">With Markdown’s reference-style links, a source document much more
 closely resembles the final output, as rendered in a browser. By
 allowing you to move the markup-related metadata out of the paragraph,
 you can add links without interrupting the narrative flow of your
@@ -5688,7 +5689,7 @@ prose.</p>
 
 </p><p data-v-47325f32=\\"\\">Markdown treats asterisks (<code data-v-47325f32=\\"\\">*</code>) and underscores (<code data-v-47325f32=\\"\\">_</code>) as indicators of
 emphasis. Text wrapped with one <code data-v-47325f32=\\"\\">*</code> or <code data-v-47325f32=\\"\\">_</code> will be wrapped with an
-HTML <code data-v-47325f32=\\"\\">&lt;em&gt;</code> tag; double <code data-v-47325f32=\\"\\">*</code>'s or <code data-v-47325f32=\\"\\">_</code>'s will be wrapped with an HTML
+HTML <code data-v-47325f32=\\"\\">&lt;em&gt;</code> tag; double <code data-v-47325f32=\\"\\">*</code>‘s or <code data-v-47325f32=\\"\\">_</code>‘s will be wrapped with an HTML
 <code data-v-47325f32=\\"\\">&lt;strong&gt;</code> tag. E.g., this input:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">*single asterisks*
@@ -5716,7 +5717,7 @@ the same character must be used to open and close an emphasis span.</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">un*fucking*believable
 
-</code></pre><p data-v-47325f32=\\"\\">But if you surround an <code data-v-47325f32=\\"\\">*</code> or <code data-v-47325f32=\\"\\">_</code> with spaces, it'll be treated as a
+</code></pre><p data-v-47325f32=\\"\\">But if you surround an <code data-v-47325f32=\\"\\">*</code> or <code data-v-47325f32=\\"\\">_</code> with spaces, it’ll be treated as a
 literal asterisk or underscore.</p>
 
 <p data-v-47325f32=\\"\\">To produce a literal asterisk or underscore at a position where it
@@ -5785,7 +5786,7 @@ equivalent of &lt;code&gt;&amp;amp;mdash;&lt;/code&gt;.&lt;/p&gt;
 
 </code></pre><p data-v-47325f32=\\"\\">&lt;h3 id=\\"img\\"&gt;Images&lt;/h3&gt;
 
-</p><p data-v-47325f32=\\"\\">Admittedly, it's fairly difficult to devise a \\"natural\\" syntax for
+</p><p data-v-47325f32=\\"\\">Admittedly, it’s fairly difficult to devise a “natural” syntax for
 placing images into a plain text document format.</p>
 
 <p data-v-47325f32=\\"\\">Markdown uses an image syntax that is intended to resemble the syntax
@@ -5808,7 +5809,7 @@ or single quotes.
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">![Alt text][id]
 
-</code></pre><p data-v-47325f32=\\"\\">Where \\"id\\" is the name of a defined image reference. Image references
+</code></pre><p data-v-47325f32=\\"\\">Where “id” is the name of a defined image reference. Image references
 are defined using syntax identical to link references:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">[id]: url/to/image  \\"Optional title attribute\\"
@@ -5824,7 +5825,7 @@ use regular HTML <code data-v-47325f32=\\"\\">&lt;img&gt;</code> tags.</p>
 
 </p><p data-v-47325f32=\\"\\">&lt;h3 id=\\"autolink\\"&gt;Automatic Links&lt;/h3&gt;
 
-</p><p data-v-47325f32=\\"\\">Markdown supports a shortcut style for creating \\"automatic\\" links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:</p>
+</p><p data-v-47325f32=\\"\\">Markdown supports a shortcut style for creating “automatic” links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">&lt;http://example.com/&gt;
 </code></pre>    
@@ -5846,12 +5847,12 @@ spambots. For example, Markdown will turn this:</p>
 &amp;#109;\\"&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;
 &amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
 
-</code></pre><p data-v-47325f32=\\"\\">which will render in a browser as a clickable link to \\"<b data-v-47325f32=\\"\\" title=\\"mailto:address@example.com
-\\" href=\\"mailto:address@example.com\\" chk=\\"confirm\\">address@example.com</b>\\".</p>
+</code></pre><p data-v-47325f32=\\"\\">which will render in a browser as a clickable link to “<b data-v-47325f32=\\"\\" title=\\"mailto:address@example.com
+\\" href=\\"mailto:address@example.com\\" chk=\\"confirm\\">address@example.com</b>“.</p>
 
 <p data-v-47325f32=\\"\\">(This sort of entity-encoding trick will indeed fool many, if not
-most, address-harvesting bots, but it definitely won't fool all of
-them. It's better than nothing, but an address published in this way
+most, address-harvesting bots, but it definitely won’t fool all of
+them. It’s better than nothing, but an address published in this way
 will probably eventually start receiving spam.)</p>
 
 
@@ -5859,7 +5860,7 @@ will probably eventually start receiving spam.)</p>
 <p data-v-47325f32=\\"\\">&lt;h3 id=\\"backslash\\"&gt;Backslash Escapes&lt;/h3&gt;
 
 </p><p data-v-47325f32=\\"\\">Markdown allows you to use backslash escapes to generate literal
-characters which would otherwise have special meaning in Markdown's
+characters which would otherwise have special meaning in Markdown’s
 formatting syntax. For example, if you wanted to surround a word with
 literal asterisks (instead of an HTML <code data-v-47325f32=\\"\\">&lt;em&gt;</code> tag), you can backslashes
 before the asterisks, like this:</p>
@@ -5956,7 +5957,7 @@ exports[`./__tests__/original/ordered_and_unordered_lists.md snapshot 1`] = `
 
 <ol data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">Item 1, graf one.</p>
 
-<p data-v-47325f32=\\"\\">Item 2. graf two. The quick brown fox jumped over the lazy dog's</p>
+<p data-v-47325f32=\\"\\">Item 2. graf two. The quick brown fox jumped over the lazy dog’s</p>
 <p data-v-47325f32=\\"\\">back.</p>
 </li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">Item 2.</p>
 </li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">Item 3.</p>
@@ -5968,7 +5969,7 @@ exports[`./__tests__/original/ordered_and_unordered_lists.md snapshot 1`] = `
 <ul data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">Tab
 <ul data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">Tab
 
-</li></ul></li></ul></li></ul><p data-v-47325f32=\\"\\">Here's another:</p>
+</li></ul></li></ul></li></ul><p data-v-47325f32=\\"\\">Here’s another:</p>
 
 <ol data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">First</li><li data-v-47325f32=\\"\\">Second:
 <ul data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\">Fee</li><li data-v-47325f32=\\"\\">Fie</li><li data-v-47325f32=\\"\\">Foe</li></ul></li><li data-v-47325f32=\\"\\">Third

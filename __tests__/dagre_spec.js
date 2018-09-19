@@ -838,7 +838,7 @@ vm = {
 /*
  * Inline-Level Grammar
  */
-var a, block, c, edit, inline, list, noop, z;
+var a, block, c, edit, inline, list, noop, repl, replacements, z;
 
 edit = function (regex, opt) {
   var self;
@@ -968,14 +968,6 @@ inline = {
   ruby: /^([|｜]([^《]+)|(?:\w+)|(?:[\u30A1-\u30FF]+)|(?:[\u3041-\u309F・ー]+)|(?:(?:[々〇〻\u3400-\u9FFF\uF900-\uFAFF]|[\uD840-\uD87F][\uDC00-\uDFFF])+))《([^\n》]+)》/
 };
 
-inline.words = function (list) {
-  var keys;
-  keys = list.map(function (s) {
-    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-  });
-  return RegExp(`(${keys.join('|')})`, "g");
-};
-
 list = function () {
   var i, len, ref, results;
   ref = ['_', '~', '=', ':', '\\*', '\\+', '\\-'];
@@ -1018,6 +1010,16 @@ inline.note = edit(inline.note)('label', inline._label)();
 
 inline.text = edit(inline.text)('ruby', inline.ruby)();
 
+inline.words = function (list, extra = []) {
+  var keys;
+  keys = [...extra.map(function (s) {
+    return s.source || s;
+  }), ...list.map(function (s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  })];
+  return RegExp(`(${keys.join('|')})`, "g");
+};
+
 inline.normal = Object.assign({}, inline);
 
 inline.gfm = Object.assign({}, inline.normal, {
@@ -1028,7 +1030,52 @@ inline.gfm = Object.assign({}, inline.normal, {
 
 inline.gfm.url = edit(inline.gfm._url)('email', inline.gfm._extended_email)();
 
-module.exports = { block, inline, noop };
+replacements = function (hash, extra, cb) {
+  var key;
+  if (cb == null) {
+    cb = function (s) {
+      return this[s];
+    };
+  }
+  key = inline.words(Object.keys(hash), extra);
+  return function (src) {
+    return src.replace(key, cb.bind(hash));
+  };
+};
+
+repl = {
+  lexer: replacements({
+    '\r\n': '\n',
+    '\r': '\n',
+    '\t': '    ',
+    '\u00a0': ' ',
+    '\u2424': '\n'
+  }),
+  smartypants: replacements({
+    '...': '\u2026', // ellipses
+    '---': '\u2014', // em-dashes
+    '--': '\u2013', // en-dashes
+    '+-': '\u00B1', // markdown-it replacements
+    "'": '\u2019', // closing singles & apostrophes
+    '"': '\u201d' // closing doubles
+  }, [/(^|---|['"\/({\-\s\[])(['"])/], function (__, str, hd, chr) {
+    switch (chr) {
+      case void 0:
+        return this[str];
+      case hd:
+        console.log({ str, hd, chr });
+        return str;
+      case "'":
+        return `${hd}\u2018`;
+      case '"':
+        return `${hd}\u201c`;
+      default:
+        return this[str];
+    }
+  })
+};
+
+module.exports = { block, inline, repl, noop };
 
 /***/ }),
 /* 5 */
@@ -2221,15 +2268,15 @@ module.exports = require("lodash");
 /*
  * Helpers
  */
-var InlineLexer, Lexer, Parser, baseUrls, block, escape, inline, marked, noop, originIndependentUrl, resolveUrl, splitCells, unescape;
+var InlineLexer, Lexer, Parser, baseUrls, block, escape, inline, marked, noop, originIndependentUrl, repl, resolveUrl, splitCells, unescape;
 
-({ block, inline, noop } = __webpack_require__(4));
+({ block, inline, repl, noop } = __webpack_require__(4));
 
 escape = function (html, is_encode) {
   if (escape[is_encode].test(html)) {
-    return html.replace(escape[is_encode].replace(function (ch) {
+    return html.replace(escape[is_encode].replace, function (ch) {
       return escape.replacements[ch];
-    }));
+    });
   }
 };
 
@@ -2341,7 +2388,7 @@ Lexer = function () {
     }
 
     lex(src) {
-      src = src.replace(/\r\n|\r/g, '\n').replace(/\t/g, '    ').replace(/\u00a0/g, ' ').replace(/\u2424/g, '\n');
+      src = repl.lexer(src);
       return this.token(src, true);
     }
 
@@ -2878,13 +2925,13 @@ InlineLexer = function () {
           // console.log 'text', cap
           src = src.slice(cap[0].length);
           text = cap[0];
-          out.plain += text;
           if (this.abbrs_reg) {
             ref1 = text.split(this.abbrs_reg);
             for (j = 0, len = ref1.length; j < len; j++) {
               s = ref1[j];
               o = this.abbrs[s];
               text = this.smartypants(s);
+              out.plain += text;
               if (o) {
                 out.push(this.renderer.abbr(text, o.title));
               } else {
@@ -2892,6 +2939,8 @@ InlineLexer = function () {
               }
             }
           } else {
+            text = this.smartypants(text);
+            out.plain += text;
             out.push(this.renderer.text(text));
           }
           continue;
@@ -2932,16 +2981,7 @@ InlineLexer = function () {
       if (!this.options.smartypants) {
         return text;
       }
-      // markdown-it replacements
-      // markdown-it replacements
-      // em-dashes
-      // en-dashes
-      // opening singles
-      // closing singles & apostrophes
-      // opening doubles
-      // closing doubles
-      // ellipses
-      return text.replace(/\+\-/g, '\u00B1').replace(/\+\-/g, '\u00B1').replace(/---/g, '\u2014').replace(/--/g, '\u2013').replace(/(^|[-\u2014\/(\[{"\s])'/g, '$1\u2018').replace(/'/g, '\u2019').replace(/(^|[-\u2014\/(\[{\u2018\s])"/g, '$1\u201c').replace(/"/g, '\u201d').replace(/\.{3}/g, '\u2026');
+      return repl.smartypants(text);
     }
 
     cite_range(cite1, cite2) {
