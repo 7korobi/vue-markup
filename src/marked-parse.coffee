@@ -5,16 +5,18 @@
 ###
 
 escape = (html, is_encode)->
-  r_encode =
-    if is_encode
-    then /&/g
-    else /&(?!#?\w+;)/g
-  html
-  .replace(r_encode, '&amp;')
-  .replace(/</g, '&lt;')
-  .replace(/>/g, '&gt;')
-  .replace(/"/g, '&quot;')
-  .replace(/'/g, '&#39;')
+  if escape[is_encode].test html
+    html.replace escape[is_encode].replace (ch)->
+      escape.replacements[ch]
+
+escape[true]  = /[&<>"']/g
+escape[false] = /[<>"']|&(?!#?\w+;)/g
+escape.replacements =
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
 
 unescape = (html)->
   # explicitly match decimal, hex, and named HTML entities
@@ -297,7 +299,6 @@ class Lexer
           cap[idx].replace @rules.ruby[idx].item, (_, tag, title)=>
             @tokens.abbrs[tag] ||= { title }
         @tokens.abbrs_reg = inline.words Object.keys @tokens.abbrs
-        console.log @tokens.abbrs_reg
         continue
 
       # def
@@ -372,10 +373,7 @@ class InlineLexer
       throw new Error('Tokens array requires a `links` property.')
 
     if @options.gfm
-      if @options.breaks
-        @rules = inline.breaks
-      else
-        @rules = inline.gfm
+      @rules = inline.gfm
 
     @rules.cite =
       if @options.cite && @options.context
@@ -433,17 +431,17 @@ class InlineLexer
       # url (gfm)
       if !@inLink and (cap = @rules.url.exec src)
         # console.log 'url (gfm)', cap
-        cap[0] = @rules._backpedal.exec(cap[0])[0]
-        src = src[cap[0].length ..]
         if cap[2] == '@'
           text = cap[0]
           href = 'mailto:' + text
         else
+          cap[0] = @rules._backpedal.exec(cap[0])[0]
           text = cap[0]
           if cap[1] == 'www.'
             href = 'http://' + text
           else
             href = text
+        src = src[cap[0].length ..]
         out.push @outputLargeBrackets { text }, { href }
         out.plain += text
         continue

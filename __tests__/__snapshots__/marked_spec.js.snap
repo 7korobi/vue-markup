@@ -113,17 +113,17 @@ breaks.</p>
 `;
 
 exports[`./__tests__/compiled_tests/gfm_code.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-js\\">var a = 'hello';
+"<article data-v-47325f32=\\"\\"><pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-js\\">var a = 'hello';
 console.log(a + ' world');</code></pre>
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-bash\\">echo \\"hello, \${WORLD}\\"</code></pre>
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-longfence\\">Q: What do you call a tall person who sells stolen goods?</code></pre>
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-ManyTildes\\">A longfence!</code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-bash\\">echo \\"hello, \${WORLD}\\"</code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-longfence\\">Q: What do you call a tall person who sells stolen goods?</code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-ManyTildes\\">A longfence!</code></pre>
 <p data-v-47325f32=\\"\\">How about an empty code block?</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-js\\"></code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-js\\"></code></pre>
 <p data-v-47325f32=\\"\\">How about a code block with only an empty line?</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-js\\"></code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-js\\"></code></pre>
 <p data-v-47325f32=\\"\\">With some trailing empty lines:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">ciao
@@ -144,16 +144,16 @@ exports[`./__tests__/compiled_tests/gfm_code_hr_list.md snapshot 1`] = `
 
 <ol data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">foo <code data-v-47325f32=\\"\\">bar</code> bar:</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-erb\\"> some code here</code></pre></li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">foo <code data-v-47325f32=\\"\\">bar</code> bar:</p>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-erb\\"> some code here</code></pre></li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">foo <code data-v-47325f32=\\"\\">bar</code> bar:</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-erb\\"> foo
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-erb\\"> foo
  ---
  bar
  ---
  foo
  bar</code></pre></li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">foo <code data-v-47325f32=\\"\\">bar</code> bar:</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-html\\"> ---
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-html\\"> ---
  foo
  foo
  ---
@@ -579,7 +579,7 @@ url\\" href=\\"/url/\\" chk=\\"confirm\\">link
 breaks</b> across lines.</p>
 
 <p data-v-47325f32=\\"\\">Here's another where the <b data-v-47325f32=\\"\\" title=\\"
-url\\" href=\\"/url/\\" chk=\\"confirm\\">link
+url\\" href=\\"/url/\\" chk=\\"confirm\\">link 
 breaks</b> across lines, but with a line-ending space.</p>
 
 
@@ -600,7 +600,7 @@ foo\\" href=\\"/foo\\" chk=\\"confirm\\">line
 break</b>.</p>
 
 <p data-v-47325f32=\\"\\">This one has a <b data-v-47325f32=\\"\\" title=\\"
-foo\\" href=\\"/foo\\" chk=\\"confirm\\">line
+foo\\" href=\\"/foo\\" chk=\\"confirm\\">line 
 break</b> with a line-ending space.</p>
 
 
@@ -2308,7 +2308,7 @@ _em</em> <strong data-v-47325f32=\\"\\">strong</strong> *<strong data-v-47325f32
 www.youtube.com\\" href=\\"http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE\\" chk=\\"confirm\\"><img data-v-47325f32=\\"\\" src=\\"https://s3-ap-northeast-1.amazonaws.com/giji-assets/images/portrate/c59.jpg\\" alt=\\"IMAGE ALT TEXT HERE\\"></b></p>
 
 <p data-v-47325f32=\\"\\">There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the
+The outer pipes (|) are optional, and you don't need to make the 
 raw Markdown line up prettily. You can also use inline Markdown.</p>
 
 <blockquote data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\"> &lt;dl&gt;
@@ -2323,10 +2323,10 @@ raw Markdown line up prettily. You can also use inline Markdown.</p>
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">indent 4 means 
 pre has code block
 
-</code></pre><pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-js\\">here is pre has code.
+</code></pre><pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-js\\">here is pre has code.
 it shows white-space: pre</code></pre>
 <p data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">code</code> <code data-v-47325f32=\\"\\">code</code></p>
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-css\\">here is pre has code.
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-css\\">here is pre has code.
 it shows white-space: pre</code></pre></article>"
 `;
 
@@ -3219,7 +3219,7 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar\\\\</b></p>
 
 
 <h3 data-v-47325f32=\\"\\">Example 527</h3>
-<p data-v-47325f32=\\"\\"><b data-v-47325f32=\\"\\" title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</b>
+<p data-v-47325f32=\\"\\"><b data-v-47325f32=\\"\\" title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</b> 
 []</p>
 
 
@@ -3343,7 +3343,7 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\">bar542</b></p>
 
 
 <h3 data-v-47325f32=\\"\\">Example 558</h3>
-<p data-v-47325f32=\\"\\"><img data-v-47325f32=\\"\\" src=\\"/url\\" alt=\\"foo\\" title=\\"title\\">
+<p data-v-47325f32=\\"\\"><img data-v-47325f32=\\"\\" src=\\"/url\\" alt=\\"foo\\" title=\\"title\\"> 
 []</p>
 
 
@@ -3434,6 +3434,17 @@ comment - with hyphen --&gt;</p>
 
 <h3 data-v-47325f32=\\"\\">Example 603</h3>
 <p data-v-47325f32=\\"\\">foo &lt;a href=\\"\\\\*\\"&gt;</p>
+</article>"
+`;
+
+exports[`./__tests__/new/cm_strong_and_em.md snapshot 1`] = `
+"<article data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">So <em data-v-47325f32=\\"\\">a* single *word</em> followed <em data-v-47325f32=\\"\\">b*y *a</em>nother</p>
+
+<p data-v-47325f32=\\"\\">So <strong data-v-47325f32=\\"\\">a</strong> single <strong data-v-47325f32=\\"\\">word</strong> followed <strong data-v-47325f32=\\"\\">b</strong>y <strong data-v-47325f32=\\"\\">a</strong>nother</p>
+
+<p data-v-47325f32=\\"\\">So <em data-v-47325f32=\\"\\">a_ single _word</em> followed <em data-v-47325f32=\\"\\">b_y _a</em>nother</p>
+
+<p data-v-47325f32=\\"\\">So <strong data-v-47325f32=\\"\\">a</strong> single <strong data-v-47325f32=\\"\\">word</strong> followed <strong data-v-47325f32=\\"\\">b</strong>y <strong data-v-47325f32=\\"\\">a</strong>nother</p>
 </article>"
 `;
 
@@ -3671,17 +3682,17 @@ breaks.</p>
 `;
 
 exports[`./__tests__/new/gfm_code.md snapshot 1`] = `
-"<article data-v-47325f32=\\"\\"><pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-js\\">var a = 'hello';
+"<article data-v-47325f32=\\"\\"><pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-js\\">var a = 'hello';
 console.log(a + ' world');</code></pre>
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-bash\\">echo \\"hello, \${WORLD}\\"</code></pre>
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-longfence\\">Q: What do you call a tall person who sells stolen goods?</code></pre>
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-ManyTildes\\">A longfence!</code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-bash\\">echo \\"hello, \${WORLD}\\"</code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-longfence\\">Q: What do you call a tall person who sells stolen goods?</code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-ManyTildes\\">A longfence!</code></pre>
 <p data-v-47325f32=\\"\\">How about an empty code block?</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-js\\"></code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-js\\"></code></pre>
 <p data-v-47325f32=\\"\\">How about a code block with only an empty line?</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-js\\"></code></pre>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-js\\"></code></pre>
 <p data-v-47325f32=\\"\\">With some trailing empty lines:</p>
 
 <pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\">ciao
@@ -3702,16 +3713,16 @@ exports[`./__tests__/new/gfm_code_hr_list.md snapshot 1`] = `
 
 <ol data-v-47325f32=\\"\\"><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">foo <code data-v-47325f32=\\"\\">bar</code> bar:</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-erb\\"> some code here</code></pre></li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">foo <code data-v-47325f32=\\"\\">bar</code> bar:</p>
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-erb\\"> some code here</code></pre></li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">foo <code data-v-47325f32=\\"\\">bar</code> bar:</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-erb\\"> foo
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-erb\\"> foo
  ---
  bar
  ---
  foo
  bar</code></pre></li><li data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">foo <code data-v-47325f32=\\"\\">bar</code> bar:</p>
 
-<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"lang-html\\"> ---
+<pre data-v-47325f32=\\"\\"><code data-v-47325f32=\\"\\" class=\\"language-html\\"> ---
  foo
  foo
  ---
@@ -4059,6 +4070,23 @@ exports[`./__tests__/new/smartypants.md snapshot 1`] = `
 
 <p data-v-47325f32=\\"\\">'And,' as a bonus --- \\"one
 multiline\\" test!</p>
+</article>"
+`;
+
+exports[`./__tests__/new/smartypants_code.md snapshot 1`] = `
+"<article data-v-47325f32=\\"\\"><hr data-v-47325f32=\\"\\"><p data-v-47325f32=\\"\\">smartypants: true
+description: SmartyPants does not modify characters within &lt;pre&gt;, &lt;code&gt;, &lt;kbd&gt;, or &lt;script&gt; tag blocks.</p>
+<h2 data-v-47325f32=\\"\\">spec: <b data-v-47325f32=\\"\\" title=\\"https
+daringfireball.net\\" href=\\"https://daringfireball.net/projects/smartypants/\\" chk=\\"confirm\\">https://daringfireball.net/projects/smartypants/</b></h2><p data-v-47325f32=\\"\\">&lt;pre&gt;&amp;amp;&lt;/pre&gt;
+</p><p data-v-47325f32=\\"\\">&lt;code&gt;<s data-v-47325f32=\\"\\">foo&lt;/code&gt;
+&lt;kbd&gt;-</s>foo&lt;/kbd&gt;</p>
+<p data-v-47325f32=\\"\\">&lt;script&gt;--foo&lt;/script&gt;
+
+</p><p data-v-47325f32=\\"\\">Ensure that text such as custom tags that happen to
+begin with the same letters as the above tags don't
+match and thus benefit from Smartypants-ing.</p>
+<p data-v-47325f32=\\"\\">&lt;script-custom&gt;<s data-v-47325f32=\\"\\">foo&lt;/script-custom&gt;
+\`</s>foo\` &lt;codebar --foo codebar&gt;</p>
 </article>"
 `;
 
@@ -4621,7 +4649,7 @@ url\\" href=\\"/url/\\" chk=\\"confirm\\">link
 breaks</b> across lines.</p>
 
 <p data-v-47325f32=\\"\\">Here's another where the <b data-v-47325f32=\\"\\" title=\\"
-url\\" href=\\"/url/\\" chk=\\"confirm\\">link
+url\\" href=\\"/url/\\" chk=\\"confirm\\">link 
 breaks</b> across lines, but with a line-ending space.</p>
 
 
@@ -4641,7 +4669,7 @@ foo\\" href=\\"/foo\\" chk=\\"confirm\\">line
 break</b>.</p>
 
 <p data-v-47325f32=\\"\\">This one has a <b data-v-47325f32=\\"\\" title=\\"
-foo\\" href=\\"/foo\\" chk=\\"confirm\\">line
+foo\\" href=\\"/foo\\" chk=\\"confirm\\">line 
 break</b> with a line-ending space.</p>
 
 

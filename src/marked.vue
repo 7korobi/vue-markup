@@ -212,7 +212,7 @@ class MarkedRenderer
 options =
   renderer: new MarkedRenderer
   tag: 'article'
-  langPrefix: 'lang-' 
+  langPrefix: 'language-' 
   ruby: true
   cite: true
   gfm: true

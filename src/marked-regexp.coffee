@@ -27,14 +27,14 @@ block =
   list: /^( *)(bull)[\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull)\n*|\s*$)/
   html: ///
     ^\ {0,3}(?: # optional indentation
-    <(script|pre|style)[\s>][\s\S]*?(?:</\1>[^\n]*\n+|$) # (1)
-    |comment[^\n]*(\n+|$) # (2)
-    |<\?[\s\S]*?\?>\n* # (3)
-    |<![A-Z][\s\S]*?>\n* # (4)
-    |<!\[CDATA\[[\s\S]*?\]\]>\n* # (5)
-    |</?(tag)(?:\ +|\n|/?>)[\s\S]*?(?:\n{2,}|$) # (6)
-    |<(?!script|pre|style)([a-z][\w-]*)(?:attribute)*?\ */?>(?=\h*\n)[\s\S]*?(?:\n{2,}|$) # (7) open tag
-    |</(?!script|pre|style)[a-z][\w-]*\s*>(?=\h*\n)[\s\S]*?(?:\n{2,}|$) # (7) closing tag
+      <(script|pre|style)[\s>][\s\S]*?(?:</\1>[^\n]*\n+|$) # (1)
+     |comment[^\n]*(\n+|$) # (2)
+     |<\?[\s\S]*?\?>\n* # (3)
+     |<![A-Z][\s\S]*?>\n* # (4)
+     |<!\[CDATA\[[\s\S]*?\]\]>\n* # (5)
+     |</?(tag)(?:\ +|\n|/?>)[\s\S]*?(?:\n{2,}|$) # (6)
+     |<(?!script|pre|style)([a-z][\w-]*)(?:attribute)*?\ */?>(?=\h*\n)[\s\S]*?(?:\n{2,}|$) # (7) open tag
+     |</(?!script|pre|style)[a-z][\w-]*\s*>(?=\h*\n)[\s\S]*?(?:\n{2,}|$) # (7) closing tag
     )
   ///
   def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n|$)/
@@ -60,8 +60,8 @@ block.item = edit(block.item, 'gm'
 
 block.list = edit(block.list
 )( /bull/g, block.bullet
-)( 'hr', '\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n|$))'
-)( 'def', '\\n+(?=' + block.def.source + ')'
+)( 'hr', /\n+(?=\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n|$))/
+)( 'def', ///\n+(?=#{block.def.source})///
 )()
 
 block._tag = ///
@@ -75,9 +75,9 @@ block._tag = ///
 
 block._comment = /<!--(?!-?>)[\s\S]*?-->/
 block.html = edit(block.html, 'i'
+)( 'attribute', / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/
 )( 'comment', block._comment
 )( 'tag', block._tag
-)('attribute', / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/
 )()
 
 block.paragraph = edit(block.paragraph
@@ -91,17 +91,9 @@ block.blockquote = edit(block.blockquote
 )( 'paragraph', block.paragraph
 )()
 
-###
-# Normal Block Grammar
-###
 block.normal = Object.assign {}, block
-
-###
-# GFM Block Grammar
-###
 block.gfm = Object.assign {}, block.normal,
   fences: /^ *(`{3,}|~{3,}|:{3,})[ \.]*(\S+)? *\n([\s\S]*?)\n? *\1 *(?:\n|$)/
-  paragraph: /^/
   heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n|$)/
   _ruby_item: /\s+([^A]+)A([^Z]+)Z/g
   _ruby_head: /^AZ((?:[^\S\n]+[^A\n]+A[^Z\n]+Z)+[^\S\n]*)(?:\n|$)/
@@ -113,6 +105,7 @@ block.gfm.ruby =
 block.gfm.ruby_heads = new RegExp block.gfm.ruby.map(({ head })=> head.source ).join("|")
 block.gfm.ruby.unshift {}
 
+block.paragraph =
 block.gfm.paragraph = edit(block.paragraph
 )( '(?!', "(?!#{
   block.gfm.fences.source.replace('\\1', '\\2')
@@ -121,9 +114,6 @@ block.gfm.paragraph = edit(block.paragraph
 }|"
 )()
 
-###
-# GFM + Tables Block Grammar
-###
 block.tables = Object.assign {}, block.gfm,
   table: /^ *(.*\|.*) *\n *((\|?) *:?-+:? *(?:\| *:?-+:? *)*(\|?))(?:\n *((?:\3.*[^>\n ].*\4(?:\n|$))*)|$)/
 
@@ -133,32 +123,12 @@ block.tables = Object.assign {}, block.gfm,
 ###
 inline =
   _cite: /^((?:-\w+){2,})(?:\s*\.\.\s*((?:-\w+){1,}))?(?![-.])/
-  escape: /^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/
-  autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/
-  url: noop
-  tag: ///
-     ^comment
-    |^</[a-zA-Z][\w:-]*\s*>                # self-closing tag
-    |^<[a-zA-Z][\w-]*(?:attribute)*?\s*/?> # open tag
-    |^<\?[\s\S]*?\?>                       # processing instruction, e.g. <?php ?>
-    |^<![a-zA-Z]+\s[\s\S]*?>               # declaration, e.g. <!DOCTYPE html>
-    |^<!\[CDATA\[[\s\S]*?\]\]>             # CDATA section
-  ///
+  _attribute: /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/
+  _scheme: /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/
+  _title: /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/
+  _supsub: /^code(?:[^\s]|codecode)+code(?!code)/
+  _escapes: /\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/g
 
-  link: /^!?\[(label)\]\(href(?:\s+(title))?\s*\)/
-  reflink: ///
-    ^!?\[(label)\]\[(?!\s*\])((?:
-       \\[\[\]]?
-      |[^\[\]\\]
-    )+)\]
-  ///
-  nolink: ///
-    ^!?\[(?!\s*\])((?:
-       \[[^\[\]]*\]
-      |\\[\[\]]
-      |[^\[\]]
-    )*)\](?:\[\])?
-  ///
   _strong: ///
     ^codecode(?:
        [^code]
@@ -167,91 +137,37 @@ inline =
     )+codecode(?!code)
   ///
 
+  _strong_other: ///
+    ^\[\[(?:
+      [^\]]|[^\]]\]|\][^\]]
+    )+\]\](?!\])
+  ///
+
   _em: ///
      ^_([^\s][\s\S]*?[^\s_])_(?!_)
     |^_([^\s_][\s\S]*?[^\s])_(?!_)
-    |^\*([^\s][\s\S]*?[^\s*])\*(?!\*)
-    |^\*([^\s*][\s\S]*?[^\s])\*(?!\*)
+    |^\*([^\s"<\[][\s\S]*?[^\s*])\*(?!\*)
+    |^\*([^\s*"<\[][\s\S]*?[^\s])\*(?!\*)
     |^_([^\s_])_(?!_)
-    |^\*([^\s*])\*(?!\*)
+    |^\*([^\s*"<\[])\*(?!\*)
   ///
-  mdi: /^:(mdi-[^:]+):(?!:)/
-  code: /^(`+)\s*([\s\S]*?[^`]?)\s*\1(?!`)/
-  br: /^ {2,}\n(?!\s*$)/
-  del: noop,
-  text: /^[\s\S]+?(?=[\\<!\[`*~=+:\-\^]|ruby|\b_| {2,}\n|$)/
-  # extended
-  note: /^\^\[(label)\]/
-  ruby: ///^(
-     [|｜]([^《]+)
-    |(?:\w+)                 # 英数_
-    |(?:[\u30A1-\u30FF]+)    # カタカナ
-    |(?:[\u3041-\u309F・ー]+) # ひらがなと・ー
-    |(?:(?:[々〇〻\u3400-\u9FFF\uF900-\uFAFF]|[\uD840-\uD87F][\uDC00-\uDFFF])+) # 漢字
-  )《([^》]+)》///
-  _supsub: /^code(?:[^\s]|codecode)+code(?!code)/
 
-  _url_peice: ///
-      ^$
-    | ^mailto:
-    | :\/\/
-    | ^(\.{0,2})[\?\#\/]
-    | ^[\w()%+:/]+$
-  ///ig
+  _email: ///
+    [a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+
+    (@)
+    [a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?
+    (?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+
+    (?![-_])
+  ///
 
-inline.text = edit(inline.text)(
-  'ruby', inline.ruby
-)()
+  _label: ///(?:
+    \[[^\[\]]*\]
+    |\\[\[\]]?
+    |`[^`]*`
+    |[^\[\]\\]
+  )*?///
 
-inline.words = (list)->
-  keys = list.map (s)-> s.replace /[-\/\\^$*+?.()|[\]{}]/g, '\\$&'
-  ///(#{ keys.join '|' })///g
-
-inline.strong =
-  for c in ['_', '~', '=', ':', '\\*', '\\+', '\\-']
-    edit(inline._strong)(/code/g, c)().source
-inline.strong.push ///
-  ^\[\[(?:
-    [^\]]|[^\]]\]|\][^\]]
-  )+\]\](?!\])
-///.source
-inline.strong = new RegExp inline.strong.join("|")
-
-inline.supsub =
-  for c in ['\\^', '~']
-    edit(inline._supsub)(/code/g, c)().source
-inline.supsub = new RegExp inline.supsub.join("|")
-
-inline._escapes = edit(inline.escape, 'g'
-)('^',''
-)()
-
-inline._scheme = /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/
-inline._email = ///
-  [a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+
-  (@)
-  [a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?
-  (?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+
-  (?![-_])
-///
-inline.autolink = edit(inline.autolink
-)('scheme', inline._scheme
-)('email', inline._email
-)()
-
-inline._attribute = /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/
-inline.tag = edit(inline.tag
-)('comment', block._comment
-)('attribute', inline._attribute
-)()
-
-inline._label = ///(?:
-   \[[^\[\]]*\]
-  |\\[\[\]]?
-  |`[^`]*`
-  |[^\[\]\\]
-)*?///
-inline._href = ///
+  _href: ///
     \s*(
        <(?:
          \\[<>]?
@@ -264,7 +180,103 @@ inline._href = ///
       )*?
     )
   ///
-inline._title = /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/
+
+  _url_peice: ///
+      ^$
+    | ^mailto:
+    | :\/\/
+    | ^(\.{0,2})[\?\#\/]
+    | ^[\w()%+:/]+$
+  ///ig
+
+  autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/
+  link: /^!?\[(label)\]\(href(?:\s+(title))?\s*\)/
+  note: /^\^\[(label)\]/
+  code: /^(`+)\s*([\s\S]*?[^`]?)\s*\1(?!`)/
+  mdi: /^:(mdi-[^:]+):(?!:)/
+  br: /^( {2,}|\\)\n(?!\s*$)/
+  del: noop
+  url: noop
+
+  text: ///
+    ^[\s\S]+?(?=
+      [\-\[\\<!`*~^]
+     |\b_
+     |\[\[
+     |\*\*
+     |\+\+
+     |__
+     |~~
+     |==
+     |::
+     |ruby
+     |https?://
+     |ftp://
+     |www\.
+     |[a-zA-Z0-9.!#$%&\'*+/=?^_`{\\|}~-]+@
+     |\s*\n
+     |$
+    )
+  ///
+
+  tag: ///
+     ^comment
+    |^</[a-zA-Z][\w:-]*\s*>                # self-closing tag
+    |^<[a-zA-Z][\w-]*(?:attribute)*?\s*/?> # open tag
+    |^<\?[\s\S]*?\?>                       # processing instruction, e.g. <?php ?>
+    |^<![a-zA-Z]+\s[\s\S]*?>               # declaration, e.g. <!DOCTYPE html>
+    |^<!\[CDATA\[[\s\S]*?\]\]>             # CDATA section
+  ///
+
+  reflink: ///
+    ^!?\[(label)\]\[(?!\s*\])((?:
+       \\[\[\]]?
+      |[^\[\]\\]
+    )+)\]
+  ///
+
+  nolink: ///
+    ^!?\[(?!\s*\])((?:
+       \[[^\[\]]*\]
+      |\\[\[\]]
+      |[^\[\]]
+    )*)\](?:\[\])?
+  ///
+
+  ruby: ///^(
+     [|｜]([^《]+)
+    |(?:\w+)                 # 英数_
+    |(?:[\u30A1-\u30FF]+)    # カタカナ
+    |(?:[\u3041-\u309F・ー]+) # ひらがなと・ー
+    |(?:(?:[々〇〻\u3400-\u9FFF\uF900-\uFAFF]|[\uD840-\uD87F][\uDC00-\uDFFF])+) # 漢字
+  )《([^\n》]+)》///
+
+inline.words = (list)->
+  keys = list.map (s)-> s.replace /[-\/\\^$*+?.()|[\]{}]/g, '\\$&'
+  ///(#{ keys.join '|' })///g
+
+list =
+  for c in ['_', '~', '=', ':', '\\*', '\\+', '\\-']
+    edit(inline._strong)(/code/g, c)().source
+list.push inline._strong_other.source
+inline.strong = new RegExp list.join("|")
+
+list =
+  for c in ['\\^', '~']
+    edit(inline._supsub)(/code/g, c)().source
+inline.supsub = new RegExp list.join("|")
+
+inline.escape = new RegExp '^' + inline._escapes.source
+
+inline.autolink = edit(inline.autolink
+)('scheme', inline._scheme
+)('email', inline._email
+)()
+
+inline.tag = edit(inline.tag
+)('comment', block._comment
+)('attribute', inline._attribute
+)()
 
 inline.link = edit(inline.link
 )('label', inline._label
@@ -280,37 +292,43 @@ inline.note = edit(inline.note
 )('label', inline._label
 )()
 
-###
-# Normal Inline Grammar
-###
+inline.text = edit(inline.text
+)('ruby', inline.ruby
+)()
+
 inline.normal = Object.assign({}, inline)
 
-###
-# Pedantic Inline Grammar
-# -- bye --
-###
+inline.gfm = Object.assign {}, inline.normal, 
+  _extended_email: ///
+    [A-Za-z0-9._+-]+
+    (@)
+    [a-zA-Z0-9-_]+
+    (?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+
+    (?![-_])
+  ///
+  _backpedal: ///
+    (?:
+      [^?!.,:;*_~()&]+
+     |\([^)]*\)
+     |&(?!
+       [a-zA-Z0-9]+;$
+      )
+     |[?!.,:;*_~)]+(?!$)
+    )+
+  ///
+  _url: ///
+    ^(
+      (?:ftp|https?):\/\/
+     |www\.
+    )(?:
+      [a-zA-Z0-9\-]+\.?
+    )+
+    [^\s<]*
+   |^email
+  ///
 
-###
-# GFM Inline Grammar
-###
-inline.gfm = Object.assign({}, inline.normal,
-  url: edit(
-    /^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/
-  )('email', inline._email)(
-  )
-  _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/
-  text: edit(
-    inline.text
-  )('|', '|https?://|ftp://|www\\.|[a-zA-Z0-9.!#$%&\'*+/=?^_`{\\|}~-]+@|'
-  )()
-)
-
-###
-# GFM + Line Breaks Inline Grammar
-###
-inline.breaks = Object.assign({}, inline.gfm,
-  br: edit(inline.br)('{2,}', '*')()
-  text: edit(inline.gfm.text)('{2,}', '*')())
-
+inline.gfm.url = edit(inline.gfm._url
+)( 'email', inline.gfm._extended_email
+)()
 
 module.exports = { block, inline, noop }

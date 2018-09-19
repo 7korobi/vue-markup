@@ -274,7 +274,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(14)
+var listToStyles = __webpack_require__(16)
 
 /*
 type StyleObject = {
@@ -489,11 +489,11 @@ function applyToTag (styleElement, obj) {
 "use strict";
 var Dagre, MarkedRenderer, _, itself, marked, options, vm;
 
-_ = __webpack_require__(15);
+_ = __webpack_require__(17);
 
-marked = __webpack_require__(16);
+marked = __webpack_require__(18);
 
-Dagre = __webpack_require__(4).default;
+Dagre = __webpack_require__(5).default;
 
 itself = function(o) {
   return o;
@@ -790,7 +790,7 @@ MarkedRenderer = (function() {
 options = {
   renderer: new MarkedRenderer,
   tag: 'article',
-  langPrefix: 'lang-',
+  langPrefix: 'language-',
   ruby: true,
   cite: true,
   gfm: true,
@@ -829,17 +829,220 @@ vm = {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+
+/*
+ * Block-Level Grammer
+ */
+/*
+ * Inline-Level Grammar
+ */
+var a, block, c, edit, inline, list, noop, z;
+
+edit = function (regex, opt) {
+  var self;
+  regex = regex.source || regex;
+  opt = opt || '';
+  return self = function (name, val) {
+    if (name) {
+      val = val.source || val;
+      val = val.replace(/(^|[^\\\[])\^/g, '$1');
+      regex = regex.replace(name, val);
+      return self;
+    } else {
+      return new RegExp(regex, opt);
+    }
+  };
+};
+
+noop = function () {};
+
+noop.exec = noop;
+
+block = {
+  newline: /^ *\n+/,
+  code: /^( {4}[^\n]+\n*)+/,
+  fences: noop,
+  hr: /^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n|$)/,
+  heading: /^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n|$)/,
+  table: noop,
+  blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,
+  list: /^( *)(bull)[\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull)\n*|\s*$)/,
+  html: /^ {0,3}(?:<(script|pre|style)[\s>][\s\S]*?(?:<\/\1>[^\n]*\n+|$)|comment[^\n]*(\n+|$)|<\?[\s\S]*?\?>\n*|<![A-Z][\s\S]*?>\n*|<!\[CDATA\[[\s\S]*?\]\]>\n*|<\/?(tag)(?: +|\n|\/?>)[\s\S]*?(?:\n{2,}|$)|<(?!script|pre|style)([a-z][\w-]*)(?:attribute)*? *\/?>(?=\h*\n)[\s\S]*?(?:\n{2,}|$)|<\/(?!script|pre|style)[a-z][\w-]*\s*>(?=\h*\n)[\s\S]*?(?:\n{2,}|$))/,
+  def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n|$)/,
+  lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n|$)/,
+  checkbox: /^\[([ xX])\] +/,
+  paragraph: /^([^\n]+(?:\n(?!hr|heading|lheading| {0,3}>|<\/?(?:tag)(?: +|\n|\/?>)|<(?:script|pre|style|!--))[^\n]+)*)/,
+  text: /^[^\n]+/,
+  ruby: noop
+};
+
+block._label = /(?!\s*\])(?:\\[\[\]]|[^\[\]])+/;
+
+block._title = /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/;
+
+block.def = edit(block.def)('label', block._label)('title', block._title)();
+
+block.with_bullet = /^ *([*+-]|\d+\.) */;
+
+block.bullet = /(?:[*+-] |\d+\.)/;
+
+block.item = /^( *)(bull)[^\n]*(?:\n(?!\1bull)[^\n]*)*/;
+
+block.item = edit(block.item, 'gm')(/bull/g, block.bullet)();
+
+block.list = edit(block.list)(/bull/g, block.bullet)('hr', /\n+(?=\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n|$))/)('def', RegExp(`\\n+(?=${block.def.source})`))();
+
+block._tag = /address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul/;
+
+block._comment = /<!--(?!-?>)[\s\S]*?-->/;
+
+block.html = edit(block.html, 'i')('attribute', / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/)('comment', block._comment)('tag', block._tag)();
+
+block.paragraph = edit(block.paragraph)('hr', block.hr)('heading', block.heading)('lheading', block.lheading)('tag', block._tag)();
+
+block.blockquote = edit(block.blockquote)('paragraph', block.paragraph)();
+
+block.normal = Object.assign({}, block);
+
+block.gfm = Object.assign({}, block.normal, {
+  fences: /^ *(`{3,}|~{3,}|:{3,})[ \.]*(\S+)? *\n([\s\S]*?)\n? *\1 *(?:\n|$)/,
+  heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n|$)/,
+  _ruby_item: /\s+([^A]+)A([^Z]+)Z/g,
+  _ruby_head: /^AZ((?:[^\S\n]+[^A\n]+A[^Z\n]+Z)+[^\S\n]*)(?:\n|$)/
+});
+
+block.gfm.ruby = function () {
+  var i, len, ref, results;
+  ref = ['()', '{}', '[]', '《》'];
+  results = [];
+  for (i = 0, len = ref.length; i < len; i++) {
+    [a, z] = ref[i];
+    results.push({
+      item: edit(block.gfm._ruby_item, 'g')(/A/g, '\\' + a)(/Z/g, '\\' + z)(),
+      head: edit(block.gfm._ruby_head)(/A/g, '\\' + a)(/Z/g, '\\' + z)()
+    });
+  }
+  return results;
+}();
+
+block.gfm.ruby_heads = new RegExp(block.gfm.ruby.map(({ head }) => {
+  return head.source;
+}).join("|"));
+
+block.gfm.ruby.unshift({});
+
+block.paragraph = block.gfm.paragraph = edit(block.paragraph)('(?!', `(?!${block.gfm.fences.source.replace('\\1', '\\2')}|${block.list.source.replace('\\1', '\\3')}|`)();
+
+block.tables = Object.assign({}, block.gfm, {
+  table: /^ *(.*\|.*) *\n *((\|?) *:?-+:? *(?:\| *:?-+:? *)*(\|?))(?:\n *((?:\3.*[^>\n ].*\4(?:\n|$))*)|$)/
+});
+
+inline = {
+  _cite: /^((?:-\w+){2,})(?:\s*\.\.\s*((?:-\w+){1,}))?(?![-.])/,
+  _attribute: /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/,
+  _scheme: /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/,
+  _title: /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/,
+  _supsub: /^code(?:[^\s]|codecode)+code(?!code)/,
+  _escapes: /\\([!"#$%&'()*+,\-.\/:;<=>?@\[\]\\^_`{|}~])/g,
+  _strong: /^codecode(?:[^code]|[^code]code|code[^code])+codecode(?!code)/,
+  _strong_other: /^\[\[(?:[^\]]|[^\]]\]|\][^\]])+\]\](?!\])/,
+  _em: /^_([^\s][\s\S]*?[^\s_])_(?!_)|^_([^\s_][\s\S]*?[^\s])_(?!_)|^\*([^\s"<\[][\s\S]*?[^\s*])\*(?!\*)|^\*([^\s*"<\[][\s\S]*?[^\s])\*(?!\*)|^_([^\s_])_(?!_)|^\*([^\s*"<\[])\*(?!\*)/,
+  _email: /[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/,
+  _label: /(?:\[[^\[\]]*\]|\\[\[\]]?|`[^`]*`|[^\[\]\\])*?/,
+  _href: /\s*(<(?:\\[<>]?|[^\s<>\\])*>|(?:\\[()]?|\([^\s\x00-\x1f()\\]*\)|[^\s\x00-\x1f()\\])*?)/,
+  _url_peice: /^$|^mailto:|:\/\/|^(\.{0,2})[\?\#\/]|^[\w()%+:\/]+$/ig,
+  autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
+  link: /^!?\[(label)\]\(href(?:\s+(title))?\s*\)/,
+  note: /^\^\[(label)\]/,
+  code: /^(`+)\s*([\s\S]*?[^`]?)\s*\1(?!`)/,
+  mdi: /^:(mdi-[^:]+):(?!:)/,
+  br: /^( {2,}|\\)\n(?!\s*$)/,
+  del: noop,
+  url: noop,
+  text: /^[\s\S]+?(?=[\-\[\\<!`*~^]|\b_|\[\[|\*\*|\+\+|__|~~|==|::|ruby|https?:\/\/|ftp:\/\/|www\.|[a-zA-Z0-9.!#$%&\'*+\/=?^_`{\\|}~-]+@|\s*\n|$)/,
+  tag: /^comment|^<\/[a-zA-Z][\w:-]*\s*>|^<[a-zA-Z][\w-]*(?:attribute)*?\s*\/?>|^<\?[\s\S]*?\?>|^<![a-zA-Z]+\s[\s\S]*?>|^<!\[CDATA\[[\s\S]*?\]\]>/,
+  reflink: /^!?\[(label)\]\[(?!\s*\])((?:\\[\[\]]?|[^\[\]\\])+)\]/,
+  nolink: /^!?\[(?!\s*\])((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\](?:\[\])?/,
+  ruby: /^([|｜]([^《]+)|(?:\w+)|(?:[\u30A1-\u30FF]+)|(?:[\u3041-\u309F・ー]+)|(?:(?:[々〇〻\u3400-\u9FFF\uF900-\uFAFF]|[\uD840-\uD87F][\uDC00-\uDFFF])+))《([^\n》]+)》/
+};
+
+inline.words = function (list) {
+  var keys;
+  keys = list.map(function (s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  });
+  return RegExp(`(${keys.join('|')})`, "g");
+};
+
+list = function () {
+  var i, len, ref, results;
+  ref = ['_', '~', '=', ':', '\\*', '\\+', '\\-'];
+  results = [];
+  for (i = 0, len = ref.length; i < len; i++) {
+    c = ref[i];
+    results.push(edit(inline._strong)(/code/g, c)().source);
+  }
+  return results;
+}();
+
+list.push(inline._strong_other.source);
+
+inline.strong = new RegExp(list.join("|"));
+
+list = function () {
+  var i, len, ref, results;
+  ref = ['\\^', '~'];
+  results = [];
+  for (i = 0, len = ref.length; i < len; i++) {
+    c = ref[i];
+    results.push(edit(inline._supsub)(/code/g, c)().source);
+  }
+  return results;
+}();
+
+inline.supsub = new RegExp(list.join("|"));
+
+inline.escape = new RegExp('^' + inline._escapes.source);
+
+inline.autolink = edit(inline.autolink)('scheme', inline._scheme)('email', inline._email)();
+
+inline.tag = edit(inline.tag)('comment', block._comment)('attribute', inline._attribute)();
+
+inline.link = edit(inline.link)('label', inline._label)('href', inline._href)('title', inline._title)();
+
+inline.reflink = edit(inline.reflink)('label', inline._label)();
+
+inline.note = edit(inline.note)('label', inline._label)();
+
+inline.text = edit(inline.text)('ruby', inline.ruby)();
+
+inline.normal = Object.assign({}, inline);
+
+inline.gfm = Object.assign({}, inline.normal, {
+  _extended_email: /[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/,
+  _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,
+  _url: /^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/
+});
+
+inline.gfm.url = edit(inline.gfm._url)('email', inline.gfm._extended_email)();
+
+module.exports = { block, inline, noop };
+
+/***/ }),
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_dagre_vue__ = __webpack_require__(6);
 /* empty harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bb43e1b2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bb43e1b2_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_dagre_vue__ = __webpack_require__(24);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(18)
+  __webpack_require__(19)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -885,15 +1088,15 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var DagreRenderer, dagre, init, marker, options, parse, vm;
 
-dagre = __webpack_require__(20);
+dagre = __webpack_require__(21);
 
-parse = __webpack_require__(21);
+parse = __webpack_require__(22);
 
 marker = function(key) {
   switch (key) {
@@ -1180,14 +1383,14 @@ vm = {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // inspired by https://github.com/wakufactory/MarkDownDiagram
 var SVG, SvgRenderer, marker, options, parse_touch, vm;
 
-SVG = __webpack_require__(25);
+SVG = __webpack_require__(26);
 
 marker = function(key) {
   switch (key) {
@@ -1771,45 +1974,106 @@ vm = {
 
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("vue-test-utils");
-
-/***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("glob");
+var regexp_join, syntax;
+
+regexp_join = function (regex, ...names) {
+  var flags, i, key, len, name, source, val;
+  ({ flags, source } = regex);
+  for (i = 0, len = names.length; i < len; i++) {
+    name = names[i];
+    key = new RegExp(name, 'g');
+    val = syntax[name];
+    val = val.source || val;
+    source = source.replace(key, val);
+  }
+  return new RegExp(source, flags);
+};
+
+syntax = {
+  nodes: /^(?:_header_)? *((?:(?:_xy_)?_id__sep_)+)_eol_/,
+  edges: /^ *((_id_)?(?: *_arrow_ *_id_)+) *(?:_comment_)?_eol_/,
+  newline: /^ *\n|^ +$/,
+  error: /^[^\n]*\n|[^\n]+$/,
+  pick_node: /(?:<(\d+)(_side_| )?(\d+)>)?(_id_)/g,
+  _xy_: /<\d+(?:_side_| )?\d+>/,
+  _id_: /[^\n\s<>#]+/,
+  _arrow_: /(<|X|x|O|o)?_line_(_side_{2,2})?_line_(>|X|x|O|o)?/,
+  _header_: /#{1,3} *(.*) *\n/,
+  _comment_: /#{1,3} *(.*) */,
+  _line_: /(-|=|\.)+/,
+  _side_: /[udlrUDLRv^<>]/,
+  _sep_: / *\n? */,
+  _eol_: / *(?:\n|$)/
+};
+
+syntax._xy_ = regexp_join(syntax._xy_, '_side_');
+
+syntax._arrow_ = regexp_join(syntax._arrow_, '_line_', '_side_');
+
+syntax.pick_node = regexp_join(syntax.pick_node, '_id_', '_side_');
+
+syntax.nodes = regexp_join(syntax.nodes, '_xy_', '_id_', '_header_', '_sep_', '_eol_');
+
+syntax.edges = regexp_join(syntax.edges, '_id_', '_arrow_', '_comment_', '_eol_');
+
+module.exports = { syntax };
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = require("file-system");
+module.exports = require("vue-test-utils");
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("glob");
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("file-system");
+
+/***/ }),
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__marked_vue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dagre_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__marksvg_vue__ = __webpack_require__(24);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MarkSVG", function() { return __WEBPACK_IMPORTED_MODULE_2__marksvg_vue__["a"]; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "regexp", function() { return regexp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__marked_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__marksvg_vue__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dagre_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__marked_regexp_coffee__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__marked_regexp_coffee___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__marked_regexp_coffee__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__marksvg_regexp_coffee__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__marksvg_regexp_coffee___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__marksvg_regexp_coffee__);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MarkSVG", function() { return __WEBPACK_IMPORTED_MODULE_1__marksvg_vue__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Marked", function() { return __WEBPACK_IMPORTED_MODULE_0__marked_vue__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Dagre", function() { return __WEBPACK_IMPORTED_MODULE_1__dagre_vue__["default"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Dagre", function() { return __WEBPACK_IMPORTED_MODULE_2__dagre_vue__["default"]; });
+var regexp;
 
 
 
 
 
+
+
+
+
+
+
+regexp = { down: __WEBPACK_IMPORTED_MODULE_3__marked_regexp_coffee___default.a, svg: __WEBPACK_IMPORTED_MODULE_4__marksvg_regexp_coffee___default.a };
 
 
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1818,7 +2082,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(12)
+  __webpack_require__(14)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -1864,13 +2128,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(13);
+var content = __webpack_require__(15);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -1890,7 +2154,7 @@ if(false) {
 }
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(true);
@@ -1904,7 +2168,7 @@ exports.push([module.i, "", "", {"version":3,"sources":[],"names":[],"mappings":
 
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports) {
 
 /**
@@ -1937,13 +2201,13 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -1959,12 +2223,26 @@ module.exports = require("lodash");
  */
 var InlineLexer, Lexer, Parser, baseUrls, block, escape, inline, marked, noop, originIndependentUrl, resolveUrl, splitCells, unescape;
 
-({ block, inline, noop } = __webpack_require__(17));
+({ block, inline, noop } = __webpack_require__(4));
 
 escape = function (html, is_encode) {
-  var r_encode;
-  r_encode = is_encode ? /&/g : /&(?!#?\w+;)/g;
-  return html.replace(r_encode, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  if (escape[is_encode].test(html)) {
+    return html.replace(escape[is_encode].replace(function (ch) {
+      return escape.replacements[ch];
+    }));
+  }
+};
+
+escape[true] = /[&<>"']/g;
+
+escape[false] = /[<>"']|&(?!#?\w+;)/g;
+
+escape.replacements = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
 };
 
 unescape = function (html) {
@@ -2274,7 +2552,6 @@ Lexer = function () {
             }
           }
           this.tokens.abbrs_reg = inline.words(Object.keys(this.tokens.abbrs));
-          console.log(this.tokens.abbrs_reg);
           continue;
         }
         // def
@@ -2369,11 +2646,7 @@ InlineLexer = function () {
         throw new Error('Tokens array requires a `links` property.');
       }
       if (this.options.gfm) {
-        if (this.options.breaks) {
-          this.rules = inline.breaks;
-        } else {
-          this.rules = inline.gfm;
-        }
+        this.rules = inline.gfm;
       }
       this.rules.cite = this.options.cite && this.options.context ? this.rules._cite : noop;
       this.rules.em = this.options.em ? this.rules._em : noop;
@@ -2423,12 +2696,11 @@ InlineLexer = function () {
         }
         if (!this.inLink && (cap = this.rules.url.exec(src))) {
           // console.log 'url (gfm)', cap
-          cap[0] = this.rules._backpedal.exec(cap[0])[0];
-          src = src.slice(cap[0].length);
           if (cap[2] === '@') {
             text = cap[0];
             href = 'mailto:' + text;
           } else {
+            cap[0] = this.rules._backpedal.exec(cap[0])[0];
             text = cap[0];
             if (cap[1] === 'www.') {
               href = 'http://' + text;
@@ -2436,6 +2708,7 @@ InlineLexer = function () {
               href = text;
             }
           }
+          src = src.slice(cap[0].length);
           out.push(this.outputLargeBrackets({ text }, { href }));
           out.plain += text;
           continue;
@@ -2921,248 +3194,13 @@ marked.parse = marked;
 module.exports = marked;
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-
-/*
- * Block-Level Grammer
- */
-/*
- * Inline-Level Grammar
- */
-var a, block, c, edit, inline, noop, z;
-
-edit = function (regex, opt) {
-  var self;
-  regex = regex.source || regex;
-  opt = opt || '';
-  return self = function (name, val) {
-    if (name) {
-      val = val.source || val;
-      val = val.replace(/(^|[^\\\[])\^/g, '$1');
-      regex = regex.replace(name, val);
-      return self;
-    } else {
-      return new RegExp(regex, opt);
-    }
-  };
-};
-
-noop = function () {};
-
-noop.exec = noop;
-
-block = {
-  newline: /^ *\n+/,
-  code: /^( {4}[^\n]+\n*)+/,
-  fences: noop,
-  hr: /^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n|$)/,
-  heading: /^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n|$)/,
-  table: noop,
-  blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,
-  list: /^( *)(bull)[\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull)\n*|\s*$)/,
-  html: /^ {0,3}(?:<(script|pre|style)[\s>][\s\S]*?(?:<\/\1>[^\n]*\n+|$)|comment[^\n]*(\n+|$)|<\?[\s\S]*?\?>\n*|<![A-Z][\s\S]*?>\n*|<!\[CDATA\[[\s\S]*?\]\]>\n*|<\/?(tag)(?: +|\n|\/?>)[\s\S]*?(?:\n{2,}|$)|<(?!script|pre|style)([a-z][\w-]*)(?:attribute)*? *\/?>(?=\h*\n)[\s\S]*?(?:\n{2,}|$)|<\/(?!script|pre|style)[a-z][\w-]*\s*>(?=\h*\n)[\s\S]*?(?:\n{2,}|$))/,
-  def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n|$)/,
-  lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n|$)/,
-  checkbox: /^\[([ xX])\] +/,
-  paragraph: /^([^\n]+(?:\n(?!hr|heading|lheading| {0,3}>|<\/?(?:tag)(?: +|\n|\/?>)|<(?:script|pre|style|!--))[^\n]+)*)/,
-  text: /^[^\n]+/,
-  ruby: noop
-};
-
-block._label = /(?!\s*\])(?:\\[\[\]]|[^\[\]])+/;
-
-block._title = /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/;
-
-block.def = edit(block.def)('label', block._label)('title', block._title)();
-
-block.with_bullet = /^ *([*+-]|\d+\.) */;
-
-block.bullet = /(?:[*+-] |\d+\.)/;
-
-block.item = /^( *)(bull)[^\n]*(?:\n(?!\1bull)[^\n]*)*/;
-
-block.item = edit(block.item, 'gm')(/bull/g, block.bullet)();
-
-block.list = edit(block.list)(/bull/g, block.bullet)('hr', '\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n|$))')('def', '\\n+(?=' + block.def.source + ')')();
-
-block._tag = /address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul/;
-
-block._comment = /<!--(?!-?>)[\s\S]*?-->/;
-
-block.html = edit(block.html, 'i')('comment', block._comment)('tag', block._tag)('attribute', / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/)();
-
-block.paragraph = edit(block.paragraph)('hr', block.hr)('heading', block.heading)('lheading', block.lheading)('tag', block._tag)();
-
-block.blockquote = edit(block.blockquote)('paragraph', block.paragraph)();
-
-/*
- * Normal Block Grammar
- */
-block.normal = Object.assign({}, block);
-
-/*
- * GFM Block Grammar
- */
-block.gfm = Object.assign({}, block.normal, {
-  fences: /^ *(`{3,}|~{3,}|:{3,})[ \.]*(\S+)? *\n([\s\S]*?)\n? *\1 *(?:\n|$)/,
-  paragraph: /^/,
-  heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n|$)/,
-  _ruby_item: /\s+([^A]+)A([^Z]+)Z/g,
-  _ruby_head: /^AZ((?:[^\S\n]+[^A\n]+A[^Z\n]+Z)+[^\S\n]*)(?:\n|$)/
-});
-
-block.gfm.ruby = function () {
-  var i, len, ref, results;
-  ref = ['()', '{}', '[]', '《》'];
-  results = [];
-  for (i = 0, len = ref.length; i < len; i++) {
-    [a, z] = ref[i];
-    results.push({
-      item: edit(block.gfm._ruby_item, 'g')(/A/g, '\\' + a)(/Z/g, '\\' + z)(),
-      head: edit(block.gfm._ruby_head)(/A/g, '\\' + a)(/Z/g, '\\' + z)()
-    });
-  }
-  return results;
-}();
-
-block.gfm.ruby_heads = new RegExp(block.gfm.ruby.map(({ head }) => {
-  return head.source;
-}).join("|"));
-
-block.gfm.ruby.unshift({});
-
-block.gfm.paragraph = edit(block.paragraph)('(?!', `(?!${block.gfm.fences.source.replace('\\1', '\\2')}|${block.list.source.replace('\\1', '\\3')}|`)();
-
-/*
- * GFM + Tables Block Grammar
- */
-block.tables = Object.assign({}, block.gfm, {
-  table: /^ *(.*\|.*) *\n *((\|?) *:?-+:? *(?:\| *:?-+:? *)*(\|?))(?:\n *((?:\3.*[^>\n ].*\4(?:\n|$))*)|$)/
-});
-
-inline = {
-  _cite: /^((?:-\w+){2,})(?:\s*\.\.\s*((?:-\w+){1,}))?(?![-.])/,
-  escape: /^\\([!"#$%&'()*+,\-.\/:;<=>?@\[\]\\^_`{|}~])/,
-  autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
-  url: noop,
-  tag: /^comment|^<\/[a-zA-Z][\w:-]*\s*>|^<[a-zA-Z][\w-]*(?:attribute)*?\s*\/?>|^<\?[\s\S]*?\?>|^<![a-zA-Z]+\s[\s\S]*?>|^<!\[CDATA\[[\s\S]*?\]\]>/,
-  link: /^!?\[(label)\]\(href(?:\s+(title))?\s*\)/,
-  reflink: /^!?\[(label)\]\[(?!\s*\])((?:\\[\[\]]?|[^\[\]\\])+)\]/,
-  nolink: /^!?\[(?!\s*\])((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\](?:\[\])?/,
-  _strong: /^codecode(?:[^code]|[^code]code|code[^code])+codecode(?!code)/,
-  _em: /^_([^\s][\s\S]*?[^\s_])_(?!_)|^_([^\s_][\s\S]*?[^\s])_(?!_)|^\*([^\s][\s\S]*?[^\s*])\*(?!\*)|^\*([^\s*][\s\S]*?[^\s])\*(?!\*)|^_([^\s_])_(?!_)|^\*([^\s*])\*(?!\*)/,
-  mdi: /^:(mdi-[^:]+):(?!:)/,
-  code: /^(`+)\s*([\s\S]*?[^`]?)\s*\1(?!`)/,
-  br: /^ {2,}\n(?!\s*$)/,
-  del: noop,
-  text: /^[\s\S]+?(?=[\\<!\[`*~=+:\-\^]|ruby|\b_| {2,}\n|$)/,
-  // extended
-  note: /^\^\[(label)\]/,
-  ruby: /^([|｜]([^《]+)|(?:\w+)|(?:[\u30A1-\u30FF]+)|(?:[\u3041-\u309F・ー]+)|(?:(?:[々〇〻\u3400-\u9FFF\uF900-\uFAFF]|[\uD840-\uD87F][\uDC00-\uDFFF])+))《([^》]+)》/,
-  _supsub: /^code(?:[^\s]|codecode)+code(?!code)/,
-  _url_peice: /^$|^mailto:|:\/\/|^(\.{0,2})[\?\#\/]|^[\w()%+:\/]+$/ig
-};
-
-inline.text = edit(inline.text)('ruby', inline.ruby)();
-
-inline.words = function (list) {
-  var keys;
-  keys = list.map(function (s) {
-    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-  });
-  return RegExp(`(${keys.join('|')})`, "g");
-};
-
-inline.strong = function () {
-  var i, len, ref, results;
-  ref = ['_', '~', '=', ':', '\\*', '\\+', '\\-'];
-  results = [];
-  for (i = 0, len = ref.length; i < len; i++) {
-    c = ref[i];
-    results.push(edit(inline._strong)(/code/g, c)().source);
-  }
-  return results;
-}();
-
-inline.strong.push(/^\[\[(?:[^\]]|[^\]]\]|\][^\]])+\]\](?!\])/.source);
-
-inline.strong = new RegExp(inline.strong.join("|"));
-
-inline.supsub = function () {
-  var i, len, ref, results;
-  ref = ['\\^', '~'];
-  results = [];
-  for (i = 0, len = ref.length; i < len; i++) {
-    c = ref[i];
-    results.push(edit(inline._supsub)(/code/g, c)().source);
-  }
-  return results;
-}();
-
-inline.supsub = new RegExp(inline.supsub.join("|"));
-
-inline._escapes = edit(inline.escape, 'g')('^', '')();
-
-inline._scheme = /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/;
-
-inline._email = /[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/;
-
-inline.autolink = edit(inline.autolink)('scheme', inline._scheme)('email', inline._email)();
-
-inline._attribute = /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/;
-
-inline.tag = edit(inline.tag)('comment', block._comment)('attribute', inline._attribute)();
-
-inline._label = /(?:\[[^\[\]]*\]|\\[\[\]]?|`[^`]*`|[^\[\]\\])*?/;
-
-inline._href = /\s*(<(?:\\[<>]?|[^\s<>\\])*>|(?:\\[()]?|\([^\s\x00-\x1f()\\]*\)|[^\s\x00-\x1f()\\])*?)/;
-
-inline._title = /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/;
-
-inline.link = edit(inline.link)('label', inline._label)('href', inline._href)('title', inline._title)();
-
-inline.reflink = edit(inline.reflink)('label', inline._label)();
-
-inline.note = edit(inline.note)('label', inline._label)();
-
-/*
- * Normal Inline Grammar
- */
-inline.normal = Object.assign({}, inline);
-
-/*
- * Pedantic Inline Grammar
- * -- bye --
- */
-/*
- * GFM Inline Grammar
- */
-inline.gfm = Object.assign({}, inline.normal, {
-  url: edit(/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/)('email', inline._email)(),
-  _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,
-  text: edit(inline.text)('|', '|https?://|ftp://|www\\.|[a-zA-Z0-9.!#$%&\'*+/=?^_`{\\|}~-]+@|')()
-});
-
-/*
- * GFM + Line Breaks Inline Grammar
- */
-inline.breaks = Object.assign({}, inline.gfm, {
-  br: edit(inline.br)('{2,}', '*')(),
-  text: edit(inline.gfm.text)('{2,}', '*')()
-});
-
-module.exports = { block, inline, noop };
-
-/***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(19);
+var content = __webpack_require__(20);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -3182,7 +3220,7 @@ if(false) {
 }
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(true);
@@ -3196,18 +3234,18 @@ exports.push([module.i, "\n.nodes-move:not(.nodes-leave-active) > image[data-v-b
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("dagre");
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse, syntax;
 
-({ syntax } = __webpack_require__(22));
+({ syntax } = __webpack_require__(23));
 
 parse = function (render, src) {
   var $, _, all, cap, depth, edges, end, find_parent, i, idx, j, label, last, len, len1, line, nodes, parent, parents, pl, results, start, tokens, v, vl, vm, w, wl, wm;
@@ -3307,7 +3345,7 @@ parse = function (render, src) {
 module.exports = parse;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 var regexp_join, syntax;
@@ -3343,7 +3381,7 @@ syntax.edges = regexp_join(syntax.edges, '_node_', '_arrow_', '_comment_', '_eol
 module.exports = { syntax };
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3515,11 +3553,11 @@ if (false) {
 }
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marksvg_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__coffee_loader_node_modules_vue_loader_lib_selector_type_script_index_0_marksvg_vue__ = __webpack_require__(7);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_b52af23e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_marksvg_vue__ = __webpack_require__(27);
 var disposed = false
@@ -3567,12 +3605,12 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var do_parse, parse, stringify, syntax;
 
-({ syntax } = __webpack_require__(26));
+({ syntax } = __webpack_require__(8));
 
 parse = function (render, src) {
   return do_parse([], render, src);
@@ -3699,54 +3737,6 @@ stringify = function (tokens, data) {
 };
 
 module.exports = { parse, stringify };
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports) {
-
-var regexp_join, syntax;
-
-regexp_join = function (regex, ...names) {
-  var flags, i, key, len, name, source, val;
-  ({ flags, source } = regex);
-  for (i = 0, len = names.length; i < len; i++) {
-    name = names[i];
-    key = new RegExp(name, 'g');
-    val = syntax[name];
-    val = val.source || val;
-    source = source.replace(key, val);
-  }
-  return new RegExp(source, flags);
-};
-
-syntax = {
-  nodes: /^(?:_header_)? *((?:(?:_xy_)?_id__sep_)+)_eol_/,
-  edges: /^ *((_id_)?(?: *_arrow_ *_id_)+) *(?:_comment_)?_eol_/,
-  newline: /^ *\n|^ +$/,
-  error: /^[^\n]*\n|[^\n]+$/,
-  pick_node: /(?:<(\d+)(_side_| )?(\d+)>)?(_id_)/g,
-  _xy_: /<\d+(?:_side_| )?\d+>/,
-  _id_: /[^\n\s<>#]+/,
-  _arrow_: /(<|X|x|O|o)?_line_(_side_{2,2})?_line_(>|X|x|O|o)?/,
-  _header_: /#{1,3} *(.*) *\n/,
-  _comment_: /#{1,3} *(.*) */,
-  _line_: /(-|=|\.)+/,
-  _side_: /[udlrUDLRv^<>]/,
-  _sep_: / *\n? */,
-  _eol_: / *(?:\n|$)/
-};
-
-syntax._xy_ = regexp_join(syntax._xy_, '_side_');
-
-syntax._arrow_ = regexp_join(syntax._arrow_, '_line_', '_side_');
-
-syntax.pick_node = regexp_join(syntax.pick_node, '_id_', '_side_');
-
-syntax.nodes = regexp_join(syntax.nodes, '_xy_', '_id_', '_header_', '_sep_', '_eol_');
-
-syntax.edges = regexp_join(syntax.edges, '_id_', '_arrow_', '_comment_', '_eol_');
-
-module.exports = { syntax };
 
 /***/ }),
 /* 27 */
@@ -3949,13 +3939,13 @@ if (false) {
 
 var Dagre, fs, glob, shallow;
 
-({ shallow } = __webpack_require__(7));
+({ shallow } = __webpack_require__(9));
 
-glob = __webpack_require__(8);
+glob = __webpack_require__(10);
 
-fs = __webpack_require__(9);
+fs = __webpack_require__(11);
 
-({ Dagre } = __webpack_require__(10));
+({ Dagre } = __webpack_require__(12));
 
 glob.sync("./__tests__/**/*.dagre").map(function (path) {
   return describe(path, function () {
