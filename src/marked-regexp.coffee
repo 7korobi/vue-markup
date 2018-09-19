@@ -366,7 +366,6 @@ repl =
       when undefined
         @[str]
       when hd
-        console.log { str, hd, chr }
         str
       when "'"
         "#{hd}\u2018"
