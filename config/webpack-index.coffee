@@ -1,16 +1,26 @@
 nodeExternals = require 'webpack-node-externals'
+VueLoaderPlugin = require 'vue-loader/lib/plugin'
 path = require 'path'
 current = process.cwd()
 
 coffee =
-  test: /\.coffee$/,
+  test: /\.coffee$/
   loader: 'babel-loader!coffee-loader'
 
+sass =
+  test: /\.sass$/
+  loader: 'sass-loader'
+
 vue =
-  test: /\.vue$/,
+  test: /\.vue$/
   loader: 'vue-loader'
 
+pug =
+  test: /\.pug$/
+  loader: 'pug-plain-loader'
+
 module.exports =
+  mode: 'production'
   target: 'node' # Important
   devtool: 'source-map'
   entry:
@@ -23,6 +33,8 @@ module.exports =
   module:
     rules: [
       coffee
+      sass
+      pug
       vue
     ]
 
@@ -32,5 +44,5 @@ module.exports =
       '@': current
       '~': current
 
-  plugins: []
+  plugins: [ new VueLoaderPlugin() ]
   externals: [nodeExternals()] # Important

@@ -21,17 +21,6 @@ article
     .error(v-for="err in graph.errors") {{ err }}
 </template>
 
-<style lang="sass" scoped>
-
-.nodes-move:not(.nodes-leave-active)
-  > rect
-  > image
-    transition: x .5s, y .5s
-.edges-move:not(.edges-leave-active)
-  transition: d .5s
-
-</style>
-
 <script lang="coffee">
 dagre = require "dagre"
 parse = require "./dagre-parse"

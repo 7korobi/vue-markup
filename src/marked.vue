@@ -1,5 +1,3 @@
-<style lang="sass" scoped>
-</style>
 <script lang="coffee">
 _ = require 'lodash'
 marked = require './marked-parse'
