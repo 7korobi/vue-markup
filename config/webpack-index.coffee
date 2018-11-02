@@ -1,5 +1,6 @@
 nodeExternals = require 'webpack-node-externals'
 VueLoaderPlugin = require 'vue-loader/lib/plugin'
+
 path = require 'path'
 current = process.cwd()
 
@@ -28,7 +29,8 @@ module.exports =
   output:
     path: current
     filename: '[name].js' # Important
-    libraryTarget: 'this' # Important
+    library: 'VueMarkup', # Important
+    libraryTarget: 'umd'  # Important
 
   module:
     rules: [
@@ -45,4 +47,3 @@ module.exports =
       '~': current
 
   plugins: [ new VueLoaderPlugin() ]
-  externals: [nodeExternals()] # Important
