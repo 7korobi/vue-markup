@@ -6,98 +6,98 @@ exports[`./__tests__/compiled_tests/escaped_angles.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/gfm_autolinks.md snapshot 1`] = `
-"<article><p>link with . <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>.</p>
+"<article><p>link with . <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>.</p>
 
-<p>link with ! <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>!</p>
+<p>link with ! <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>!</p>
 
-<p>link with : <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>:</p>
+<p>link with : <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>:</p>
 
-<p>link with , <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>,</p>
+<p>link with , <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>,</p>
 
-<p>link with ; <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>;</p>
+<p>link with ; <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>;</p>
 
-<p>link with ) <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>)</p>
+<p>link with ) <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>)</p>
 
-<p>link with nothing <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b></p>
+<p>link with nothing <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a></p>
 
 <h3>Example 597</h3>
 <p>The scheme http will be inserted automatically:</p>
 
-<p><b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org\\" chk=\\"confirm\\">www.commonmark.org</b></p>
+<p><a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org\\" chk=\\"confirm\\">www.commonmark.org</a></p>
 
 <h3>Example 598</h3>
 <p>After a valid domain, zero or more non-space non-&lt; characters may follow:</p>
 
-<p>Visit <b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org/help\\" chk=\\"confirm\\">www.commonmark.org/help</b> for more information.</p>
+<p>Visit <a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org/help\\" chk=\\"confirm\\">www.commonmark.org/help</a> for more information.</p>
 
 <h3>Example 599</h3>
 <p>Trailing punctuation (specifically, ?, !, ., ,, :, *, _, and ~) will not be considered part of the autolink, though they may be included in the interior of the link:</p>
 
-<p>Visit <b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org\\" chk=\\"confirm\\">www.commonmark.org</b>.</p>
+<p>Visit <a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org\\" chk=\\"confirm\\">www.commonmark.org</a>.</p>
 
-<p>Visit <b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org/a.b\\" chk=\\"confirm\\">www.commonmark.org/a.b</b>.</p>
+<p>Visit <a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org/a.b\\" chk=\\"confirm\\">www.commonmark.org/a.b</a>.</p>
 
 <h3>Example 600</h3>
-<p><b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">www.google.com/search?q=Markup+(business)</b></p>
+<p><a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">www.google.com/search?q=Markup+(business)</a></p>
 
-<p>(<b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">www.google.com/search?q=Markup+(business)</b>)</p>
+<p>(<a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">www.google.com/search?q=Markup+(business)</a>)</p>
 
 <h3>Example 601</h3>
-<p><b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=(business))+ok\\" chk=\\"confirm\\">www.google.com/search?q=(business))+ok</b></p>
+<p><a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=(business))+ok\\" chk=\\"confirm\\">www.google.com/search?q=(business))+ok</a></p>
 
 <h3>Example 602</h3>
-<p><b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=commonmark&amp;hl=en\\" chk=\\"confirm\\">www.google.com/search?q=commonmark&amp;hl=en</b></p>
+<p><a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=commonmark&amp;hl=en\\" chk=\\"confirm\\">www.google.com/search?q=commonmark&amp;hl=en</a></p>
 
-<p><b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=commonmark\\" chk=\\"confirm\\">www.google.com/search?q=commonmark</b>&amp;amp;</p>
+<p><a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=commonmark\\" chk=\\"confirm\\">www.google.com/search?q=commonmark</a>&amp;amp;</p>
 
 <h3>Example 603</h3>
 <p>&lt; immediately ends an autolink.</p>
 
-<p><b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org/he\\" chk=\\"confirm\\">www.commonmark.org/he</b>&lt;lp</p>
+<p><a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org/he\\" chk=\\"confirm\\">www.commonmark.org/he</a>&lt;lp</p>
 
 <h3>Example 604</h3>
-<p><b title=\\"http
-commonmark.org\\" href=\\"http://commonmark.org\\" chk=\\"confirm\\">http://commonmark.org</b></p>
+<p><a title=\\"http
+commonmark.org\\" href=\\"http://commonmark.org\\" chk=\\"confirm\\">http://commonmark.org</a></p>
 
-<p>(Visit <b title=\\"https
-encrypted.google.com\\" href=\\"https://encrypted.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">https://encrypted.google.com/search?q=Markup+(business)</b>)</p>
+<p>(Visit <a title=\\"https
+encrypted.google.com\\" href=\\"https://encrypted.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">https://encrypted.google.com/search?q=Markup+(business)</a>)</p>
 
-<p>Anonymous FTP is available at <b title=\\"ftp
-foo.bar.baz\\" href=\\"ftp://foo.bar.baz\\" chk=\\"confirm\\">ftp://foo.bar.baz</b>.</p>
+<p>Anonymous FTP is available at <a title=\\"ftp
+foo.bar.baz\\" href=\\"ftp://foo.bar.baz\\" chk=\\"confirm\\">ftp://foo.bar.baz</a>.</p>
 
 <p>Extended email autolinks:</p>
 
 <h3>Example 605</h3>
-<p><b title=\\"mailto:foo@bar.baz
-\\" href=\\"mailto:foo@bar.baz\\" chk=\\"confirm\\">foo@bar.baz</b></p>
+<p><a title=\\"mailto:foo@bar.baz
+\\" href=\\"mailto:foo@bar.baz\\" chk=\\"confirm\\">foo@bar.baz</a></p>
 
 <h3>Example 606</h3>
-<p>hello@mail+xyz.example isn’t valid, but <b title=\\"mailto:hello+xyz@mail.example
-\\" href=\\"mailto:hello+xyz@mail.example\\" chk=\\"confirm\\">hello+xyz@mail.example</b> is.</p>
+<p>hello@mail+xyz.example isn’t valid, but <a title=\\"mailto:hello+xyz@mail.example
+\\" href=\\"mailto:hello+xyz@mail.example\\" chk=\\"confirm\\">hello+xyz@mail.example</a> is.</p>
 
 <h3>Example 607</h3>
-<p><b title=\\"mailto:a.b-c_d@a.b
-\\" href=\\"mailto:a.b-c_d@a.b\\" chk=\\"confirm\\">a.b-c_d@a.b</b></p>
+<p><a title=\\"mailto:a.b-c_d@a.b
+\\" href=\\"mailto:a.b-c_d@a.b\\" chk=\\"confirm\\">a.b-c_d@a.b</a></p>
 
-<p><b title=\\"mailto:a.b-c_d@a.b
-\\" href=\\"mailto:a.b-c_d@a.b\\" chk=\\"confirm\\">a.b-c_d@a.b</b>.</p>
+<p><a title=\\"mailto:a.b-c_d@a.b
+\\" href=\\"mailto:a.b-c_d@a.b\\" chk=\\"confirm\\">a.b-c_d@a.b</a>.</p>
 
 <p>a.b-c_d@a.b-</p>
 
@@ -210,14 +210,14 @@ list item.
 `;
 
 exports[`./__tests__/compiled_tests/headings_id.md snapshot 1`] = `
-"<article><h3>Heading with a <b title=\\"http
-github.com\\" href=\\"http://github.com/\\" chk=\\"confirm\\">link</b></h3>
+"<article><h3>Heading with a <a title=\\"http
+github.com\\" href=\\"http://github.com/\\" chk=\\"confirm\\">link</a></h3>
 <h3>Heading with some <em>italic text</em></h3>
 <h3>Or some <strong>strong</strong></h3><p>(which doesn’t really make any difference, here)</p>
 
 <h3>Or even <code>code</code></h3>
 <h3>What about <del>strikethrough</del></h3>
-<h2>And a ref <b title=\\"link to nowhere\\" href=\\"/some/url\\" chk=\\"confirm\\">link</b></h2>
+<h2>And a ref <a title=\\"link to nowhere\\" href=\\"/some/url\\" chk=\\"confirm\\">link</a></h2>
 </article>"
 `;
 
@@ -462,8 +462,8 @@ exports[`./__tests__/compiled_tests/lazy_blockquotes.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/link_lt.md snapshot 1`] = `
-"<article><p><b title=\\"<test
-\\" href=\\"<test\\" chk=\\"confirm\\">URL</b></p>
+"<article><p><a title=\\"<test
+\\" href=\\"<test\\" chk=\\"confirm\\">URL</a></p>
 </article>"
 `;
 
@@ -483,16 +483,16 @@ exports[`./__tests__/compiled_tests/links.md snapshot 1`] = `
 exports[`./__tests__/compiled_tests/links_inline_style.md snapshot 1`] = `
 "<article><hr><p>pedantic: true</p>
 <h2>gfm: false</h2>
-<p>Just a <b title=\\"
-url\\" href=\\"/url/\\" chk=\\"confirm\\">URL</b>.</p>
+<p>Just a <a title=\\"
+url\\" href=\\"/url/\\" chk=\\"confirm\\">URL</a>.</p>
 
-<p><b title=\\"title\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</b>.</p>
+<p><a title=\\"title\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</a>.</p>
 
-<p><b title=\\"title preceded by two spaces\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</b>.</p>
+<p><a title=\\"title preceded by two spaces\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</a>.</p>
 
-<p><b title=\\"title preceded by a tab\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</b>.</p>
+<p><a title=\\"title preceded by a tab\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</a>.</p>
 
-<p><b title=\\"title has spaces afterward\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</b>.</p>
+<p><a title=\\"title has spaces afterward\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</a>.</p>
 
 <p>[URL and title]( /url/has space ).</p>
 
@@ -506,27 +506,27 @@ url\\" href=\\"/url/\\" chk=\\"confirm\\">URL</b>.</p>
 exports[`./__tests__/compiled_tests/links_reference_style.md snapshot 1`] = `
 "<article><hr><p>pedantic: true</p>
 <h2>gfm: false</h2>
-<p>Foo [bar] <b title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">1</b>.</p>
+<p>Foo [bar] <a title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">1</a>.</p>
 
-<p>Foo <b title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">bar</b>.</p>
+<p>Foo <a title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">bar</a>.</p>
 
 <p>Foo [bar]
-<b title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">1</b>.</p>
+<a title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">1</a>.</p>
 
 
 
-<p>With [embedded [brackets]] <b title=\\"
-url\\" href=\\"/url/\\" chk=\\"confirm\\">b</b>.</p>
+<p>With [embedded [brackets]] <a title=\\"
+url\\" href=\\"/url/\\" chk=\\"confirm\\">b</a>.</p>
 
 
-<p>Indented <b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">once</b>.</p>
+<p>Indented <a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">once</a>.</p>
 
-<p>Indented <b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">twice</b>.</p>
+<p>Indented <a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">twice</a>.</p>
 
-<p>Indented <b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">thrice</b>.</p>
+<p>Indented <a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">thrice</a>.</p>
 
 <p>Indented [four][] times.</p>
 
@@ -538,21 +538,21 @@ url\\" href=\\"/url\\" chk=\\"confirm\\">thrice</b>.</p>
 
 </code></pre>
 <hr>
-<p><b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b> <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b> should work</p>
+<p><a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a> <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a> should work</p>
 
-<p>So should <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b>.</p>
+<p>So should <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a>.</p>
 
-<p>And <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b> [].</p>
+<p>And <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a> [].</p>
 
-<p>And <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b>.</p>
+<p>And <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a>.</p>
 
-<p>And <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b>.</p>
+<p>And <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a>.</p>
 
 <p>But not [that] [].</p>
 
@@ -560,27 +560,27 @@ url\\" href=\\"/url\\" chk=\\"confirm\\">thrice</b>.</p>
 
 <p>Nor [that].</p>
 
-<p>[Something in brackets like <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b> should work]</p>
+<p>[Something in brackets like <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a> should work]</p>
 
-<p>[Same with <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b>.]</p>
+<p>[Same with <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a>.]</p>
 
-<p>In this case, <b title=\\"
-somethingelse\\" href=\\"/somethingelse/\\" chk=\\"confirm\\">this</b> points to something else.</p>
+<p>In this case, <a title=\\"
+somethingelse\\" href=\\"/somethingelse/\\" chk=\\"confirm\\">this</a> points to something else.</p>
 
 <p>Backslashing should suppress [this] and [this].</p>
 
 
 
 <hr>
-<p>Here’s one where the <b title=\\"
+<p>Here’s one where the <a title=\\"
 url\\" href=\\"/url/\\" chk=\\"confirm\\">link
-breaks</b> across lines.</p>
+breaks</a> across lines.</p>
 
-<p>Here’s another where the <b title=\\"
+<p>Here’s another where the <a title=\\"
 url\\" href=\\"/url/\\" chk=\\"confirm\\">link 
-breaks</b> across lines, but with a line-ending space.</p>
+breaks</a> across lines, but with a line-ending space.</p>
 
 
 </article>"
@@ -589,26 +589,26 @@ breaks</b> across lines, but with a line-ending space.</p>
 exports[`./__tests__/compiled_tests/links_shortcut_references.md snapshot 1`] = `
 "<article><hr><p>pedantic: true</p>
 <h2>gfm: false</h2>
-<p>This is the <b title=\\"
-simple\\" href=\\"/simple\\" chk=\\"confirm\\">simple case</b>.</p>
+<p>This is the <a title=\\"
+simple\\" href=\\"/simple\\" chk=\\"confirm\\">simple case</a>.</p>
 
 
 
 
-<p>This one has a <b title=\\"
+<p>This one has a <a title=\\"
 foo\\" href=\\"/foo\\" chk=\\"confirm\\">line
-break</b>.</p>
+break</a>.</p>
 
-<p>This one has a <b title=\\"
+<p>This one has a <a title=\\"
 foo\\" href=\\"/foo\\" chk=\\"confirm\\">line 
-break</b> with a line-ending space.</p>
+break</a> with a line-ending space.</p>
 
 
 
-<p><b title=\\"
-this\\" href=\\"/this\\" chk=\\"confirm\\">this</b> <b title=\\"
-that\\" href=\\"/that\\" chk=\\"confirm\\">that</b> and the <b title=\\"
-other\\" href=\\"/other\\" chk=\\"confirm\\">other</b></p>
+<p><a title=\\"
+this\\" href=\\"/this\\" chk=\\"confirm\\">this</a> <a title=\\"
+that\\" href=\\"/that\\" chk=\\"confirm\\">that</a> and the <a title=\\"
+other\\" href=\\"/other\\" chk=\\"confirm\\">other</a></p>
 
 </article>"
 `;
@@ -690,7 +690,7 @@ exports[`./__tests__/compiled_tests/main.md snapshot 1`] = `
 <h1>A heading</h1>
 <p>Just a note, I’ve found that I can’t test my markdown parser vs others.
 For example, both markdown.js and showdown code blocks in lists wrong. They’re
-also completely <b title=\\"Google\\" href=\\"http://google.com/\\" chk=\\"confirm\\">inconsistent</b> with regards to paragraphs in list items.</p>
+also completely <a title=\\"Google\\" href=\\"http://google.com/\\" chk=\\"confirm\\">inconsistent</a> with regards to paragraphs in list items.</p>
 
 <p>A link. Not anymore.</p>
 
@@ -722,8 +722,8 @@ Text here</li></ul></li></ul></blockquote>
 <p>mockup text..</p>
 <p>markdown.js breaks here again</p></blockquote>
 <h2>Another Heading</h2>
-<p>Hello <em>world</em>. Here is a <b title=\\"
-\\" href=\\"//hello\\" chk=\\"confirm\\">link</b>.
+<p>Hello <em>world</em>. Here is a <a title=\\"
+\\" href=\\"//hello\\" chk=\\"confirm\\">link</a>.
 And an image <img src=\\"src\\" alt=\\"alt\\">.</p>
 
 <pre><code>Code goes here.
@@ -754,19 +754,19 @@ exports[`./__tests__/compiled_tests/markdown_documentation_basics.md snapshot 1`
 
 </p><h2>Getting the Gist of Markdown’s Formatting Syntax</h2>
 <p>This page offers a brief overview of what it’s like to use Markdown.
-The [syntax page] <b title=\\"Markdown Syntax\\" href=\\"/projects/markdown/syntax\\" chk=\\"confirm\\">s</b> provides complete, detailed documentation for
+The [syntax page] <a title=\\"Markdown Syntax\\" href=\\"/projects/markdown/syntax\\" chk=\\"confirm\\">s</a> provides complete, detailed documentation for
 every feature, but Markdown should be very easy to pick up simply by
 looking at a few examples of it in action. The examples on this page
 are written in a before/after style, showing example syntax and the
 HTML output produced by Markdown.</p>
 
-<p>It’s also helpful to simply try Markdown out; the [Dingus] <b title=\\"Markdown Dingus\\" href=\\"/projects/markdown/dingus\\" chk=\\"confirm\\">d</b> is a
+<p>It’s also helpful to simply try Markdown out; the [Dingus] <a title=\\"Markdown Dingus\\" href=\\"/projects/markdown/dingus\\" chk=\\"confirm\\">d</a> is a
 web application that allows you type your own Markdown-formatted text
 and translate it to XHTML.</p>
 
 <p><strong>Note:</strong> This document is itself written using Markdown; you
-can [see the source for it by adding ‘.text’ to the URL] <b title=\\"
-projects\\" href=\\"/projects/markdown/basics.text\\" chk=\\"confirm\\">src</b>.</p>
+can [see the source for it by adding ‘.text’ to the URL] <a title=\\"
+projects\\" href=\\"/projects/markdown/basics.text\\" chk=\\"confirm\\">src</a>.</p>
 
 
 
@@ -1052,35 +1052,35 @@ exports[`./__tests__/compiled_tests/markdown_documentation_syntax.md snapshot 1`
 &lt;/ul&gt;
 
 
-</p><ul><li><b title=\\"
-overview\\" href=\\"#overview\\" chk=\\"confirm\\">Overview</b>
-<ul><li><b title=\\"
-philosophy\\" href=\\"#philosophy\\" chk=\\"confirm\\">Philosophy</b></li><li><b title=\\"
-html\\" href=\\"#html\\" chk=\\"confirm\\">Inline HTML</b></li><li><b title=\\"
-autoescape\\" href=\\"#autoescape\\" chk=\\"confirm\\">Automatic Escaping for Special Characters</b></li></ul></li><li><b title=\\"
-block\\" href=\\"#block\\" chk=\\"confirm\\">Block Elements</b>
-<ul><li><b title=\\"
-p\\" href=\\"#p\\" chk=\\"confirm\\">Paragraphs and Line Breaks</b></li><li><b title=\\"
-header\\" href=\\"#header\\" chk=\\"confirm\\">Headers</b></li><li><b title=\\"
-blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">Blockquotes</b></li><li><b title=\\"
-list\\" href=\\"#list\\" chk=\\"confirm\\">Lists</b></li><li><b title=\\"
-precode\\" href=\\"#precode\\" chk=\\"confirm\\">Code Blocks</b></li><li><b title=\\"
-hr\\" href=\\"#hr\\" chk=\\"confirm\\">Horizontal Rules</b></li></ul></li><li><b title=\\"
-span\\" href=\\"#span\\" chk=\\"confirm\\">Span Elements</b>
-<ul><li><b title=\\"
-link\\" href=\\"#link\\" chk=\\"confirm\\">Links</b></li><li><b title=\\"
-em\\" href=\\"#em\\" chk=\\"confirm\\">Emphasis</b></li><li><b title=\\"
-code\\" href=\\"#code\\" chk=\\"confirm\\">Code</b></li><li><b title=\\"
-img\\" href=\\"#img\\" chk=\\"confirm\\">Images</b></li></ul></li><li><b title=\\"
-misc\\" href=\\"#misc\\" chk=\\"confirm\\">Miscellaneous</b>
-<ul><li><b title=\\"
-backslash\\" href=\\"#backslash\\" chk=\\"confirm\\">Backslash Escapes</b></li><li><b title=\\"
-autolink\\" href=\\"#autolink\\" chk=\\"confirm\\">Automatic Links</b>
+</p><ul><li><a title=\\"
+overview\\" href=\\"#overview\\" chk=\\"confirm\\">Overview</a>
+<ul><li><a title=\\"
+philosophy\\" href=\\"#philosophy\\" chk=\\"confirm\\">Philosophy</a></li><li><a title=\\"
+html\\" href=\\"#html\\" chk=\\"confirm\\">Inline HTML</a></li><li><a title=\\"
+autoescape\\" href=\\"#autoescape\\" chk=\\"confirm\\">Automatic Escaping for Special Characters</a></li></ul></li><li><a title=\\"
+block\\" href=\\"#block\\" chk=\\"confirm\\">Block Elements</a>
+<ul><li><a title=\\"
+p\\" href=\\"#p\\" chk=\\"confirm\\">Paragraphs and Line Breaks</a></li><li><a title=\\"
+header\\" href=\\"#header\\" chk=\\"confirm\\">Headers</a></li><li><a title=\\"
+blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">Blockquotes</a></li><li><a title=\\"
+list\\" href=\\"#list\\" chk=\\"confirm\\">Lists</a></li><li><a title=\\"
+precode\\" href=\\"#precode\\" chk=\\"confirm\\">Code Blocks</a></li><li><a title=\\"
+hr\\" href=\\"#hr\\" chk=\\"confirm\\">Horizontal Rules</a></li></ul></li><li><a title=\\"
+span\\" href=\\"#span\\" chk=\\"confirm\\">Span Elements</a>
+<ul><li><a title=\\"
+link\\" href=\\"#link\\" chk=\\"confirm\\">Links</a></li><li><a title=\\"
+em\\" href=\\"#em\\" chk=\\"confirm\\">Emphasis</a></li><li><a title=\\"
+code\\" href=\\"#code\\" chk=\\"confirm\\">Code</a></li><li><a title=\\"
+img\\" href=\\"#img\\" chk=\\"confirm\\">Images</a></li></ul></li><li><a title=\\"
+misc\\" href=\\"#misc\\" chk=\\"confirm\\">Miscellaneous</a>
+<ul><li><a title=\\"
+backslash\\" href=\\"#backslash\\" chk=\\"confirm\\">Backslash Escapes</a></li><li><a title=\\"
+autolink\\" href=\\"#autolink\\" chk=\\"confirm\\">Automatic Links</a>
 
 
 </li></ul></li></ul><p><strong>Note:</strong> This document is itself written using Markdown; you
-can <b title=\\"
-projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the source for it by adding ‘.text’ to the URL</b>.</p>
+can <a title=\\"
+projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the source for it by adding ‘.text’ to the URL</a>.</p>
 
 
 <hr>
@@ -1094,14 +1094,14 @@ projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the 
 document should be publishable as-is, as plain text, without looking
 like it’s been marked up with tags or formatting instructions. While
 Markdown’s syntax has been influenced by several existing text<q cite=\\"spec-1-1-to-HTML\\">-to-HTML</q>
-filters <s> including [Setext] <b title=\\"http
-docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</b>, [atx] <b title=\\"http
-www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</b>, [Textile] <b title=\\"http
-textism.com\\" href=\\"http://textism.com/tools/textile/\\" chk=\\"confirm\\">3</b>, [reStructuredText] <b title=\\"http
-docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/rst.html\\" chk=\\"confirm\\">4</b>,
-[Grutatext] <b title=\\"http
-www.triptico.com\\" href=\\"http://www.triptico.com/software/grutatxt.html\\" chk=\\"confirm\\">5</b>, and [EtText] <b title=\\"http
-ettext.taint.org\\" href=\\"http://ettext.taint.org/doc/\\" chk=\\"confirm\\">6</b> </s> the single biggest source of
+filters <s> including [Setext] <a title=\\"http
+docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</a>, [atx] <a title=\\"http
+www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</a>, [Textile] <a title=\\"http
+textism.com\\" href=\\"http://textism.com/tools/textile/\\" chk=\\"confirm\\">3</a>, [reStructuredText] <a title=\\"http
+docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/rst.html\\" chk=\\"confirm\\">4</a>,
+[Grutatext] <a title=\\"http
+www.triptico.com\\" href=\\"http://www.triptico.com/software/grutatxt.html\\" chk=\\"confirm\\">5</a>, and [EtText] <a title=\\"http
+ettext.taint.org\\" href=\\"http://ettext.taint.org/doc/\\" chk=\\"confirm\\">6</a> </s> the single biggest source of
 inspiration for Markdown’s syntax is the format of plain text email.</p>
 
 
@@ -1204,8 +1204,8 @@ into <code>&amp;amp;</code>.</p>
 
 <pre><code>AT&amp;amp;T
 
-</code></pre><p>Similarly, because Markdown supports <b title=\\"
-html\\" href=\\"#html\\" chk=\\"confirm\\">inline HTML</b>, if you use
+</code></pre><p>Similarly, because Markdown supports <a title=\\"
+html\\" href=\\"#html\\" chk=\\"confirm\\">inline HTML</a>, if you use
 angle brackets as delimiters for HTML tags, Markdown will treat them as
 such. But if you write:</p>
 
@@ -1245,9 +1245,9 @@ end a line with two or more spaces, then type return.</p>
 
 <p>Yes, this takes a tad more effort to create a <code>&lt;br /&gt;</code>, but a simplistic
 “every line break is a <code>&lt;br /&gt;</code>“ rule wouldn’t work for Markdown.
-Markdown’s email-style <b title=\\"
-blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">blockquoting</b> and multi-paragraph <b title=\\"
-list\\" href=\\"#list\\" chk=\\"confirm\\">list items</b>
+Markdown’s email-style <a title=\\"
+blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">blockquoting</a> and multi-paragraph <a title=\\"
+list\\" href=\\"#list\\" chk=\\"confirm\\">list items</a>
 work best <s> and look better </s> when you format them with hard breaks.</p>
 
 
@@ -1255,9 +1255,9 @@ work best <s> and look better </s> when you format them with hard breaks.</p>
 
 <p>&lt;h3 id=\\"header\\"&gt;Headers&lt;/h3&gt;
 
-</p><p>Markdown supports two styles of headers, [Setext] <b title=\\"http
-docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</b> and [atx] <b title=\\"http
-www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</b>.</p>
+</p><p>Markdown supports two styles of headers, [Setext] <a title=\\"http
+docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</a> and [atx] <a title=\\"http
+www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</a>.</p>
 
 <p>Setext-style headers are “underlined” using equal signs (for first-level
 headers) and dashes (for second-level headers). For example:</p>
@@ -1676,8 +1676,8 @@ multiple words in the link text:</p>
 
 </code></pre><p>And then define the link:
 
-    [Daring Fireball]: <b title=\\"http
-daringfireball.net\\" href=\\"http://daringfireball.net/\\" chk=\\"confirm\\">http://daringfireball.net/</b></p>
+    [Daring Fireball]: <a title=\\"http
+daringfireball.net\\" href=\\"http://daringfireball.net/\\" chk=\\"confirm\\">http://daringfireball.net/</a></p>
 
 <p>Link definitions can be placed anywhere in your Markdown document. I
 tend to put them immediately after each paragraph in which they’re
@@ -1893,8 +1893,8 @@ spambots. For example, Markdown will turn this:</p>
 &amp;#109;\\"&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;
 &amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
 
-</code></pre><p>which will render in a browser as a clickable link to “<b title=\\"mailto:address@example.com
-\\" href=\\"mailto:address@example.com\\" chk=\\"confirm\\">address@example.com</b>“.</p>
+</code></pre><p>which will render in a browser as a clickable link to “<a title=\\"mailto:address@example.com
+\\" href=\\"mailto:address@example.com\\" chk=\\"confirm\\">address@example.com</a>“.</p>
 
 <p>(This sort of entity-encoding trick will indeed fool many, if not
 most, address-harvesting bots, but it definitely won’t fool all of
@@ -1958,11 +1958,11 @@ exports[`./__tests__/compiled_tests/nested_em.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/nested_square_link.md snapshot 1`] = `
-"<article><p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">the <code>]</code> character</b></p>
+"<article><p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">the <code>]</code> character</a></p>
 
-<p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">the \` character</b></p>
+<p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">the \` character</a></p>
 </article>"
 `;
 
@@ -2097,34 +2097,34 @@ exports[`./__tests__/compiled_tests/redos_nolink.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/compiled_tests/ref_paren.md snapshot 1`] = `
-"<article><p><b title=\\"there\\" href=\\"/url\\" chk=\\"confirm\\">hi</b></p>
+"<article><p><a title=\\"there\\" href=\\"/url\\" chk=\\"confirm\\">hi</a></p>
 
 </article>"
 `;
 
 exports[`./__tests__/compiled_tests/relative_urls.md snapshot 1`] = `
-"<article><hr><h2>baseUrl: “<b title=\\"http
-example.com\\" href=\\"http://example.com/base/&quot;\\" chk=\\"confirm\\">http://example.com/base/\\"</b></h2><h1>Absolutization of RFC 3986 URIs</h1>
-<h2>Absolute URI</h2><p><b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\"><img src=\\"http://example.com/logo\\" alt=\\"section 4.3\\"></b></p>
+"<article><hr><h2>baseUrl: “<a title=\\"http
+example.com\\" href=\\"http://example.com/base/&quot;\\" chk=\\"confirm\\">http://example.com/base/\\"</a></h2><h1>Absolutization of RFC 3986 URIs</h1>
+<h2>Absolute URI</h2><p><a title=\\"http
+example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\"><img src=\\"http://example.com/logo\\" alt=\\"section 4.3\\"></a></p>
 
-<h2>Network-path reference</h2><p><b title=\\"
-\\" href=\\"//example.com/\\" chk=\\"confirm\\"><img src=\\"//example.com/logo\\" alt=\\"section 4.2\\"></b></p>
+<h2>Network-path reference</h2><p><a title=\\"
+\\" href=\\"//example.com/\\" chk=\\"confirm\\"><img src=\\"//example.com/logo\\" alt=\\"section 4.2\\"></a></p>
 
-<h2>Absolute path</h2><p><b title=\\"
-path\\" href=\\"/path/to/content\\" chk=\\"confirm\\"><img src=\\"/path/to/img\\" alt=\\"section 4.2\\"></b></p>
+<h2>Absolute path</h2><p><a title=\\"
+path\\" href=\\"/path/to/content\\" chk=\\"confirm\\"><img src=\\"/path/to/img\\" alt=\\"section 4.2\\"></a></p>
 
-<h2>Relative path</h2><p><b title=\\"content
-\\" href=\\"content\\" chk=\\"confirm\\"><img src=\\"img\\" alt=\\"section 4.2\\"></b></p>
+<h2>Relative path</h2><p><a title=\\"content
+\\" href=\\"content\\" chk=\\"confirm\\"><img src=\\"img\\" alt=\\"section 4.2\\"></a></p>
 
-<h2>Dot-relative path</h2><p><b title=\\".
-content\\" href=\\"./content\\" chk=\\"confirm\\"><img src=\\"./img\\" alt=\\"section 3.3\\"></b></p>
+<h2>Dot-relative path</h2><p><a title=\\".
+content\\" href=\\"./content\\" chk=\\"confirm\\"><img src=\\"./img\\" alt=\\"section 3.3\\"></a></p>
 
-<p><b title=\\"..
-content\\" href=\\"../content\\" chk=\\"confirm\\"><img src=\\"../img\\" alt=\\"section 3.3\\"></b></p>
+<p><a title=\\"..
+content\\" href=\\"../content\\" chk=\\"confirm\\"><img src=\\"../img\\" alt=\\"section 3.3\\"></a></p>
 
-<h2>Same-document query</h2><p><b title=\\"
-\\" href=\\"?\\" chk=\\"confirm\\"><img src=\\"?type=image\\" alt=\\"section 4.4\\"></b></p>
+<h2>Same-document query</h2><p><a title=\\"
+\\" href=\\"?\\" chk=\\"confirm\\"><img src=\\"?type=image\\" alt=\\"section 4.4\\"></a></p>
 
 <h2>Same-document fragment</h2><p><q title=\\"
 \\"><img src=\\"#img\\" alt=\\"section 4.4\\"></q></p>
@@ -2214,8 +2214,8 @@ exports[`./__tests__/compiled_tests/toplevel_paragraphs.md snapshot 1`] = `
 </p><p>paragraph with span
 &lt;span&gt;text inside span&lt;/span&gt;</p>
 
-<p>hello <b title=\\"
-are\\" href=\\"/are/you\\" chk=\\"confirm\\">world</b></p>
+<p>hello <a title=\\"
+are\\" href=\\"/are/you\\" chk=\\"confirm\\">world</a></p>
 
 
 <p>&lt;div&gt;hello&lt;/div&gt;
@@ -2267,7 +2267,7 @@ exports[`./__tests__/giji/japanese text.md snapshot 1`] = `
 　　道場みたいな処だと窮屈だな。僕は自分で、別の村を建てるよ。僕の村は忙しい人もフォローするし、ルール違反（突然死とか）があっても、厳しく責め立てたくはないんだ。
 　　これ +- -- (‘’) (“”)</p>
 
-<table><thead><tr><th>Tables</th><th class=\\"c\\">Are</th><th class=\\"r\\">Cool</th></tr></thead><tbody><tr><td>col <sup>3</sup> is</td><td class=\\"c\\">other</td><td class=\\"r\\">$1600</td></tr><tr><td>col <sub>2</sub> is</td><td class=\\"c\\"><q title=\\"１０分とか、５分とか。……ひどいときは１分だぜ。クール！\\">short</q></td><td class=\\"r\\">$12</td></tr><tr><td>zebra stripes</td><td class=\\"c\\"><b title=\\"手引き\\" href=\\"http://crazy-crazy.sakura.ne.jp/giji/?%28Knowledge%29Guidance#l1\\" chk=\\"confirm\\">ガイド</b></td><td class=\\"r\\">$1</td></tr></tbody></table><hr><ol><li>まああんまり<abbr>大きい</abbr>と<ruby>困<rp>《</rp><rt>こま</rt><rp>》</rp></ruby>りますけど。</li></ol></article>"
+<table><thead><tr><th>Tables</th><th class=\\"c\\">Are</th><th class=\\"r\\">Cool</th></tr></thead><tbody><tr><td>col <sup>3</sup> is</td><td class=\\"c\\">other</td><td class=\\"r\\">$1600</td></tr><tr><td>col <sub>2</sub> is</td><td class=\\"c\\"><q title=\\"１０分とか、５分とか。……ひどいときは１分だぜ。クール！\\">short</q></td><td class=\\"r\\">$12</td></tr><tr><td>zebra stripes</td><td class=\\"c\\"><a title=\\"手引き\\" href=\\"http://crazy-crazy.sakura.ne.jp/giji/?%28Knowledge%29Guidance#l1\\" chk=\\"confirm\\">ガイド</a></td><td class=\\"r\\">$1</td></tr></tbody></table><hr><ol><li>まああんまり<abbr>大きい</abbr>と<ruby>困<rp>《</rp><rt>こま</rt><rp>》</rp></ruby>りますけど。</li></ol></article>"
 `;
 
 exports[`./__tests__/giji/sample.md snapshot 1`] = `
@@ -2278,9 +2278,9 @@ exports[`./__tests__/giji/sample.md snapshot 1`] = `
 <h1>Alt-H1</h1>
 <h2>Alt-H2</h2>
 <p>Hello <q title=\\"日本語のふきだし\\">まーくだうん</q>!
-<b title=\\"ank\\" href=\\"ank\\" chk=\\"confirm\\">間接参照</b></p>
+<a title=\\"ank\\" href=\\"ank\\" chk=\\"confirm\\">間接参照</a></p>
 
-<hr><p>ようこそ。ここにはこの<b title=\\"ここ！\\" href=\\"/\\" chk=\\"confirm\\">サイト</b>を楽しむためのルールや心構えを綴ってある。
+<hr><p>ようこそ。ここにはこの<a title=\\"ここ！\\" href=\\"/\\" chk=\\"confirm\\">サイト</a>を楽しむためのルールや心構えを綴ってある。
 暖炉のそばが開いているから、腰を下ろして熟読しよう。楽しいゲームは全員が対等で、全員が読んで理解しているルールがあって成り立つんだ。
 
 ただし、やむを得ず、ルール違反をすることもあるだろうね。違反してしまった事実は覆らないけれど、ルールを破らざるをえなかった事情は、落ち着いて聞いてあげよう。</p>
@@ -2305,8 +2305,8 @@ _em</em> <strong>strong</strong> *<strong>em strong</strong></em> <strong><stron
 
 <table><thead><tr><th>Tables</th><th class=\\"c\\">Are</th><th class=\\"r\\">Cool</th></tr></thead><tbody><tr><td>col 3 is</td><td class=\\"c\\">right-aligned</td><td class=\\"r\\">$1600</td></tr><tr><td>col 2 is</td><td class=\\"c\\">centered</td><td class=\\"r\\">$12</td></tr><tr><td>zebra stripes</td><td class=\\"c\\">are neat</td><td class=\\"r\\">$1</td></tr></tbody></table>
 
-<p><b title=\\"http
-www.youtube.com\\" href=\\"http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE\\" chk=\\"confirm\\"><img src=\\"https://s3-ap-northeast-1.amazonaws.com/giji-assets/images/portrate/c59.jpg\\" alt=\\"IMAGE ALT TEXT HERE\\"></b></p>
+<p><a title=\\"http
+www.youtube.com\\" href=\\"http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE\\" chk=\\"confirm\\"><img src=\\"https://s3-ap-northeast-1.amazonaws.com/giji-assets/images/portrate/c59.jpg\\" alt=\\"IMAGE ALT TEXT HERE\\"></a></p>
 
 <p>There must be at least 3 dashes separating each header cell.
 The outer pipes (|) are optional, and you don’t need to make the 
@@ -2338,8 +2338,8 @@ exports[`./__tests__/giji/svg.md snapshot 1`] = `
 
 exports[`./__tests__/new/autolink_lines.md snapshot 1`] = `
 "<article><p>hello world
-<b title=\\"http
-example.com\\" href=\\"http://example.com\\" chk=\\"confirm\\">http://example.com</b></p>
+<a title=\\"http
+example.com\\" href=\\"http://example.com\\" chk=\\"confirm\\">http://example.com</a></p>
 </article>"
 `;
 
@@ -2351,8 +2351,8 @@ exports[`./__tests__/new/blockquote_list_item.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/case_insensitive_refs.md snapshot 1`] = `
-"<article><p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">hi</b></p>
+"<article><p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">hi</a></p>
 
 </article>"
 `;
@@ -2363,62 +2363,62 @@ exports[`./__tests__/new/cm_autolinks.md snapshot 1`] = `
 <p>Here are some valid autolinks:</p>
 
 <h3>Example 565</h3>
-<p><b title=\\"http
-foo.bar.baz\\" href=\\"http://foo.bar.baz\\" chk=\\"confirm\\">http://foo.bar.baz</b></p>
+<p><a title=\\"http
+foo.bar.baz\\" href=\\"http://foo.bar.baz\\" chk=\\"confirm\\">http://foo.bar.baz</a></p>
 
 <h3>Example 566</h3>
-<p><b title=\\"http
-foo.bar.baz\\" href=\\"http://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean\\" chk=\\"confirm\\">http://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean</b></p>
+<p><a title=\\"http
+foo.bar.baz\\" href=\\"http://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean\\" chk=\\"confirm\\">http://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean</a></p>
 
 <h3>Example 567</h3>
-<p><b title=\\"irc
-foo.bar:2233\\" href=\\"irc://foo.bar:2233/baz\\" chk=\\"confirm\\">irc://foo.bar:2233/baz</b></p>
+<p><a title=\\"irc
+foo.bar:2233\\" href=\\"irc://foo.bar:2233/baz\\" chk=\\"confirm\\">irc://foo.bar:2233/baz</a></p>
 
 <h3>Example 568</h3>
 <p>Uppercase is also fine:</p>
 
-<p><b title=\\"MAILTO:FOO@BAR.BAZ
-\\" href=\\"MAILTO:FOO@BAR.BAZ\\" chk=\\"confirm\\">MAILTO:FOO@BAR.BAZ</b></p>
+<p><a title=\\"MAILTO:FOO@BAR.BAZ
+\\" href=\\"MAILTO:FOO@BAR.BAZ\\" chk=\\"confirm\\">MAILTO:FOO@BAR.BAZ</a></p>
 
 <p>Note that many strings that count as absolute URIs for purposes of this spec are not valid URIs, because their schemes are not registered or because of other problems with their syntax:</p>
 
 <h3>Example 569</h3>
-<p><b title=\\"a+b+c:d
-\\" href=\\"a+b+c:d\\" chk=\\"confirm\\">a+b+c:d</b></p>
+<p><a title=\\"a+b+c:d
+\\" href=\\"a+b+c:d\\" chk=\\"confirm\\">a+b+c:d</a></p>
 
 <h3>Example 570</h3>
-<p><b title=\\"made-up-scheme
-foo,bar\\" href=\\"made-up-scheme://foo,bar\\" chk=\\"confirm\\">made-up-scheme://foo,bar</b></p>
+<p><a title=\\"made-up-scheme
+foo,bar\\" href=\\"made-up-scheme://foo,bar\\" chk=\\"confirm\\">made-up-scheme://foo,bar</a></p>
 
 <h3>Example 571</h3>
-<p><b title=\\"http
-..\\" href=\\"http://../\\" chk=\\"confirm\\">http://../</b></p>
+<p><a title=\\"http
+..\\" href=\\"http://../\\" chk=\\"confirm\\">http://../</a></p>
 
 <h3>Example 572</h3>
-<p><b title=\\"localhost:5001
-foo\\" href=\\"localhost:5001/foo\\" chk=\\"confirm\\">localhost:5001/foo</b></p>
+<p><a title=\\"localhost:5001
+foo\\" href=\\"localhost:5001/foo\\" chk=\\"confirm\\">localhost:5001/foo</a></p>
 
 <h3>Example 573</h3>
 <p>Spaces are not allowed in autolinks:</p>
 
-<p>&lt;<b title=\\"http
-foo.bar\\" href=\\"http://foo.bar/baz\\" chk=\\"confirm\\">http://foo.bar/baz</b> bim&gt;</p>
+<p>&lt;<a title=\\"http
+foo.bar\\" href=\\"http://foo.bar/baz\\" chk=\\"confirm\\">http://foo.bar/baz</a> bim&gt;</p>
 
 <h3>Example 574</h3>
 <p>Backslash-escapes do not work inside autolinks:</p>
 
-<p><b title=\\"http
-example.com\\" href=\\"http://example.com/\\\\[\\\\\\" chk=\\"confirm\\">http://example.com/\\\\[\\\\</b></p>
+<p><a title=\\"http
+example.com\\" href=\\"http://example.com/\\\\[\\\\\\" chk=\\"confirm\\">http://example.com/\\\\[\\\\</a></p>
 
 <p>Examples of email autolinks:</p>
 
 <h3>Example 575</h3>
-<p><b title=\\"mailto:foo@bar.example.com
-\\" href=\\"mailto:foo@bar.example.com\\" chk=\\"confirm\\">foo@bar.example.com</b></p>
+<p><a title=\\"mailto:foo@bar.example.com
+\\" href=\\"mailto:foo@bar.example.com\\" chk=\\"confirm\\">foo@bar.example.com</a></p>
 
 <h3>Example 576</h3>
-<p><b title=\\"mailto:foo+special@Bar.baz-bar0.com
-\\" href=\\"mailto:foo+special@Bar.baz-bar0.com\\" chk=\\"confirm\\">foo+special@Bar.baz-bar0.com</b></p>
+<p><a title=\\"mailto:foo+special@Bar.baz-bar0.com
+\\" href=\\"mailto:foo+special@Bar.baz-bar0.com\\" chk=\\"confirm\\">foo+special@Bar.baz-bar0.com</a></p>
 
 <h3>Example 577</h3>
 <p>Backslash-escapes do not work inside email autolinks:</p>
@@ -2431,8 +2431,8 @@ example.com\\" href=\\"http://example.com/\\\\[\\\\\\" chk=\\"confirm\\">http://
 <p>&lt;&gt;</p>
 
 <h3>Example 579</h3>
-<p>&lt; <b title=\\"http
-foo.bar\\" href=\\"http://foo.bar\\" chk=\\"confirm\\">http://foo.bar</b> &gt;</p>
+<p>&lt; <a title=\\"http
+foo.bar\\" href=\\"http://foo.bar\\" chk=\\"confirm\\">http://foo.bar</a> &gt;</p>
 
 <h3>Example 580</h3>
 <p>&lt;m:abc&gt;</p>
@@ -2441,12 +2441,12 @@ foo.bar\\" href=\\"http://foo.bar\\" chk=\\"confirm\\">http://foo.bar</b> &gt;</
 <p>&lt;foo.bar.baz&gt;</p>
 
 <h3>Example 582</h3>
-<p><b title=\\"http
-example.com\\" href=\\"http://example.com\\" chk=\\"confirm\\">http://example.com</b></p>
+<p><a title=\\"http
+example.com\\" href=\\"http://example.com\\" chk=\\"confirm\\">http://example.com</a></p>
 
 <h3>Example 583</h3>
-<p><b title=\\"mailto:foo@bar.example.com
-\\" href=\\"mailto:foo@bar.example.com\\" chk=\\"confirm\\">foo@bar.example.com</b></p></article>"
+<p><a title=\\"mailto:foo@bar.example.com
+\\" href=\\"mailto:foo@bar.example.com\\" chk=\\"confirm\\">foo@bar.example.com</a></p></article>"
 `;
 
 exports[`./__tests__/new/cm_blockquotes.md snapshot 1`] = `
@@ -2857,27 +2857,27 @@ foo</p></article>"
 exports[`./__tests__/new/cm_link_defs.md snapshot 1`] = `
 "<article><h3>Example 159</h3>
 
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo159</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo159</a></p>
 
 <h3>Example 160</h3>
 
-<p><b title=\\"the title\\" href=\\"/url\\" chk=\\"confirm\\">foo160</b></p>
+<p><a title=\\"the title\\" href=\\"/url\\" chk=\\"confirm\\">foo160</a></p>
 
 <h3>Example 161</h3>
 
-<p><b title=\\"title (with parens)\\" href=\\"my_(url)\\" chk=\\"confirm\\">Foo161*bar]</b></p>
+<p><a title=\\"title (with parens)\\" href=\\"my_(url)\\" chk=\\"confirm\\">Foo161*bar]</a></p>
 
 <h3>Example 162</h3>
 
-<p><b title=\\"title\\" href=\\"my%20url\\" chk=\\"confirm\\">Foo162 bar</b></p>
+<p><a title=\\"title\\" href=\\"my%20url\\" chk=\\"confirm\\">Foo162 bar</a></p>
 
 <h3>Example 163</h3>
 
-<p><b title=\\"
+<p><a title=\\"
 title
 line1
 line2
-\\" href=\\"/url\\" chk=\\"confirm\\">foo163</b></p>
+\\" href=\\"/url\\" chk=\\"confirm\\">foo163</a></p>
 
 <h3>Example 164</h3>
 <p>[foo164]: /url ‘title</p>
@@ -2888,8 +2888,8 @@ line2
 
 <h3>Example 165</h3>
 
-<p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">foo165</b></p>
+<p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">foo165</a></p>
 
 <h3>Example 166</h3>
 <p>[foo166]:</p>
@@ -2906,24 +2906,24 @@ should render to
 &lt;p&gt;&lt;a href=\\"/url%5Cbar*baz\\" title=\\"foo&amp;quot;bar\\\\baz\\"&gt;foo167&lt;/a&gt;&lt;/p&gt;
 
 </code></pre><h3>Example 168</h3>
-<p><b title=\\"url
-\\" href=\\"url\\" chk=\\"confirm\\">foo168</b></p>
+<p><a title=\\"url
+\\" href=\\"url\\" chk=\\"confirm\\">foo168</a></p>
 
 
 <h3>Example 169</h3>
-<p><b title=\\"first
-\\" href=\\"first\\" chk=\\"confirm\\">foo169</b></p>
+<p><a title=\\"first
+\\" href=\\"first\\" chk=\\"confirm\\">foo169</a></p>
 
 
 <h3>Example 170</h3>
 
-<p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">Foo170</b></p>
+<p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">Foo170</a></p>
 
 <h3>Example 171</h3>
 
-<p><b title=\\"
-φου\\" href=\\"/φου\\" chk=\\"confirm\\">αγω</b></p>
+<p><a title=\\"
+φου\\" href=\\"/φου\\" chk=\\"confirm\\">αγω</a></p>
 
 <h3>Example 172</h3>
 
@@ -2952,14 +2952,14 @@ url\\" href=\\"/url\\" chk=\\"confirm\\">Foo170</b></p>
 <p>[bar178]</p>
 
 <h3>Example 179</h3>
-<h1><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">Foo179</b></h1><blockquote><p>bar</p></blockquote>
+<h1><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">Foo179</a></h1><blockquote><p>bar</p></blockquote>
 <h3>Example 180</h3>
 
-<p><b title=\\"foo\\" href=\\"/foo-url\\" chk=\\"confirm\\">foo180</b>,
-<b title=\\"bar\\" href=\\"/bar-url\\" chk=\\"confirm\\">bar180</b>,
-<b title=\\"
-baz-url\\" href=\\"/baz-url\\" chk=\\"confirm\\">baz180</b></p>
+<p><a title=\\"foo\\" href=\\"/foo-url\\" chk=\\"confirm\\">foo180</a>,
+<a title=\\"bar\\" href=\\"/bar-url\\" chk=\\"confirm\\">bar180</a>,
+<a title=\\"
+baz-url\\" href=\\"/baz-url\\" chk=\\"confirm\\">baz180</a></p>
 
 <h3>Example 181</h3>
 <p>[foo181]</p>
@@ -2971,11 +2971,11 @@ exports[`./__tests__/new/cm_links.md snapshot 1`] = `
 "<article><hr><h2>xhtml: true</h2>
 <h1>Links</h1>
 <h3>Example 459</h3>
-<p><b title=\\"title\\" href=\\"/uri\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"title\\" href=\\"/uri\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 460</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 461</h3>
 <p><q title=\\"
@@ -3000,67 +3000,67 @@ bar)</p>
 bar&gt;)</p>
 
 <h3>Example 467</h3>
-<p><b title=\\"(foo)
-\\" href=\\"(foo)\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"(foo)
+\\" href=\\"(foo)\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 4680</h3>
 <p>ONE LEVEL of parentheses are allowed without escaping, as long as they are balanced:</p>
 
-<p><b title=\\"foo(bar)
-\\" href=\\"foo(bar)\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"foo(bar)
+\\" href=\\"foo(bar)\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 469</h3>
-<p><b title=\\"foo(and(bar)
-\\" href=\\"foo(and(bar)\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"foo(and(bar)
+\\" href=\\"foo(and(bar)\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 470</h3>
 <p>However, if you have ANY unbalanced parentheses, you need to escape or use the &lt;…&gt; form:</p>
 
-<p><b title=\\"foo(and(bar)
-\\" href=\\"foo(and(bar)\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"foo(and(bar)
+\\" href=\\"foo(and(bar)\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 471</h3>
-<p><b title=\\"foo):
-\\" href=\\"foo):\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"foo):
+\\" href=\\"foo):\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 472</h3>
-<p><b title=\\"
-fragment\\" href=\\"#fragment\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"
+fragment\\" href=\\"#fragment\\" chk=\\"confirm\\">link</a></p>
 
-<p><b title=\\"http
-example.com\\" href=\\"http://example.com#fragment\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"http
+example.com\\" href=\\"http://example.com#fragment\\" chk=\\"confirm\\">link</a></p>
 
-<p><b title=\\"http
-example.com\\" href=\\"http://example.com?foo=3#frag\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"http
+example.com\\" href=\\"http://example.com?foo=3#frag\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 473</h3>
-<p><b title=\\"foo\\\\bar
-\\" href=\\"foo\\\\bar\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"foo\\\\bar
+\\" href=\\"foo\\\\bar\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 4740</h3>
-<p><b title=\\"foo%20b&amp;auml;
-\\" href=\\"foo%20b&amp;auml;\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"foo%20b&amp;auml;
+\\" href=\\"foo%20b&amp;auml;\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 475</h3>
-<p><b title=\\"&quot;title&quot;
-\\" href=\\"&quot;title&quot;\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"&quot;title&quot;
+\\" href=\\"&quot;title&quot;\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 476</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">link</b>
-<b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">link</b>
-<b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">link</a>
+<a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">link</a>
+<a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 477</h3>
-<p><b title=\\"title &quot;&amp;quot;\\" href=\\"/url\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"title &quot;&amp;quot;\\" href=\\"/url\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 479</h3>
 <p>[link](/url “title “and” title”)</p>
 
 <h3>Example 480</h3>
-<p><b title=\\"title &quot;and&quot; title\\" href=\\"/url\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"title &quot;and&quot; title\\" href=\\"/url\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 481</h3>
-<p><b title=\\"title\\" href=\\"/uri\\" chk=\\"confirm\\">link</b></p>
+<p><a title=\\"title\\" href=\\"/uri\\" chk=\\"confirm\\">link</a></p>
 
 <h3>Example 482</h3>
 <p>[link] (/uri)</p>
@@ -3068,83 +3068,83 @@ example.com\\" href=\\"http://example.com?foo=3#frag\\" chk=\\"confirm\\">link</
 <h3>Example 4830</h3>
 <p>The link text may contain ONE LEVEL of balanced brackets, but not unbalanced ones, unless they are escaped:</p>
 
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">link [foo4830]</b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">link [foo4830]</a></p>
 
 <h3>Example 484</h3>
 <p>[link] bar](/uri)</p>
 
 <h3>Example 485</h3>
-<p>[link <b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar</b></p>
+<p>[link <a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar</a></p>
 
 <h3>Example 486</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">link [bar</b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">link [bar</a></p>
 
 <h3>Example 487</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">link <em>foo <strong>bar</strong> <code>#</code></em></b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">link <em>foo <strong>bar</strong> <code>#</code></em></a></p>
 
 <h3>Example 488</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\"><img src=\\"moon.jpg\\" alt=\\"moon\\"></b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\"><img src=\\"moon.jpg\\" alt=\\"moon\\"></a></p>
 
 <h3>Example 493</h3>
-<p><b title=\\"baz*
-\\" href=\\"baz*\\" chk=\\"confirm\\">foo *bar</b></p>
+<p><a title=\\"baz*
+\\" href=\\"baz*\\" chk=\\"confirm\\">foo *bar</a></p>
 
 <h3>Example 494</h3>
 <p><em>foo [bar</em> baz]</p>
 
 <h3>Example 498</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</a></p>
 
 
 <h3>Example 4990</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">link [foo499]</b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">link [foo499]</a></p>
 
 
 <h3>Example 500</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">link [bar</b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">link [bar</a></p>
 
 
 <h3>Example 501</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">link <em>foo <strong>bar</strong> <code>#</code></em></b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">link <em>foo <strong>bar</strong> <code>#</code></em></a></p>
 
 
 <h3>Example 502</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\"><img src=\\"moon.jpg\\" alt=\\"moon\\"></b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\"><img src=\\"moon.jpg\\" alt=\\"moon\\"></a></p>
 
 
 <h3>Example 5030</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">foo <b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar</b></b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">foo <a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar</a></a></p>
 
 
 <h3>Example 504</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">foo <em>bar <b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">baz</b></em></b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">foo <em>bar <a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">baz</a></em></a></p>
 
 
 <h3>Example 506</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">foo *bar</b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">foo *bar</a></p>
 
 
 <h3>Example 510</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</a></p>
 
 
 <h3>Example 511</h3>
-<p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">Толпой</b> is a Russian word.</p>
+<p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">Толпой</a> is a Russian word.</p>
 
 
 <h3>Example 512</h3>
@@ -3152,19 +3152,19 @@ url\\" href=\\"/url\\" chk=\\"confirm\\">Толпой</b> is a Russian word.</p>
 <p>[Baz][Foo bar]</p>
 
 <h3>Example 513</h3>
-<p>[foo513] <b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">bar513</b></p>
+<p>[foo513] <a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">bar513</a></p>
 
 
 <h3>Example 514</h3>
 <p>[foo514]
-<b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">bar514</b></p>
+<a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">bar514</a></p>
 
 
 <h3>Example 515</h3>
 
 
-<p><b title=\\"
-url1\\" href=\\"/url1\\" chk=\\"confirm\\">bar</b></p>
+<p><a title=\\"
+url1\\" href=\\"/url1\\" chk=\\"confirm\\">bar</a></p>
 
 <h3>Example 516</h3>
 <p>[bar][foo!516]</p>
@@ -3186,14 +3186,14 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\">bar</b></p>
 <p><kbd>[foo519]</kbd>: /url</p>
 
 <h3>Example 520</h3>
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">foo</b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">foo</a></p>
 
 
 <h3>Example 521</h3>
 
-<p><b title=\\"
-uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar\\\\</b></p>
+<p><a title=\\"
+uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar\\\\</a></p>
 
 <h3>Example 522</h3>
 <p>[]</p>
@@ -3208,28 +3208,28 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar\\\\</b></p>
  ]: /uri</p>
 
 <h3>Example 524</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</a></p>
 
 
 <h3>Example 525</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\"><em>foo</em> bar</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\"><em>foo</em> bar</a></p>
 
 
 <h3>Example 526</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">Foo</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">Foo</a></p>
 
 
 <h3>Example 527</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</b> 
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</a> 
 []</p>
 
 
 <h3>Example 528</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</a></p>
 
 
 <h3>Example 529</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\"><em>foo</em> bar</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\"><em>foo</em> bar</a></p>
 
 
 <h3>Example 530</h3>
@@ -3237,17 +3237,17 @@ uri\\" href=\\"/uri\\" chk=\\"confirm\\">bar\\\\</b></p>
 
 
 <h3>Example 531</h3>
-<p>[[bar <b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">foo531</b></p>
+<p>[[bar <a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">foo531</a></p>
 
 
 <h3>Example 532</h3>
-<p><b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">Foo</b></p>
+<p><a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">Foo</a></p>
 
 
 <h3>Example 533</h3>
-<p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">foo533</b> bar</p>
+<p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">foo533</a> bar</p>
 
 
 <h3>Example 534</h3>
@@ -3255,13 +3255,13 @@ url\\" href=\\"/url\\" chk=\\"confirm\\">foo533</b> bar</p>
 
 
 <h3>Example 536</h3>
-<p><b title=\\"
-url2\\" href=\\"/url2\\" chk=\\"confirm\\">foo536</b></p>
+<p><a title=\\"
+url2\\" href=\\"/url2\\" chk=\\"confirm\\">foo536</a></p>
 
 
 <h3>Example 537</h3>
-<p><b title=\\"
-url1\\" href=\\"/url1\\" chk=\\"confirm\\">foo537</b></p>
+<p><a title=\\"
+url1\\" href=\\"/url1\\" chk=\\"confirm\\">foo537</a></p>
 
 
 <h3>Example 538</h3>
@@ -3270,24 +3270,24 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\">foo537</b></p>
 
 
 <h3>Example 539</h3>
-<p><b title=\\"
-url1\\" href=\\"/url1\\" chk=\\"confirm\\">foo539</b>(not a link)</p>
+<p><a title=\\"
+url1\\" href=\\"/url1\\" chk=\\"confirm\\">foo539</a>(not a link)</p>
 
 
 <h3>Example 540</h3>
-<p>[foo540]<b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">bar540</b></p>
+<p>[foo540]<a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">bar540</a></p>
 
 
 <h3>Example 541</h3>
-<p><b title=\\"
-url2\\" href=\\"/url2\\" chk=\\"confirm\\">foo541</b><b title=\\"
-url1\\" href=\\"/url1\\" chk=\\"confirm\\">baz541</b></p>
+<p><a title=\\"
+url2\\" href=\\"/url2\\" chk=\\"confirm\\">foo541</a><a title=\\"
+url1\\" href=\\"/url1\\" chk=\\"confirm\\">baz541</a></p>
 
 
 <h3>Example 542</h3>
-<p>[foo542]<b title=\\"
-url1\\" href=\\"/url1\\" chk=\\"confirm\\">bar542</b></p>
+<p>[foo542]<a title=\\"
+url1\\" href=\\"/url1\\" chk=\\"confirm\\">bar542</a></p>
 
 
 <h3>Example 543</h3>
@@ -3370,7 +3370,7 @@ url1\\" href=\\"/url1\\" chk=\\"confirm\\">bar542</b></p>
 
 
 <h3>Example 564</h3>
-<p>!<b title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</b></p>
+<p>!<a title=\\"title\\" href=\\"/url\\" chk=\\"confirm\\">foo</a></p>
 
 
 </article>"
@@ -3534,8 +3534,8 @@ exports[`./__tests__/new/def_blocks.md snapshot 1`] = `
 exports[`./__tests__/new/double_link.md snapshot 1`] = `
 "<article><p>&lt;p&gt;Already linked: &lt;a href=\\"http://example.com/\\"&gt;http://example.com/&lt;/a&gt;.&lt;/p&gt;
 
-</p><p>Already linked: <b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\">http://example.com/</b>.</p>
+</p><p>Already linked: <a title=\\"http
+example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\">http://example.com/</a>.</p>
 
 <p>Already linked: &lt;a href=\\"http://example.com/\\"&gt;<strong>http://example.com/</strong>&lt;/a&gt;.</p>
 </article>"
@@ -3576,98 +3576,98 @@ exports[`./__tests__/new/escaped_angles.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/gfm_autolinks.md snapshot 1`] = `
-"<article><p>link with . <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>.</p>
+"<article><p>link with . <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>.</p>
 
-<p>link with ! <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>!</p>
+<p>link with ! <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>!</p>
 
-<p>link with : <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>:</p>
+<p>link with : <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>:</p>
 
-<p>link with , <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>,</p>
+<p>link with , <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>,</p>
 
-<p>link with ; <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>;</p>
+<p>link with ; <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>;</p>
 
-<p>link with ) <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b>)</p>
+<p>link with ) <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a>)</p>
 
-<p>link with nothing <b title=\\"http
-example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</b></p>
+<p>link with nothing <a title=\\"http
+example.com\\" href=\\"http://example.com/hello-world\\" chk=\\"confirm\\">http://example.com/hello-world</a></p>
 
 <h3>Example 597</h3>
 <p>The scheme http will be inserted automatically:</p>
 
-<p><b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org\\" chk=\\"confirm\\">www.commonmark.org</b></p>
+<p><a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org\\" chk=\\"confirm\\">www.commonmark.org</a></p>
 
 <h3>Example 598</h3>
 <p>After a valid domain, zero or more non-space non-&lt; characters may follow:</p>
 
-<p>Visit <b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org/help\\" chk=\\"confirm\\">www.commonmark.org/help</b> for more information.</p>
+<p>Visit <a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org/help\\" chk=\\"confirm\\">www.commonmark.org/help</a> for more information.</p>
 
 <h3>Example 599</h3>
 <p>Trailing punctuation (specifically, ?, !, ., ,, :, *, _, and ~) will not be considered part of the autolink, though they may be included in the interior of the link:</p>
 
-<p>Visit <b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org\\" chk=\\"confirm\\">www.commonmark.org</b>.</p>
+<p>Visit <a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org\\" chk=\\"confirm\\">www.commonmark.org</a>.</p>
 
-<p>Visit <b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org/a.b\\" chk=\\"confirm\\">www.commonmark.org/a.b</b>.</p>
+<p>Visit <a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org/a.b\\" chk=\\"confirm\\">www.commonmark.org/a.b</a>.</p>
 
 <h3>Example 600</h3>
-<p><b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">www.google.com/search?q=Markup+(business)</b></p>
+<p><a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">www.google.com/search?q=Markup+(business)</a></p>
 
-<p>(<b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">www.google.com/search?q=Markup+(business)</b>)</p>
+<p>(<a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">www.google.com/search?q=Markup+(business)</a>)</p>
 
 <h3>Example 601</h3>
-<p><b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=(business))+ok\\" chk=\\"confirm\\">www.google.com/search?q=(business))+ok</b></p>
+<p><a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=(business))+ok\\" chk=\\"confirm\\">www.google.com/search?q=(business))+ok</a></p>
 
 <h3>Example 602</h3>
-<p><b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=commonmark&amp;hl=en\\" chk=\\"confirm\\">www.google.com/search?q=commonmark&amp;hl=en</b></p>
+<p><a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=commonmark&amp;hl=en\\" chk=\\"confirm\\">www.google.com/search?q=commonmark&amp;hl=en</a></p>
 
-<p><b title=\\"http
-www.google.com\\" href=\\"http://www.google.com/search?q=commonmark\\" chk=\\"confirm\\">www.google.com/search?q=commonmark</b>&amp;amp;</p>
+<p><a title=\\"http
+www.google.com\\" href=\\"http://www.google.com/search?q=commonmark\\" chk=\\"confirm\\">www.google.com/search?q=commonmark</a>&amp;amp;</p>
 
 <h3>Example 603</h3>
 <p>&lt; immediately ends an autolink.</p>
 
-<p><b title=\\"http
-www.commonmark.org\\" href=\\"http://www.commonmark.org/he\\" chk=\\"confirm\\">www.commonmark.org/he</b>&lt;lp</p>
+<p><a title=\\"http
+www.commonmark.org\\" href=\\"http://www.commonmark.org/he\\" chk=\\"confirm\\">www.commonmark.org/he</a>&lt;lp</p>
 
 <h3>Example 604</h3>
-<p><b title=\\"http
-commonmark.org\\" href=\\"http://commonmark.org\\" chk=\\"confirm\\">http://commonmark.org</b></p>
+<p><a title=\\"http
+commonmark.org\\" href=\\"http://commonmark.org\\" chk=\\"confirm\\">http://commonmark.org</a></p>
 
-<p>(Visit <b title=\\"https
-encrypted.google.com\\" href=\\"https://encrypted.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">https://encrypted.google.com/search?q=Markup+(business)</b>)</p>
+<p>(Visit <a title=\\"https
+encrypted.google.com\\" href=\\"https://encrypted.google.com/search?q=Markup+(business)\\" chk=\\"confirm\\">https://encrypted.google.com/search?q=Markup+(business)</a>)</p>
 
-<p>Anonymous FTP is available at <b title=\\"ftp
-foo.bar.baz\\" href=\\"ftp://foo.bar.baz\\" chk=\\"confirm\\">ftp://foo.bar.baz</b>.</p>
+<p>Anonymous FTP is available at <a title=\\"ftp
+foo.bar.baz\\" href=\\"ftp://foo.bar.baz\\" chk=\\"confirm\\">ftp://foo.bar.baz</a>.</p>
 
 <p>Extended email autolinks:</p>
 
 <h3>Example 605</h3>
-<p><b title=\\"mailto:foo@bar.baz
-\\" href=\\"mailto:foo@bar.baz\\" chk=\\"confirm\\">foo@bar.baz</b></p>
+<p><a title=\\"mailto:foo@bar.baz
+\\" href=\\"mailto:foo@bar.baz\\" chk=\\"confirm\\">foo@bar.baz</a></p>
 
 <h3>Example 606</h3>
-<p>hello@mail+xyz.example isn’t valid, but <b title=\\"mailto:hello+xyz@mail.example
-\\" href=\\"mailto:hello+xyz@mail.example\\" chk=\\"confirm\\">hello+xyz@mail.example</b> is.</p>
+<p>hello@mail+xyz.example isn’t valid, but <a title=\\"mailto:hello+xyz@mail.example
+\\" href=\\"mailto:hello+xyz@mail.example\\" chk=\\"confirm\\">hello+xyz@mail.example</a> is.</p>
 
 <h3>Example 607</h3>
-<p><b title=\\"mailto:a.b-c_d@a.b
-\\" href=\\"mailto:a.b-c_d@a.b\\" chk=\\"confirm\\">a.b-c_d@a.b</b></p>
+<p><a title=\\"mailto:a.b-c_d@a.b
+\\" href=\\"mailto:a.b-c_d@a.b\\" chk=\\"confirm\\">a.b-c_d@a.b</a></p>
 
-<p><b title=\\"mailto:a.b-c_d@a.b
-\\" href=\\"mailto:a.b-c_d@a.b\\" chk=\\"confirm\\">a.b-c_d@a.b</b>.</p>
+<p><a title=\\"mailto:a.b-c_d@a.b
+\\" href=\\"mailto:a.b-c_d@a.b\\" chk=\\"confirm\\">a.b-c_d@a.b</a>.</p>
 
 <p>a.b-c_d@a.b-</p>
 
@@ -3768,14 +3768,14 @@ exports[`./__tests__/new/gfm_tables.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/headings_id.md snapshot 1`] = `
-"<article><h3>Heading with a <b title=\\"http
-github.com\\" href=\\"http://github.com/\\" chk=\\"confirm\\">link</b></h3>
+"<article><h3>Heading with a <a title=\\"http
+github.com\\" href=\\"http://github.com/\\" chk=\\"confirm\\">link</a></h3>
 <h3>Heading with some <em>italic text</em></h3>
 <h3>Or some <strong>strong</strong></h3><p>(which doesn’t really make any difference, here)</p>
 
 <h3>Or even <code>code</code></h3>
 <h3>What about <del>strikethrough</del></h3>
-<h2>And a ref <b title=\\"link to nowhere\\" href=\\"/some/url\\" chk=\\"confirm\\">link</b></h2>
+<h2>And a ref <a title=\\"link to nowhere\\" href=\\"/some/url\\" chk=\\"confirm\\">link</a></h2>
 </article>"
 `;
 
@@ -3840,8 +3840,8 @@ exports[`./__tests__/new/lazy_blockquotes.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/link_lt.md snapshot 1`] = `
-"<article><p><b title=\\"<test
-\\" href=\\"<test\\" chk=\\"confirm\\">URL</b></p>
+"<article><p><a title=\\"<test
+\\" href=\\"<test\\" chk=\\"confirm\\">URL</a></p>
 </article>"
 `;
 
@@ -3922,7 +3922,7 @@ exports[`./__tests__/new/main.md snapshot 1`] = `
 <h1>A heading</h1>
 <p>Just a note, I’ve found that I can’t test my markdown parser vs others.
 For example, both markdown.js and showdown code blocks in lists wrong. They’re
-also completely <b title=\\"Google\\" href=\\"http://google.com/\\" chk=\\"confirm\\">inconsistent</b> with regards to paragraphs in list items.</p>
+also completely <a title=\\"Google\\" href=\\"http://google.com/\\" chk=\\"confirm\\">inconsistent</a> with regards to paragraphs in list items.</p>
 
 <p>A link. Not anymore.</p>
 
@@ -3954,8 +3954,8 @@ Text here</li></ul></li></ul></blockquote>
 <p>mockup text..</p>
 <p>markdown.js breaks here again</p></blockquote>
 <h2>Another Heading</h2>
-<p>Hello <em>world</em>. Here is a <b title=\\"
-\\" href=\\"//hello\\" chk=\\"confirm\\">link</b>.
+<p>Hello <em>world</em>. Here is a <a title=\\"
+\\" href=\\"//hello\\" chk=\\"confirm\\">link</a>.
 And an image <img src=\\"src\\" alt=\\"alt\\">.</p>
 
 <pre><code>Code goes here.
@@ -3991,11 +3991,11 @@ exports[`./__tests__/new/nested_em.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/nested_square_link.md snapshot 1`] = `
-"<article><p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">the <code>]</code> character</b></p>
+"<article><p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">the <code>]</code> character</a></p>
 
-<p><b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">the \` character</b></p>
+<p><a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">the \` character</a></p>
 </article>"
 `;
 
@@ -4022,34 +4022,34 @@ exports[`./__tests__/new/redos_nolink.md snapshot 1`] = `
 `;
 
 exports[`./__tests__/new/ref_paren.md snapshot 1`] = `
-"<article><p><b title=\\"there\\" href=\\"/url\\" chk=\\"confirm\\">hi</b></p>
+"<article><p><a title=\\"there\\" href=\\"/url\\" chk=\\"confirm\\">hi</a></p>
 
 </article>"
 `;
 
 exports[`./__tests__/new/relative_urls.md snapshot 1`] = `
-"<article><hr><h2>baseUrl: “<b title=\\"http
-example.com\\" href=\\"http://example.com/base/&quot;\\" chk=\\"confirm\\">http://example.com/base/\\"</b></h2><h1>Absolutization of RFC 3986 URIs</h1>
-<h2>Absolute URI</h2><p><b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\"><img src=\\"http://example.com/logo\\" alt=\\"section 4.3\\"></b></p>
+"<article><hr><h2>baseUrl: “<a title=\\"http
+example.com\\" href=\\"http://example.com/base/&quot;\\" chk=\\"confirm\\">http://example.com/base/\\"</a></h2><h1>Absolutization of RFC 3986 URIs</h1>
+<h2>Absolute URI</h2><p><a title=\\"http
+example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\"><img src=\\"http://example.com/logo\\" alt=\\"section 4.3\\"></a></p>
 
-<h2>Network-path reference</h2><p><b title=\\"
-\\" href=\\"//example.com/\\" chk=\\"confirm\\"><img src=\\"//example.com/logo\\" alt=\\"section 4.2\\"></b></p>
+<h2>Network-path reference</h2><p><a title=\\"
+\\" href=\\"//example.com/\\" chk=\\"confirm\\"><img src=\\"//example.com/logo\\" alt=\\"section 4.2\\"></a></p>
 
-<h2>Absolute path</h2><p><b title=\\"
-path\\" href=\\"/path/to/content\\" chk=\\"confirm\\"><img src=\\"/path/to/img\\" alt=\\"section 4.2\\"></b></p>
+<h2>Absolute path</h2><p><a title=\\"
+path\\" href=\\"/path/to/content\\" chk=\\"confirm\\"><img src=\\"/path/to/img\\" alt=\\"section 4.2\\"></a></p>
 
-<h2>Relative path</h2><p><b title=\\"content
-\\" href=\\"content\\" chk=\\"confirm\\"><img src=\\"img\\" alt=\\"section 4.2\\"></b></p>
+<h2>Relative path</h2><p><a title=\\"content
+\\" href=\\"content\\" chk=\\"confirm\\"><img src=\\"img\\" alt=\\"section 4.2\\"></a></p>
 
-<h2>Dot-relative path</h2><p><b title=\\".
-content\\" href=\\"./content\\" chk=\\"confirm\\"><img src=\\"./img\\" alt=\\"section 3.3\\"></b></p>
+<h2>Dot-relative path</h2><p><a title=\\".
+content\\" href=\\"./content\\" chk=\\"confirm\\"><img src=\\"./img\\" alt=\\"section 3.3\\"></a></p>
 
-<p><b title=\\"..
-content\\" href=\\"../content\\" chk=\\"confirm\\"><img src=\\"../img\\" alt=\\"section 3.3\\"></b></p>
+<p><a title=\\"..
+content\\" href=\\"../content\\" chk=\\"confirm\\"><img src=\\"../img\\" alt=\\"section 3.3\\"></a></p>
 
-<h2>Same-document query</h2><p><b title=\\"
-\\" href=\\"?\\" chk=\\"confirm\\"><img src=\\"?type=image\\" alt=\\"section 4.4\\"></b></p>
+<h2>Same-document query</h2><p><a title=\\"
+\\" href=\\"?\\" chk=\\"confirm\\"><img src=\\"?type=image\\" alt=\\"section 4.4\\"></a></p>
 
 <h2>Same-document fragment</h2><p><q title=\\"
 \\"><img src=\\"#img\\" alt=\\"section 4.4\\"></q></p>
@@ -4077,8 +4077,8 @@ multiline” test!</p>
 exports[`./__tests__/new/smartypants_code.md snapshot 1`] = `
 "<article><hr><p>smartypants: true
 description: SmartyPants does not modify characters within &lt;pre&gt;, &lt;code&gt;, &lt;kbd&gt;, or &lt;script&gt; tag blocks.</p>
-<h2>spec: <b title=\\"https
-daringfireball.net\\" href=\\"https://daringfireball.net/projects/smartypants/\\" chk=\\"confirm\\">https://daringfireball.net/projects/smartypants/</b></h2><p>&lt;pre&gt;&amp;amp;&lt;/pre&gt;
+<h2>spec: <a title=\\"https
+daringfireball.net\\" href=\\"https://daringfireball.net/projects/smartypants/\\" chk=\\"confirm\\">https://daringfireball.net/projects/smartypants/</a></h2><p>&lt;pre&gt;&amp;amp;&lt;/pre&gt;
 </p><p>&lt;code&gt;<s>foo&lt;/code&gt;
 &lt;kbd&gt;-</s>foo&lt;/kbd&gt;</p>
 <p>&lt;script&gt;--foo&lt;/script&gt;
@@ -4115,8 +4115,8 @@ exports[`./__tests__/new/toplevel_paragraphs.md snapshot 1`] = `
 </p><p>paragraph with span
 &lt;span&gt;text inside span&lt;/span&gt;</p>
 
-<p>hello <b title=\\"
-are\\" href=\\"/are/you\\" chk=\\"confirm\\">world</b></p>
+<p>hello <a title=\\"
+are\\" href=\\"/are/you\\" chk=\\"confirm\\">world</a></p>
 
 
 <p>&lt;div&gt;hello&lt;/div&gt;
@@ -4162,33 +4162,33 @@ exports[`./__tests__/original/amps_and_angles_encoding.md snapshot 1`] = `
 
 <p>6 &gt; 5.</p>
 
-<p>Here’s a [link] <b title=\\"http
-example.com\\" href=\\"http://example.com/?foo=1&amp;bar=2\\" chk=\\"confirm\\">1</b> with an ampersand in the URL.</p>
+<p>Here’s a [link] <a title=\\"http
+example.com\\" href=\\"http://example.com/?foo=1&amp;bar=2\\" chk=\\"confirm\\">1</a> with an ampersand in the URL.</p>
 
-<p>Here’s a link with an amersand in the link text: [AT&amp;T] <b title=\\"AT&amp;T\\" href=\\"http://att.com/\\" chk=\\"confirm\\">2</b>.</p>
+<p>Here’s a link with an amersand in the link text: [AT&amp;T] <a title=\\"AT&amp;T\\" href=\\"http://att.com/\\" chk=\\"confirm\\">2</a>.</p>
 
-<p>Here’s an inline <b title=\\"
-script\\" href=\\"/script?foo=1&amp;bar=2\\" chk=\\"confirm\\">link</b>.</p>
+<p>Here’s an inline <a title=\\"
+script\\" href=\\"/script?foo=1&amp;bar=2\\" chk=\\"confirm\\">link</a>.</p>
 
-<p>Here’s an inline <b title=\\"
-script\\" href=\\"/script?foo=1&amp;bar=2\\" chk=\\"confirm\\">link</b>.</p>
+<p>Here’s an inline <a title=\\"
+script\\" href=\\"/script?foo=1&amp;bar=2\\" chk=\\"confirm\\">link</a>.</p>
 
 
 </article>"
 `;
 
 exports[`./__tests__/original/auto_links.md snapshot 1`] = `
-"<article><p>Link: <b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\">http://example.com/</b>.</p>
+"<article><p>Link: <a title=\\"http
+example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\">http://example.com/</a>.</p>
 
-<p>With an ampersand: <b title=\\"http
-example.com\\" href=\\"http://example.com/?foo=1&amp;bar=2\\" chk=\\"confirm\\">http://example.com/?foo=1&amp;bar=2</b></p>
+<p>With an ampersand: <a title=\\"http
+example.com\\" href=\\"http://example.com/?foo=1&amp;bar=2\\" chk=\\"confirm\\">http://example.com/?foo=1&amp;bar=2</a></p>
 
-<ul><li>In a list?</li><li><b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\">http://example.com/</b></li><li>It should.
+<ul><li>In a list?</li><li><a title=\\"http
+example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\">http://example.com/</a></li><li>It should.
 
-</li></ul><blockquote><p>Blockquoted: <b title=\\"http
-example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\">http://example.com/</b></p></blockquote>
+</li></ul><blockquote><p>Blockquoted: <a title=\\"http
+example.com\\" href=\\"http://example.com/\\" chk=\\"confirm\\">http://example.com/</a></p></blockquote>
 <p>Auto-links should not occur here: <code>&lt;http://example.com/&gt;</code></p>
 
 <pre><code>or here: &lt;http://example.com/&gt;
@@ -4555,16 +4555,16 @@ Blah
 
 exports[`./__tests__/original/links_inline_style.md snapshot 1`] = `
 "<article><hr><h2>pedantic: true</h2>
-<p>Just a <b title=\\"
-url\\" href=\\"/url/\\" chk=\\"confirm\\">URL</b>.</p>
+<p>Just a <a title=\\"
+url\\" href=\\"/url/\\" chk=\\"confirm\\">URL</a>.</p>
 
-<p><b title=\\"title\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</b>.</p>
+<p><a title=\\"title\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</a>.</p>
 
-<p><b title=\\"title preceded by two spaces\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</b>.</p>
+<p><a title=\\"title preceded by two spaces\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</a>.</p>
 
-<p><b title=\\"title preceded by a tab\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</b>.</p>
+<p><a title=\\"title preceded by a tab\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</a>.</p>
 
-<p><b title=\\"title has spaces afterward\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</b>.</p>
+<p><a title=\\"title has spaces afterward\\" href=\\"/url/\\" chk=\\"confirm\\">URL and title</a>.</p>
 
 <p>[URL and title]( /url/has space ).</p>
 
@@ -4577,27 +4577,27 @@ url\\" href=\\"/url/\\" chk=\\"confirm\\">URL</b>.</p>
 
 exports[`./__tests__/original/links_reference_style.md snapshot 1`] = `
 "<article><hr><h2>pedantic: true</h2>
-<p>Foo [bar] <b title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">1</b>.</p>
+<p>Foo [bar] <a title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">1</a>.</p>
 
-<p>Foo <b title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">bar</b>.</p>
+<p>Foo <a title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">bar</a>.</p>
 
 <p>Foo [bar]
-<b title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">1</b>.</p>
+<a title=\\"Title\\" href=\\"/url/\\" chk=\\"confirm\\">1</a>.</p>
 
 
 
-<p>With [embedded [brackets]] <b title=\\"
-url\\" href=\\"/url/\\" chk=\\"confirm\\">b</b>.</p>
+<p>With [embedded [brackets]] <a title=\\"
+url\\" href=\\"/url/\\" chk=\\"confirm\\">b</a>.</p>
 
 
-<p>Indented <b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">once</b>.</p>
+<p>Indented <a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">once</a>.</p>
 
-<p>Indented <b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">twice</b>.</p>
+<p>Indented <a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">twice</a>.</p>
 
-<p>Indented <b title=\\"
-url\\" href=\\"/url\\" chk=\\"confirm\\">thrice</b>.</p>
+<p>Indented <a title=\\"
+url\\" href=\\"/url\\" chk=\\"confirm\\">thrice</a>.</p>
 
 <p>Indented [four][] times.</p>
 
@@ -4609,21 +4609,21 @@ url\\" href=\\"/url\\" chk=\\"confirm\\">thrice</b>.</p>
 
 </code></pre>
 <hr>
-<p><b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b> <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b> should work</p>
+<p><a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a> <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a> should work</p>
 
-<p>So should <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b>.</p>
+<p>So should <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a>.</p>
 
-<p>And <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b> [].</p>
+<p>And <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a> [].</p>
 
-<p>And <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b>.</p>
+<p>And <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a>.</p>
 
-<p>And <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b>.</p>
+<p>And <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a>.</p>
 
 <p>But not [that] [].</p>
 
@@ -4631,27 +4631,27 @@ url\\" href=\\"/url\\" chk=\\"confirm\\">thrice</b>.</p>
 
 <p>Nor [that].</p>
 
-<p>[Something in brackets like <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b> should work]</p>
+<p>[Something in brackets like <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a> should work]</p>
 
-<p>[Same with <b title=\\"foo
-\\" href=\\"foo\\" chk=\\"confirm\\">this</b>.]</p>
+<p>[Same with <a title=\\"foo
+\\" href=\\"foo\\" chk=\\"confirm\\">this</a>.]</p>
 
-<p>In this case, <b title=\\"
-somethingelse\\" href=\\"/somethingelse/\\" chk=\\"confirm\\">this</b> points to something else.</p>
+<p>In this case, <a title=\\"
+somethingelse\\" href=\\"/somethingelse/\\" chk=\\"confirm\\">this</a> points to something else.</p>
 
 <p>Backslashing should suppress [this] and [this].</p>
 
 
 
 <hr>
-<p>Here’s one where the <b title=\\"
+<p>Here’s one where the <a title=\\"
 url\\" href=\\"/url/\\" chk=\\"confirm\\">link
-breaks</b> across lines.</p>
+breaks</a> across lines.</p>
 
-<p>Here’s another where the <b title=\\"
+<p>Here’s another where the <a title=\\"
 url\\" href=\\"/url/\\" chk=\\"confirm\\">link 
-breaks</b> across lines, but with a line-ending space.</p>
+breaks</a> across lines, but with a line-ending space.</p>
 
 
 </article>"
@@ -4659,26 +4659,26 @@ breaks</b> across lines, but with a line-ending space.</p>
 
 exports[`./__tests__/original/links_shortcut_references.md snapshot 1`] = `
 "<article><hr><h2>pedantic: true</h2>
-<p>This is the <b title=\\"
-simple\\" href=\\"/simple\\" chk=\\"confirm\\">simple case</b>.</p>
+<p>This is the <a title=\\"
+simple\\" href=\\"/simple\\" chk=\\"confirm\\">simple case</a>.</p>
 
 
 
 
-<p>This one has a <b title=\\"
+<p>This one has a <a title=\\"
 foo\\" href=\\"/foo\\" chk=\\"confirm\\">line
-break</b>.</p>
+break</a>.</p>
 
-<p>This one has a <b title=\\"
+<p>This one has a <a title=\\"
 foo\\" href=\\"/foo\\" chk=\\"confirm\\">line 
-break</b> with a line-ending space.</p>
+break</a> with a line-ending space.</p>
 
 
 
-<p><b title=\\"
-this\\" href=\\"/this\\" chk=\\"confirm\\">this</b> <b title=\\"
-that\\" href=\\"/that\\" chk=\\"confirm\\">that</b> and the <b title=\\"
-other\\" href=\\"/other\\" chk=\\"confirm\\">other</b></p>
+<p><a title=\\"
+this\\" href=\\"/this\\" chk=\\"confirm\\">this</a> <a title=\\"
+that\\" href=\\"/that\\" chk=\\"confirm\\">that</a> and the <a title=\\"
+other\\" href=\\"/other\\" chk=\\"confirm\\">other</a></p>
 
 </article>"
 `;
@@ -4709,19 +4709,19 @@ exports[`./__tests__/original/markdown_documentation_basics.md snapshot 1`] = `
 
 </p><h2>Getting the Gist of Markdown’s Formatting Syntax</h2>
 <p>This page offers a brief overview of what it’s like to use Markdown.
-The [syntax page] <b title=\\"Markdown Syntax\\" href=\\"/projects/markdown/syntax\\" chk=\\"confirm\\">s</b> provides complete, detailed documentation for
+The [syntax page] <a title=\\"Markdown Syntax\\" href=\\"/projects/markdown/syntax\\" chk=\\"confirm\\">s</a> provides complete, detailed documentation for
 every feature, but Markdown should be very easy to pick up simply by
 looking at a few examples of it in action. The examples on this page
 are written in a before/after style, showing example syntax and the
 HTML output produced by Markdown.</p>
 
-<p>It’s also helpful to simply try Markdown out; the [Dingus] <b title=\\"Markdown Dingus\\" href=\\"/projects/markdown/dingus\\" chk=\\"confirm\\">d</b> is a
+<p>It’s also helpful to simply try Markdown out; the [Dingus] <a title=\\"Markdown Dingus\\" href=\\"/projects/markdown/dingus\\" chk=\\"confirm\\">d</a> is a
 web application that allows you type your own Markdown-formatted text
 and translate it to XHTML.</p>
 
 <p><strong>Note:</strong> This document is itself written using Markdown; you
-can [see the source for it by adding ‘.text’ to the URL] <b title=\\"
-projects\\" href=\\"/projects/markdown/basics.text\\" chk=\\"confirm\\">src</b>.</p>
+can [see the source for it by adding ‘.text’ to the URL] <a title=\\"
+projects\\" href=\\"/projects/markdown/basics.text\\" chk=\\"confirm\\">src</a>.</p>
 
 
 
@@ -5006,35 +5006,35 @@ exports[`./__tests__/original/markdown_documentation_syntax.md snapshot 1`] = `
 &lt;/ul&gt;
 
 
-</p><ul><li><b title=\\"
-overview\\" href=\\"#overview\\" chk=\\"confirm\\">Overview</b>
-<ul><li><b title=\\"
-philosophy\\" href=\\"#philosophy\\" chk=\\"confirm\\">Philosophy</b></li><li><b title=\\"
-html\\" href=\\"#html\\" chk=\\"confirm\\">Inline HTML</b></li><li><b title=\\"
-autoescape\\" href=\\"#autoescape\\" chk=\\"confirm\\">Automatic Escaping for Special Characters</b></li></ul></li><li><b title=\\"
-block\\" href=\\"#block\\" chk=\\"confirm\\">Block Elements</b>
-<ul><li><b title=\\"
-p\\" href=\\"#p\\" chk=\\"confirm\\">Paragraphs and Line Breaks</b></li><li><b title=\\"
-header\\" href=\\"#header\\" chk=\\"confirm\\">Headers</b></li><li><b title=\\"
-blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">Blockquotes</b></li><li><b title=\\"
-list\\" href=\\"#list\\" chk=\\"confirm\\">Lists</b></li><li><b title=\\"
-precode\\" href=\\"#precode\\" chk=\\"confirm\\">Code Blocks</b></li><li><b title=\\"
-hr\\" href=\\"#hr\\" chk=\\"confirm\\">Horizontal Rules</b></li></ul></li><li><b title=\\"
-span\\" href=\\"#span\\" chk=\\"confirm\\">Span Elements</b>
-<ul><li><b title=\\"
-link\\" href=\\"#link\\" chk=\\"confirm\\">Links</b></li><li><b title=\\"
-em\\" href=\\"#em\\" chk=\\"confirm\\">Emphasis</b></li><li><b title=\\"
-code\\" href=\\"#code\\" chk=\\"confirm\\">Code</b></li><li><b title=\\"
-img\\" href=\\"#img\\" chk=\\"confirm\\">Images</b></li></ul></li><li><b title=\\"
-misc\\" href=\\"#misc\\" chk=\\"confirm\\">Miscellaneous</b>
-<ul><li><b title=\\"
-backslash\\" href=\\"#backslash\\" chk=\\"confirm\\">Backslash Escapes</b></li><li><b title=\\"
-autolink\\" href=\\"#autolink\\" chk=\\"confirm\\">Automatic Links</b>
+</p><ul><li><a title=\\"
+overview\\" href=\\"#overview\\" chk=\\"confirm\\">Overview</a>
+<ul><li><a title=\\"
+philosophy\\" href=\\"#philosophy\\" chk=\\"confirm\\">Philosophy</a></li><li><a title=\\"
+html\\" href=\\"#html\\" chk=\\"confirm\\">Inline HTML</a></li><li><a title=\\"
+autoescape\\" href=\\"#autoescape\\" chk=\\"confirm\\">Automatic Escaping for Special Characters</a></li></ul></li><li><a title=\\"
+block\\" href=\\"#block\\" chk=\\"confirm\\">Block Elements</a>
+<ul><li><a title=\\"
+p\\" href=\\"#p\\" chk=\\"confirm\\">Paragraphs and Line Breaks</a></li><li><a title=\\"
+header\\" href=\\"#header\\" chk=\\"confirm\\">Headers</a></li><li><a title=\\"
+blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">Blockquotes</a></li><li><a title=\\"
+list\\" href=\\"#list\\" chk=\\"confirm\\">Lists</a></li><li><a title=\\"
+precode\\" href=\\"#precode\\" chk=\\"confirm\\">Code Blocks</a></li><li><a title=\\"
+hr\\" href=\\"#hr\\" chk=\\"confirm\\">Horizontal Rules</a></li></ul></li><li><a title=\\"
+span\\" href=\\"#span\\" chk=\\"confirm\\">Span Elements</a>
+<ul><li><a title=\\"
+link\\" href=\\"#link\\" chk=\\"confirm\\">Links</a></li><li><a title=\\"
+em\\" href=\\"#em\\" chk=\\"confirm\\">Emphasis</a></li><li><a title=\\"
+code\\" href=\\"#code\\" chk=\\"confirm\\">Code</a></li><li><a title=\\"
+img\\" href=\\"#img\\" chk=\\"confirm\\">Images</a></li></ul></li><li><a title=\\"
+misc\\" href=\\"#misc\\" chk=\\"confirm\\">Miscellaneous</a>
+<ul><li><a title=\\"
+backslash\\" href=\\"#backslash\\" chk=\\"confirm\\">Backslash Escapes</a></li><li><a title=\\"
+autolink\\" href=\\"#autolink\\" chk=\\"confirm\\">Automatic Links</a>
 
 
 </li></ul></li></ul><p><strong>Note:</strong> This document is itself written using Markdown; you
-can <b title=\\"
-projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the source for it by adding ‘.text’ to the URL</b>.</p>
+can <a title=\\"
+projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the source for it by adding ‘.text’ to the URL</a>.</p>
 
 
 <hr>
@@ -5048,14 +5048,14 @@ projects\\" href=\\"/projects/markdown/syntax.text\\" chk=\\"confirm\\">see the 
 document should be publishable as-is, as plain text, without looking
 like it’s been marked up with tags or formatting instructions. While
 Markdown’s syntax has been influenced by several existing text<q cite=\\"spec-1-1-to-HTML\\">-to-HTML</q>
-filters <s> including [Setext] <b title=\\"http
-docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</b>, [atx] <b title=\\"http
-www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</b>, [Textile] <b title=\\"http
-textism.com\\" href=\\"http://textism.com/tools/textile/\\" chk=\\"confirm\\">3</b>, [reStructuredText] <b title=\\"http
-docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/rst.html\\" chk=\\"confirm\\">4</b>,
-[Grutatext] <b title=\\"http
-www.triptico.com\\" href=\\"http://www.triptico.com/software/grutatxt.html\\" chk=\\"confirm\\">5</b>, and [EtText] <b title=\\"http
-ettext.taint.org\\" href=\\"http://ettext.taint.org/doc/\\" chk=\\"confirm\\">6</b> </s> the single biggest source of
+filters <s> including [Setext] <a title=\\"http
+docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</a>, [atx] <a title=\\"http
+www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</a>, [Textile] <a title=\\"http
+textism.com\\" href=\\"http://textism.com/tools/textile/\\" chk=\\"confirm\\">3</a>, [reStructuredText] <a title=\\"http
+docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/rst.html\\" chk=\\"confirm\\">4</a>,
+[Grutatext] <a title=\\"http
+www.triptico.com\\" href=\\"http://www.triptico.com/software/grutatxt.html\\" chk=\\"confirm\\">5</a>, and [EtText] <a title=\\"http
+ettext.taint.org\\" href=\\"http://ettext.taint.org/doc/\\" chk=\\"confirm\\">6</a> </s> the single biggest source of
 inspiration for Markdown’s syntax is the format of plain text email.</p>
 
 
@@ -5158,8 +5158,8 @@ into <code>&amp;amp;</code>.</p>
 
 <pre><code>AT&amp;amp;T
 
-</code></pre><p>Similarly, because Markdown supports <b title=\\"
-html\\" href=\\"#html\\" chk=\\"confirm\\">inline HTML</b>, if you use
+</code></pre><p>Similarly, because Markdown supports <a title=\\"
+html\\" href=\\"#html\\" chk=\\"confirm\\">inline HTML</a>, if you use
 angle brackets as delimiters for HTML tags, Markdown will treat them as
 such. But if you write:</p>
 
@@ -5199,9 +5199,9 @@ end a line with two or more spaces, then type return.</p>
 
 <p>Yes, this takes a tad more effort to create a <code>&lt;br /&gt;</code>, but a simplistic
 “every line break is a <code>&lt;br /&gt;</code>“ rule wouldn’t work for Markdown.
-Markdown’s email-style <b title=\\"
-blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">blockquoting</b> and multi-paragraph <b title=\\"
-list\\" href=\\"#list\\" chk=\\"confirm\\">list items</b>
+Markdown’s email-style <a title=\\"
+blockquote\\" href=\\"#blockquote\\" chk=\\"confirm\\">blockquoting</a> and multi-paragraph <a title=\\"
+list\\" href=\\"#list\\" chk=\\"confirm\\">list items</a>
 work best <s> and look better </s> when you format them with hard breaks.</p>
 
 
@@ -5209,9 +5209,9 @@ work best <s> and look better </s> when you format them with hard breaks.</p>
 
 <p>&lt;h3 id=\\"header\\"&gt;Headers&lt;/h3&gt;
 
-</p><p>Markdown supports two styles of headers, [Setext] <b title=\\"http
-docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</b> and [atx] <b title=\\"http
-www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</b>.</p>
+</p><p>Markdown supports two styles of headers, [Setext] <a title=\\"http
+docutils.sourceforge.net\\" href=\\"http://docutils.sourceforge.net/mirror/setext.html\\" chk=\\"confirm\\">1</a> and [atx] <a title=\\"http
+www.aaronsw.com\\" href=\\"http://www.aaronsw.com/2002/atx/\\" chk=\\"confirm\\">2</a>.</p>
 
 <p>Setext-style headers are “underlined” using equal signs (for first-level
 headers) and dashes (for second-level headers). For example:</p>
@@ -5630,8 +5630,8 @@ multiple words in the link text:</p>
 
 </code></pre><p>And then define the link:
 
-    [Daring Fireball]: <b title=\\"http
-daringfireball.net\\" href=\\"http://daringfireball.net/\\" chk=\\"confirm\\">http://daringfireball.net/</b></p>
+    [Daring Fireball]: <a title=\\"http
+daringfireball.net\\" href=\\"http://daringfireball.net/\\" chk=\\"confirm\\">http://daringfireball.net/</a></p>
 
 <p>Link definitions can be placed anywhere in your Markdown document. I
 tend to put them immediately after each paragraph in which they’re
@@ -5847,8 +5847,8 @@ spambots. For example, Markdown will turn this:</p>
 &amp;#109;\\"&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;
 &amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
 
-</code></pre><p>which will render in a browser as a clickable link to “<b title=\\"mailto:address@example.com
-\\" href=\\"mailto:address@example.com\\" chk=\\"confirm\\">address@example.com</b>“.</p>
+</code></pre><p>which will render in a browser as a clickable link to “<a title=\\"mailto:address@example.com
+\\" href=\\"mailto:address@example.com\\" chk=\\"confirm\\">address@example.com</a>“.</p>
 
 <p>(This sort of entity-encoding trick will indeed fool many, if not
 most, address-harvesting bots, but it definitely won’t fool all of

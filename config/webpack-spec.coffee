@@ -5,7 +5,18 @@ current = process.cwd()
 
 coffee =
   test: /\.coffee$/
-  loader: 'babel-loader!coffee-loader'
+  loader: 'coffee-loader'
+  options:
+    transpile:
+      plugins: [
+        "transform-es2015-modules-commonjs"
+      ]
+      presets: [
+        ["env", 
+          targets:
+            node: "10.4.1"
+        ]
+      ]
 
 sass =
   test: /\.sass$/
@@ -20,7 +31,7 @@ pug =
   loader: 'pug-plain-loader'
 
 module.exports =
-  mode: 'production'
+  mode: 'development'
   devtool: 'source-map'
   entry:
     "__tests__/dagre_spec": './__tests__/dagre_spec.coffee'

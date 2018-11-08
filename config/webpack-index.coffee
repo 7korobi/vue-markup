@@ -6,7 +6,19 @@ current = process.cwd()
 
 coffee =
   test: /\.coffee$/
-  loader: 'babel-loader!coffee-loader'
+  loader: 'coffee-loader'
+  options:
+    transpile:
+      plugins: [
+        "transform-es2015-modules-commonjs"
+      ]
+      presets: [
+        ["env", 
+          targets:
+            node: "10.4.1"
+        ]
+      ]
+
 
 sass =
   test: /\.sass$/
@@ -22,7 +34,6 @@ pug =
 
 module.exports =
   mode: 'production'
-  target: 'node' # Important
   devtool: 'source-map'
   entry:
     "lib/index.min":  './src/index.coffee'

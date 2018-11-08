@@ -130,7 +130,7 @@ class MarkedRenderer
           attrs: { title }
         , text
       else
-        m "b",
+        m "a",
           attrs: { title, href, chk: 'confirm' }
         , text
 
