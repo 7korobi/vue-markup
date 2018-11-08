@@ -34,6 +34,7 @@ pug =
 
 module.exports =
   mode: 'production'
+  target: 'node' # Important
   devtool: 'source-map'
   entry:
     "lib/index.min":  './src/index.coffee'
@@ -58,3 +59,4 @@ module.exports =
       '~': current
 
   plugins: [ new VueLoaderPlugin() ]
+  externals: [nodeExternals()] # Important
